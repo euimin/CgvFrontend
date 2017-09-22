@@ -9,27 +9,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=1024" />
-    <meta name="title" content="CJ CGV" />
+    <meta name="title" content="CJ CGV" /> 
     <title>빠른예매 | 영화 그 이상의 감동. CGV</title>
     <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
     <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
-    <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/module.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/common.css" />
-    <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/content.css" />
-    <link rel="stylesheet" media="print" type="text/css" href="http://img.cgv.co.kr/R2014/css/print.css" />
-    <link rel="stylesheet" type="text/css" href="http://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
-    <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.config.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.utils.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.init.js"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="img/R2014/css/reset.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="img/R2014/css/layout.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="img/R2014/css/module.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="img/R2014/css/common.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="img/R2014/css/content.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="img/R2014/css/print.css" />
+    <link rel="stylesheet" type="text/css" href="img/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
+    <script type="text/javascript" src="common/js/extraTheaters.js"></script>
+    <script type="text/javascript" src="img/R2014/js/app.config.js"></script>
+    <script type="text/javascript" src="img/R2014/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="img/R2014/js/jquery.plugin/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="img/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="img/R2014/js/jquery.utils.js"></script>
+    <script type="text/javascript" src="img/R2014/js/app.utils.js"></script>
+    <script type="text/javascript" src="img/R2014/js/app.init.js"></script>
     <!--[if lte IE 9]><script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.placeholder.js"></script><![endif]-->
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript" src="img/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
     <!-- 각페이지 Header Start--> 
     <!--/각페이지 Header End--> 
     <script type="text/javascript">
@@ -224,16 +224,7 @@
 					<a href="http://phototicket.cgv.co.kr/"  target="_blank">CGV 포토티켓</a>
 				</div>
 				<!-- /Quick Phototicket -->
-				<!-- Advertisement -->
-                
-				<div class="ad-partner">
-                    <a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx" >
-                        <img src="http://img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
-                    </a>
-					 <!-- 외부광고영역 -->
-				</div>
-                
-				<!-- /Advertisement -->
+				
 			</div>
 		</div>
 
@@ -266,8 +257,16 @@
 
 		<!-- Contents Area -->
 		<div id="contents" style="height:1px;padding:0;"></div>
-        <iframe title="CGV 빠른예매" id="ticket_iframe" src="http://ticket.cgv.co.kr/Reservation/Reservation.aspx?MOVIE_CD=&MOVIE_CD_GROUP=&PLAY_YMD=&THEATER_CD=&PLAY_NUM=&PLAY_START_TM=&AREA_CD=&SCREEN_CD=&THIRD_ITEM=" 
+
+
+
+
+<!--         <iframe title="CGV 빠른예매" id="ticket_iframe" src="http://ticket.cgv.co.kr/Reservation/Reservation.aspx?MOVIE_CD=&MOVIE_CD_GROUP=&PLAY_YMD=&THEATER_CD=&PLAY_NUM=&PLAY_START_TM=&AREA_CD=&SCREEN_CD=&THIRD_ITEM=" 
+        scrolling="no" frameborder="0" width="100%" height="987" style="width:100%; border:0 none;"></iframe> -->
+<!-- ☆   -->
+<iframe title="CGV 빠른예매" id="ticket_iframe" src="<c:url value='/ticket/indexIframe.front?movie_code=${movie_code}&title=${title}'/>" 
         scrolling="no" frameborder="0" width="100%" height="987" style="width:100%; border:0 none;"></iframe>
+<%-- <a href="<c:url value='/ticket.front'/>" > --%>
 		<!-- /Contents Area -->
 	</div>
 	<!-- /Contaniner -->
@@ -456,7 +455,7 @@
 <script type="text/javascript">
     _TRK_CP = "/홈/예매/빠른예매";
 </script>
-<script type="text/javascript" language="javascript" src="http://img.cgv.co.kr/common/js/insightIS.js"></script>
+<script type="text/javascript" language="javascript" src="img/common/js/insightIS.js"></script>
 
 </body>
 </html>
