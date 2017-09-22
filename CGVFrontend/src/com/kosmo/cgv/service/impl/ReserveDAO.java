@@ -27,7 +27,7 @@ public class ReserveDAO implements ReserveService {
 		return template.selectList("selectAllScreeningByDate",dto);
 	}
 
-	@Override
+	@Override 
 	public ShowTimeDTO selectOneScreening(String screening_code) {
 		return template.selectOne("selectOneScreening", screening_code);
 	}

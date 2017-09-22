@@ -23,7 +23,7 @@ public class TheaterDao implements TheaterService{
 
 	@Override
 	public TheaterDto selectOneTheater(String theater_code) throws Exception {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		return null;
 	}
 

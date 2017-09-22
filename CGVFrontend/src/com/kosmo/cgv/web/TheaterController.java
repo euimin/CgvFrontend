@@ -21,7 +21,7 @@ public class TheaterController {
 		List<TheaterDto> theaterList = service.selectTheaterList();
 		model.addAttribute("theaterList", theaterList);
 		return "ticket/indexIframe";
-	}
+	} 
 	
 }
 */

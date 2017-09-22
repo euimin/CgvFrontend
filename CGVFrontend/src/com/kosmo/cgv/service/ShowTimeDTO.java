@@ -8,7 +8,7 @@ public class ShowTimeDTO {
 	private String screen_code;//상영관 코드
 	private String movie_code;//영화 코드	
 	private java.sql.Date screeningdate;//상영일
-	private String time;//상영 시간
+	private String time;//상영 시간 
 	//MOVIE 테이블
 	private String title;//영화 제목
 	private String genre;//영화 장르

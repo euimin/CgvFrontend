@@ -97,7 +97,7 @@ select * from reserve where id = 'HANSOIN1' order by seatnumber asc;
 	
 	<insert id="insertReserveEtc" parameterType="ReserveDTO">
 		insert into reserve values(SEQ_RESERVE.CURRVAL, #{screening_code}, #{seatnumber}, #{r_id}, 'TRUE', sysdate, null)
-	</insert>
+	</insert> 
 	
 	<update id="updateReserve" parameterType="String">
 		update reserve set r_reservedate=sysdate where code=#{code}

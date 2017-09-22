@@ -30,7 +30,7 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public ShowTimeDTO selectOneScreening(String screening_code) {
 		return dao.selectOneScreening(screening_code);
-	}
+	} 
 
 	@Override
 	public TheaterDto selectOneTheater(TheaterDto dto) {

@@ -36,7 +36,7 @@ public class ReserveController {
 		
 		if(map.get("title") != null) {
 			model.addAttribute("title",map.get("title"));
-		}
+		} 
 		
 		
 		List<MovieDto> list = serviceMovie.selectMovieList();

@@ -7,7 +7,7 @@ public class TheaterDto {
 	private String transportationinfo;//교통 안내
 	private String parkinginfo;//주차 안내
 	private String screens;//상영관 수
-	private String seats;//좌석 수
+	private String seats;//좌석 수 
 	private String addr1;//지번 주소1
 	private String addr2;//지번 주소2 상세
 	private String roadaddr1;//도로명 주소1

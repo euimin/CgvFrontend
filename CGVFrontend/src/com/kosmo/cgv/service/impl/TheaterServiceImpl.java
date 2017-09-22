@@ -12,7 +12,7 @@ import com.kosmo.cgv.service.TheaterService;
 @Service("theaterService")
 public class TheaterServiceImpl implements TheaterService {
 	@Resource(name="theaterDao")
-	private TheaterDao dao;
+	private TheaterDao dao; 
 
 	@Override
 	public List<TheaterDto> selectTheaterList() throws Exception {

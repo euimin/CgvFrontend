@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         // domain setting
-        document.domain = "cgv.co.kr";
+        document.domain = "cgv.co.kr"; 
 
 
         // 예매 완료 이벤트 처리

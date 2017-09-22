@@ -8,7 +8,7 @@ public class ReserveDTO {
 	private String r_id;//예매자아이디
 	private String r_people;//인원
 	private String r_seat;//좌석등급
-	private String r_seatnumber;//좌석번호
+	private String r_seatnumber;//좌석번호 
 	private String r_reservedate;//예매일
 	private String s_screeningdate;//상영일
 	private String s_time;//상영시간
