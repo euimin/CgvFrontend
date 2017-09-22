@@ -43,7 +43,6 @@ public class MovieFinderController{
 			yearto=map.get("edate").toString();
 		}
 		
-		
 		model.addAllAttributes(map);
 		MovieFinderController.main(null);
 		
@@ -80,6 +79,10 @@ public class MovieFinderController{
         String clientId = "GYECKyUW8CbVQnatWck1";//애플리케이션 클라이언트 아이디값
         String clientSecret = "p628ThCzTB";//애플리케이션 클라이언트 시크릿값
         try {
+        	if(title=="" || title==null) {
+        		jsonData=null;
+        		return;
+        	}
             String text = URLEncoder.encode(title, "UTF-8");
             String apiURL = "https://openapi.naver.com/v1/search/movie?display=100&query="+ text+"&yearfrom="+yearfrom+"&yearto="+yearto; //json 결과
             URL url = new URL(apiURL);
@@ -100,7 +103,7 @@ public class MovieFinderController{
                 response.append(inputLine);
             }
             br.close();
-            jsonData="{"+response.toString().substring(response.toString().indexOf("items")-1);
+            jsonData="{"+response.toString().substring(response.toString().indexOf("\"items"));
         } catch (Exception e) {
         	e.printStackTrace();
             System.out.println(e);
