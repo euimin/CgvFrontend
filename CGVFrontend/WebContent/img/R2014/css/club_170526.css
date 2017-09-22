@@ -1,0 +1,444 @@
+﻿@charset "utf-8";
+
+.sect-club-list {margin-bottom:80px;background:url(../images/club/img_clubhd_banner.jpg) no-repeat 0 0;padding-top:110px}
+.sect-club-list.on {background:none;padding:0}
+.sect-club-list:after {clear:both; display:block; content:'';}
+.sect-club-list > .sect_desc {display:inline-block; float:right; font-size:12px; margin:20px 0 5px; padding-left:15px; background:url('../images/sub/magazine/bul_billiard_11px.png') no-repeat 0 2px;}
+.sect-club-list .clubhd_ban {clear:both; display:block; border-bottom:1px solid #000;}
+.sect-club-list .club-list {position:relative; margin:0 0 0 -14px; padding-top:413px;}
+/* .sect-club-list .club-list:after {clear:both; display:block; content:'';} */
+.sect-club-list .club-list .club-listbox {position:absolute; margin:20px 0 0 13px;}
+.sect-club-list .club-list .club-listbox.cl-box1 {left:0; top:0;}
+.sect-club-list .club-list .club-listbox.cl-box2 {right:0; top:0;}
+.sect-club-list .club-list .club-listbox {border:1px solid #edeae0; width:482px; background:#fff; box-shadow:#e5e4da 0 0 3px;}
+.sect-club-list .club-titbox {position:relative; padding:23px 20px; height:44px; background:#fff; border-bottom:1px solid #e5e5e5;}
+.sect-club-list .club-tit {display:block; font-size:26px; color:#000; font-family:'NanumBarunGothic', sans-serif;}
+.sect-club-list .club-date {display:block; font-size:11px; color:#666; font-family:verdana; }
+.sect-club-list .club-txt {margin:10px 0 0 0;}
+.sect-club-list .club-titbox button {position:absolute; right:20px; top:30px; min-width:79px;}
+.sect-club-list .thumb-box {position:relative; height:300px;}
+.sect-club-list .thumb-box:before {overflow:hidden; position:absolute; left:12px; top:15px; display:block; content:''; width:100px; height:80px; }
+.sect-club-list .thumb-box.user_grade:before {background:url('../images/club/img_clubgrade_badge.png') no-repeat 100% 0;}
+.sect-club-list .thumb-box.user_grade_01:before {background:url('../images/club/img_clubgrade_badge.png') no-repeat 100% -150px;}
+.sect-club-list .thumb-box.user_grade_02:before {background:url('../images/club/img_clubgrade_badge.png') no-repeat 100% -300px;}
+
+.sect-club-list .thumb-box img {display:block; width:100%; height:100%;}
+
+.sect-club-list .club-list .club-listbox.on .desc-dim {display:block;}
+.desc-dim {
+	display:none; 
+	position:absolute; 
+	left:0; right:0; top:0; bottom:0; 
+	color:#fff;
+	text-align:center;
+	background-color:rgba(0,0,0,.8);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
+}
+
+.club-benefit {clear:both; display:none; margin:0 0 0 13px; padding-top:20px;}
+.club-benefit.on {display:block; position:relative; z-index:2;}
+.club-benefit .benefitbox {position:relative; padding:40px; background:#222;}
+.club-benefit .benefitbox:before {display:block; content:''; position:absolute; left:222px; top:-18px; width:33px; height:18px; background:url('../images/club/bg_club_benefit_arrow.png') no-repeat 0 0;}
+.club-benefit.cb-r .benefitbox:before {left:718px;}
+.club-benefit .benefitbox .btn-close {right:30px; top:30px; background:url('../images/sprite/sprite_btn.png') no-repeat -72px -241px;}
+
+.club-benefit .benefit-tit {display:block; margin-bottom:32px; font-size:34px; font-family:'NanumBarunGothicBold', sans-serif; color:#edf3f6;}
+.benefit-list {padding-top:10px;}
+.benefit-list:after {clear:both; display:block; content:'';}
+.benefit-list > li {float:left; padding-left:106px; width:343px; min-height:110px;margin:0 0 15px 0 ;background:url('../images/club/bg_benefit_list_icon.png') no-repeat 0 0;}
+.benefit-list > li.bl1 {background-position:0 10px;}
+.benefit-list > li.bl2 {background-position:0 -200px;}
+.benefit-list > li.bl3 {background-position:0 -400px;}
+.benefit-list > li.bl4 {background-position:0 -586px;}
+.benefit-list > li.bl5 {background-position:0 -998px;}
+.benefit-list > li.bl6 {background-position:0 -1225px;}
+.benefit-list .bl-tit {display:block; padding-top:4px; margin-bottom:4px; font-size:20px; font-family:'NanumBarunGothicBold', sans-serif; color:#fff; /* text-transform:uppercase */}
+.benefit-list > li > ul > li {padding-left:7px; font-size:13px; color:#999; line-height:1.5; background:url('../images/club/bul_circle_gray1.png') no-repeat 0 6px;}
+.benefit-list > li .freepass_num {color:#ef8200;}
+.benefit-list > li.lineover {height:120px;}
+.benefit-list > li .link-txt {color:#3797db;}
+
+.benefit-list > li > ul > li .link-txt {display:inline-block; margin-top:7px;}
+
+.benefit-list .pop_theater_list {display:none; left:50%;top:-480px;margin-left:-280px;}
+.benefit-list .pop_theater_list .pt_list ul {float:left;width:150px}
+.benefit-list .pop_theater_list .pt_list > li {clear:both;width:190px;height:56px;border-bottom:1px solid #d1d1d1}
+.benefit-list .pop_theater_list .pt_list > li:last-child {border-bottom:none}
+
+.pop_theater_tabWrap {position:relative; text-align:center; margin-top:15px;}
+.pop_theater_tabWrap:before {position:absolute; left:0; top:36px; width:100%; display:block; content:''; clear:both; border-bottom:1px solid #d1d1d1;}
+.pop_theater_tabWrap .pop_theater_tab {overflow:hidden; display:inline-block; margin:0 auto;}
+.pop_theater_tab > li {float:left; position:relative; display:inline-block; width:165px; height:37px; margin-left:2px; line-height:36px; text-align:center; background-color:#898987; font-family:NanumBarunGothicBold; font-size:13px; color:#fff; /*vertical-align:middle; border:1px solid #897b73; */}
+.pop_theater_tab > li:first-child {margin-left:0;}
+.pop_theater_tab > li:before,
+.pop_theater_tab > li:after { content:''; display:block; position:absolute; width:4px; height:4px; background:#eeeade url('../images/sub/magazine/bg_sprite_tab.png') no-repeat 0 0;}
+.pop_theater_tab > li:before{left:0; top:0; background-position:0 0;}
+.pop_theater_tab > li:after{right:0; top:0; background-position:-4px 0;}
+.pop_theater_tab > li.on {background-color:#ea1400;}
+.pop_theater_tab > li.on:before{left:0; top:0; background-position:-20px 0;}
+.pop_theater_tab > li.on:after{right:0; top:0; background-position:-24px 0;}
+.pop_theater_tab > li a {padding-left:0; font-size:inherit; color:inherit; width:initial; height:initial; line-height:inherit;}
+
+.pt_tabcont {display:none; text-align:left;}
+.pt_tabcont.on {display:block;}
+
+.benefit-list .pop_theater_list .pt_list a.on + div {top:60px;}
+
+
+/*
+.benefit-sinfo {position:relative; min-height:77px; background:url('../images/club/bg_clube_benefit_line.gif') repeat-x 0 0;}
+.benefit-sinfo:before {position:absolute; left:615px; top:35px; bottom:0; clear:both; display:block; content:''; width:2px; background:url('../images/club/bg_clube_benefit_vline.gif') repeat-y 0 0;}
+*/
+
+.benefit-sinfo {position:relative; background:url('../images/club/bg_clube_benefit_line.gif') repeat-x 0 0;}
+.benefit-sinfo:after {clear:both; display:block; content:'';}
+.benefit-sinfo .benefit-slist {padding-top:35px; float:left; width:600px;}
+.benefit-sinfo .service-join {padding-top:35px; float:right; width:270px; min-height:135px; position:relative;}
+
+.benefitbox .btn_join {padding:2px; color:#fff; font-size:16px; font-family:'NanumBarunGothicBold', sans-serif; background-color:#e91400;}
+.benefitbox .btn_join > span {display:block; height:36px; line-height:36px; border:1px solid #f27365;}
+.benefitbox .btn_join.finished {background-color:#757575;}
+.benefitbox .btn_join.finished > span {border:1px solid #ababab;}
+
+.benefit-sinfo.type2 .benefit-slist {float:none; width:auto;}
+.benefit-sinfo.type2 > .btn_join {position:absolute; right:40px; bottom:40px; width:270px;}
+
+.benefit-slist .bl-tit {float:left; line-height:1.5;word-break:keep-all;word-wrap:normal}
+.benefit-slist > li {margin-top:15px; color:#999;}
+.benefit-slist > li:first-child {margin-top:0;}
+.benefit-slist > li > ol {list-style:decimal; padding-left:50px;}
+.benefit-slist > li > ul {padding-left:40px;}
+.benefit-slist > li > ul > li {padding-left:10px; line-height:1.5; letter-spacing:-0.2px; background:url('../images/club/bul_circle_gray1.png') no-repeat 0 6px;}
+.benefit-slist > li > ol > li {line-height:1.5; letter-spacing:-0.2px; margin-top:15px;}
+.benefit-slist > li > ol > li:first-child {margin-top:0;}
+.benefit-slist .point_txt {background-image:url('../images/club/bul_circle_red1.png'); color:#fb4357;}
+
+
+/* 노블레스 섹션 전용 텍스트 컬러 및 사이즈 조절 */
+.noblesse .benefit-sinfo .benefit-slist {width:750px}
+.noblesse .benefit-slist > li > ul {padding-left:50px}
+.noblesse .benefit-slist .bl-tit {color:#f6f9fb;font-size:14px}
+.noblesse .benefit-list > li > ul > li {color:#f6f9fb;font-size:16px;background:url('../images/club/bul_circle_gray3.png') no-repeat 0 8px}
+.noblesse .benefit-slist > li > ul > li {color:#f6f9fb;font-size:14px;background:url('../images/club/bul_circle_gray3.png') no-repeat 0 8px}
+.noblesse .benefit-list > li.bl1 {background-position:0 10px;}
+.noblesse .benefit-list > li.bl2 {background-position:0 -750px}
+.noblesse .btn_detail {position:absolute;right:40px;bottom:40px;text-align:center;padding:2px; width:270px; color:#fff; font-size:16px; font-family:'NanumBarunGothicBold', sans-serif; background-color:#e91400;}
+.noblesse .btn_detail > span {display:block; height:36px; line-height:36px; border:1px solid #f27365;}
+
+.service-join .sj-tit {display:block; color:#fff; margin:25px 0 7px;}
+.service-join .sj-tit:first-child {margin-top:0;}
+.service-join > p {line-height:1.5; color:#999;}
+.service-join ul > li {padding-left:10px; line-height:1.5; color:#999; letter-spacing:-0.2px; background:url('../images/club/bul_circle_gray1.png') no-repeat 0 6px;}
+.service-join ul > li > p,
+.service-join ul > li > ul {padding-left:50px;}
+.service-join ul > li > ul > li {padding-left:10px; line-height:1.5; letter-spacing:-0.2px; background:url('../images/club/bul_bar.gif') no-repeat 0 7px;}
+.indent-txtbox > .tit {float:left;}
+.indent-txtbox > .txt {padding-left:50px;}
+.service-join .btn_join {margin-top:20px; padding:2px; width:100%;}
+.service-join .btn_join:first-child {margin-top:0;}
+
+.btn_withdraw {position:absolute; right:0; bottom:0; border:2px solid #666; color:#666;}
+.btn_withdraw span {padding:0 15px;}
+.btn_withdraw:before {background:#222 url('../images/sprite/sprite_corner01.png') no-repeat -80px 0;}
+.btn_withdraw:after {background:#222 url('../images/sprite/sprite_corner01.png') no-repeat -80px -5px;}
+.btn_withdraw span:before {background:#222 url('../images/sprite/sprite_corner01.png') no-repeat -85px 0;}
+.btn_withdraw span:after {background:#222 url('../images/sprite/sprite_corner01.png') no-repeat -85px -5px;}
+
+.btn_with_group {position:absolute; right:0; bottom:0; text-align:right;}
+.btn_with_group .btn_withdraw {position:relative;}
+
+
+.titlebar {margin:38px 0 20px; text-align:center; background:url('../images/club/bg_titlebar_line.gif') repeat-x 0 20px;}
+.titlebar > .tit {display:inline-block; padding:0 5px; background-color:#fefcf0;}
+.titlebar + .sect-ad-benner {margin-top:20px;}
+.titlebar + .sect-ad-benner ul {margin-left:-6px}
+.titlebar + .sect-ad-benner li {float:left;margin:0 0 15px 6px}
+
+.benefit-tabbox {position:relative; height:460px;}
+.benefit-tab {position:relative; border:1px solid #5b5f68; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; behavior:url(PIE.htc);}
+.benefit-tab:after {clear:both; display:block; content:'';}
+.benefit-tab > li {float:left; width:225px; text-align:center;}
+.benefit-tab > li:first-child {width:224px;}
+.benefit-tab .btab-tit {display:block; padding:11px 10px; font-size:14px; color:#d3d4d4; border-left:1px solid #5b5f68;}
+.benefit-tab > li:first-child .btab-tit {border-left:0;}
+.benefit-tab > li.on {background:#5b5f68;}
+.benefit-tab > li.on .btab-tit {color:#edf3f6;}
+.benefit-tab > li.on .btab-cont {display:block;}
+
+.benefit-tab .btab-cont {display:none; position:absolute; left:0; top:86px; right:0; text-align:left;}
+.btab-cont > .bl-tit {display:block; margin-bottom:5px; font-size:20px; font-family:'NanumBarunGothicBold', sans-serif; color:#fff; font-variant:uppercase;}
+.btab-cont .benefit-sinfo .service-join {min-height:0;}
+.bl-tit-desc {display:block; font-size:17px; color:#999; margin-bottom:20px;}
+
+.benefit-slist.txtup4 > li > ul {padding-left:58px;}
+.benefit-slist.txtup4 > li > ol {padding-left:68px;}
+
+.benefit-tab.type2 > li {width:50%;}
+.benefit-tab.type2 > li:first-child {width:50%;}
+.benefit-tab .btab-cont .benefit-list {padding-top:0;}
+
+.benefit-tab.type3 > li {width:33.3%;}
+.benefit-tab.type3 > li:first-child {width:33.4%;}
+
+.benefit-tab.type5 > li {width:20%;}
+.benefit-tab.type5 > li:first-child {width:20%;}
+
+.benefit-list.type2 {padding:0; margin-top:35px;}
+.benefit-list.type2 > li {padding-left:90px; width:auto; background:url('../images/club/bg_benefit_list_icon2.png') no-repeat 0 0;}
+.benefit-list.type2 > li.bl1 {width:248px; background-position:0 0;}
+.benefit-list.type2 > li.bl1 > ul {margin-top:15px;}
+.benefit-list.type2 > li.bl2 {width:190px; background-position:0 -200px;}
+.benefit-list.type2 > li.bl2 > ul {margin-top:15px;}
+.benefit-list.type2 > li.bl3 {width:190px; background-position:5px -400px;}
+.benefit-list.type2 > li.bl3 > ul {margin-top:20px;}
+
+.clubcard1318 {margin-top:-10px; min-height:136px; background:url('../images/club/img_1318clubcard.png') no-repeat 100% 0;}
+.clubcard1318 > .bl-tit {display:block; padding-top:10px; margin-bottom:15px; font-size:20px; font-family:'NanumBarunGothicBold', sans-serif; color:#fff; font-variant:uppercase;}
+.benefit-list.type3 {padding:0;}
+.benefit-list.type3 > li {float:none; padding:0 430px 0 0; width:auto; min-height:0; padding-left:7px; font-size:13px; color:#999; line-height:1.5; background:url('../images/club/bul_circle_gray1.png') no-repeat 0 6px;}
+.benefit-list.type3 {margin-bottom:33px;}
+
+.benefit-list.type4 {padding:0;}
+.benefit-list.type4 > li {float:none; width:auto; min-height:0; padding-left:7px; font-size:13px; color:#999; line-height:1.5; background:url('../images/club/bul_circle_gray1.png') no-repeat 0 6px;}
+.benefit-list.type4 {margin-bottom:35px;}
+.benefit-list.type4 .bl-tit {padding-top:0; margin-bottom:15px;}
+
+.benefit-list.type5 {margin:35px 0 96px;}
+.benefit-list.type5 > li {padding-left:90px; width:209px; background:url('../images/club/bg_benefit_list_icon4.png') no-repeat 0 0;}
+.benefit-list.type5 > li.bl1 {background-position:0 0;}
+.benefit-list.type5 > li.bl2 {background-position:0 -200px;}
+.benefit-list.type5 > li.bl3 {background-position:5px -400px;}
+
+.benefit-exemple {margin:35px 0 0; text-align:center;}
+.benefit-exemple > span {vertical-align:middle; display:inline-block; }
+.benefit-exemple .ex1 {width:130px; padding-top:70px; background:url('../images/club/bg_benefit_list_icon3.png') no-repeat 50% 0;}
+.benefit-exemple .ex2 {width:130px; padding-top:70px; background:url('../images/club/bg_benefit_list_icon3.png') no-repeat 50% -200px;}
+.benefit-exemple .ex-benefit {overflow:hidden; width:106px; height:105px; text-indent:-9999em; background:url('../images/club/bg_benefit_payback.gif') no-repeat 0 0;}
+
+.benefit-tabbox > .btn_join,
+.benefit-sinfo > .btn_join {position:absolute; right:0; bottom:0; width:270px;}
+
+/* 특별관 클럽 */
+.benefit-list.type1 > li.bl1, .benefit-list.type1 > li.bl2 {min-height:130px;}
+.benefit-list.type1 > li.bl3, .benefit-list.type1 > li.bl4 {min-height:120px;}
+.benefit-list.type1 > li.bl4 {background-position:0 -798px;}
+.benefit-list.type1 + .benefit-sinfo > .btn_join {bottom:auto; top:100px;}
+
+.benefitbox .grade-infobox {position:absolute; right:76px; top:15px; padding-right:108px; min-height:82px;}
+.benefitbox .grade-infobox .inner {position:relative; padding:8px 28px; border:1px solid #1d1b1b; background:#303030;}
+.benefitbox .grade-infobox .inner:before {position:absolute; right:-9px; top:50%; margin-top:-8px; display:block; content:''; width:9px; height:15px; background:url('../images/club/bg_infobox_arrow.png') no-repeat 0 0;}
+.benefitbox .grade-infobox .gi-tit {display:block; font-size:14px; color:#fff; line-height:1.5;}
+.benefitbox .grade-infobox .gi-txt {display:block; margin-top:4px; font-size:13px; color:#dad6cb; line-height:1.5;}
+.benefitbox .grade-infobox em {color:#ef8200;}
+.benefitbox .grade-infobox .gi-txt em {font-weight:bold;}
+.benefitbox .grade-infobox .gi-etc {color:#ef8200;}
+.benefitbox .grade-infobox .btn_club_join {color:#ef8200; text-decoration:underline;}
+
+.benefitbox .grade-infobox.user_grade {background:url('../images/club/img_clubgrade_badge.png') no-repeat 100% 0;}
+.benefitbox .grade-infobox.user_grade_01 {background:url('../images/club/img_clubgrade_badge.png') no-repeat 100% -150px;}
+.benefitbox .grade-infobox.user_grade_01 .inner {top:9px;}
+.benefitbox .grade-infobox.user_grade_02 {background:url('../images/club/img_clubgrade_badge.png') no-repeat 100% -300px;}
+.benefitbox .grade-infobox.user_grade_02 .inner {top:9px;}
+.benefitbox .grade-infobox.user_grade_03 {background:none;}
+.benefitbox .grade-infobox.user_grade_03 .inner {top:19px;}
+.benefitbox .grade-infobox.user_grade_03 .inner:before {display:none;}
+
+.artist_intro {padding:35px 20px 35px 206px; margin-bottom:40px; background:#1c1c1c url('../images/club/img_artist_badge.png') no-repeat 62px 23px;}
+.artist_intro > .ai-tit {margin-bottom:10px; font-size:18px; color:#fff;}
+.artist_intro > ul > li {padding-left:10px; color:#999; font-size:13px; line-height:1.5; background:url('../images/club/bul_circle_gray1.png') no-repeat 0 6px}
+
+/* 아트하우스 3.5.7 미션 */
+.btab-cont .mission357-event {margin-top:-15px;}
+.mission357-event {margin-bottom:50px; padding-bottom:2px; text-align:center; background:url('../images/club/bg_clube_benefit_line.gif') repeat-x 0 100%;}
+.mission357-event .me-tit {margin-bottom:8px; font-family:'NanumBarunGothicBold', sans-serif; font-size:22px; color:#fff;}
+.mission357-event .me-tit em {font-style:normal; color:#dc291e;}
+.mission357-event .me-txt {margin-bottom:8px; font-size:16px; color:#a2a2a2; line-height:1.5;}
+.mission357-event .me-txt > em {color:#e9c95e;}
+
+.mission-stat {position:relative; margin:0 auto; width:646px; height:262px; background:url('../images/club/bg_board_mission357.png') no-repeat 50% 0;}
+.mission-stat .mission-progress {position:absolute; left:56px; top:87px; width:0px; height:50px; background:url('../images/club/sprite_img_mission357.png') no-repeat 0 0;}
+.mission-stat .mission-progress.step1 {width:45px;}
+.mission-stat .mission-progress.step2 {width:127px;}
+.mission-stat .mission-progress.step3 {width:208px;}
+.mission-stat .mission-progress.step4 {width:289px;}
+.mission-stat .mission-progress.step5 {width:371px;}
+.mission-stat .mission-progress.step6 {width:452px;}
+.mission-stat .mission-progress.step7 {width:532px;}
+.mission-stat .mission-progress .mission-pointer {overflow:hidden; position:absolute; left:-15px; top:-86px; width:140px; height:110px; font-size:0; text-indent:-999em; background:url('../images/club/sprite_img_mission357.png') no-repeat 15px -70px;}
+.mission-stat .mission-progress.step1 .mission-pointer {background-position:-135px -70px;}
+.mission-stat .mission-progress.step2 .mission-pointer {left:66px; background-position:-135px -70px;}
+.mission-stat .mission-progress.step3 .mission-pointer {left:152px; background-position:-302px -70px;}
+.mission-stat .mission-progress.step4 .mission-pointer {left:228px; background-position:-135px -70px;}
+.mission-stat .mission-progress.step5 .mission-pointer {left:271px; background-position: -101px -241px;}
+.mission-stat .mission-progress.step6 .mission-pointer {left:392px; background-position:-135px -70px;}
+.mission-stat .mission-progress.step7 .mission-pointer {left:465px; background-position:-508px -70px;}
+.mission-stat .mission-progress.step7.done .mission-pointer {background-position:-126px -70px;}
+.mission-stat .coupon-down {position:absolute; top:160px; text-align:center;}
+.mission-stat .coupon-down .cd-tit {font-size:16px; color:#666; height:45px;}
+.mission-stat .coupon-down .cd-tit em {font-size:12px; color:#ccb054;}
+.mission-stat .coupon-down ul.cd-tit > li {position:relative; text-align:left; padding-left:8px;}
+.mission-stat .coupon-down ul.cd-tit > li:before {position:absolute; content:'ㆍ'; width:14px; left:-5px; top:0px;}
+.mission-stat .coupon-down ul.cd-tit > li.disabled {filter:alpha(opacity=30);-moz-opacity:.3;-khtml-opacity:.3;opacity:0.3;}
+.mission-stat .coupon-down button {display:none; width:110px;}
+.mission-stat .coupon-down.cd1 {left:187px;}
+.mission-stat .coupon-down.cd2 {left:350px;}
+.mission-stat .coupon-down.cd3 {left:505px; top:140px;}
+.mission-stat .coupon-down.cd3 .cd-tit {height:65px;}
+.mission-stat .coupon-down .round:before, 
+.mission-stat .coupon-down .round:after , 
+.mission-stat .coupon-down .round > *:before, 
+.mission-stat .coupon-down .round > *:after {background-color:#222;}
+
+.mission-stat .coupon-down.able .cd-tit {color:#fff;}
+.mission-stat .coupon-down.able button {display:inline-block;}
+
+/* 키즈 패밀리 클럽 */
+.benefitbox-spot {padding-bottom:2px; margin-bottom:40px; background:url('../images/club/bg_clube_benefit_line.gif') repeat-x 0 100%;}
+.benefitbox-spot:after {display:block; content:''; clear:both;}
+.benefitbox-spot .kids-movie {position:relative; float:left; width:300px; height:500px; padding-right:50px; margin-right:50px;}
+.benefitbox-spot .kids-movie:before {content:''; position:absolute; right:0; top:35px; bottom:0; width:2px; background:url('../images/club/bg_clube_benefit_vline.gif') repeat-y 100% 0;}
+.benefitbox-spot .todays-pick {float:left; width:500px;}
+.benefitbox-spot .kids-movie .km-tit,
+.benefitbox-spot .todays-pick .tp-tit {display:block; margin-bottom:17px; font-family:'NanumBarunGothicBold', sans-serif; font-size:15px; color:#edf3f6;}
+.benefitbox-spot .kids-movie .slider {height:420px;}
+.benefitbox-spot .kids-movie .km-poster {display:block; position:relative; width:300px; height:420px; text-align:left;}
+.benefitbox-spot .kids-movie .km-poster .movie-infocon {
+	position:absolute; left:0; bottom:0; padding:80px 20px 20px;
+	/* background:rgba(0,0,0,0.6);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000,endColorstr=#cc000000);*/
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,8) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5) 30%,rgba(0,0,0,8) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5) 30%,rgba(0,0,0,8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#99000000',GradientType=0 ); /* IE6-9 */
+}
+.benefitbox-spot .kids-movie .km-poster .km-movietit {overflow:hidden;display:block;width:260px;text-overflow:ellipsis;white-space:nowrap; font-family:'NanumBarunGothicBold', sans-serif; font-size:24px; color:#fff;}
+.benefitbox-spot .kids-movie .km-poster .km-date {position:absolute; right:20px; bottom:20px; color:#999;}
+
+.benefitbox-spot .kids-movie .km-poster .score {display:inline-block; padding-top:10px; font-size:13px;}
+.benefitbox-spot .kids-movie .km-poster .score .egg-gage,
+.benefitbox-spot .kids-movie .km-poster .score .percent {vertical-align:middle; color:#999; font-size:13px;}
+.benefitbox-spot .kids-movie .km-poster .score .egg-gage {margin-top:-10px; margin-left:2px; padding-left:6px; background:url('../images/common/bg/bg_writeinfo.gif') 0 12px no-repeat;}
+.benefitbox-spot .kids-movie .km-poster .score .percent span{margin-left:10px;vertical-align:initial; color:#999;}
+
+.benefitbox-spot .slider .btn-prev {left:16px; height:37px; margin-top:-19px; background-position:-134px -234px;}
+.benefitbox-spot .slider .btn-next {right:16px; height:37px; margin-top:-19px; background-position:-172px -234px;}
+
+.benefitbox-spot .todays-pick > ul:after {display:block; content:''; clear:both;}
+.benefitbox-spot .todays-pick > ul {margin:-10px;}
+.benefitbox-spot .todays-pick > ul > li {float:left; margin:10px;}
+
+.benefit-list.kidstype1 > li {width:initial;background:url('../images/club/bg_benefit_list_icon5.png') no-repeat 0 0;}
+.benefit-list.kidstype1 .bl-tit {padding-top:0;}
+.benefit-list.kidstype1 > li.bl1 {margin-bottom:35px; background-position:0 0;}
+
+.clubcard_kids {min-height:155px; background:url('../images/club/img_kids_club_card.png') no-repeat 100% 0;}
+.clubcard_kids > .bl-tit {display:block; margin-bottom:15px; padding-top:0; font-size:20px; font-family:'NanumBarunGothicBold', sans-serif; color:#fff; font-variant:uppercase;}
+.benefit-list.kidstype2 {padding:0;}
+.benefit-list.kidstype2 > li {float:none; width:auto; min-height:0; margin-bottom:0; padding-left:7px; font-size:13px; color:#999; line-height:1.5; background:url('../images/club/bul_circle_gray1.png') no-repeat 0 6px;}
+.benefit-list.kidstype2 {margin-bottom:35px;}
+.benefit-list.kidstype2 .bl-tit {padding-top:0; margin-bottom:15px;}
+
+.benefit-list.kidstype3 {padding-top:0; margin-top:35px;}
+.benefit-list.kidstype3 > li {padding-left:90px; /* min-height:90px; */ background:url('../images/club/bg_benefit_list_icon2.png') no-repeat 0 0;}
+.benefit-list.kidstype3 > li.bl1 > ul {padding-top:20px;}
+.benefit-list.kidstype3 > li.bl2 {background-position:0 -200px;}
+.benefit-list.kidstype3 > li.bl2 > ul {padding-top:10px;}
+
+.benefit-list.kidstype4 {padding:0; margin-top:35px;}
+.benefit-list.kidstype4 > li {padding-left:100px; /* min-height:90px; */ width:auto; background:url('../images/club/bg_benefit_list_icon5.png') no-repeat 0 0;}
+.benefit-list.kidstype4 > li.bl1 {padding-left:90px; width:224px; background-position:-10px -194px;}
+.benefit-list.kidstype4 > li.bl2 {width:170px; background-position:0 -383px;}
+.benefit-list.kidstype4 > li.bl3 {padding-left:70px; width:210px; background-position:-20px -596px;}
+
+.benefit-list.kidstype5 {margin-top:25px;}
+.benefit-list.kidstype5 > li {padding-left:90px; width:initial; min-height:100px; background:url('../images/club/bg_benefit_list_icon.png') no-repeat 0 0;}
+.benefit-list.kidstype5 > li.bl3 {background-position:0 -400px;}
+.benefit-list.kidstype5 > li.bl3 > ul {padding-top:10px;}
+
+.layer-wrap .kids-infocon {margin:40px auto; padding-top:40px; width:340px; border-top:2px solid #000;}
+.layer-wrap .kids-infocon .kids-info-tit {font-size:13px; margin-bottom:10px;}
+.layer-wrap .kids-infocon .kg-top {padding:30px 0 10px; text-align:right;}
+.layer-wrap .kids-infocon .kg-top .btn-remove > span {padding:3px 0 3px 25px; font-size:13px; color:#333; font-family:'NanumBarunGothicBold', sans-serif; background:url('../images/sprite/sprite_btn.png') no-repeat -25px -312px;}
+.layer-wrap .kids-infocon .kg-top + .inpbox {margin-top:0;}
+.layer-wrap .kids-infocon .inpbox.lab-in {position:relative; border:2px solid #000;}
+.layer-wrap .kids-infocon .inpbox.lab-in:after {display:block; content:''; clear:both;}
+.layer-wrap .kids-infocon .inpbox.lab-in input[type=text],
+.layer-wrap .kids-infocon .inpbox.lab-in input[type=password] {border:0;}
+.layer-wrap .kids-infocon .inpbox.lab-in > input[type=text],
+.layer-wrap .kids-infocon .inpbox.lab-in > input[type=password] {float:left; width:230px; padding:0 12px; font-size:16px; color:#000;}
+.layer-wrap .kids-infocon .inpbox.lab-in.cal > input[type=text],
+.layer-wrap .kids-infocon .inpbox.lab-in.cal > input[type=password] {width:180px;}
+.layer-wrap .kids-infocon .inpbox.lab-in .inp-tit {position:relative; float:left; padding:0 0 0 12px; margin:0; width:70px; height:37px; line-height:37px; font-size:16px; color:#666; text-align:left;}
+.layer-wrap .kids-infocon .inpbox.lab-in .inp-tit:before {position:absolute; right:0; top:50%; margin-top:-8px; display:block; content:''; width:1px; height:16px; background:#000;}
+.layer-wrap .kids-infocon .inpbox.lab-in .chkgroup {float:left; padding-left:12px; height:37px; line-height:37px;}
+.layer-wrap .kids-infocon .inpbox.lab-in .chkgroup label {display:inline-block; font-size:16px; color:#000; vertical-align:middle;} 
+.layer-wrap .kids-infocon .inpbox.lab-in .chkgroup label + input[type=radio],
+.layer-wrap .kids-infocon .inpbox.lab-in .chkgroup label + input[type=checkbox] {margin-left:26px;} 
+.layer-wrap .kids-infocon .inpbox.lab-in .chkgroup input[type=radio],
+.layer-wrap .kids-infocon .inpbox.lab-in .chkgroup input[type=checkbox] {margin-left:3px;} 
+.layer-wrap .kids-infocon .inpbox.lab-in .calendar {position:absolute; right:5px; top:50%; margin-top:-15px;} 
+.layer-wrap .kids-infocon .btn-area {margin:20px 0 50px;}
+.layer-wrap .kids-infocon .btn-add > span {padding-left:30px; padding-right:15px; background:url('../images/sprite/sprite_btn.png') no-repeat 12px -374px;}
+
+.layer-wrap.clubtype .tbl-breakdown-re > p {margin:40px 0 20px;}
+.layer-wrap.clubtype div.btn_join {margin:15px auto 0;}
+
+
+/* 4DX RED CARD MEMBERSHIP */
+.benefitbox-spot.movie-board:after {display:block; content:''; clear:both;}
+.benefitbox-spot.movie-board .mb-box {position:relative; float:left; width:410px; height:355px;}
+.benefitbox-spot.movie-board .mb-box:first-child {padding-right:40px; margin-right:40px;}
+.benefitbox-spot.movie-board .mb-box:first-child:before {content:''; position:absolute; right:0; top:35px; bottom:0; width:2px; background:url('../images/club/bg_clube_benefit_vline.gif') repeat-y 100% 0;}
+.benefitbox-spot.movie-board .mb-tit {display:block; margin-bottom:17px; font-family:'NanumBarunGothicBold', sans-serif; font-size:15px; color:#edf3f6;}
+.benefitbox-spot.movie-board .mb-list:after {display:block; content:''; clear:both;}
+.benefitbox-spot.movie-board .mb-list > li {float:left; margin-left:20px;}
+.benefitbox-spot.movie-board .mb-list > li:first-child {margin-left:0;}
+.benefitbox-spot.movie-board .mb-list > li.nodata {width:100%; height:273px; text-align:center; font-size:20px; color:#9197a3;}
+.benefitbox-spot.movie-board .mb-list > li.nodata > p {padding-top:125px;}
+.benefitbox-spot.movie-board .thumb-image {display:block; position:relative; width:195px; height:273px; text-align:left;}
+.benefitbox-spot.movie-board .thumb-image .movie-infocon {
+	position:absolute; left:0; bottom:0; padding:80px 20px 15px;
+	/* background:rgba(0,0,0,0.6);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000,endColorstr=#cc000000);*/
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,8) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5) 30%,rgba(0,0,0,8) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,0.5) 30%,rgba(0,0,0,8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#99000000',GradientType=0 ); /* IE6-9 */
+}
+.benefitbox-spot.movie-board .thumb-image .km-movietit {overflow:hidden;display:block;width:155px;text-overflow:ellipsis;white-space:nowrap; font-family:'NanumBarunGothicBold', sans-serif; font-size:20px; color:#fff;}
+.benefitbox-spot.movie-board .thumb-image .km-date {color:#999;}
+
+.redcard-4dx-con {position:relative; padding:0 40px 40px;}
+.redcard-4dx-con:after {display:block; content:''; clear:both;}
+.redcard-4dx-con .txtgroup {float:left; width:450px;}
+.redcard-4dx-con .cardimg {float:right; position:relative; color:#fff;}
+.redcard-4dx-con .cardimg .redcard-txt {position:absolute; left:18px; bottom:15px; right:18px;}
+.redcard-4dx-con .cardimg .redcard-txt .rt-num {display:block; margin-bottom:2px; font-size:20px; letter-spacing:0;}
+.redcard-4dx-con .cardimg .redcard-txt .rt-stxt {display:block; font-size:13px; letter-spacing:0;}
+
+.redcard-4dx-con .rc-tit {display:block; margin-bottom:10px; padding-top:25px; font-size:20px; font-family:'NanumBarunGothicBold', sans-serif; color:#fff;}
+.redcard-4dx-con .rc-stit {display:block; margin-bottom:20px; font-size:13px; font-family:'NanumBarunGothicBold', sans-serif; color:#fff;}
+.redcard-4dx-con .rc-txt {display:block; margin-bottom:35px; font-size:13px; color:#999; line-height:1.6;}
+.redcard-4dx-con .link-txt {position:absolute; left:40px; top:165px; font-size:14px; font-family:'NanumBarunGothicBold', sans-serif; color:#2899ef;}
+.redcard-4dx-con .txtgroup .link-txt {position:static; left:0; top:0;}
+.redcard-4dx-con .txtgroup .link-txt + .link-txt {margin-left:30px;}
+
+.rc-benefit-list {clear:both; overflow:hidden; margin-top:30px; font-family:'NanumBarunGothicBold'; font-size:14px; color:#eb2530;}
+.rc-benefit-list > li {position:relative; float:left; padding-top:130px; width:33.3%; height:70px; text-align:center; line-height:1.4;}
+.rc-benefit-list > li:before {display:block; content:''; position:absolute; left:50%; top:50%; margin:-65px 0 0 -50px; width:100px; height:100px; background:url('../images/club/bg_redcard_benefit_icons.png') no-repeat 0 0;}
+
+.rc-benefit-list .gl-icon1:before {background-position:0 0;}
+.rc-benefit-list .gl-icon2:before {background-position:-100px 0;}
+.rc-benefit-list .gl-icon3:before {background-position:-200px 0;}
+
+.redcard-4dx-con + .benefit-sinfo .benefit-slist {width:auto;}
+.redcard-4dx-con .mission357-event {padding:40px 0 10px; margin:0; background:none;}
+.redcard-4dx-con .mission357-event .me-txt {font-size:22px;}
+.redcard-4dx-con .mission357-event .mission-stat .coupon-down.cd3 {top:160px;}
+.redcard-4dx-con .mission357-event .mission-stat .coupon-down.cd3 .cd-tit {height:45px;}
+
+.redcard-4dx-con.rc-event {padding:0 50px 40px;}
+.redcard-4dx-con.rc-event .nodata {padding:50px 0; color:#9197a3; font-size:20px; text-align:center;}
+.rc-event-list {margin:0 -19px -25px;}
+.rc-event-list:after {display:block; content:''; clear:both;}
+.rc-event-list > li {float:left; margin:0 19px 25px;}

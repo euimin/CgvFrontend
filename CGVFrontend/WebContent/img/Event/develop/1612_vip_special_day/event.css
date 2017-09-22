@@ -1,0 +1,46 @@
+﻿@charset "utf-8";
+
+@font-face {
+	font-family:'NanumBarunGothic'; font-style:normal; font-weight:400;
+	src:url(http://img.cgv.co.kr/event/develop/fonts/NanumBarunGothic.eot); /* IE 4-8 */
+	src:local('NanumBarunGothic'),
+		url(http://img.cgv.co.kr/r2014/fonts/NanumBarunGothic.eot?#iefix) format('embedded-opentype'), /* IE 9 */
+		url(http://img.cgv.co.kr/r2014/fonts/NanumBarunGothic.woff) format('woff'); /* IE 9, Firefox 3.6+, Chrome 6+ */
+}
+@font-face {
+	font-family:'NanumBarunGothicBold'; font-style:normal; font-weight:700;
+	src:url(http://img.cgv.co.kr/r2014/fonts/NanumBarunGothicBold.eot);
+	src:local('NanumBarunGothicBold'),
+		url(http://img.cgv.co.kr/r2014/fonts/NanumBarunGothicBold.eot?#iefix) format('embedded-opentype'),
+		url(http://img.cgv.co.kr/r2014/fonts/NanumBarunGothicBold.woff) format('woff');
+}
+/* ------------------------------------------------------------------------ RESET */
+html,body                                                                   {margin:0;padding:0;border:0;}
+body                                                                        {height:100%;font-size:12px;font-family:'Dotum','돋움','굴림',Sans-serif;}
+div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,form,fieldse,p                      {margin:0;padding:0;font-weight:normal;vertical-align:top;list-style:none}
+table                                                                       {border-collapse:collapse;border-spacing:0}
+select                                                                      {height:20px;padding:1px;font-size:11px;font-family:'Dotum','돋움','굴림'}
+fieldset,dl,dd,dt,img                                                       {border:0;vertical-align:top}
+address,em                                                                  {font-style:normal}
+hr,legend,caption                                                           {display:none}
+button,label                                                                {cursor:pointer}
+.cf:before,.cf:after                                                        {content: " "; /* 1 */display: table; /* 2 */}
+.cf:after                                                                   {clear: both;}
+.cf                                                                         {*zoom: 1;}
+.blind_txt                                                                  {font-size:0px;line-height:0;text-indent:-99999px;}
+.ir { border:0; font: 0/0 a; text-shadow: none; color: transparent; background-color: transparent; }
+button{overflow:visible;border:none;padding:0}
+button::-moz-focus-inner {border:0; padding:0;}
+/* ------------------------------------------------------------------------ EVENT */
+.evt_wrap {position:relative;background:url(http://img.cgv.co.kr/event/develop/1612_vip_special_day/bg_event.jpg) no-repeat 0 0;margin:0 auto;width:800px;height:2832px}
+.evt_wrap.ir * {border:0; font: 0/0 a; text-shadow: none; color: transparent; background-color: transparent; }
+.evt_wrap .evt_msg_area {position:absolute;left:60px;top:1744px;width:680px;height:283px;}
+.evt_wrap .evt_msg_area > div {position:relative;width:100%;height:100%}
+.evt_wrap .evt_msg_area .step1 {background:url(http://img.cgv.co.kr/event/develop/1612_vip_special_day/msg_login.png) no-repeat 50% 82px;}
+.evt_wrap .evt_msg_area .step1 .btn_login {position:absolute;left:270px;top:183px;}
+.evt_wrap .evt_msg_area .step2 p {color:#fff;text-align:center;position:absolute;left:0;top:98px;width:100%;text-align:center;font:normal 34px/1.5 NanumBarunGothic;color:#fff;letter-spacing:-1px}
+.evt_wrap .evt_msg_area .step2 p span {/*border:0; font: 0/0 a; text-shadow: none; color: transparent; background-color: transparent;*/font:normal 34px/1.5 NanumBarunGothic;color:#fff;letter-spacing:-1px}
+/*.evt_wrap .evt_msg_area .step2 .msg1{position:absolute;left:0;top:98px;width:100%;background:url(msg1.png) no-repeat 50% 0;padding:40px 0 0 0;font:normal 40px NanumBarunGothic;color:#fff;letter-spacing:-1px}
+.evt_wrap .evt_msg_area .step2 .msg2{position:absolute;left:0;top:98px;width:100%;height:72px;background:url(msg2.png) no-repeat 50% 0;}
+.evt_wrap .evt_msg_area .step2 .msg3{position:absolute;left:0;top:98px;width:100%;background:url(msg3.png) no-repeat 50% 0;padding:40px 0 0 0;font:normal 40px NanumBarunGothic;color:#fff;letter-spacing:-1px}*/
+.evt_wrap .btn_special {position:absolute;left:236px;top:2077px;}

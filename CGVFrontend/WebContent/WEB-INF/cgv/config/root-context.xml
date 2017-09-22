@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--  DataSource using Spring JNDI -->
+	<bean id="datasourceByJNDI" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/cgv"/>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<!-- mybatis -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+     	<property name="dataSource" ref="datasourceByJNDI"/>
+		<property name="configLocation" value="classpath:mybatis/Configuration.xml"/>
+    </bean>
+    
+    <!-- SqlSessionTemplate -->
+    <bean id="template"  class="org.mybatis.spring.SqlSessionTemplate">
+     	<constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+</beans>
