@@ -155,7 +155,7 @@ preselectSetting(
 										
 											<!-- ☆3 -->
 											<c:forEach items="${movieList}" var="movieDto" varStatus="status">
-												<li class="rating-${movieDto.rating == '19' ? '18':movieDto.rating == '전체 관람가' ? 'all':movieDto.rating} liMovie"
+												<li class="rating-${movieDto.rating == '청소년 관람불가' ? '18':movieDto.rating == '전체 관람가' ? 'all':movieDto.rating == '15세 관람가' ? '15':'12'} liMovie"
 													data-index="${status.index }" movie_cd_group="20012077"
 													movie_idx="79432" id="movie_code_${movieDto.movie_code }"
 													value="sdf"><a href="#" onclick="return false;">
