@@ -32,6 +32,8 @@ public class MovieFinderController{
 	private static String title;
 	private static String yearfrom;
 	private static String yearto;
+	private static String genre;
+	private static String country;
 	private static String jsonData;
 	
 	@RequestMapping("/movieFinderController.front")
@@ -42,12 +44,13 @@ public class MovieFinderController{
 			yearfrom=map.get("sdate").toString();
 			yearto=map.get("edate").toString();
 		}
+		if(map.containsKey("genre") && !map.get("genre").toString().equals("all_genre")) genre=map.get("genre").toString();
+		else if(map.get("genre").toString().equals("all_genre")) genre=null;
+		if(map.containsKey("national") && !map.get("national").toString().equals("all_national")) country=map.get("national").toString();
+		else if(map.get("national").toString().equals("all_national")) country=null;
 		
 		model.addAllAttributes(map);
 		MovieFinderController.main(null);
-		
-		System.out.println(title);
-		System.out.println(jsonData);
 		
 		JSONParser parser=new JSONParser();
 		if(jsonData==null) {
@@ -83,11 +86,11 @@ public class MovieFinderController{
         		jsonData=null;
         		return;
         	}
-            String text = URLEncoder.encode(title, "UTF-8");
-            String apiURL = "https://openapi.naver.com/v1/search/movie?display=100&query="+ text+"&yearfrom="+yearfrom+"&yearto="+yearto; //json 결과
+            String text = URLEncoder.encode(title, "UTF-8");    		
+            String apiURL = "https://openapi.naver.com/v1/search/movie?display=100&query="+ text+"&yearfrom="+yearfrom+"&yearto="+yearto+"&country="+country+"&genre="+genre; //json 결과
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("GET");
+            con.setRequestMethod("GET");	
             con.setRequestProperty("X-Naver-Client-Id", clientId);
             con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
             int responseCode = con.getResponseCode();
@@ -103,7 +106,7 @@ public class MovieFinderController{
                 response.append(inputLine);
             }
             br.close();
-            jsonData="{"+response.toString().substring(response.toString().indexOf("\"items"));
+            jsonData=response.toString();
         } catch (Exception e) {
         	e.printStackTrace();
             System.out.println(e);

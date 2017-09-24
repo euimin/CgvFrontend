@@ -290,7 +290,7 @@
 										<tr>
 											<th class="genretype" scope="row" style="font-size: 15px;">장르</th>
 											<td>
-											<select style="width:200px" id="genre">
+											<select style="width:200px" id="genre" name="${param.genre}">
 												<option id="all_genre" value="all_genre">전체</option>
 												<option value="1">드라마</option>
 												<option value="2">판타지</option>
@@ -322,7 +322,7 @@
 												<option value="28">영화패러디</option>
 											</select>
 											<span class="maketype" scope="row" style="font-size: 15px;width: 30px">제작국가</span>
-											<select style="width:200px" id="national">
+											<select style="width:200px" id="national" name="${param.national}">
 												<option id="all_national_code" value="all_national">전체</option>
 												<option value="KR">한국</option>
 												<option value="JP">일본</option>
@@ -330,7 +330,7 @@
 												<option value="HK">홍콩</option>
 												<option value="GB">영국</option>
 												<option value="FR">프랑스</option>
-												<option value="KR">기타</option>
+												<option value="ETC">기타</option>
 											</select>
 											</td>
 										</tr>
@@ -578,62 +578,11 @@
 		 $('#slider-range').find('.ui-slider-handle').eq(0).attr('title','좌,우 키보드 조절가능').text('시작년도').next().attr('title','좌,우 키보드 조절가능').text('종료년도');
 		};
 		rangehandle();				
-		
-					
-			/* $(":checkbox[name=genre]").click(function() {
-				if ($(this).val() == "all_genre") {
-					if ($(this).filter(":checked").length == 1) {
-						$(":checkbox[name=genre]:gt(0)").each(function() {
-							$(this).get(0).checked = "checked";
-						});
-					} else {
-						$(":checkbox[name=genre]").each(function() {
-							$(this).get(0).checked = "";
-						});
-					}
-				} else {
-					if ($(this).filter(":checked").length == 1) {
-						if ($(":checkbox[name=genre]:checked").length == $(":checkbox[name=genre]:gt(0)").length) {
-							$(":checkbox[name=genre]:first").get(0).checked = "checked";
-						}
-					} else {
-						$(":checkbox[name=genre]:first").val([""]);
-					}
-				}
-
-			});
 			
-			$(":checkbox[name=national]").click(function() {
-				if ($(this).val() == "all_national") {
-					if ($(this).filter(":checked").length == 1) {
-						$(":checkbox[name=national]:gt(0)").each(function() {
-							$(this).get(0).checked = "checked";
-						});
-					} else {
-						$(":checkbox[name=national]").each(function() {
-							$(this).get(0).checked = "";
-						});
-					}
-				} else {
-					if ($(this).filter(":checked").length == 1) {
-						if ($(":checkbox[name=national]:checked").length == $(":checkbox[name=national]:gt(0)").length) {
-							$(":checkbox[name=national]:first").get(0).checked = "checked";
-						}
-					} else {
-						$(":checkbox[name=national]:first").val([""]);
-					}
-				}
-
-			}); */
-              //default check/////
-              //$('#all_genre').click();
-              //$('#all_national_code').click();
-              ///////////////////////////////////
-              
-			function genreSet(){
-				${"#genre"}.val(${param.genre}).attr('selected','selected');
-			};
-			genreSet();///////////////////////연구!!!!!!!!	
+			$("select option").each(function(){
+				if($(this).val()==$("#genre").attr('name')) $(this).attr("selected","selected");
+				if($(this).val()==$("#national").attr('name')) $(this).attr("selected","selected");
+			});
               
 			
               $('#btn_reset').on('click', function () {
