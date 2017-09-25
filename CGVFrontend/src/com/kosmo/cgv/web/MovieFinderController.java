@@ -32,6 +32,8 @@ public class MovieFinderController{
 	private static String title;
 	private static String yearfrom;
 	private static String yearto;
+	private static String genre;
+	private static String country;
 	private static String jsonData;
 	
 	@RequestMapping("/movieFinderController.front")
@@ -42,13 +44,13 @@ public class MovieFinderController{
 			yearfrom=map.get("sdate").toString();
 			yearto=map.get("edate").toString();
 		}
-		
+		if(map.containsKey("genre") && !map.get("genre").toString().equals("all_genre")) genre=map.get("genre").toString();
+		else if(map.get("genre").toString().equals("all_genre")) genre=null;
+		if(map.containsKey("national") && !map.get("national").toString().equals("all_national")) country=map.get("national").toString();
+		else if(map.get("national").toString().equals("all_national")) country="";
 		
 		model.addAllAttributes(map);
 		MovieFinderController.main(null);
-		
-		System.out.println(title);
-		System.out.println(jsonData);
 		
 		JSONParser parser=new JSONParser();
 		if(jsonData==null) {
@@ -80,11 +82,21 @@ public class MovieFinderController{
         String clientId = "GYECKyUW8CbVQnatWck1";//애플리케이션 클라이언트 아이디값
         String clientSecret = "p628ThCzTB";//애플리케이션 클라이언트 시크릿값
         try {
-            String text = URLEncoder.encode(title, "UTF-8");
-            String apiURL = "https://openapi.naver.com/v1/search/movie?display=100&query="+ text+"&yearfrom="+yearfrom+"&yearto="+yearto; //json 결과
+        	if(title=="" || title==null) {
+        		jsonData=null;
+        		return;
+        	}
+        	
+        	System.out.println(title);
+        	System.out.println(country);
+        	System.out.println(genre);
+        	System.out.println(jsonData);
+        	
+            String text = URLEncoder.encode(title, "UTF-8");    		
+            String apiURL = "https://openapi.naver.com/v1/search/movie?display=100&query="+ text+"&yearfrom="+yearfrom+"&yearto="+yearto+"&country="+country+"&genre="+genre; //json 결과
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("GET");
+            con.setRequestMethod("GET");	
             con.setRequestProperty("X-Naver-Client-Id", clientId);
             con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
             int responseCode = con.getResponseCode();
@@ -100,7 +112,7 @@ public class MovieFinderController{
                 response.append(inputLine);
             }
             br.close();
-            jsonData="{"+response.toString().substring(response.toString().indexOf("items")-1);
+            jsonData=response.toString();
         } catch (Exception e) {
         	e.printStackTrace();
             System.out.println(e);
