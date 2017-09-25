@@ -47,7 +47,7 @@ public class MovieFinderController{
 		if(map.containsKey("genre") && !map.get("genre").toString().equals("all_genre")) genre=map.get("genre").toString();
 		else if(map.get("genre").toString().equals("all_genre")) genre=null;
 		if(map.containsKey("national") && !map.get("national").toString().equals("all_national")) country=map.get("national").toString();
-		else if(map.get("national").toString().equals("all_national")) country=null;
+		else if(map.get("national").toString().equals("all_national")) country="";
 		
 		model.addAllAttributes(map);
 		MovieFinderController.main(null);
@@ -86,6 +86,12 @@ public class MovieFinderController{
         		jsonData=null;
         		return;
         	}
+        	
+        	System.out.println(title);
+        	System.out.println(country);
+        	System.out.println(genre);
+        	System.out.println(jsonData);
+        	
             String text = URLEncoder.encode(title, "UTF-8");    		
             String apiURL = "https://openapi.naver.com/v1/search/movie?display=100&query="+ text+"&yearfrom="+yearfrom+"&yearto="+yearto+"&country="+country+"&genre="+genre; //json 결과
             URL url = new URL(apiURL);

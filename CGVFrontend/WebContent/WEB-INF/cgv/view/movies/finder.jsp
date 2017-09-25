@@ -253,9 +253,9 @@
 
 				<!-- Contents Start -->
 
-				<div class="sect-common">
+				<div class="sect-common" style="width:100%;height: 450px;text-align: center;">
 
-					<div class="sect-finder" style="height: 400px">
+					<div class="sect-finder" style="height:270px;width:80%;margin:90px;display:inline-block;">
 						<h3>
 							<img src="http://img.cgv.co.kr/R2014/images/title/h3_finder.png"
 								alt="좋아하는 영화, 찾고싶은 영화를 CGV에서 찾아드립니다!" />
@@ -290,7 +290,7 @@
 										<tr>
 											<th class="genretype" scope="row" style="font-size: 15px;">장르</th>
 											<td>
-											<select style="width:200px" id="genre" name="${param.genre}">
+											<select style="width:250px" id="genre" name="${param.genre}">
 												<option id="all_genre" value="all_genre">전체</option>
 												<option value="1">드라마</option>
 												<option value="2">판타지</option>
@@ -321,8 +321,8 @@
 												<option value="27">영화음악</option>
 												<option value="28">영화패러디</option>
 											</select>
-											<span class="maketype" scope="row" style="font-size: 15px;width: 30px">제작국가</span>
-											<select style="width:200px" id="national" name="${param.national}">
+											<span class="maketype" scope="row" style="font-size:15px;width:30px;margin-left:35px;margin-right:40px">제작국가</span>
+											<select style="width:250px" id="national" name="${param.national}">
 												<option id="all_national_code" value="all_national">전체</option>
 												<option value="KR">한국</option>
 												<option value="JP">일본</option>
@@ -431,8 +431,6 @@
                 </div>
             </div> -->
 						<div class="sect-sorting" id="sect-finder">
-						${param.genre}<br/>
-						${param.national}<br/>
 							<c:set var="movies" value="${requestScope.movies.items}" />
 							<c:if test="${not empty movies }" var="result">
 							<div class="sect-movie-chart" style="text-align: left;">

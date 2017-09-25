@@ -291,7 +291,7 @@ text-align: center;}
    Slider Modules
 ============================================ */
 .sect-common, .cols-movie {overflow:hidden; width:980px;}
-.sect-common {height:450px;}
+.sect-common {height:450px;width:100%;text-align:center;}
 .sect-common:before,
 .sect-common:after {position:absolute; top:0; z-index:10; content:''; width:14px; height:450px;}
 .sect-common:before {left:0; background:url(../images/common/bg/bg_bricks_before.png) no-repeat 0 0;}
