@@ -229,6 +229,11 @@
         //]]>
     </script>
     <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=kOrrMtxLuWGiRjYB0IIDA7EUhoynjc%2bbKguJOggJEgktCxWG0aCQPQBlUer7dLqIJSLz9bp5NwSvr2X0RKIm5Wx5cFJVVGQ5b0dnWFo5ZmhqUU5zSkdibjVpUVpsbXRWRVB5OVM5c2s4VlBMemdTTFI1MXB1cjlvV3hONmc3Rlg%3d"></script>
+    
+    <!-- Magnific Popup core CSS file -->
+	<link rel="stylesheet" href="<c:url value='/common/magnific-popup/magnific-popup.css'/>">
+	<!-- Magnific Popup core JS file -->
+	<script src="<c:url value='/common/magnific-popup/jquery.magnific-popup.js'/>"></script>
 </head>
 <body class="">
 
@@ -433,12 +438,6 @@
                     <li>
                         <strong>매력포인트</strong>
 						<div class="radar-graph" id="chart1">
-							<!-- <canvas id="charmScore1" width="100" height="100"></canvas> -->
-							<!-- ie8 이하 미지원시
-							<div class="sorry">
-								<p>&lsquo;이 영화의 매력포인트&rsquo; 차트는<br />익스플로러9 이상에서 지원 가능합니다.</p>
-							</div>
-                             -->
                             <canvas id="charmScore1" width="221" height="221"></canvas>
 						</div>
                     </li>
@@ -452,400 +451,63 @@
                     </li>
                 </ul>
             </div>
-            <!--
-            <div id="ctl00_PlaceHolderContent_Section_Chart1" class="sect-graph">
-                <ul class="graph">
-                    <li>
-                        <strong>매력포인트</strong>
-						<div class="radar-graph" id="chart1">
-							<canvas id="charmScore1" width="221" height="221"></canvas>
-						</div>
-						</div>
-                        <!--
-                        <strong>기간별 평점</strong>
-                        <div>
-                            <div class="point">
-                                <em>0.0</em>
-                                <i>(총: 0명)</i>
-                                
-                                0
-                            </div>
-                            
-                            <div class="chart" id="jqplot_period"></div>
-                            
-                        </div>
-                        
-                    </li>
-                    <li>
-                        <strong>성별 예매 분포</strong>
-                        <div id="jqplot_sex" class="chart"></div>
-                    </li>
-                    <li>
-                        <strong>연령별 예매 분포</strong>
-                        <div id="jqplot_age" class="chart"></div>
-                    </li>
-                </ul>
-            </div>
-            -->
             <!-- .sect-graph -->
                  
             <div id="ctl00_PlaceHolderContent_Section_Trailer" class="sect-trailer">
                 <div class="heading">
-                    <h4>트레일러</h4><span id="ctl00_PlaceHolderContent_TrailerTotalCount" class="count">10건</span><a class="link-more" href="trailer.aspx?midx=79949">더보기</a>
+                    <h4>트레일러</h4><span id="ctl00_PlaceHolderContent_TrailerTotalCount" class="count">${trailers}건
                 </div>
                 <ul>
                 <!-- 사진 동영상 조회 -->
-                
+                	<c:forEach items="${trailerList}" var="trailer">
                     <li>
-                        <div class="box-image">
-                            <!-- TODO : 동영상 팝업 창 작업 후 링크 걸어야 함 //-->
-                            <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="148145">
-                                <span class="thumb-image">
-                                    <img src="http://img.cgv.co.kr/Movie/Thumbnail/Trailer/79949/79949148145_148.jpg" alt="[킹스맨: 골든 서클]킹스맨 최후의 날 영상" onerror="errorImage(this, {'type':'landscape'})"/>
-                                    <span class="ico-play">영상보기</span>
+                        <div class="box-image">                         
+                            <a class="popup-youtube" href="${trailer.url}">
+                                <span class="thumb-image">                                    
+                                    <iframe style="width:260px; height:142" 
+                                    	src="https://www.youtube.com/embed/${playIdMap[trailer.no]}"></iframe>                                  
                                 </span>
                             </a>
                         </div>
                         <div class="box-contents">
-                            <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="148145">
-                                <strong class="title">
-                                    
-                                    <span class="ico-trailer hd">HD</span>
-                                    킹스맨 최후의 날 영상
+                            <a class="popup-youtube" href="${trailer.url}">
+                                <strong class="title">                                    
+                                    <span class="ico-trailer hd">HD</span>${trailer.title}
                                 </strong>
                             </a>
-                            <span class="txt-info">2017.09.20</span>
+                            <script type="text/javascript">
+						      $(document).ready(function() {
+						        $('.popup-youtube').magnificPopup({
+						          disableOn: 700,
+						          type: 'iframe',
+						          mainClass: 'mfp-fade',
+						          removalDelay: 160,
+						          preloader: false,
+						
+						          fixedContentPos: false
+						        });						     
+						      });
+						    </script>
+                            <span class="txt-info">${trailer.regidate}</span>
                         </div>
                     </li>
-                    
-                    <li>
-                        <div class="box-image">
-                            <!-- TODO : 동영상 팝업 창 작업 후 링크 걸어야 함 //-->
-                            <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="148144">
-                                <span class="thumb-image">
-                                    <img src="http://img.cgv.co.kr/Movie/Thumbnail/Trailer/79949/79949148144_148.jpg" alt="[킹스맨: 골든 서클]골든 서클 영상" onerror="errorImage(this, {'type':'landscape'})"/>
-                                    <span class="ico-play">영상보기</span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="box-contents">
-                            <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="148144">
-                                <strong class="title">
-                                    
-                                    <span class="ico-trailer hd">HD</span>
-                                    골든 서클 영상
-                                </strong>
-                            </a>
-                            <span class="txt-info">2017.09.20</span>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <div class="box-image">
-                            <!-- TODO : 동영상 팝업 창 작업 후 링크 걸어야 함 //-->
-                            <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="148069">
-                                <span class="thumb-image">
-                                    <img src="http://img.cgv.co.kr/Movie/Thumbnail/Trailer/79949/79949148069_148.JPG" alt="[킹스맨: 골든 서클]IMAX 쾌감맥스 영상" onerror="errorImage(this, {'type':'landscape'})"/>
-                                    <span class="ico-play">영상보기</span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="box-contents">
-                            <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="148069">
-                                <strong class="title">
-                                    
-                                    <span class="ico-trailer hd">HD</span>
-                                    IMAX 쾌감맥스 영상
-                                </strong>
-                            </a>
-                            <span class="txt-info">2017.09.14</span>
-                        </div>
-                    </li>
-                    
+                    </c:forEach>                                  
                 </ul>
-            </div><!-- .sect-trailer -->
+            </div><!-- .sect-trailer -->                             
             <div id="ctl00_PlaceHolderContent_Section_Still_Cut" class="sect-stillcut">
                 <div class="heading">
-                    <h4>스틸컷</h4><span class="count"><strong id="stillcut_current">1</strong>/46건</span><a class="link-more" href="still-cut.aspx?midx=79949">더보기</a>
+                    <h4>스틸컷</h4><span class="count"><strong id="stillcut_current">1</strong>/${stills}건</span>
                 </div>
                 <div class="slider-wrap">
                     <div class="slider" id="still_motion">
                         
+                        <c:forEach items="${stillList}" var="still">
                         <div class="item-wrap">
                             <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949148146_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
+                                <img data-src="http://192.168.0.128:8080/CGVBackend/images/stills/${still.filename}" alt="${movie.title}"/>
                             </div>
                         </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949148143_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949148142_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949148141_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949148140_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147971_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147970_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147969_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147968_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147967_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147686_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147685_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147684_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147637_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147636_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147635_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147634_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147633_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147632_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147631_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147630_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147629_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147540_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147539_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147538_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147537_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147529_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147528_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147527_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147519_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147518_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147517_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147516_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147515_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147514_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147513_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147512_727.jpg" alt="킹스맨: 골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147386_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147385_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147384_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147383_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147382_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147381_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147380_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147378_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
-                        
-                        <div class="item-wrap">
-                            <div class="item">
-                                <img data-src="http://img.cgv.co.kr/Movie/Thumbnail/StillCut/000079/79949/79949147377_727.jpg" alt="킹스맨-골든 서클" onerror="errorImage(this)" />
-                            </div>
-                        </div>
+                        </c:forEach>                       
                         
                         <button type="button" class="btn-prev">이전 페이지 이동</button>
                         <button type="button" class="btn-next">다음 페이지 이동</button>

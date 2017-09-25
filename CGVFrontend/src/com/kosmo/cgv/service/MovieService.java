@@ -8,4 +8,6 @@ public interface MovieService {
 	MovieDto selectOneMovie(String movie_code) throws Exception;
 	List<String> getReserveSeat(Map map) throws Exception;
 	int getWishCount(String movie_code) throws Exception;
+	List<StillDto> selectStillList(String movie_code) throws Exception;
+	List<TrailerDto> selectTrailerList(String movie_code) throws Exception;
 }
