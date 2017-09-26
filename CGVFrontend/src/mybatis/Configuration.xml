@@ -11,5 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Movie_mybatis.xml"/>
+		<!-- <mapper resource="mybatis/Reserve_mybatis.xml"/> -->
+		<mapper resource="mybatis/Theater_mybatis.xml"/>
 	</mappers>
 </configuration>
