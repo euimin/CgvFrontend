@@ -292,7 +292,7 @@
                         <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
-                                <a href="#">회원서비스</a>
+                                <a href="/user/login/">회원서비스</a>
                             </li>
                         
                             <li  class="last">
@@ -326,10 +326,10 @@
                     <div class="sect-login">
                         <ul class="tab-menu-round">
                             <li class="on">
-                                <a href="#">로그인</a>
+                                <a href="/user/login/">로그인</a>
                             </li>
                             <li>
-                                <a href="<c:url value='/guest.front'/>">비회원로그인</a>
+                                <a href="/user/guest/">비회원로그인</a>
                             </li>
                         </ul>
                         <div class="box-login login_1408">
@@ -397,7 +397,7 @@
                             <strong>CJ ONE 회원이 아니신가요?</strong>
                             <span>회원가입하시고 다양한 혜택을 누리세요!</span>
                             <strong>
-                                <a href="<c:url value='/join.front'/>" class="round red"><span>회원가입하기</span></a>
+                                <a title="새창" target="_blank" href="https://www.cjone.com/cjmweb/join.do?coopco_cd=7010&brnd_cd=1000" class="round red"><span>CJ ONE 회원가입하기</span></a>
                             </strong>
 
                         </div>

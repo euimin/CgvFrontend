@@ -61,12 +61,6 @@ public class MembersDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getInters() {
-		return inters;
-	}
-	public void setInters(String inters) {
-		this.inters = inters;
-	}
 	
 
 }
