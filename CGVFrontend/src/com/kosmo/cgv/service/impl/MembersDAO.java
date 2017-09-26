@@ -55,6 +55,12 @@ public class MembersDAO implements MembersService{
 	@Override
 	public void close() throws Exception {}
 
+	@Override
+	public int logout(MembersDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 	
 }

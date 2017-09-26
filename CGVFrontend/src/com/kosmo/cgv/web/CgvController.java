@@ -34,15 +34,20 @@ public class CgvController {
 	public String theater() throws Exception{
 		return "theaters/index";
 	}
-	
-	@RequestMapping("/login.front")
-	public String login() throws Exception{
-		return "user/login/index";
-	}
-	
+
 	@RequestMapping("/join.front")
 	public String join() throws Exception{
 		return "user/join/index";
+	}
+	
+	@RequestMapping("/login.front")
+	public String login() throws Exception{
+		return "user/login/login";
+	}
+	
+	@RequestMapping("/guest.front")
+	public String guest() throws Exception{
+		return "user/guest/index";
 	}
 	
 	@RequestMapping("/support.front")

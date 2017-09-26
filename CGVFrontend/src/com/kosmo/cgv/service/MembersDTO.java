@@ -10,7 +10,6 @@ public class MembersDTO {
 	private String gender;
 	private String phone;
 	private String email;
-	private String inters;
 	
 	
 	public String getName() {

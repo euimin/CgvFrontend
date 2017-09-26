@@ -65,10 +65,16 @@
 	
 	<ul class="gnb">
              
-        <li><a href="<c:url value='/login.front'/>" class="login" ><span>로그인</span></a></li>
-		<li><a href="<c:url value='/join.front'/>" class="join" ><span>회원가입</span></a></li>                             
 
-		<li><a href="/user/mycgv/" class="mycgv required-login" data-url="/user/mycgv/" ><span>MY CGV</span></a></li>
+<%--         <c:if test="${sessionScope.id == null }" var="isNotMember"> --%>
+        	<li><a href="<c:url value='/login.front'/>" class="login" ><span>로그인</span></a></li>
+        	<li><a href="<c:url value='/join.front'/>" class="join" ><span>회원가입</span></a></li>
+<%--          </c:if>    
+         <c:if test="${sessionScope.id != null }">
+         	<li><a href="<c:url value='/logout.front'/>">로그아웃</a></li> --%>
+        	<li><a href="<c:url value='/login.front'/>" class="mycgv required-login" data-url="/user/mycgv/" ><span>MY CGV</span></a></li>
+<%--          </c:if>   --%>      
+
 		<li><a href="#" class="vip" ><span>VIP LOUNGE</span></a></li>
 		<li><a href="#" title="새창" class="club specialclub"  ><span>CLUB 서비스</span></a></li>
 		<!-- 2014.12.8 리뉴얼-->

@@ -8,8 +8,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="MovieDto" type="com.kosmo.cgv.service.MovieDto"/>
 		<typeAlias alias="StillDto" type="com.kosmo.cgv.service.StillDto"/>
 		<typeAlias alias="TrailerDto" type="com.kosmo.cgv.service.TrailerDto"/>
+		<typeAlias alias="MembersDTO" type="com.kosmo.cgv.service.MembersDTO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Movie_mybatis.xml"/>
+		<mapper resource="mybatis/Members_mybatis.xml"/>
 	</mappers>
 </configuration>

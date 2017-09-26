@@ -17,40 +17,27 @@
 	}
 
 	/* 체크박스 체크시 전체선택 체크 여부 */
-		function oneCheckFunc( obj )
-		{
+		function oneCheckFunc( obj ){
+		
 		var allObj = $("[name=intersall]");
 		var objName = $(obj).attr("name");
 		
-		if( $(obj).prop("checked") )
-		{
-			checkBoxLength = $("[name="+ objName +"]").length;
-			checkedLength = $("[name="+ objName +"]:checked").length;
-		
-			if( checkBoxLength == checkedLength ) {
-				allObj.prop("checked", true);
-			} else {
+			if( $(obj).prop("checked") ){
+				checkBoxLength = $("[name="+ objName +"]").length;
+				checkedLength = $("[name="+ objName +"]:checked").length;
+			
+				if( checkBoxLength == checkedLength ) {
+					allObj.prop("checked", true);
+				} else {
+					allObj.prop("checked", false);
+				}
+			} else{
 				allObj.prop("checked", false);
 			}
 		}
-		else
-		{
-			allObj.prop("checked", false);
-		}
-		}
+
 		
-		$(function(){
-		$("[name=intersall]").click(function(){
-			allCheckFunc( this );
-		});
-		$("[name=inters]").each(function(){
-			$(this).click(function(){
-				oneCheckFunc( $(this) );
-			});
-		});
-		});
-		
-			
+/* 			
 			$("#joinValid").validate({
 				
 				rules:{
@@ -87,7 +74,7 @@
 				}//////////////////////////message
 			});/////////////////////////validate
 			
-		});//function
+		});//function */
 	</script>
 	    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />

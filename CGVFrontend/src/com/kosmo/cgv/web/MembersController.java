@@ -29,11 +29,7 @@ public class MembersController {
 	private MembersServiceImpl membersService;
 	
 	private static final Logger log = LoggerFactory.getLogger(MembersController.class);
-	
-	@RequestMapping("/guest.front")
-	public String guest() throws Exception{
-		return "user/guest/index";
-	}
+
 	
 	//가입성공시 확인폼으로 이동
 	@RequestMapping("/membersJoin.front")
@@ -46,14 +42,8 @@ public class MembersController {
 		
 	}
 	
-	//로그인 폼으로 이동]
-	@RequestMapping("/login.front")
-	public String login() throws Exception{
-		return "login/index";
-	}///////////////////////login()
-	
 	//로그인 처리]
-	@RequestMapping("/loginProcess.pront")
+	@RequestMapping("/loginProcess.front")
 	public String process(@RequestParam Map map,Model model) throws Exception{
 		//서비스 호출]
 		boolean isLogin=membersService.login(map);
@@ -64,10 +54,10 @@ public class MembersController {
 		else{//비회원
 			model.addAttribute("loginError","회원가입후 이용바람..");
 			//뷰(JSP)정보 반환]- 다시 로그인으로 이동
-			return "forward:/login.front";
+			return "forward:/WEB-INF/cgv/view/user/login/login.jsp";
 		}
 		//뷰(JSP)정보 반환]-목록으로 이동
-		return "forward:/main.jsp";
+		return "forward:/";
 	}///process
 	@RequestMapping("/logout.front")
 	//로그아웃 처리]
@@ -75,7 +65,7 @@ public class MembersController {
 		//로그 아웃처리-세션영역에 속성 삭제]
 		status.setComplete();
 		//뷰(JSP)정보 반환]- 로그인으로 이동
-		return "forward:/logout.front";
+		return "forward:/";
 	}///////////////////logout
 
 

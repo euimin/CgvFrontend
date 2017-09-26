@@ -14,6 +14,7 @@ public interface MembersService {
 	//가입/수정/탈퇴]
 	int insert(MembersDTO dto) throws Exception;
 	int update(MembersDTO dto) throws Exception;
+	int logout(MembersDTO dto) throws Exception;
 	int delete(MembersDTO dto) throws Exception;
 	
 	//자원반납및 커넥션 풀 반납용]

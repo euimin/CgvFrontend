@@ -128,21 +128,28 @@ body {
             transform: scale(0.3, 0.3);
   }
 }
-</style></head><body>
+</style></head>
 
-<div class="main">
-  <div class="box">
-    <div class="input-block">
-      <div class="placeholder-label">Enter your name</div>
-      <input class="enterme"/>
-    </div>
-    <div class="input-block">
-      <div class="placeholder-label">Enter your password</div>
-      <input class="enterme"/>
-    </div>
-    <button class="send">Log in</button>
-  </div>
-</div>
+<body>
+
+	
+	<form method="post" action='<c:url value="/loginProcess.front"/>'>
+	<div class="main">
+  		<div class="box">
+    		<div class="input-block">
+     			<div class="placeholder-label">Enter your name</div>
+      			<input name="id" class="enterme"></input>
+    		</div>
+    		<div class="input-block">
+      		<div class="placeholder-label">Enter your password</div>
+     		<input name="password" class="enterme"></input>
+    		</div>
+    <button type="submit" class="send">Log in</button>
+  		</div>
+	</div>
+    		</form>
+    <%-- <span style="color:red;font-size:1.4em;font-weight: bold">${loginError }</span> --%>
+
 <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script >$(document).ready(function(){
   $(".enterme").focusin(function(){

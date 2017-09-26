@@ -319,79 +319,40 @@
             
             <!-- Contents Start -->
 			
+	<div class="table_header">
+		<h3 class="h3_tit"><span style="background-color:#FBFBEF;font-size:2em;font-weight:bold;">
+		 &nbsp;회원 로그인&nbsp;</span></h3>
+	</div>
+		<div class="table_col">
+			<table>
+				<tbody>
+				 │ <a href="<c:url value='/cgv/user/login/login' />" style="width:100px;line-height:3.8em;font-weight:bold">로그인</a> │ 
+				<a href="/user/login/find-account.aspx" style="width:100px;line-height:3.8em;font-weight:bold">아이디 찾기</a> │ 
+				<a href="/user/login/find-pw.aspx?act=pw" style="width:100px;line-height:2.3em;font-weight:bold">비밀번호 찾기</a> │ 
+				</tbody>
+			</table>
+		</div><br></br>	
+  
+	<div class="table_header">
+		<h3 class="h3_tit"><span style="background-color:#FBFBEF;font-size:2em;font-weight:bold;">
+		 &nbsp;비회원 로그인&nbsp;</span></h3>
+	</div>
+		<div class="table_col">
+			<table>
+				<tbody>
+					<button class="btn btn-danger" type="button">로그인</button>
+				</tbody>
+			</table>
+		</div><br></br>	
+		
 
 
-  <!-- 실컨텐츠 시작 -->
-                <div class="wrap-login">
-                    <div class="sect-login">
-                        <ul class="tab-menu-round">
-                            <li class="on">
-                                <a href="/user/login/">로그인</a>
-                            </li>
-                            <li>
-                                <a href="/user/guest/">비회원로그인</a>
-                            </li>
-                        </ul>
-                        <div class="box-login login_1408">
-                            <h3 class="hidden">회원 로그인</h3>
-                                                        
-                            <!-- ********************* 비밀번호 5회 오류시 캡챠 포함된 form#form2_capcha 시작 ********************* -->
-                         
-                          <form id="form2_capcha" method="post" action="#" novalidate="novalidate" onsubmit="return false" style="display:block;">
-                                <fieldset>
-                                    <legend>회원 로그인</legend>
-                                    <div class="txt_wrap">
-                                        <h3></h3>
-                                  <!-- <p>정보보호를 위해 아이디, 비밀번호와 함께 <br />자동 입력 방지 문자를 입력하셔야 합니다.</p>-->
-                                       <p>귀하의 정보보호를 위해 실제 사용자가<br />요청을 보내고 있는지 <br />확인하는 절차를 거치고 있습니다.</p>
-                                    </div>
-                                    <div class="login">
-                                        <input type="text" title="아이디" id="txtUserId" name="txtUserId" data-title="아이디를 " data-message="입력하세요." required="required" value="" />
-                                        <input type="password" title="패스워드" id="txtPwd1" name="txtPwd1" data-title="패스워드를 " data-message="입력하세요." required="required" />
-                                    </div>
                                     
-                                    <!-- 캡차 영역-->
-                                    <div class="captcha">
-                                        <div class="captcha_box" id="image_captcha">
-                                          
-                                            
-                                             <span class="captcha_img"> <div id="imageCatpcha"></div></span>
-                                              <div id="audioCatpchaSound" style="display:none;"></div>
-
-                                            <audio id="myaudio" src="http://img.cgv.co.kr/images/captcha/1.mp3"  controls="" style="display:none;" ></audio>                      
-                                           
-                                            
-                                           
-                                            <a onclick="javascript:return changeCaptcha();" href="#" id="captchaReLoad"  class="btn_refresh"><span class="sp">새로고침</span></a>
-                                            <a onclick="javascript:return audioCaptcha();" href="#" id="captchaSoundOnKor" class="btn_sound"><span class="sp">음성듣기</span></a>
-                                        </div>
-                                        <div class="captcha_box capcha_sound" id="sound_captcha" style="display:none;">
-                                            <span class="captcha_img">
-                                                <span class="sp speaker"></span>
-                                                <span class="audio_txt">음성으로 안내되고 있습니다.(4초 후 재생)</span>
-                                            </span>
-                                            <a href="#" class="btn_refresh"><span class="sp">새로고침</span></a>
-                                            <a href="javascript:changeCaptchaMode('ko_KR');" onclick="nclks('l5f.img',this,event)" class="btn_img"><span class="sp">이미지로 보기</span></a>
-                                        </div>
-                                           <input name="ctl00$PlaceHolderContent$hdfNum" type="hidden" id="ctl00_PlaceHolderContent_hdfNum" />      
-                                             <input name="ctl00$PlaceHolderContent$hdaudio" type="hidden" id="ctl00_PlaceHolderContent_hdaudio" />          
-                                        <div class="input_row" id="chptcha_area">
-                                            <span class="input_box">
-                                                <label for="chptcha" class="lbl" id="label_chptcha_area">자동입력 방지문자</label><input type="text" id="txtCaptcha" name="txtCaptcha" placeholder="자동입력 방지문자" class="int">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <button type="submit" id="submit" title="로그인"><span>로그인</span></button>
                                     <div class="save-id"><input type="checkbox" id="save_id" /><label for="save_id">아이디 저장</label></div>
-                                    <div class="login-option">
-                                        <a href="/user/login/find-account.aspx">아이디 찾기</a>
-                                        <a href="/user/login/find-pw.aspx?act=pw">비밀번호 찾기</a>
-                                    </div>
-                                </fieldset>
+                                    
+
                             </form>
-                            <!-- ********************* 비밀번호 5회 오류시 캡챠 포함된 form#form2_capcha 끝 ********************* -->
-                        </div>
-                    </div>
+
                     <div class="sect-loginguide">
                         <div class="box-useguide">
                             <strong>CJ ONE 회원이 아니신가요?</strong>
@@ -407,8 +368,6 @@
                             <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Login_bigbanner" width="350" height="300" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" name="Login_bigbanner" id="Login_bigbanner"></iframe>
                         </div>
                     </div>
-                </div>
-                <!-- 실컨텐츠 끝 -->
 
 
 
