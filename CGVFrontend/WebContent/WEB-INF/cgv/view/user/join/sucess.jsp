@@ -305,11 +305,6 @@
 								</div>
 								<div class="table_col">
 									<table>
-										<caption>회원기본정보 입력 표로 회원정보 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 휴대전화, 이메일을 나타냅니다.</caption>
-										<colgroup>
-											<%-- <col class='title'>
-											<col class='body'> --%>
-										</colgroup>
 										<tbody>
 										
 										
@@ -452,7 +447,9 @@
 						<div style="height:10px"></div>
 						<center>
 						<td>
-						<input type="submit" name="submit" value="완료" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />
+						
+						<a href="<c:url value='/login.front' />">
+						<input type="submit" name="submit" value="완료" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" /></a>
 						&nbsp;  </td></center>
 						</div>
 					</div>
