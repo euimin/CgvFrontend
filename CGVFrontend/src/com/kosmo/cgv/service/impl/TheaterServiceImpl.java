@@ -12,22 +12,15 @@ import com.kosmo.cgv.service.TheaterService;
 @Service("theaterService")
 public class TheaterServiceImpl implements TheaterService {
 	@Resource(name="theaterDao")
-	private TheaterDao dao; 
+	private TheaterDao dao;
 
 	@Override
-	public List<TheaterDto> selectTheaterList() throws Exception {
-		return dao.selectTheaterList();
+	public List<String> selectRegionList() throws Exception {		
+		return dao.selectRegionList();
 	}
 
 	@Override
-	public TheaterDto selectOneTheater(String theater_code) throws Exception {
-		return dao.selectOneTheater(theater_code);
-	}
-
-	@Override
-	public void close() throws Exception {
-		dao.close();
-	}
-
-	
+	public List<String> selectTheaterListByRegion(String region) throws Exception {
+		return dao.selectTheaterListByRegion(region);
+	} 	
 }

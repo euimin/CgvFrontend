@@ -20,10 +20,10 @@ public class CgvController {
 		return "movies/point/index";
 	}
 	
-	@RequestMapping("/ticket.front")
+	/*@RequestMapping("/ticket.front")
 	public String ticket() throws Exception{
 		return "ticket/index";
-	}
+	}*/
 	
 	@RequestMapping("/showtimes.front")
 	public String showtimes() throws Exception{
