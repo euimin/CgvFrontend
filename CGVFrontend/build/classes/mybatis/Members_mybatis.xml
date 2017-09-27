@@ -6,11 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.Members_mybatis">
 	<select id="login" parameterType="java.util.Map" resultType="int">
 		select count(*) from members where id=#{id} and password=#{password}
-<<<<<<< HEAD
 	</select>
-	<select id="logout" parameterType="java.util.Map" resultType="int">
-		select count(*) from members where id=#{id} and password=#{password}
-	</select>	
 <!--
     <insert id="insert" parameterType="java.util.Map" resultType="int">
         INSERT INTO members(id, password, name, birth, phone, email, gender, nickname) VALUES (#{id}, #{password}, #{name}, #{birth}, #{phone}, #{email}, #{gender}, #{nickname})
@@ -22,10 +18,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE members WHERE id=#{id}
 	</delete>
 -->
-=======
-	</select>	
-<!--     <insert id="insert" parameterType="MembersDTO" >
-        INSERT INTO members(id, password, name, birth, phone, email, gender, nickname) VALUES (#{id}, #{password}, #{name}, #{birth}, #{phone}, #{email}, #{gender}, #{nickname})
-    </insert> -->
->>>>>>> branch 'master' of https://github.com/euimin/CgvFrontend.git
 </mapper>

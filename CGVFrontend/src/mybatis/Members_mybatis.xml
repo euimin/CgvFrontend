@@ -7,9 +7,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" parameterType="java.util.Map" resultType="int">
 		select count(*) from members where id=#{id} and password=#{password}
 	</select>
-	<select id="logout" parameterType="java.util.Map" resultType="int">
-		select count(*) from members where id=#{id} and password=#{password}
-	</select>	
 <!--
     <insert id="insert" parameterType="java.util.Map" resultType="int">
         INSERT INTO members(id, password, name, birth, phone, email, gender, nickname) VALUES (#{id}, #{password}, #{name}, #{birth}, #{phone}, #{email}, #{gender}, #{nickname})

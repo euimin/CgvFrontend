@@ -51,11 +51,11 @@ public class MembersController {
 			//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
 			model.addAllAttributes(map);
 		}
-		else{//비회원
+/*		else{//비회원
 			model.addAttribute("loginError","회원가입후 이용바람..");
 			//뷰(JSP)정보 반환]- 다시 로그인으로 이동
 			return "forward:/WEB-INF/cgv/view/user/login/login.jsp";
-		}
+		}*/
 		//뷰(JSP)정보 반환]-목록으로 이동
 		return "forward:/";
 	}///process
