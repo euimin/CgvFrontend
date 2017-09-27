@@ -24,6 +24,32 @@ import com.kosmo.cgv.service.impl.MembersServiceImpl;
 @SessionAttributes("id")
 @Controller
 public class MembersController {	
+
+	@RequestMapping("/guest.front")
+	public String guest() throws Exception{
+		return "user/guest/index";
+	}
+	
+	@RequestMapping("/guestJoin.front")
+	public String guestJoin() throws Exception{
+		return "user/guest/login-agreement";
+	}
+	
+	@RequestMapping("/guestLogin.front")
+	public String guestLogin() throws Exception{
+		return "user/guest/login-agreement";
+	}
+	
+	@RequestMapping("/membersLogin.front")
+	public String membersLogin() throws Exception{
+		return "user/login/login";
+	}
+	
+	@RequestMapping("/myCGV.front")
+	public String myCGV() throws Exception{
+		return "user/mycgv/mycgv-index";
+	}
+	
 	//서비스 주입
 	@Resource(name="membersService")
 	private MembersServiceImpl membersService;

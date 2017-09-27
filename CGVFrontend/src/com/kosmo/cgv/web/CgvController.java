@@ -42,16 +42,12 @@ public class CgvController {
 	
 	@RequestMapping("/login.front")
 	public String login() throws Exception{
-		return "user/login/login";
-	}
-	
-	@RequestMapping("/guest.front")
-	public String guest() throws Exception{
-		return "user/guest/index";
+		return "user/login/index";
 	}
 	
 	@RequestMapping("/support.front")
 	public String support() throws Exception{
 		return "support/index";
 	}
+	
 }
