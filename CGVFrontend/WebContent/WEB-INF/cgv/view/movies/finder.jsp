@@ -224,10 +224,10 @@
 				<div class="sect-linemap">
 					<div class="sect-bcrumb">
 						<ul>
-							<li><a href="/"><img alt="home"
+							<li><a href="/CGVFrontend"><img alt="home"
 									src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
 
-							<li><a href="/movies/">영화</a></li>
+							<li><a href="movie.front">영화</a></li>
 
 							<li class="last">무비파인더</li>
 

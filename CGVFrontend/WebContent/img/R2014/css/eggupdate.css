@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /* 공통 추가 ------------------------------------------------------------------ */
-.heading-new {position:relative; width:100%; height:40px; background:#e2e0d2;}
+.heading-new {position:relative; width:980px; height:40px; background:#e2e0d2;}
 .heading-new .goto-link {display:inline-block; padding:0 18px; background:#88867e;}
 .heading-new .goto-link h4 {padding-right:8px; line-height:40px; color:#ffffff; font-size:12px; font-family:'NanumBarunGothicBold'; font-weight:normal; letter-spacing:-1px; background:url('../images/common/bg/bg_arrow_dotw.png') no-repeat right center;}
 .heading-new .txt-write {position:absolute; right:6px; top:0; color:#333333; line-height:40px; font-family:'NanumBarunGothicBold';}
@@ -15,7 +15,7 @@
 .heading-new .txt-write .link-reviewwrite span:after {content:''; position:absolute; right:15px; top:10px; width:3px; height:5px; background:url('../images/common/bg/bg_arrow_dotw.png') no-repeat 0 0;}
 
 /* egg-grade */
-.egg-grade {position:relative; height:160px; padding:10px;}
+.egg-grade {position:relative; height:160px; padding:10px; width:980px;}
 .egg-grade .info1, .egg-grade .info2 {position:absolute; z-index:2; font-family:'NanumBarunGothicBold'; color:#000000; text-decoration:underline; line-height:1.7;}
 .egg-grade .info1 {left:10px; top:10px;}
 .egg-grade .info2 {right:10px; top:10px; text-align:right;}

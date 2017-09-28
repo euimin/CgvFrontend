@@ -72,7 +72,6 @@ public class MovieFinderController{
 			movie.put("image", object.get("image").toString());
 			movie.put("director", object.get("director").toString());
 			movies.add(movie);
-			
 			System.out.println(object.get("actor"));
 		}*/
 	}
@@ -87,10 +86,10 @@ public class MovieFinderController{
         		return;
         	}
         	
-        	System.out.println(title);
-        	System.out.println(country);
-        	System.out.println(genre);
-        	System.out.println(jsonData);
+        	//System.out.println(title);
+        	//System.out.println(country);
+        	//System.out.println(genre);
+        	//System.out.println(jsonData);
         	
             String text = URLEncoder.encode(title, "UTF-8");    		
             String apiURL = "https://openapi.naver.com/v1/search/movie?display=100&query="+ text+"&yearfrom="+yearfrom+"&yearto="+yearto+"&country="+country+"&genre="+genre; //json 결과
