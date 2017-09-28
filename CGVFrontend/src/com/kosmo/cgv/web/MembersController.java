@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -58,30 +60,52 @@ public class MembersController {
 
 	
 	//가입성공시 확인폼으로 이동
-	@RequestMapping("/membersJoin.front")
-	public String members(@ModelAttribute MembersDTO dto, Map map) throws Exception{
-
-		//데이타 저장]
-		map.put("dto", dto);
+	@RequestMapping("/joinProcess.front")
+	public String membersform(@ModelAttribute MembersDTO dto, Map map) throws Exception{
 		//뷰정보 반환]
-		return "user/join/sucess";
+		return "user/join/index";
 		
 	}
+	//가입성공시 확인폼으로 이동
+	@RequestMapping(value="/joinProcess.front", method=RequestMethod.POST)
+	public String members(@ModelAttribute MembersDTO dto, Map map) throws Exception{
 	
+			//데이타 저장]
+			map.put("dto", dto);			
+			membersService.insert(dto);
+			
+			//뷰정보 반환]
+			return "user/login/index";
+			
+		}
+	
+	
+	//아이디 중복 확인
+	@ResponseBody
+	@RequestMapping("/isMemberId.front")
+	public String isMemberId(@RequestParam Map map) throws Exception{
+		
+		MembersDTO dto = membersService.selectOne(map);		
+		return dto==null ?"N":"Y";
+	}
 	//로그인 처리]
 	@RequestMapping("/loginProcess.front")
 	public String process(@RequestParam Map map,Model model) throws Exception{
+		
+		System.out.println("들어오나");
 		//서비스 호출]
 		boolean isLogin=membersService.login(map);
 		if(isLogin){//회원인 경우
 			//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
 			model.addAllAttributes(map);
+			
 		}
-/*		else{//비회원
-			model.addAttribute("loginError","회원가입후 이용바람..");
+		else{//비회원
+			model.addAttribute("loginError","없는 아이디거나 비밀번호가 틀렸습니다.");
+			
 			//뷰(JSP)정보 반환]- 다시 로그인으로 이동
-			return "forward:/WEB-INF/cgv/view/user/login/login.jsp";
-		}*/
+			return "forward:/WEB-INF/cgv/view/user/login/index.jsp";
+		}
 		//뷰(JSP)정보 반환]-목록으로 이동
 		return "forward:/";
 	}///process
