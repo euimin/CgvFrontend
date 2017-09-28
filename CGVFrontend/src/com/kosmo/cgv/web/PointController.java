@@ -62,4 +62,10 @@ public class PointController {
 		return "movies/point/index";
 	}
 	
+	@RequestMapping("/moviePointReview.front")
+	public String showReviews(Model model) throws Exception{
+		
+		return "movies/point/index";
+	}
+	
 }

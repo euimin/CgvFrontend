@@ -226,11 +226,14 @@
                     <!-- <div class="item-wrap"> -->
                     <div class="item" style="position:relative">
                     <div class="sect-chart gradelist">
-                    <ul data-page="0" style="width: 20000em;position:relative;padding-left:60px">
+                    <ul id="movieUl" data-page="0" style="width: 20000em;position:relative;padding-left:60px">
                     	<c:forEach items="${list}" var="movie">
-                            <li><!-- 선택시 class 'on'지정해서 하얗게 -->
+                    	<c:choose>
+                    		<c:when test="${param.movie eq movie.movie_code}"><li class='on'></c:when>
+                    		<c:otherwise><li></c:otherwise>
+                    	</c:choose>
                                 <div class="box-image">
-                                    <a href="javascript:setMovieOn()">
+                                    <a href="<c:url value='/moviePoint.front?movie=${movie.movie_code}'/>">
                             <span class="thumb-image">
                                 <img src="http://192.168.0.128:8080/CGVBackend/images/posters/${movie.poster}" alt="${movie.title} 포스터"/>
                                 <c:choose>
@@ -446,11 +449,59 @@
                 <div id="my_point_area"></div>
                 <div class="wrap-persongrade">
                     <ul id="movie_point_list_container" class="point_col2">
+                        <li class="nodata" style="text-align:center">해당 조건에 데이터가 존재하지 않습니다.</li>
+                        <li class="" id="liCommentFirst19312564"
+                                   data-SPOILERCNT="0" 
+                                   data-REPORTCNT="0">
+                            <a href="javascript:return false;" class="screen_spoiler">&nbsp;</a>
+                            <div class="box-image">
+                                <span class="thumb-image">   
+									<img src="http://img.cgv.co.kr/MyCGV/Profile/2014/0319/matainijia_012212_M.jpg"  alt="사용자 프로필" onerror="errorImage(this, {'type':'profile'})"/>                                            
+                                        <span class="profile-mask"></span>
+									<div class="theater-sticker">
+                                        
+									</div>
+                                </span>
+                            </div>
+                            
+                            <div class="box-contents">
+                                <ul class="writerinfo">                                        
+                                    
+                                    <li class="writer-name">
+                                    
+                                           
+                                        <a href="#select_main" onclick="getPopList1('matainijia', '익스텐션')"; ><span class="egg-icon good"></span>익스텐션</a>
+                                    </li>
+									<li class="writer-etc">
+										<span class="vip">Movie Mania</span>
+										<span class="day">2017.09.28</span>
+										<span class="like point_like" id="matainijia19312564" data-isMyGood="False" data-CommentIdx="19312564">
+											<a href="javascript:return false;" class="btn_point_like" ><span><img src="http://img.cgv.co.kr/R2014/images/point/ico_point_default.png" alt="like" class="like_red" /></span><span id='idLikeValue'>0</span></a>
+										</span>
+									</li>
+                                    <li class="point_notify">
+                                        <a href="" class="btn_notify">스포일러, 욕설/비방 신고</a>
+                                        <div class="notify_wrap">
+                                            <ul>
+
+                                            <li><a href='javascript:return false' class="ico_spoiler" data-CommentIdx="19312564" data-isMySpoiler="False" data-SPOILERCNT="0" data-REPORTCNT="0"><span>스포일러 신고</span></a></li>
+                                            
+                                            <li><a href='javascript:return false' class="ico_swearword" data-CommentIdx="19312564" data-IsMyREPORT="False" data-REPORTCNT="0"><span>욕설/비방 신고</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    
+                                    
+                                </ul>
+                            </div>
+                            <div class="box-comment">
+                                <p>알츠하이머에 걸린 살인자라는 참신한 소재.전체적인 구성은 좋았지만 답답하고 과한감이 있는..과거와 현재를 오가는 기억속에
+									혼동하는 주인공 묘사는 ?? 영화 ''박하사탕''의 한 장면."나 다시 돌아갈래~!!!!??를 외치던 모습이 겹쳐보인다
+								</p>
+                            </div>
+                        </li>
                         
-                        
-                            <li class="nodata" style="text-align:center">해당 조건에 데이터가 존재하지 않습니다.</li>
-                        
-                    </ul>
+                   	</ul>
                 </div> 
                 <div class="paging">
                     <ul id="paging_point"></ul>
@@ -820,10 +871,6 @@
                     target: '+=1'
                 });
    			///////////////////////////////////////////////////////////////////////////카루셀
-   			
-   			function setMovieOn(){
-   				$(".sect-chart gradelist ul li").attr("class","on");
-   			};
    			
             var myPointPage = 0;    
             var mypointYN = false;    

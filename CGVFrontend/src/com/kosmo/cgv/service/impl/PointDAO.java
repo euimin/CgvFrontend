@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import com.kosmo.cgv.service.MovieDto;
 import com.kosmo.cgv.service.PointDTO;
@@ -80,5 +81,4 @@ public class PointDAO implements PointService {
 		return template.selectOne("SelectWishCount", movie_code);
 	}
 
-	
 }
