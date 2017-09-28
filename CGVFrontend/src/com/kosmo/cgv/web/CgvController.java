@@ -15,10 +15,10 @@ public class CgvController {
 		return "movies/finder";
 	}
 	
-	@RequestMapping("/moviePoint.front")
+	/*@RequestMapping("/moviePoint.front")
 	public String moviePoint() throws Exception{
 		return "movies/point/index";
-	}
+	}*/
 	
 	@RequestMapping("/ticket.front")
 	public String ticket() throws Exception{
