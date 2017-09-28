@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.kosmo.cgv.service.MovieDto;
 import com.kosmo.cgv.service.MovieService;
+import com.kosmo.cgv.service.StillDto;
+import com.kosmo.cgv.service.TrailerDto;
 
 @Repository
 public class MovieDao implements MovieService{	
@@ -18,22 +20,32 @@ public class MovieDao implements MovieService{
 	
 	@Override
 	public List<MovieDto> selectMovieList() throws Exception {		
-		return template.selectList("SelectMovieList");
+		return template.selectList("selectMovieList");
 	}
 
 	@Override
 	public MovieDto selectOneMovie(String movie_code) throws Exception {		
-		return template.selectOne("SelectOneMovie", movie_code);
+		return template.selectOne("selectOneMovie", movie_code);
 	}
 
 	@Override
 	public List<String> getReserveSeat(Map map) throws Exception {
-		return template.selectList("SelectReservedSeatList", map);
+		return template.selectList("selectReservedSeatList", map);
 	}
 
 	@Override
 	public int getWishCount(String movie_code) throws Exception {
-		return template.selectOne("SelectWishCount", movie_code);
+		return template.selectOne("selectWishCount", movie_code);
+	}
+
+	@Override
+	public List<StillDto> selectStillList(String movie_code) throws Exception {
+		return template.selectList("selectStillList", movie_code);
+	}
+
+	@Override
+	public List<TrailerDto> selectTrailerList(String movie_code) throws Exception {
+		return template.selectList("selectTrailerList", movie_code);
 	}
 	
 }

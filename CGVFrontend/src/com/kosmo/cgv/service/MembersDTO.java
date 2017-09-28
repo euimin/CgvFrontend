@@ -10,7 +10,6 @@ public class MembersDTO {
 	private String gender;
 	private String phone;
 	private String email;
-	private String inters;
 	
 	
 	public String getName() {
@@ -60,12 +59,6 @@ public class MembersDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getInters() {
-		return inters;
-	}
-	public void setInters(String inters) {
-		this.inters = inters;
 	}
 	
 

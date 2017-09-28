@@ -16,23 +16,12 @@ public class TheaterDao implements TheaterService{
 	private SqlSessionTemplate template;
 
 	@Override
-	public List<TheaterDto> selectTheaterList() throws Exception {
-		// TODO Auto-generated method stub
-		return template.selectList("selectTheaterList");
+	public List<String> selectRegionList() throws Exception {		
+		return template.selectList("selectRegionList");
 	}
 
 	@Override
-	public TheaterDto selectOneTheater(String theater_code) throws Exception {
-		// TODO Auto-generated method stub 
-		return null;
-	}
-
-	@Override
-	public void close() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
+	public List<String> selectTheaterListByRegion(String region) throws Exception {
+		return template.selectList("selectTheaterListByRegion", region);
+	}	
 }
