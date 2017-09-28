@@ -32,19 +32,14 @@ public class MembersController {
 		return "user/guest/index";
 	}
 	
-	@RequestMapping("/guestJoin.front")
+	@RequestMapping("/guestReserve.front")
 	public String guestJoin() throws Exception{
 		return "user/guest/login-agreement";
 	}
 	
 	@RequestMapping("/guestLogin.front")
 	public String guestLogin() throws Exception{
-		return "user/guest/login-agreement";
-	}
-	
-	@RequestMapping("/membersLogin.front")
-	public String membersLogin() throws Exception{
-		return "user/login/login";
+		return "user/guest/login";
 	}
 	
 	@RequestMapping("/myCGV.front")
@@ -59,26 +54,21 @@ public class MembersController {
 	private static final Logger log = LoggerFactory.getLogger(MembersController.class);
 
 	
-	//가입성공시 확인폼으로 이동
+	//회원가입 폼으로 이동
 	@RequestMapping("/joinProcess.front")
 	public String membersform(@ModelAttribute MembersDTO dto, Map map) throws Exception{
 		//뷰정보 반환]
 		return "user/join/index";
-		
 	}
 	//가입성공시 확인폼으로 이동
 	@RequestMapping(value="/joinProcess.front", method=RequestMethod.POST)
 	public String members(@ModelAttribute MembersDTO dto, Map map) throws Exception{
-	
 			//데이타 저장]
 			map.put("dto", dto);			
 			membersService.insert(dto);
-			
 			//뷰정보 반환]
 			return "user/login/index";
-			
-		}
-	
+	}
 	
 	//아이디 중복 확인
 	@ResponseBody
@@ -102,7 +92,6 @@ public class MembersController {
 		}
 		else{//비회원
 			model.addAttribute("loginError","없는 아이디거나 비밀번호가 틀렸습니다.");
-			
 			//뷰(JSP)정보 반환]- 다시 로그인으로 이동
 			return "forward:/WEB-INF/cgv/view/user/login/index.jsp";
 		}

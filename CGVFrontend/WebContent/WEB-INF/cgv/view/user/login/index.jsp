@@ -326,10 +326,10 @@
                     <div class="sect-login">
                         <ul class="tab-menu-round">
                             <li class="on">
-                                <a href="index.jsp">로그인</a>
+                                <a href="/login.front">로그인</a>
                             </li>
                             <li>
-                                <a href="../guest/index.jsp">비회원로그인</a>
+                                <a href="/guest.front">비회원로그인</a>
                             </li>
                         </ul>
                         <div class="box-login login_1408">
@@ -347,8 +347,8 @@
                                     </div>
                                     <div class="login">
                                     	<c:if test="${not loginError }"><span style="line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;">${loginError }</span><br/></c:if>
-                                        <input type="text" title="아이디" id="id" name="id" data-title="아이디를 " data-message="입력하세요." required="required" value="" />
-                                        <input type="password" title="패스워드" id="password" name="password" data-title="패스워드를 " data-message="입력하세요." required="required" />
+                                        <input type="text" title="아이디" id="id" name="id" required="required"/>
+                                        <input type="password" title="패스워드" id="password" name="password" required="required" />
                                     </div>
                                     
                                     <!-- 캡차 영역-->

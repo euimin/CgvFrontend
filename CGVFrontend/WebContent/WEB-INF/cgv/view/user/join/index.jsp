@@ -211,14 +211,6 @@
 
         //]]>
     </script>
-	<script language="javascript">
-		function openLogin(){  
-		    window.open("<c:url value='/membersLogin.front' />", "로그인", "width=400, height=450, left=200, top=100, location=no, titlebar=no toolbar=no, menubar=no, scrollbars=no, resizable=no" );  
-		}
-		function openJoin(){  
-		    window.open("<c:url value='/joinProcess.front' />", "회원가입", "width=800, height=550, left=200, top=100, location=no, titlebar=no toolbar=no, menubar=no, scrollbars=no, resizable=no" );  
-		}
-	</script> 
 	<script type="text/javascript">
 		$(function(){
 			
@@ -280,13 +272,6 @@
 							
 				}			
 			});////////////////////validate
-			
-			/*
-			 window.opener.document.form1_capcha.openJoinSubmit.value= document.joinForm.joinButton.value;
-			 alert("가입 성공!");
-			 opener.parent.location.reload();
-			 self.close();
-			*/
 			
 			$("#email_addr_opt").on("change",function(){
 				
@@ -636,7 +621,7 @@
 						
 						<td style="text-align: center" colspan="2">  
 							<div style="height:20px"></div>
-							<input type="submit" id="joinButton" name="joinButton" value="완료" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />&nbsp;
+							<input type="submit" name="submit" value="완료" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />&nbsp;
 							<input type="reset" name="reset" value="취소" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />  
 						</td>				
 					</tr>		
