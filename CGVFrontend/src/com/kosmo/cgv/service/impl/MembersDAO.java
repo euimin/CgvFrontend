@@ -1,9 +1,5 @@
 package com.kosmo.cgv.service.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -34,23 +30,22 @@ public class MembersDAO implements MembersService{
 
 	@Override
 	public MembersDTO selectOne(Map map) throws Exception {
-		
-		return template.selectOne("memsersselectOne",map);
+		return template.selectOne("MembersOne", map);
 	}
 
 	@Override
 	public int insert(MembersDTO dto) throws Exception {
-	      return template.insert("insert", dto);
+	      return template.insert("MembersInsert", dto);
 	}
 
 	@Override
 	public int update(MembersDTO dto) throws Exception {
-		return 0;
+	      return template.update("MembersUpdate", dto);
 	}
 
 	@Override
 	public int delete(MembersDTO dto) throws Exception {
-		return 0;
+	      return template.delete("MembersDelete", dto);
 	}
 
 	@Override
@@ -58,7 +53,6 @@ public class MembersDAO implements MembersService{
 
 	@Override
 	public int logout(MembersDTO dto) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

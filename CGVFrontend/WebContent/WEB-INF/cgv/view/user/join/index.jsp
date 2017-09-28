@@ -52,7 +52,7 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
 
-     <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
 
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
@@ -211,6 +211,7 @@
 
         //]]>
     </script>
+
 	<script type="text/javascript">
 		$(function(){
 			
@@ -273,6 +274,9 @@
 				}			
 			});////////////////////validate
 			
+
+			
+			/* 도메인 선택 시 자동으로 텍스트에 입력 */
 			$("#email_addr_opt").on("change",function(){
 				
 				if($(this).val() !=""){
@@ -282,6 +286,7 @@
 				else $("#email_addr2").val("");
 			});
 			
+			/* 아이디 중복체크 */
 			$("#idcheck").click(function(){
 				if($("#id").val()==""){
 					alert("아이디를 먼저 입력하세요?");
@@ -306,8 +311,35 @@
 							}
 							 
 						  );//.ajax
+				}	
+				
+			});
+			
+			/* 닉네임 중복체크 */
+			$("#nickname").click(function(){
+				if($("#nickname").val()==""){
+					alert("닉네임을 입력하세요.");
+					$("#nickname").get(0).focus();
 					
-					
+				}
+				else{
+					$.ajax(
+							{url:"<c:url value='/isMemberId.front'/>",
+							 type:"post",
+							 dataType:"text",
+							 data:"id="+$("#id").val(),
+							 success:function(data){
+								
+								if(data=='N') alert("사용가능한 닉네임 입니다.");
+								else{
+									alert("이미 사용중인 닉네임 입니다.");
+									$("#nickname").val("");
+									$("#nickname").get(0).focus();
+								}
+							 }
+							}
+							 
+						  );//.ajax
 				}	
 				
 			});
@@ -320,7 +352,20 @@
 
 	<style>
 	
+	/* 유효성 체크 글씨색상 변경 */
 	#joinForm input +.error{color:red;}
+	
+	/* select option 꾸며주기 */
+	.inputstl {
+	padding: 1px;
+	border: solid 1px #460023;
+	outline: 0;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	}
 
 	</style>
 
@@ -334,9 +379,9 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap">
+            <div class="top_extend_ad_wrap" style="background-color:black;">
                 <div class="adreduce" id="adReduce">                    
-                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
+                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
@@ -569,7 +614,7 @@
 			<td>
 				<div class="phon_write">
 					<span class="select w100" data-skin="form">
-						<select title="휴대전화 앞자리 선택" id="mob_no_1" name="mob_no_1">
+						<select title="휴대전화 앞자리 선택" id="mob_no_1" name="mob_no_1" class="inputstl">
 							<option value="" selected="selected">선택</option>
 							<option value="010" >010</option>
 							<option value="011" >011</option>
@@ -604,7 +649,7 @@
 					<span class="symbol">@</span>
 						<input type="text" class="text small" name="email_addr2" id="email_addr2" value="" placeholder="이메일 도메인" />
 
-					<select title="이메일 도메인 선택" name="email_addr_opt" id="email_addr_opt">
+					<select title="이메일 도메인 선택" name="email_addr_opt" id="email_addr_opt" class="inputstl">
 						  <option value="" selected="selected">직접입력</option>
 						  <option value="gmail.com" >구글</option>
 						  <option value="naver.com" >네이버</option>
@@ -619,12 +664,12 @@
 		</tr>
 		<tr class="input" >
 						
-						<td style="text-align: center" colspan="2">  
-							<div style="height:20px"></div>
-							<input type="submit" name="submit" value="완료" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />&nbsp;
+						<td style="text-align: center" colspan="2"> 
+						<div style="height:30px"></div> 
+							<input type="submit" name="subit" value="완료" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />&nbsp;
 							<input type="reset" name="reset" value="취소" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />  
 						</td>				
-					</tr>		
+		</tr>		
 				</tbody>
 			</table>
 		</form>
