@@ -230,7 +230,7 @@
                     	<c:forEach items="${list}" var="movie">
                             <li><!-- 선택시 class 'on'지정해서 하얗게 -->
                                 <div class="box-image">
-                                    <a href="#">
+                                    <a href="javascript:setMovieOn()">
                             <span class="thumb-image">
                                 <img src="http://192.168.0.128:8080/CGVBackend/images/posters/${movie.poster}" alt="${movie.title} 포스터"/>
                                 <c:choose>
@@ -470,6 +470,7 @@
         </form>
     
 </div>
+
 <script type="text/template" id="temp_see">
 <div class="layer-contents" style="width:225px; height:80px">
 	<span>체크를 해제하시면 <br />
@@ -631,8 +632,6 @@
 </script>
 
 <script id="movie_my_point" type="text/x-jquery-tmpl">
-
-
 <li class="user_my_point_list">
     <div class="box-image">
         <span class="thumb-image">     
@@ -757,11 +756,6 @@
 </div>
 </script>
 
-
-
-
-
-
 <script type="text/javascript">
 
 
@@ -826,6 +820,11 @@
                     target: '+=1'
                 });
    			///////////////////////////////////////////////////////////////////////////카루셀
+   			
+   			function setMovieOn(){
+   				$(".sect-chart gradelist ul li").attr("class","on");
+   			};
+   			
             var myPointPage = 0;    
             var mypointYN = false;    
             var mypointPaneltyYN = false;    
@@ -834,9 +833,7 @@
             $("#goldenEggAlert").on("click", function () {
                 alert("CGV의 실제 관람 고객 평가로 산정된 지수입니다.\n결과에 따라 Golden EGG 아이콘이 정해집니다.");
                 //alert("Golden EGG 지수란,\n이 영화에 대해 ‘좋았어요’를 선택한\n고객님들의 비중을 나타냅니다");
-                
-
-
+               
             });
             /*
             차트 추가 add_css82
@@ -983,61 +980,6 @@
                 return false;
             });
 
-          
-            // Facebook 체크 하였을 때
-            $("#chk_facebook").click(function () {
-                // getIsSnsConnection("chk_facebook");
-                alert("페이스북 정책 변경으로  '함께 올리기' 기능이 일시적으로 지원되지 않습니다. 양해부탁드립니다.");
-                return false;
-            });
-
-            // Twitter 체크 하였을 때
-            $("#chk_twitter").click(function () {
-                getIsSnsConnection("chk_twitter");
-            });
-
-            function getIsSnsConnection(elementId) {
-                var objId = $("#" + elementId);
-                var isChecked = objId.is(":checked");
-
-                var message;
-                var signInPage;
-                var cookieParentName;
-
-                if (elementId == "chk_facebook") {
-                    message = "페이스북";
-                    signInPage = "/common/sns/facebooklogin.aspx";
-                    cookieParentName = "facebook";
-                }
-                else {
-                    message = "트위터";
-                    signInPage = "/common/sns/twitterlogin.aspx";
-                    cookieParentName = "twitter";
-                }
-
-                var objLabelId = $('#' + elementId + '_label');
-
-                if (isChecked == true) {
-                    objLabelId.attr('class', 'on');
-
-                    if (confirm(message + " 연동 하시겠습니까?")) {
-                        var winPop = window.open(signInPage, "elementId");
-                        winPop.focus();
-
-                    }
-                    else {
-                        objLabelId.removeAttr('class');
-                        objId.attr("checked", false);
-                    }
-                }
-                else {
-                    if (confirm(message + "연동을 해제 하시겠습니까?")) {
-                        setCookie(cookieParentName, "", -1);
-                        objLabelId.removeAttr('class');
-                        objId.attr("checked", false);
-                    }
-                }
-            }
             /*
             * del_css82 평점 등록 수정이 팝업으로 이동에 따라 로직 위치 변경 start
             */
