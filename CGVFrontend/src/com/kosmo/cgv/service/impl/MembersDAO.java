@@ -34,12 +34,13 @@ public class MembersDAO implements MembersService{
 
 	@Override
 	public MembersDTO selectOne(Map map) throws Exception {
-		return null;
+		
+		return template.selectOne("memsersselectOne",map);
 	}
 
 	@Override
 	public int insert(MembersDTO dto) throws Exception {
-	      return 0;
+	      return template.insert("insert", dto);
 	}
 
 	@Override

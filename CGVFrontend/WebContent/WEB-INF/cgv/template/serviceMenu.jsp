@@ -65,7 +65,7 @@
 	<ul class="gnb">
          <c:if test="${sessionScope.id == null}" var="isNotMember">
         	<li><a href="<c:url value='/login.front'/>" class="login" ><span>로그인</span></a></li>
-        	<li><a href="<c:url value='/join.front'/>" class="join" ><span>회원가입</span></a></li>
+        	<li><a href="<c:url value='/join.front'/>" class="join"><span>회원가입</span></a></li>
         </c:if>    
          <c:if test="${not isNotMember }">     	
          	<li><a href="<c:url value='/logout.front'/>" class="logout">로그아웃</a></li>
