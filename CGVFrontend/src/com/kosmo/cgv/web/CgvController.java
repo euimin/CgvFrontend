@@ -35,10 +35,10 @@ public class CgvController {
 		return "theaters/index";
 	}
 	
-	@RequestMapping("/login.front")
+	/*@RequestMapping("/login.front")
 	public String login() throws Exception{
 		return "user/login/index";
-	}
+	}*/
 	
 	@RequestMapping("/join.front")
 	public String join() throws Exception{

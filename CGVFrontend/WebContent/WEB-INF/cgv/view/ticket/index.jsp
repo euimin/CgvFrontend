@@ -19,7 +19,7 @@
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/content.css" />
     <link rel="stylesheet" media="print" type="text/css" href="http://img.cgv.co.kr/R2014/css/print.css" />
     <link rel="stylesheet" type="text/css" href="http://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
-    <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
+    <!-- <script type="text/javascript" src="/common/js/extraTheaters.js"></script> -->
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.config.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.min.js"></script>
@@ -40,9 +40,9 @@
         //            if (kcode == 8 || kcode == 116) event.returnValue = false;
         //        }
 
-        app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
+        /* app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
             .config('imageDomain', 'http://img.cgv.co.kr')
-            .config('isLogin', 'False');
+            .config('isLogin', 'False'); */
 
 
         //상단 키워드 광고 (S)
