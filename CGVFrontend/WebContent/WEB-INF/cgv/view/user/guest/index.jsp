@@ -354,8 +354,8 @@
             <h3 class="hidden">비회원 로그인</h3>
             <div class="box-btn">
                 <strong>이용하실 서비스를 선택하세요.</strong>
-                <a class="round inred" href="login-agreement.jsp"><span>비회원예매</span></a>
-                <a class="round inblack" href="login.jsp"><span>비회원예매 확인/취소</span></a>
+                <a class="round inred" href="<c:url value='/guestJoin.front' />"><span>비회원예매</span></a>
+                <a class="round inblack" href="<c:url value='/guestLogin.front' />"><span>비회원예매 확인/취소</span></a>
             </div>
             <dl class="box-operationguide">
                 <dt>비회원 로그인<br />이용안내</dt>

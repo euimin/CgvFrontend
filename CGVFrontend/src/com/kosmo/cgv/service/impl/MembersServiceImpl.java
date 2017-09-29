@@ -46,6 +46,11 @@ public class MembersServiceImpl implements MembersService{
 	}
 
 	@Override
+	public int logout(MembersDTO dto) throws Exception {
+		return 0;
+	}
+	
+	@Override
 	public int update(MembersDTO dto) throws Exception {
 		return dao.update(dto);
 	}
@@ -54,6 +59,7 @@ public class MembersServiceImpl implements MembersService{
 	public int delete(MembersDTO dto) throws Exception {
 		return dao.delete(dto);
 	}
+
 
 	@Override
 	public void close() throws Exception {

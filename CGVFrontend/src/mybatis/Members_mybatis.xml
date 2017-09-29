@@ -4,10 +4,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="mybatis.Members_mybatis">
+
 	<select id="login" parameterType="java.util.Map" resultType="int">
 		select count(*) from members where id=#{id} and password=#{password}
-	</select>	
-<!--     <insert id="insert" parameterType="MembersDTO" >
+	</select>
+    <select id="MembersOne" parameterType="java.util.Map" resultType="MembersDTO">    	
+    	select * from members where id=#{id}
+    </select>
+
+    <insert id="MembersInsert" parameterType="java.util.Map">
         INSERT INTO members(id, password, name, birth, phone, email, gender, nickname) VALUES (#{id}, #{password}, #{name}, #{birth}, #{phone}, #{email}, #{gender}, #{nickname})
-    </insert> -->
+    </insert>
+    <update id="MembersUpdate" parameterType="java.util.Map">
+		UPDATE members SET password=#{password},phone=#{phone},email=#{email},nickname=#{nickname} WHERE id=#{id}
+	</update>
+	<delete id="MembersDelete" parameterType="java.util.Map">
+		DELETE members WHERE id=#{id}
+	</delete>
+
 </mapper>

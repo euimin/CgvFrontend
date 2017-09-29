@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<!-- Mirrored from www.cgv.co.kr/user/login/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 12:15:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,12 +18,12 @@
     <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
     <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
     <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
-    <meta id="ctl00_og_title" property="og:title" content="로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
+    <meta id="ctl00_og_title" property="og:title" content="CGV강남 | 영화 그 이상의 감동. CGV"></meta>
     
-    <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/common/cgv_200x200.jpg"></meta>
+    <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg"></meta>
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
-    <title id="ctl00_headerTitle">로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
+    <title id="ctl00_headerTitle">[CGV강남]&lt;CGV극장 &lt; 극장 | 영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
@@ -63,8 +64,6 @@
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
 	<link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
 
-  
-
     <!-- 각페이지 Header Start--> 
     
     <!--/각페이지 Header End--> 
@@ -74,7 +73,7 @@
         _TRK_CP = "/회원서비스/로그인";
 
         app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
-            .config('imageDomain', 'http://img.cgv.co.kr')
+            .config('imageDomain', 'http://img.cgv.co.kr/')
             .config('isLogin', 'False');
 
         // AD FLOAT
@@ -183,7 +182,7 @@
         //특별관 클럽 팝업
         function openSpecialClub() {
             //            var win = window.open('http://section.cgv.co.kr/event/SpecialClub/2014clubInfo_pop.aspx', 'winSpecialClub', 'left=0,top=0,width=670,height=800,toolbar=no,scrollbars=yes');
-            var win = window.open('http://www.cgv.co.kr/event/develop/1503_CLUB_Info.aspx', 'winSpecialClub', 'left=0,top=0,width=580,height=700,toolbar=no,scrollbars=yes');
+            var win = window.open('http://www.cgv.co.kr/event/develop/1503_CLUB_Info.jsp', 'winSpecialClub', 'left=0,top=0,width=580,height=700,toolbar=no,scrollbars=yes');
             win.focus();
         }
 
@@ -223,9 +222,9 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap">
+            <div class="top_extend_ad_wrap" style="background-color:black;">
                 <div class="adreduce" id="adReduce">                    
-                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
+                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
@@ -253,7 +252,6 @@
                         <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/main@Search_txt" width="0" height="0" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 					</fieldset>
 				</div>
-				<!-- /Integrated search(통합검색) -->
 				<!-- Quick Phototicket -->
 				<div class="sect-phototicket">
 					<h2>CGV 포토티켓</h2>
@@ -292,7 +290,7 @@
                         <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
-                                <a href="/user/login/">회원서비스</a>
+                                <a href="#">회원서비스</a>
                             </li>
                         
                             <li  class="last">
@@ -326,10 +324,10 @@
                     <div class="sect-login">
                         <ul class="tab-menu-round">
                             <li class="on">
-                                <a href="/user/login/">로그인</a>
+                                <a href="<c:url value='/login.front' />">로그인</a>
                             </li>
                             <li>
-                                <a href="/user/guest/">비회원로그인</a>
+                                <a href="<c:url value='/guest.front' />">비회원로그인</a>
                             </li>
                         </ul>
                         <div class="box-login login_1408">
@@ -337,7 +335,7 @@
                                                         
                             <!-- ********************* 비밀번호 5회 오류시 캡챠 포함된 form#form2_capcha 시작 ********************* -->
                          
-                          <form id="form2_capcha" method="post" action="#" novalidate="novalidate" onsubmit="return false" style="display:block;">
+                          <form id="form2_capcha" method="post"  action="<c:url value='/loginProcess.front' />" novalidate="novalidate"  style="display:block;">
                                 <fieldset>
                                     <legend>회원 로그인</legend>
                                     <div class="txt_wrap">
@@ -346,46 +344,17 @@
                                        <p>귀하의 정보보호를 위해 실제 사용자가<br />요청을 보내고 있는지 <br />확인하는 절차를 거치고 있습니다.</p>
                                     </div>
                                     <div class="login">
-                                        <input type="text" title="아이디" id="txtUserId" name="txtUserId" data-title="아이디를 " data-message="입력하세요." required="required" value="" />
-                                        <input type="password" title="패스워드" id="txtPwd1" name="txtPwd1" data-title="패스워드를 " data-message="입력하세요." required="required" />
+                                    	<c:if test="${not loginError }"><span style="line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;">${loginError }</span><br/></c:if>
+                                        <input type="text" title="아이디" id="id" name="id" required="required"/>
+                                        <input type="password" title="패스워드" id="password" name="password" required="required" />
                                     </div>
                                     
                                     <!-- 캡차 영역-->
-                                    <div class="captcha">
-                                        <div class="captcha_box" id="image_captcha">
-                                          
-                                            
-                                             <span class="captcha_img"> <div id="imageCatpcha"></div></span>
-                                              <div id="audioCatpchaSound" style="display:none;"></div>
-
-                                            <audio id="myaudio" src="http://img.cgv.co.kr/images/captcha/1.mp3"  controls="" style="display:none;" ></audio>                      
-                                           
-                                            
-                                           
-                                            <a onclick="javascript:return changeCaptcha();" href="#" id="captchaReLoad"  class="btn_refresh"><span class="sp">새로고침</span></a>
-                                            <a onclick="javascript:return audioCaptcha();" href="#" id="captchaSoundOnKor" class="btn_sound"><span class="sp">음성듣기</span></a>
-                                        </div>
-                                        <div class="captcha_box capcha_sound" id="sound_captcha" style="display:none;">
-                                            <span class="captcha_img">
-                                                <span class="sp speaker"></span>
-                                                <span class="audio_txt">음성으로 안내되고 있습니다.(4초 후 재생)</span>
-                                            </span>
-                                            <a href="#" class="btn_refresh"><span class="sp">새로고침</span></a>
-                                            <a href="javascript:changeCaptchaMode('ko_KR');" onclick="nclks('l5f.img',this,event)" class="btn_img"><span class="sp">이미지로 보기</span></a>
-                                        </div>
-                                           <input name="ctl00$PlaceHolderContent$hdfNum" type="hidden" id="ctl00_PlaceHolderContent_hdfNum" />      
-                                             <input name="ctl00$PlaceHolderContent$hdaudio" type="hidden" id="ctl00_PlaceHolderContent_hdaudio" />          
-                                        <div class="input_row" id="chptcha_area">
-                                            <span class="input_box">
-                                                <label for="chptcha" class="lbl" id="label_chptcha_area">자동입력 방지문자</label><input type="text" id="txtCaptcha" name="txtCaptcha" placeholder="자동입력 방지문자" class="int">
-                                            </span>
-                                        </div>
-                                    </div>
+                                   
                                     <button type="submit" id="submit" title="로그인"><span>로그인</span></button>
-                                    <div class="save-id"><input type="checkbox" id="save_id" /><label for="save_id">아이디 저장</label></div>
                                     <div class="login-option">
-                                        <a href="/user/login/find-account.aspx">아이디 찾기</a>
-                                        <a href="/user/login/find-pw.aspx?act=pw">비밀번호 찾기</a>
+                                        <a href="find-account.jsp">아이디 찾기</a>
+                                        <a href="find-pw5366.jsp?act=pw">비밀번호 찾기</a>
                                     </div>
                                 </fieldset>
                             </form>
@@ -394,12 +363,12 @@
                     </div>
                     <div class="sect-loginguide">
                         <div class="box-useguide">
-                            <strong>CJ ONE 회원이 아니신가요?</strong>
+                            <strong>CGV 회원이 아니신가요?</strong>
                             <span>회원가입하시고 다양한 혜택을 누리세요!</span>
                             <strong>
-                                <a title="새창" target="_blank" href="https://www.cjone.com/cjmweb/join.do?coopco_cd=7010&brnd_cd=1000" class="round red"><span>CJ ONE 회원가입하기</span></a>
+                                <a href="<c:url value='/join.front' />" class="round red"><span>CGV 회원가입하기</span></a>
                             </strong>
-
+                            
                         </div>
                     </div>
                     <div class="sect-loginad" style="background:#d2cbbe;">
@@ -415,13 +384,13 @@
 
 
 
-<form name="loginform" id="loginform" method="post" action="https://www.cgv.co.kr/user/login/login.aspx" novalidate="novalidate">
+<!-- <form name="loginform" id="loginform" method="post" action="https://www.cgv.co.kr/user/login/login.aspx" novalidate="novalidate">
 	<input type="hidden" name="id" id="id" />
 	<input type="hidden" name="password" id="password" />
     <input type="hidden" name="id_save" id="id_save" />
-	<input type="hidden" name="returnURL" value="http://www.cgv.co.kr/default.aspx" />
+	<input type="hidden" name="returnURL" value="../../index.jsp" />
 </form>
-
+ -->
 <script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 
 
@@ -491,11 +460,11 @@
                 if (result > 1000000) {
                     result = result - 100000;
                 }
-                // $('#imageCatpcha').html('<img src="http://www.cjone.com/cjmportal/captcha/CaptChaImg.jsp?wid=214&hei=57&size=50&rand=' + captchaInfo.rand + '" />');
+                // $('#imageCatpcha').jsp('<img src="http://www.cjone.com/cjmportal/captcha/CaptChaImg.jsp?wid=214&hei=57&size=50&rand=' + captchaInfo.rand + '" />');
 
                 $('#ctl00_PlaceHolderContent_hdfNum').val(result);
                 // alert($('#ctl00_PlaceHolderContent_hdfNum').val());
-                $('#imageCatpcha').html('<img src="http://www.cgv.co.kr/user/login/find-account-captcha-random.aspx?result= ' + result + '" />');
+                $('#imageCatpcha').jsp('<img src="http://www.cgv.co.kr/user/login/find-account-captcha-random.aspx?result= ' + result + '" />');
 
 
             }
@@ -523,8 +492,8 @@
 
                         var obj = $('#ctl00_PlaceHolderContent_hdfNum').val();
                         var audi = obj.substring(0, 1);
-                        // $('#audioCatpchaSound').html('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi + '.mp3" />');
-                        $('#audioCatpchaSound').html('<embed src="http://img.cgv.co.kr/images/captcha/' + audi + '.mp3" />');
+                        // $('#audioCatpchaSound').jsp('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi + '.mp3" />');
+                        $('#audioCatpchaSound').jsp('<embed src="http://img.cgv.co.kr/images/captcha/' + audi + '.mp3" />');
                     }, 1000 * 1.5);
 
 
@@ -533,38 +502,38 @@
 
                         var obj1 = $('#ctl00_PlaceHolderContent_hdfNum').val();
                         var audi1 = obj1.substring(1, 2);
-                        //  $('#audioCatpchaSound').html('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi1 + '.mp3" />');
-                        $('#audioCatpchaSound').html('<embed src="http://img.cgv.co.kr/images/captcha/' + audi1 + '.mp3"  type=audio/mp3  hidden=true />');
+                        //  $('#audioCatpchaSound').jsp('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi1 + '.mp3" />');
+                        $('#audioCatpchaSound').jsp('<embed src="http://img.cgv.co.kr/images/captcha/' + audi1 + '.mp3"  type=audio/mp3  hidden=true />');
                     }, 1000 * 3);
 
                     setTimeout(function audi1() {
                         var obj2 = $('#ctl00_PlaceHolderContent_hdfNum').val();
                         var audi2 = obj2.substring(2, 3);
-                        // $('#audioCatpchaSound').html('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi2 + '.mp3" />');
-                        $('#audioCatpchaSound').html('<embed src="http://img.cgv.co.kr/images/captcha/' + audi2 + '.mp3"  type=audio/mp3   hidden=true />');
+                        // $('#audioCatpchaSound').jsp('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi2 + '.mp3" />');
+                        $('#audioCatpchaSound').jsp('<embed src="http://img.cgv.co.kr/images/captcha/' + audi2 + '.mp3"  type=audio/mp3   hidden=true />');
                     }, 1000 * 4.5);
 
 
                     setTimeout(function audi2() {
                         var obj3 = $('#ctl00_PlaceHolderContent_hdfNum').val();
                         var audi3 = obj3.substring(3, 4);
-                        // $('#audioCatpchaSound').html('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi3 + '.mp3" />');
-                        $('#audioCatpchaSound').html('<embed src="http://img.cgv.co.kr/images/captcha/' + audi3 + '.mp3"  type=audio/mp3   hidden=true />');
+                        // $('#audioCatpchaSound').jsp('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi3 + '.mp3" />');
+                        $('#audioCatpchaSound').jsp('<embed src="http://img.cgv.co.kr/images/captcha/' + audi3 + '.mp3"  type=audio/mp3   hidden=true />');
                     }, 1000 * 6);
 
                     setTimeout(function audi3() {
                         var obj4 = $('#ctl00_PlaceHolderContent_hdfNum').val();
                         var audi4 = obj4.substring(4, 5);
-                        //$('#audioCatpchaSound').html('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi4 + '.mp3" />');
-                        $('#audioCatpchaSound').html('<embed src="http://img.cgv.co.kr/images/captcha/' + audi4 + '.mp3"  type=audio/mp3  hidden=true  />');
+                        //$('#audioCatpchaSound').jsp('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi4 + '.mp3" />');
+                        $('#audioCatpchaSound').jsp('<embed src="http://img.cgv.co.kr/images/captcha/' + audi4 + '.mp3"  type=audio/mp3  hidden=true  />');
                     }, 1000 * 7.5);
 
 
                     setTimeout(function audi4() {
                         var obj5 = $('#ctl00_PlaceHolderContent_hdfNum').val();
                         var audi5 = obj5.substring(5, 6);
-                        // $('#audioCatpchaSound').html('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi5 + '.mp3" />');
-                        $('#audioCatpchaSound').html('<embed src="http://img.cgv.co.kr/images/captcha/' + audi5 + '.mp3"  type=audio/mp3  hidden=true  />');
+                        // $('#audioCatpchaSound').jsp('<bgsound src="http://img.cgv.co.kr/images/captcha/' + audi5 + '.mp3" />');
+                        $('#audioCatpchaSound').jsp('<embed src="http://img.cgv.co.kr/images/captcha/' + audi5 + '.mp3"  type=audio/mp3  hidden=true  />');
                     }, 1000 * 9);
 
 
@@ -906,9 +875,9 @@
 					<a href="https://www.facebook.com/CJCGV" target="_blank" class="facebook" title="새창">페이스북</a><a href="https://twitter.com/cj_cgv" target="_blank" class="twitter" title="새창">트위터</a><a href="https://www.instagram.com/cgv_korea/" target="_blank" class="instagram" title="새창">인스타그램</a>
 				</div>
 				<div class="address">
-					<address>(04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)</address>
+					<address>서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)</address>
 					<p class="vl">
-						<span>대표이사 : 서정</span><span>사업자등록번호 : 104-81-45690</span><span>통신판매업신고번호 : 2017-서울용산-0662</span>
+						<span>대표이사 : 서정</span><span>사업자등록번호 : 104-81-45690</span><span>통신판매업신고번호 : 마포 0586</span>
 					</p>
 					<p class="vl">
 						<span>개인정보보호 책임자 : 마케팅 담당 정종민</span><span>대표이메일 : cjcgvmaster@cj.net</span><span>CGV고객센터 : 1544-1122</span>
@@ -951,7 +920,6 @@
 
         <div class="adFloat" style="display:block">
 
-            <iframe src='http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon' width='154' height='182' frameborder='0' scrolling='no' topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' allowTransparency="true" id="ad_float1"></iframe>
         </div>
         <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->
@@ -1386,4 +1354,6 @@
 <!-- <script type="text/javascript" language="javascript" src="http://img.cgv.co.kr/common/js/insightIS.js"></script>-->
 
 </body>
+
+<!-- Mirrored from www.cgv.co.kr/user/login/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 12:15:16 GMT -->
 </html>

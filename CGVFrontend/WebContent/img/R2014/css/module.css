@@ -3243,7 +3243,7 @@ sect-user .confirm-type{ padding-top:24px; border-top:2px solid #999999; color:#
 /* 평점 */
 .wrap-grade{}
 [class|="sect"][class*="chart"].gradelist{}
-[class|="sect"][class*="chart"].gradelist ul{ padding:20px 20px 0;}
+[class|="sect"][class*="chart"].gradelist ul{ padding:20px 20px 0; width:20000em;}
 [class|="sect"][class*="chart"].gradelist ul > li{ float:left; width:185px; margin:0 5px; padding:15px 20px;}
 [class|="sect"][class*="chart"].gradelist ul > li .box-image{ width:185px; min-height:260px}
 [class|="sect"][class*="chart"].gradelist ul > li .box-image .thumb-image{ height:260px}
@@ -3298,7 +3298,7 @@ sect-user .confirm-type{ padding-top:24px; border-top:2px solid #999999; color:#
 .wrap-grade .sect-grade .warp-gradeenter .comment-option .box-option .submit{ position:absolute; right:5px; top:5px;}
 .wrap-grade .sect-grade .warp-gradeenter .comment-option .box-option .submit > .round{ width:50px;}
 .wrap-grade .sect-grade .link-mygrade{ position:absolute; top:353px; right:10px; }
-.wrap-grade .wrap-persongrade{ border-top:1px solid #999999;border-bottom:1px solid #999999; overflow:hidden;}
+.wrap-grade .wrap-persongrade{ border-top:1px solid #999999;border-bottom:1px solid #999999; overflow:hidden; width:980px}
 .wrap-grade .wrap-persongrade > ul{ position:relative; margin:0 25px -2px; border-top:none;  overflow:hidden;}
 .wrap-grade .wrap-persongrade > ul > li{ position:relative; float:left; margin-right:-1px; border-right:1px solid #ceccc1; width:50%; height:150px;}
 .wrap-grade .wrap-persongrade > ul > li .writerinfo{}

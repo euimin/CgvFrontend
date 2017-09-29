@@ -4,14 +4,12 @@ public class MembersDTO {
 
 	private String name;
 	private String id;
-	private String pwd;
-	private String pwdChk;
+	private String password;
 	private String birth;
 	private String gender;
 	private String phone;
 	private String email;
-	private String inters;
-	
+	private String nickname;
 	
 	public String getName() {
 		return name;
@@ -25,17 +23,11 @@ public class MembersDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-	public String getPwdChk() {
-		return pwdChk;
-	}
-	public void setPwdChk(String pwdChk) {
-		this.pwdChk = pwdChk;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getBirth() {
 		return birth;
@@ -61,6 +53,11 @@ public class MembersDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+		
 }
