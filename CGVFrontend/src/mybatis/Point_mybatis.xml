@@ -24,6 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</choose>
 	</select>
 	
+	<resultMap id="PointDTO" type="com.kosmo.cgv.service.PointDTO">
+  		<id property="movie_code" column="movie_code" />
+  		<result property="upCount" column="upCount"/>
+	</resultMap>
 	<select id="GetEggValue" resultType="PointDTO">
 		select movie_code,count(*) upCount from review where feedback='U' group by movie_code
 	</select>

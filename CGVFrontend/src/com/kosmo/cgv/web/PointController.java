@@ -61,6 +61,7 @@ public class PointController {
 		model.addAttribute("dDayMap", dDayMap);
 		model.addAttribute("wishesMap", wishesMap);
 		////////////////////////////////////////////////////영화 부분
+		
 		List<PointDTO> movieReviews=null;
 		Map<String,PointDTO> upCountByMovie=null;
 		if(map.get("movie_code") != null) {
