@@ -25,7 +25,13 @@ import com.kosmo.cgv.service.impl.MembersServiceImpl;
 //세션처리용
 @SessionAttributes("id")
 @Controller
-public class MembersController {	
+public class MembersController {
+
+	//마이페이지(MyCGV)로 이동
+	@RequestMapping("/myCGV.front")
+	public String myCGV() throws Exception{
+		return "user/mycgv/mycgv-index";
+	}
 
 	@RequestMapping("/guest.front")
 	public String guest() throws Exception{
@@ -42,10 +48,7 @@ public class MembersController {
 		return "user/guest/login";
 	}
 	
-	@RequestMapping("/myCGV.front")
-	public String myCGV() throws Exception{
-		return "user/mycgv/mycgv-index";
-	}
+	
 	
 	//서비스 주입
 	@Resource(name="membersService")
@@ -54,13 +57,14 @@ public class MembersController {
 	private static final Logger log = LoggerFactory.getLogger(MembersController.class);
 
 	
+	
 	//회원가입 폼으로 이동
 	@RequestMapping("/joinProcess.front")
 	public String membersform(@ModelAttribute MembersDTO dto, Map map) throws Exception{
 		//뷰정보 반환]
 		return "user/join/index";
 	}
-	//가입성공시 확인폼으로 이동
+	//가입성공시 로그인폼으로 이동
 	@RequestMapping(value="/joinProcess.front", method=RequestMethod.POST)
 	public String members(@ModelAttribute MembersDTO dto, Map map) throws Exception{
 			//데이타 저장]
@@ -74,21 +78,18 @@ public class MembersController {
 	@ResponseBody
 	@RequestMapping("/isMemberId.front")
 	public String isMemberId(@RequestParam Map map) throws Exception{
-		
 		MembersDTO dto = membersService.selectOne(map);		
 		return dto==null ?"N":"Y";
 	}
+	
 	//로그인 처리]
 	@RequestMapping("/loginProcess.front")
 	public String process(@RequestParam Map map,Model model) throws Exception{
-		
-		System.out.println("들어오나");
 		//서비스 호출]
 		boolean isLogin=membersService.login(map);
 		if(isLogin){//회원인 경우
 			//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
 			model.addAllAttributes(map);
-			
 		}
 		else{//비회원
 			model.addAttribute("loginError","없는 아이디거나 비밀번호가 틀렸습니다.");
@@ -98,14 +99,45 @@ public class MembersController {
 		//뷰(JSP)정보 반환]-목록으로 이동
 		return "forward:/";
 	}///process
-	@RequestMapping("/logout.front")
+	
 	//로그아웃 처리]
+	@RequestMapping("/logout.front")
 	public String logout(SessionStatus status) throws Exception{
 		//로그 아웃처리-세션영역에 속성 삭제]
 		status.setComplete();
-		//뷰(JSP)정보 반환]- 로그인으로 이동
+		//뷰(JSP)정보 반환]- 메인페이지로 이동
 		return "forward:/";
 	}///////////////////logout
 
+	//회원정보 뷰페이지로 이동
+	@RequestMapping("/myView.front")
+	public String membersView() throws Exception{
+		return "user/mycgv/myinfo/mycgv-view";
+	}	
+	
+	//회원정보 뷰페ㅇ폼으로 이동
+	@RequestMapping("/updateProcess.front")
+	public String editform(@ModelAttribute MembersDTO dto, @RequestParam Map map) throws Exception{
+		//model.addAllAttribute(membersService.selectOne(map));
+		membersService.selectOne(map);
+		//뷰정보 반환]
+		return "user/mycgv/myinfo/mycgv-update";
+	}
+	
+	//회원정보 수정 성공시 마이페이지 뷰로 이동
+	@RequestMapping(value="/updateProcess.front", method=RequestMethod.POST)
+	public String membersUpdate(@ModelAttribute MembersDTO dto, Map map) throws Exception{
+		membersService.update(dto);
+		//데이타 저장]
+		map.put("dto", dto);
+		//뷰정보 반환]
+		return "user/mycgv/myinfo/mycgv-update";
+	}
+	
+	
+	@RequestMapping("/membersDelete.front")
+	public String membersDelete() throws Exception{
+		return "#";
+	}
 
 }

@@ -18,12 +18,12 @@
     <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
     <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
     <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
-    <meta id="ctl00_og_title" property="og:title" content="로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
+    <meta id="ctl00_og_title" property="og:title" content="CGV강남 | 영화 그 이상의 감동. CGV"></meta>
     
-    <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/common/cgv_200x200.jpg"></meta>
+    <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg"></meta>
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
-    <title id="ctl00_headerTitle">로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
+    <title id="ctl00_headerTitle">[CGV강남]&lt;CGV극장 &lt; 극장 | 영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
@@ -42,6 +42,7 @@
     <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
@@ -62,9 +63,6 @@
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
 	<link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
-
-  
-
 
     <!-- 각페이지 Header Start--> 
     
@@ -130,7 +128,7 @@
         }
         function CloseAD() {
             var AdUrl = window.location.href;
-            var ArrAdUrl = AdUrl.split("../../index.jsp");
+            var ArrAdUrl = AdUrl.split("/");
 
             var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
             var CurCookieUrl = GetCookieAd(CurCookieName);
@@ -142,7 +140,7 @@
         }
         function OpenAD() {
             var AdUrl = window.location.href;
-            var ArrAdUrl = AdUrl.split("../../index.jsp");
+            var ArrAdUrl = AdUrl.split("/");
             var CookieUrl = ArrAdUrl[3];
             var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
             var CurCookieUrl = GetCookieAd(CurCookieName);
@@ -184,7 +182,7 @@
         //특별관 클럽 팝업
         function openSpecialClub() {
             //            var win = window.open('http://section.cgv.co.kr/event/SpecialClub/2014clubInfo_pop.aspx', 'winSpecialClub', 'left=0,top=0,width=670,height=800,toolbar=no,scrollbars=yes');
-            var win = window.open('../../event/develop/1503_CLUB_Info.jsp', 'winSpecialClub', 'left=0,top=0,width=580,height=700,toolbar=no,scrollbars=yes');
+            var win = window.open('http://www.cgv.co.kr/event/develop/1503_CLUB_Info.jsp', 'winSpecialClub', 'left=0,top=0,width=580,height=700,toolbar=no,scrollbars=yes');
             win.focus();
         }
 
@@ -224,9 +222,9 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap">
+            <div class="top_extend_ad_wrap" style="background-color:black;">
                 <div class="adreduce" id="adReduce">                    
-                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
+                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
@@ -326,10 +324,10 @@
                     <div class="sect-login">
                         <ul class="tab-menu-round">
                             <li class="on">
-                                <a href="/login.front">로그인</a>
+                                <a href="<c:url value='/login.front' />">로그인</a>
                             </li>
                             <li>
-                                <a href="/guest.front">비회원로그인</a>
+                                <a href="<c:url value='/guest.front' />">비회원로그인</a>
                             </li>
                         </ul>
                         <div class="box-login login_1408">
@@ -368,7 +366,7 @@
                             <strong>CGV 회원이 아니신가요?</strong>
                             <span>회원가입하시고 다양한 혜택을 누리세요!</span>
                             <strong>
-                                <a title="새창" target="_blank" href="https://www.cjone.com/cjmweb/join.do?coopco_cd=7010&amp;brnd_cd=1000" class="round red"><span>CJ ONE 회원가입하기</span></a>
+                                <a href="<c:url value='/join.front' />" class="round red"><span>CGV 회원가입하기</span></a>
                             </strong>
                             
                         </div>
@@ -386,14 +384,14 @@
 
 
 
-<form name="loginform" id="loginform" method="post" action="https://www.cgv.co.kr/user/login/login.aspx" novalidate="novalidate">
+<!-- <form name="loginform" id="loginform" method="post" action="https://www.cgv.co.kr/user/login/login.aspx" novalidate="novalidate">
 	<input type="hidden" name="id" id="id" />
 	<input type="hidden" name="password" id="password" />
     <input type="hidden" name="id_save" id="id_save" />
 	<input type="hidden" name="returnURL" value="../../index.jsp" />
 </form>
-
-<script type="text/javascript" src="../../img/R2014/js/system/crypto.js"></script>
+ -->
+<script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 
 
 <script type="text/javascript">
@@ -841,16 +839,16 @@
 			<div class="sect-smuse">
 				<h2>특별관 리스트</h2>
 				<ul>
-					<li><a href="../../theaters/special/index.jsp?regioncode=4D14" class="dx">4DX</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=07" class="imax">IMAX</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=SCX" class="screenx">SCREENX</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=SPX" class="spherex">SphereX</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=SDX" class="soundx">SOUNDX</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=TEM" class="tempur">Tempur</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=99" class="gold">GOLDCLASS</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=103" class="cine">CINE de CHEF</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=pc" class="cinema">THE PRIVATE CINEMA</a></li>
-					<li><a href="../../theaters/special/index.jsp?regioncode=CK" class="kids">Cine kids</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=4D14" class="dx">4DX</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=07" class="imax">IMAX</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=SCX" class="screenx">SCREENX</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=SPX" class="spherex">SphereX</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=SDX" class="soundx">SOUNDX</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=TEM" class="tempur">Tempur</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=99" class="gold">GOLDCLASS</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=103" class="cine">CINE de CHEF</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=pc" class="cinema">THE PRIVATE CINEMA</a></li>
+					<li><a href="http://www.cgv.co.kr/theaters/special/?regioncode=CK" class="kids">Cine kids</a></li>
 				</ul>
 			</div>
 			<div class="sect-cinfo">
@@ -864,13 +862,13 @@
 						<li><a href="http://corp.cgv.co.kr/company/advertize/ad_Default.aspx" target="_blank">광고/프로모션문의</a></li>
                         <li><a href="http://corp.cgv.co.kr/company/advertize/af_default.aspx" target="_blank">제휴문의</a></li>
                         <li><a href="http://corp.cgv.co.kr/company/advertize/bp_insert.aspx" target="_blank">출점문의</a></li>						
-						<li><a href="../../rules/service.jsp">이용약관</a></li>
-                        <li><a href="../../rules/organized.jsp">편성기준</a></li>
-						<li><a href="../../rules/privacy.jsp" class="empha-red">개인정보처리방침</a></li>
-						<li><a href="../../rules/disclaimer.jsp">법적고지</a></li>
-						<li><a href="../../rules/emreject.jsp">이메일주소무단수집거부</a></li>
-						<li><a href="../../company/coexist.jsp">상생경영</a></li>
-						<li><a href="../../guide/sitemap.jsp">사이트맵</a></li>
+						<li><a href="http://www.cgv.co.kr/rules/service.aspx">이용약관</a></li>
+                        <li><a href="http://www.cgv.co.kr/rules/organized.aspx">편성기준</a></li>
+						<li><a href="http://www.cgv.co.kr/rules/privacy.aspx" class="empha-red">개인정보처리방침</a></li>
+						<li><a href="http://www.cgv.co.kr/rules/disclaimer.aspx">법적고지</a></li>
+						<li><a href="http://www.cgv.co.kr/rules/emreject.aspx">이메일주소무단수집거부</a></li>
+						<li><a href="http://www.cgv.co.kr/company/coexist.aspx">상생경영</a></li>
+						<li><a href="http://www.cgv.co.kr/guide/sitemap.aspx">사이트맵</a></li>
 					</ul>
 				</div>
 				<div class="share">
@@ -932,12 +930,12 @@
 	<div id="ctl00_sect_person_right" class="sect-aside-banner" style="padding:0; margin:0; position:fixed; z-index:1;">
 		<div class="aside-content-top">
 			<div class="aside-content-btm">
-				<a href="../../theaters/index.jsp"><img src="../../img/R2014/images/common/btn/btn_person_theater.gif" alt="CGV THEATER" /></a>
-				<a href="../../arthouse/index.jsp"><img src="../../img/R2014/images/common/btn/btn_person_arthouse.gif" alt="CGV arthouse" /></a>
-				<a href="../../theaters/special/index.jsp"><img src="../../img/R2014/images/common/btn/btn_person_special.gif" alt="CGV SPECIAL" /></a>
-				<a href="http://phototicket.cgv.co.kr/" target="_blank"><img src="../../img/R2014/images/common/btn/btn_person_phototicket.gif" alt="CGV 포토티켓" /></a>
-				<a href="../mycgv/reserve/index.jsp" class="required-login" data-url="/user/mycgv/reserve/"><img src="../../img/R2014/images/common/btn/btn_person_ticket.gif" alt="CGV TICKET INFO" /></a>
-				<a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx"><img src="../../img/R2014/images/common/btn/btn_person_discount.gif" alt="CGV DISCOUNT INFO" /></a>
+				<a href="/theaters/"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_person_theater.gif" alt="CGV THEATER" /></a>
+				<a href="/arthouse/"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_person_arthouse.gif" alt="CGV arthouse" /></a>
+				<a href="/theaters/special/"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_person_special.gif" alt="CGV SPECIAL" /></a>
+				<a href="http://phototicket.cgv.co.kr/" target="_blank"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_person_phototicket.gif" alt="CGV 포토티켓" /></a>
+				<a href="/user/mycgv/reserve/" class="required-login" data-url="/user/mycgv/reserve/"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_person_ticket.gif" alt="CGV TICKET INFO" /></a>
+				<a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_person_discount.gif" alt="CGV DISCOUNT INFO" /></a>
 			</div>
 		</div>
 		<div class="btn-top">
@@ -1014,7 +1012,7 @@
         </span>
     </span>
 {{if IsTicketing }}
-    <a class="link-reservation" href="../../ticket/index8604.jsp?MOVIE_CD=${CGVCode}&amp;MOVIE_CD_GROUP=${CGVCode}">예매</a> 
+    <a class="link-reservation" href="/ticket/?MOVIE_CD=${CGVCode}&MOVIE_CD_GROUP=${CGVCode}">예매</a> 
 {{/if}}
 </div>
 </script>
@@ -1033,7 +1031,7 @@
 </li>
 </script>
 
-<script type="text/javascript" src="../../img/R2014/js/system/crypto.js"></script>
+<script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">
     //<![CDATA[
     function closeBanner(){        
@@ -1331,7 +1329,7 @@
         i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
             (i[r].q = i[r].q || []).push(arguments)
         }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '../../../www.google-analytics.com/analytics.js', 'ga');
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-47126437-1', 'cgv.co.kr'); //지주사
     ga('create', 'UA-47951671-5', 'cgv.co.kr', { 'name': 'cgvTracker' }); //디마팀
@@ -1341,13 +1339,13 @@
 
 
 <!-- Google Tag Manager -->
-<noscript><iframe src="http://www.googletagmanager.com/ns.jsp?id=GTM-NNNFR3"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NNNFR3"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>    (function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({ 'gtm.start':
             new Date().getTime(), event: 'gtm.js'
         }); var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-            '../../../www.googletagmanager.com/gtm5445.jsp?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-NNNFR3');
 </script>
 <!-- End Google Tag Manager -->

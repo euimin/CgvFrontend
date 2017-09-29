@@ -7,9 +7,15 @@ import java.util.Map;
 import java.util.Vector;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.annotation.RequestScope;
 
 import com.kosmo.cgv.service.MovieDto;
 import com.kosmo.cgv.service.impl.MovieServiceImpl;
@@ -34,6 +40,7 @@ public class ReserveController {
 		model.addAttribute("movieList", movieList);
 		
 		List<String> regionList = theaterService.selectRegionList();
+		
 		model.addAttribute("regionList", regionList);
 		
 		Map<String, List<String>> theaterMap = new HashMap<String, List<String>>();
@@ -74,7 +81,22 @@ public class ReserveController {
 			cal.set(year, month, day);
 		}		
 		model.addAttribute("dateList", dateList);
-	
 		return "reserve/reservation";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/movieSelect.front" ,produces="text/html;charset=UTF-8")
+	public String movieSelect(@RequestParam String movie_code) throws Exception{		
+		MovieDto movie = movieService.selectOneMovie(movie_code);		
+		JSONObject json = new JSONObject();
+		json.put("movie_title", movie.getTitle());
+		json.put("movie_poster", movie.getPoster());
+		json.put("movie_rating", movie.getRating());		
+		return json.toJSONString();
+	}	
+	
+	@RequestMapping("/proxy.front")
+	public String proxy() throws Exception{	
+		return "ticket/proxy";
 	}
 }

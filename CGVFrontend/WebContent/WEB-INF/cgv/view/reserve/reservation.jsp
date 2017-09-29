@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
 <head id="ctl00_Head1">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -25,7 +25,8 @@
 <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2017/09/FOAM_TYPE2/reservation_step3_step1.css" />
 <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2017/09/FOAM_TYPE2/reservation_step3_step2.css" />
 
-<script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/jquery-1.10.2.min.js"></script>
+<!-- <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/jquery-1.10.2.min.js"></script> -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/cgvpackage.min.js"></script>
 
 <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2017/0907.TXTCHG/9090/silverlight_link.js"></script>
@@ -43,6 +44,7 @@
 <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2017/0907.TXTCHG/9090/reservation.popup.js?20140327"></script>
 <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2017/0907.TXTCHG/9090/reservation.step1.js"></script>
 <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2017/0907.TXTCHG/9090/reservation.step2.js"></script>
+
 <script type="text/javascript">
 // for loadStep3Resources_STEP2 include source path;
 var CDN_PATH_JS = "http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2017/0907.TXTCHG/9090/";
@@ -83,19 +85,48 @@ preselectSetting(
 			<!-- 메인컨텐츠 -->
 			<div class="steps">
 				<!-- step1 -->
-				<div class="step step1">
+				<div class="step step1" style="height: 595px; display: block;">
 					<!-- MOVIE 섹션 -->
-					<div class="section section-movie">
+					<div class="section section-movie" style="height: 593px">
 						<!-- col-head -->
 						<div class="col-head" id="skip_movie_list">
 							<h3 class="sreader">영화</h3>
 							<a href="#" class="skip_to_something" onclick="skipToSomething('skip_theater_list');return false;">영화선택 건너뛰기</a>
 						</div>
 						<!-- col-body -->
-						<div class="col-body">
+						<div class="col-body" style="height: 560px">
 							<!-- 영화선택 -->
-							<div class="movie-select">							
-								<div class="movie-list nano" id="movie_list">
+							<div class="movie-select">
+								<script>						
+									$(function(){										
+										$("#movie_list>ul>li").click(function(){																															
+											$("#movie_list>ul>li").each(function(){
+												$(this).removeClass("press selected");
+											});
+											$(this).toggleClass("press selected");
+																																									
+											$.ajax({
+												url:"<c:url value='/movieSelect.front'/>",												
+												type:"get",
+												dataType:"json",
+												data:$(this).find("#frm").serialize(),
+												success:function(data){										
+													console.log(data.movie_title);
+													console.log(data.movie_poster);
+													console.log(data.movie_rating);
+													$(".movie_poster>img").attr("src", "http://192.168.0.128:8080/CGVBackend/images/posters/"+data.movie_poster);
+													$("#movie_title>span>a").html(data.movie_title);
+													$("#movie_rating>span").html(data.movie_rating);
+													$("#info_movie>.placeholder").css("display", "none");
+												},
+												error:function(request,status,error){
+													alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
+												}
+											});											
+										});
+									});
+								</script>															
+								<div class="movie-list nano" id="movie_list" style="height: 522px;">
 									<ul class="content scroll-y" onscroll="movieSectionScrollEvent();">
 										<!-- 영화 목록 -->
 										<c:forEach items="${movieList}" var="movie">
@@ -113,42 +144,75 @@ preselectSetting(
 													<li class="rating-18">
 												</c:otherwise>
 											</c:choose><!-- li class="press selected" -->										
-												<a href="#">
+												<a href="#" onclick="return false;">
 													<span class="icon">&nbsp;</span>
 													<span class="text">${movie.title}</span>
+													<form id="frm">
+														<input type="hidden" name="movie_code" value="${movie.movie_code}"/>
+													</form>
 												</a>
 											</li>
 										</c:forEach>
-									</ul>
+									</ul>							
 								</div>								
 							</div>
 						</div>
 					</div>
 					<!-- THEATER 섹션 -->
-					<div class="section section-theater">
+					<div class="section section-theater" style="height: 593px">
 						<!-- col-head -->
 						<div class="col-head" id="skip_theater_list">
 							<h3 class="sreader">극장</h3>
 							<a href="#" class="skip_to_something" onclick="skipToSomething('skip_date_list');return false;">극장선택 건너뛰기</a>
 						</div>
 						<!-- col-body -->
-						<div class="col-body">							
+						<div class="col-body" style="height: 560px">							
 							<!-- 극장선택 -->
 							<div class="theater-select">								
 								<div class="theater-list">
+									<script>
+										$(function(){
+											$("#theater_area_list>ul>li").click(function(){
+												$("#theater_area_list>ul>li").each(function(){
+													$(this).children("#theaterDiv").css("display", "none");
+													$(this).removeClass("selected");
+												});
+												$(this).children("#theaterDiv").css("display", "inline");
+												$(this).toggleClass("selected");
+											});
+										});
+									</script>
 									<div class="theater-area-list" id="theater_area_list">
-										<ul>
+										<ul>											
 										    <c:forEach items="${regionList}" var="region">
 												<li><!-- class="selected" -->
-													<a href="#" onclick="theaterAreaClickListener(event);return false;">
+													<a href="#" onclick="return false;"><!-- onclick="theaterAreaClickListener(event);return false;" -->
 														<span class="name">${region}</span>
 														<span class="count">(${theaterCountMap[region]})</span>
 													</a>
-													<div class="area_theater_list nano">
+													<script>
+														$(function(){
+															$("#theaterDiv>ul>li").click(function(){																															
+																$("#theaterDiv>ul>li").each(function(){
+																	$(this).removeClass("selected");
+																});
+																$(this).toggleClass("selected");
+																
+																$("#theater_name").html("CGV"+$(this).children("a").html());
+																$("#contents_info_theater").css("display", "inline");
+																$("#info_theater>.placeholder").css("display", "none");																												
+															});
+														});
+													</script>
+													<div class="area_theater_list nano" id="theaterDiv" style="height: 522px;">
 														<ul class="content scroll-y">
 															<!-- 해당 지역 상영관 -->
 															<c:forEach items="${theaterMap[region]}" var="theater">
-																<li><a href="#">${theater}</a></li>
+																<li>
+																	<a href="#" onclick="return false;"><!-- onclick="theaterAreaClickListener(event);return false;" -->
+																		${theater.replace("CGV", "")}
+																	</a>
+																</li>
 															</c:forEach>
 														</ul>
 													</div>
@@ -161,17 +225,31 @@ preselectSetting(
 						</div>
 					</div>
 					<!-- DATE 섹션 -->
-					<div class="section section-date">
+					<div class="section section-date" style="height: 593px">
 						<div class="col-head" id="skip_date_list">
 							<h3 class="sreader">날짜</h3>
 							<a href="#" onclick="return false;" class="skip_to_something" onclick="skipToSomething('skip_time_list');return false;">날짜 건너뛰기</a>
 						</div>
-						<div class="col-body">
-							<!-- 날짜선택 -->							
-							<div class="date-list nano" id="date_list">
-								<ul class="content scroll-y">
-									<div>
-										<c:forEach items="${dateList}" var="dateMap">																		
+						<div class="col-body" style="height: 560px">
+							<!-- 날짜선택 -->
+							<script>
+								$(function(){
+									$("#date_list>ul>div>li").click(function(){																															
+										$("#date_list>ul>div>li").each(function(){
+											$(this).removeClass("selected");
+										});
+										$(this).toggleClass("selected");	
+										
+										$("#date_data").html($(this).find("#dateStr").val());
+										$("#contents_info_theater").css("display", "inline");
+										$("#info_theater>.placeholder").css("display", "none");
+									});
+								});
+							</script>							
+							<div class="date-list nano has-scrollbar has-scrollbar-y" id="date_list" style="height: 522px;">
+								<ul class="content scroll-y" tabindex="-1" style="right: -17px;">																																			
+									<div>										
+										<c:forEach items="${dateList}" var="dateMap">																												
 											<c:if test="${(dateMap.year ne prevYearVal) or (dateMap.month ne prevMonthVal)}">
 												<li class="month dimmed">
 													<div>
@@ -179,7 +257,7 @@ preselectSetting(
 														<span class="month">${dateMap.month}</span>
 													</div>
 												</li>
-											</c:if>
+											</c:if>	
 											<c:choose>
 												<c:when test="${dateMap.dayweek=='일'}">
 													<li class="day day-sun">
@@ -191,9 +269,11 @@ preselectSetting(
 													<li class="day">
 												</c:otherwise>
 											</c:choose><!-- class="selected" --><!-- class="day-sat" class="day-sun" -->
-												<a href="#">
+												<a href="#" onclick="return false;">
 													<span class="dayweek">${dateMap.dayweek}</span>
 													<span class="day">${dateMap.day}</span>
+													<input type="hidden" id="dateStr" 
+														value="${dateMap.year}.${dateMap.month}.${dateMap.day}(${dateMap.dayweek})"/>
 												</a>
 											</li>
 											<c:set value="${dateMap.year}" var="prevYearVal"/>
@@ -201,16 +281,19 @@ preselectSetting(
 										</c:forEach>
 									</div>
 								</ul>
+								<!-- <div class="pane pane-y" style="display: block; opacity: 1; visibility: visible;">
+									<div class="slider slider-y" style="height: 50px; top: 0px;"></div>
+								</div> -->
 							</div>
 						</div>
 					</div>
 					<!-- TIME 섹션 -->
-					<div class="section section-time">
+					<div class="section section-time" style="height: 593px">
 						<div class="col-head" id="skip_time_list">
 							<h3 class="sreader">시간</h3>
 							<a href="#" class="skip_to_something" onclick="skipToSomething('tnb_step_btn_right');return false;">시간선택 건너뛰기</a>
 						</div>
-						<div class="col-body">
+						<div class="col-body" style="height: 560px">
 							<!-- 시간선택 -->
 							<div class="time-option">
 								<span class="morning">조조</span><span class="night">심야</span>
@@ -411,41 +494,43 @@ preselectSetting(
 					<div class="noscript"><span>현재 사용중인 환경에서는 스크립트 동작이 활성화되지 않아 예매 서비스를 이용하실 수 없습니다.<br/>예매 서비스를 이용하기 위해서는 <a href='http://www.enable-javascript.com/ko/' rel='nofollow'>스크립트 동작을 활성화</a> 해주세요.</span></div>
 				</noscript>
 			</div>
-			<div class="tnb_area">
-				<div class="tnb_container">
+			<div class="tnb_area" style="height: 193px">
+				<div class="tnb_container" style="top: 669px; botton:auto">
 				<div class="tnb_reset_btn"><a href="#" onmousedown="javascript:logClick('옵션/예매다시하기');" onclick="ticketRestart();return false;">예매 다시하기</a></div>
 				<div class="tnb step1">
 					<!-- btn-left -->
 					<a class="btn-left" href="#" onclick="OnTnbLeftClick(); return false;" title="">이전단계로 이동</a>
-					<div class="info movie">
-						<span class="movie_poster"><img src="" alt="영화 포스터" /></span>
-						<div class="row movie_title colspan2">
-							<span class="data letter-spacing-min ellipsis-line2"><a href="#" target="_blank" onmousedown="javascript:logClick('SUMMARY/영화상세보기');" title="새창열기">영화정보 상세보기</a></span>
+					<div class="info movie" id="info_movie">
+						<span class="movie_poster"><img src="" alt="" /></span>
+						<div class="row movie_title colspan2" style="display: block;" id="movie_title">
+							<span class="data letter-spacing-min ellipsis-line2"><a href="#" target="_blank" onmousedown="javascript:logClick('SUMMARY/영화상세보기');" title="새창열기"></a></span>
 						</div>
 						<div class="row movie_type">
 							<span class="data ellipsis-line1"></span>
 						</div>
-						<div class="row movie_rating">
+						<div class="row movie_rating" id="movie_rating">
 							<span class="data"></span>
-						</div>
-						<div class="placeholder" title="영화선택"></div>
+						</div>						
+						<div class="placeholder" title="영화선택"></div>											
 					</div>
-					<div class="info theater">
-						<div class="row name">
-							<span class="header">극장</span>
-							<span class="data letter-spacing-min ellipsis-line1"><a href="#" target="_blank" onmousedown="javascript:logClick('SUMMARY/극장상세보기');" title="새창열기">극장정보 상세보기</a></span>
-						</div>
-						<div class="row date">
-							<span class="header">일시</span>
-							<span class="data"></span>
-						</div>
-						<div class="row screen">
-							<span class="header">상영관</span>
-							<span class="data"></span>
-						</div>
-						<div class="row number">
-							<span class="header">인원</span>
-							<span class="data"></span>
+					<div class="info theater" id="info_theater">
+						<div id="contents_info_theater" style="display: none;">
+							<div class="row name">
+								<span class="header">극장</span>
+								<span class="data letter-spacing-min ellipsis-line1"><a href="#" target="_blank" onmousedown="javascript:logClick('SUMMARY/극장상세보기');" title="새창열기" id="theater_name"></a></span>
+							</div>
+							<div class="row date">
+								<span class="header">일시</span>
+								<span class="data" id="date_data"></span>
+							</div>
+							<div class="row screen">
+								<span class="header">상영관</span>
+								<span class="data"></span>
+							</div>
+							<div class="row number">
+								<span class="header">인원</span>
+								<span class="data"></span>
+							</div>
 						</div>
 						<div class="placeholder" title="극장선택"></div>
 					</div>
@@ -737,9 +822,9 @@ preselectSetting(
 	<p class="loadWrap"><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/ajax-loader-w.gif" alt="로딩 애니메이션" /></p>
 </div>
 <!-- iframe -->
-<iframe id="proxy_iframe" src="http://www.cgv.co.kr/Ticket/Proxy.html" scrolling="no" frameborder="0" width="0" height="0" style="display:none;" title="데이터 연동 숨김 프레임"></iframe>
-<iframe src="/CGV2011/RIA/RR999.aspx" name="rsvDataframe" id="rsvDataframe" scrolling="no" frameborder="0" width="0" height="0" style="display:none;" title="데이터 연동 프레임"></iframe>
+<%-- <iframe id="proxy_iframe" src="<c:url value='/proxy.front'/>" scrolling="no" frameborder="0" width="0" height="0" style="display:none;" title="데이터 연동 숨김 프레임"></iframe>
+<iframe src="/CGV2011/RIA/RR999.aspx" name="rsvDataframe" id="rsvDataframe" scrolling="no" frameborder="0" width="0" height="0" style="display:none;" title="데이터 연동 프레임"></iframe> --%>
 <!-- javascript 상위프레임에 있는 스크립트를 사용-->
-<!--<script type="text/javascript" src="http://img.cgv.co.kr/common/js/insightIS.js"></script>-->
+<!-- <script type="text/javascript" src="http://img.cgv.co.kr/common/js/insightIS.js"></script> -->
 </body>
 </html>

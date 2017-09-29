@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="mybatis.Theater_mybatis">	
 	<select id="selectRegionList" resultType="String">
-		select distinct region from theater
+		select region from (select distinct region, regionid from theater order by regionid)
 	</select>
 	<select id="selectTheaterListByRegion" parameterType="String" resultType="String">
 		select name from theater where region=#{region} order by name asc

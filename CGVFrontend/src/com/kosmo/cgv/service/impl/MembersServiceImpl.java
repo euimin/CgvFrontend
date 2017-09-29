@@ -47,7 +47,6 @@ public class MembersServiceImpl implements MembersService{
 
 	@Override
 	public int logout(MembersDTO dto) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	
