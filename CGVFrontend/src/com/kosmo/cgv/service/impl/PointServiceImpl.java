@@ -1,5 +1,6 @@
 package com.kosmo.cgv.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,9 +23,13 @@ public class PointServiceImpl implements PointService {
 	}
 
 	@Override
-	public List<PointDTO> selectReviewList() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PointDTO> selectReviewList(Map map) throws Exception {
+		return dao.selectReviewList(map);
+	}
+	
+	@Override
+	public Map<String,PointDTO> getEggValue() throws Exception {
+		return dao.getEggValue();
 	}
 
 	@Override
@@ -78,6 +83,8 @@ public class PointServiceImpl implements PointService {
 	public int getWishCount(String movie_code) throws Exception {
 		return dao.getWishCount(movie_code);
 	}
+
+	
 
 	
 }

@@ -6,12 +6,14 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.MapKey;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosmo.cgv.service.MovieDto;
+import com.kosmo.cgv.service.PointDTO;
 import com.kosmo.cgv.service.impl.PointServiceImpl;
 
 @Controller
@@ -20,21 +22,21 @@ public class PointController {
 	private PointServiceImpl service;
 	
 	@RequestMapping("/moviePoint.front")
-	public String showMovies(Model model) throws Exception{
+	public String showMovies(@RequestParam Map map,Model model) throws Exception{
 		List<MovieDto> list = service.selectMovieList();
 		Map<String, Double> reserveRateMap = new HashMap<String, Double>();
 		Map<String, Integer> dDayMap = new HashMap<String, Integer>();
 		Map<String, Integer> wishesMap = new HashMap<String, Integer>();
 		for(MovieDto movie: list) {
 			String movie_code = movie.getMovie_code();
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("movie_code", movie_code);
+			Map<String, String> dismap = new HashMap<String, String>();
+			dismap.put("movie_code", movie_code);
 			List<String> seatList = service.getReserveSeat(map);
 			int seatCount = 0;
 			for(String seat: seatList) {
 				seatCount += seat.split(",").length;
 			}
-			map.put("movie_code", null);
+			dismap.put("movie_code", null);
 			List<String> totalSeatList = service.getReserveSeat(map);
 			int totalSeatCount = 0;
 			for(String seat: totalSeatList) {
@@ -58,14 +60,16 @@ public class PointController {
 		model.addAttribute("reserveRateMap", reserveRateMap);
 		model.addAttribute("dDayMap", dDayMap);
 		model.addAttribute("wishesMap", wishesMap);
-		
+		////////////////////////////////////////////////////영화 부분
+		List<PointDTO> movieReviews=null;
+		Map<String,PointDTO> upCountByMovie=null;
+		if(map.get("movie_code") != null) {
+			movieReviews=service.selectReviewList(map);
+			upCountByMovie=service.getEggValue();
+			System.out.println(upCountByMovie.containsKey("movie_code"));
+		}
+		model.addAttribute("movieReviews",movieReviews);
+		model.addAttribute("upCountByMovie",upCountByMovie);
 		return "movies/point/index";
 	}
-	
-	@RequestMapping("/moviePointReview.front")
-	public String showReviews(Model model) throws Exception{
-		
-		return "movies/point/index";
-	}
-	
 }

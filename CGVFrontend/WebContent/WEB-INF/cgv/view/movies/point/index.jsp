@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
@@ -229,11 +230,11 @@
                     <ul id="movieUl" data-page="0" style="width: 20000em;position:relative;padding-left:60px">
                     	<c:forEach items="${list}" var="movie">
                     	<c:choose>
-                    		<c:when test="${param.movie eq movie.movie_code}"><li class='on'></c:when>
+                    		<c:when test="${param.movie_code eq movie.movie_code}"><li class='on'></c:when>
                     		<c:otherwise><li></c:otherwise>
                     	</c:choose>
                                 <div class="box-image">
-                                    <a href="<c:url value='/moviePoint.front?movie=${movie.movie_code}'/>">
+                                    <a href="<c:url value='/moviePoint.front?movie_code=${movie.movie_code}'/>">
                             <span class="thumb-image">
                                 <img src="http://192.168.0.128:8080/CGVBackend/images/posters/${movie.poster}" alt="${movie.title} 포스터"/>
                                 <c:choose>
@@ -320,7 +321,7 @@
 
 					<div class="massagebox">
 						<p>
-							<span class="msg-em"><strong id="cgvEggCountTxt">0</strong>명의</span>
+							<span class="msg-em"><strong id="cgvEggCountTxt">${fn:length(movieReviews)}</strong>명의</span>
 							<em>CGV실관람객이</em> 평가해주셨습니다.
 						</p>
 					</div>
@@ -329,7 +330,7 @@
 					<div class="egg-gage big" id="eggIconDiv">
 						<span class="egg good"></span>
                         
-						<span class="percent"><strong></strong>?</span>
+						<span class="percent"><strong><fmt:formatNumber value="1" type="percent"/></strong></span>
 					</div>
 
 					<div class="radar-graph" id="chart2">
@@ -449,32 +450,37 @@
                 <div id="my_point_area"></div>
                 <div class="wrap-persongrade">
                     <ul id="movie_point_list_container" class="point_col2">
-                        <li class="nodata" style="text-align:center">해당 조건에 데이터가 존재하지 않습니다.</li>
-                        <li class="" id="liCommentFirst19312564"
+                    <c:forEach items="${movieReviews}" var="movieReivew">
+                    	<c:if test="${not empty movieReviews}" var="movieReviewsNN">
+                        	<li class="" id="liCommentFirst19312564" style="width:465px;"
                                    data-SPOILERCNT="0" 
                                    data-REPORTCNT="0">
                             <a href="javascript:return false;" class="screen_spoiler">&nbsp;</a>
                             <div class="box-image">
                                 <span class="thumb-image">   
-									<img src="http://img.cgv.co.kr/MyCGV/Profile/2014/0319/matainijia_012212_M.jpg"  alt="사용자 프로필" onerror="errorImage(this, {'type':'profile'})"/>                                            
+									<img src="${movieReview.profilepicture}"  alt="사용자 프로필" onerror="errorImage(this, {'type':'profile'})"/>                                            
                                         <span class="profile-mask"></span>
-									<div class="theater-sticker">
-                                        
-									</div>
                                 </span>
                             </div>
                             
                             <div class="box-contents">
                                 <ul class="writerinfo">                                        
-                                    
                                     <li class="writer-name">
-                                    
-                                           
-                                        <a href="#select_main" onclick="getPopList1('matainijia', '익스텐션')"; ><span class="egg-icon good"></span>익스텐션</a>
+                                        <a href="#select_main" onclick="getPopList1('matainijia', '익스텐션')"; >
+                                        	<c:choose>
+                                        		<c:when test="${movieReivew.feedback eq 'u' || movieReivew.feedback eq 'U'}">
+                                        			<span class="egg-icon good"></span>
+                                        		</c:when>
+                                        		<c:otherwise>
+                                        			<span class="egg-icon"></span>
+                                        		</c:otherwise>
+                                        	</c:choose>
+                                        	${movieReivew.id}
+                                        </a>
                                     </li>
 									<li class="writer-etc">
 										<span class="vip">Movie Mania</span>
-										<span class="day">2017.09.28</span>
+										<span class="day">${movieReivew.writedate}</span>
 										<span class="like point_like" id="matainijia19312564" data-isMyGood="False" data-CommentIdx="19312564">
 											<a href="javascript:return false;" class="btn_point_like" ><span><img src="http://img.cgv.co.kr/R2014/images/point/ico_point_default.png" alt="like" class="like_red" /></span><span id='idLikeValue'>0</span></a>
 										</span>
@@ -495,11 +501,16 @@
                                 </ul>
                             </div>
                             <div class="box-comment">
-                                <p>알츠하이머에 걸린 살인자라는 참신한 소재.전체적인 구성은 좋았지만 답답하고 과한감이 있는..과거와 현재를 오가는 기억속에
-									혼동하는 주인공 묘사는 ?? 영화 ''박하사탕''의 한 장면."나 다시 돌아갈래~!!!!??를 외치던 모습이 겹쳐보인다
+                                <p>${movieReivew.content}
 								</p>
                             </div>
-                        </li>
+                        	</li>
+                        </c:if>
+                        </c:forEach>
+                        <c:if test="${not movieReviewsNN}">
+                        	<li class="nodata" style="text-align:center;width:980px;">해당 조건에 데이터가 존재하지 않습니다.</li>
+                        </c:if>
+                        
                         
                    	</ul>
                 </div> 

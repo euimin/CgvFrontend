@@ -1,10 +1,12 @@
 package com.kosmo.cgv.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.MapKey;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -24,9 +26,13 @@ public class PointDAO implements PointService {
 	}
 
 	@Override
-	public List<PointDTO> selectReviewList() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PointDTO> selectReviewList(Map map) throws Exception {
+		return template.selectList("SelectReviewList", map);
+	}
+	
+	@Override
+	public Map<String,PointDTO> getEggValue() throws Exception {
+		return template.selectMap("GetEggValue","movie_code");
 	}
 
 	@Override

@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="mybatis.Point_mybatis">	
 	<select id="SelectMovieList" resultType="MovieDto">
 		select * from movie
@@ -16,4 +15,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="SelectWishCount" parameterType="String" resultType="int">
 		select count(*) from wish where movie_code=#{movie_code} 
 	</select>
+	
+	<select id="SelectReviewList" parameterType="java.util.Map" resultType="PointDTO">
+		select r.*,m.profilepicture from review r join members m on r.id=m.id 
+		<choose>
+			<when test="id == null">where movie_code=#{movie_code}</when>
+			<otherwise>where m.id=#{id}</otherwise>
+		</choose>
+	</select>
+	
+	<select id="GetEggValue" resultType="PointDTO">
+		select movie_code,count(*) upCount from review where feedback='U' group by movie_code
+	</select>
+	
 </mapper>
