@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.MapKey;
+
 public interface PointService {
 	List<MovieDto> selectMovieList() throws Exception;
 	List<PointDTO> selectReviewList(Map map) throws Exception;

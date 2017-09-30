@@ -63,14 +63,14 @@ public class PointController {
 		////////////////////////////////////////////////////영화 부분
 		
 		List<PointDTO> movieReviews=null;
-		Map<String,PointDTO> upCountByMovie=null;
 		if(map.get("movie_code") != null) {
 			movieReviews=service.selectReviewList(map);
-			upCountByMovie=service.getEggValue();
-			System.out.println(upCountByMovie.containsKey("movie_code"));
 		}
+		Map<String,PointDTO> eggPointByMovie=service.getEggValue();
+		System.out.println(eggPointByMovie.get("a1234").getUpCount());
+		
 		model.addAttribute("movieReviews",movieReviews);
-		model.addAttribute("upCountByMovie",upCountByMovie);
+		model.addAttribute("eggPointByMovie",eggPointByMovie);
 		return "movies/point/index";
 	}
 }

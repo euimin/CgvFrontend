@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.Map;
 
 public class PointDTO {
-	//평점,좋아요 관련
+	//평점 관련
 	private String review_no;
 	private String movie_code;
 	private String id;
@@ -16,10 +16,10 @@ public class PointDTO {
 	private String visualpoint;
 	private String actingpoint;
 	private String soundtrackpoint;
-	////////////////////////
+	//기타 변수들
 	private String profilepicture;
-	private int upCount;///////////////egg지수를 어떻게 할것인가
-	/////////////////////////
+	private float upCount;//황금알 숫자
+	//좋아요 관련 변수들
 	private String likesNo;
 	private String likes;
 	
@@ -27,7 +27,7 @@ public class PointDTO {
 
 	public PointDTO(String review_no, String movie_code, String id, String feedback, String content, Date writedate,
 			String directionpoint, String storypoint, String visualpoint, String actingpoint, String soundtrackpoint,
-			String profilepicture, int upCount, String likesNo, String likes) {
+			String profilepicture, float upCount, String likesNo, String likes) {
 		this.review_no = review_no;
 		this.movie_code = movie_code;
 		this.id = id;
@@ -141,11 +141,11 @@ public class PointDTO {
 		this.profilepicture = profilepicture;
 	}
 
-	public int getUpCount() {
+	public float getUpCount() {
 		return upCount;
 	}
 
-	public void setUpCount(int upCount) {
+	public void setUpCount(float upCount) {
 		this.upCount = upCount;
 	}
 

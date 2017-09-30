@@ -264,7 +264,9 @@
                             <strong class="percent">예매율<span>${reserveRateMap[movie.movie_code]}%</span></strong>
                             <div class="egg-gage small">
                                 <span class="egg good"></span>
-								<span class="percent">?</span>
+								<span class="percent">
+									<fmt:formatNumber value="${eggPointByMovie[movie.movie_code].upCount}" type="percent"/>
+								</span>
 							</div>
                         </div>
 
@@ -330,7 +332,7 @@
 					<div class="egg-gage big" id="eggIconDiv">
 						<span class="egg good"></span>
                         
-						<span class="percent"><strong><fmt:formatNumber value="1" type="percent"/></strong></span>
+						<span class="percent"><strong><fmt:formatNumber value="${eggPointByMovie[param.movie_code].upCount}" type="percent"/></strong></span>
 					</div>
 
 					<div class="radar-graph" id="chart2">
