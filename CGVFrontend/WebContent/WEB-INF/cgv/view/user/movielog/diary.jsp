@@ -368,7 +368,7 @@
     <div class="box-round-wgray">
         <div class="box-round-inner">
             <div class="inner-contents-log">
-                <a href="./">
+                <a href="<c:url value='/mycgvWishlist.front' />">
                     <em>0</em>
                     <strong>위시리스트</strong>
                 </a>
@@ -378,7 +378,7 @@
     <div class="box-round-wgray">
         <div class="box-round-inner">
             <div class="inner-contents-log">
-                <a href="./watched.aspx">
+                <a href="<c:url value='/mycgvWatched.front' />">
                     <em>3</em>
                     <strong>내가 본 영화</strong>
                 </a>

@@ -452,14 +452,14 @@
             <div class="inner-contents-profile">
                 <div class="box-image">
                 	<div class="thumb-image">
-                        <img src="" alt="조미영님 프로필 사진" onerror="errorImage(this, {type:'profile'})" />
+                        <img src="" alt="회원이름 님 프로필 사진" onerror="errorImage(this, {type:'profile'})" />
                         <span class="profile-mask"></span>
                         
                     </div>
                      <!-- 등급종류 클래스 : vip, rvip, vvip -->
                 </div>
                 <div class="box-contents">
-	        		<strong>조미영님</strong>
+	        		<strong>회원이름 님</strong>
 	        		<a id="go_edit_page" href="#" class="edit" target="_blank" title="새창열림">나의 정보 변경</a>
 	        		<em></em>
 	        		
@@ -480,7 +480,7 @@
     <div class="box-round-wgray">
         <div class="box-round-inner">
             <div class="inner-contents-log">
-                <a href="./watched.aspx">
+                <a href="<c:url value='/mycgvWhrched.front' />">
                     <em>3</em>
                     <strong>내가 본 영화</strong>
                 </a>
