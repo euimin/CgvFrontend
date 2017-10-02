@@ -53,7 +53,7 @@ public class MembersController {
 		return "user/movielog/watched";
 	}
 	
-/*	//마이페이지(MyCGV) 예매내역 확인페이지로 이동
+/*	//마이페이지(MyCGV) 무비 다이어리로 이동
 	@RequestMapping("/mycgvReseved.front")
 	public String mycgvReseved() throws Exception{
 		return "user/mycgv/reserve/reserved";
