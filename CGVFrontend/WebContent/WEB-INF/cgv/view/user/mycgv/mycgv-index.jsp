@@ -718,7 +718,7 @@
             </a>
         </div>
         <div class="box-inner mvdiary">
-            <a href="http://www.cgv.co.kr/user/movielog/diary.aspx" title="무비다이어리">
+            <a href="<c:url value='/mycgvDiary.front' />" title="무비다이어리">
                 <h3>무비다이어리</h3>
                 <span>관람 후 내 감상평을 적어 <br />추억하고 싶다면?</span>
             </a>

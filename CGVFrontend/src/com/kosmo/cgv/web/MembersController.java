@@ -53,11 +53,11 @@ public class MembersController {
 		return "user/movielog/watched";
 	}
 	
-/*	//마이페이지(MyCGV) 무비 다이어리로 이동
-	@RequestMapping("/mycgvReseved.front")
-	public String mycgvReseved() throws Exception{
-		return "user/mycgv/reserve/reserved";
-	}*/
+	//마이페이지(MyCGV) 무비 다이어리로 이동
+	@RequestMapping("/mycgvDiary.front")
+	public String mycgvDiary() throws Exception{
+		return "user/movielog/diary";
+	}
 	
 	
 	//서비스 주입

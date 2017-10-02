@@ -550,7 +550,7 @@
     <div class="box-round-wgray">
         <div class="box-round-inner">
             <div class="inner-contents-log">
-                <a href="./diary.aspx">
+                <a href="<c:url value='/mycgvDiary.front' />">
                     <em>0</em>
                     <strong>무비다이어리</strong>
                 </a>
