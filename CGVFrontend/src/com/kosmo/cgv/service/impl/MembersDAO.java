@@ -37,6 +37,14 @@ public class MembersDAO implements MembersService{
 	public int insert(MembersDTO dto) throws Exception {
 	      return template.insert("MembersInsert", dto);
 	}
+	
+/*	@Override
+	public boolean pwCheck(String id, String password) throws Exception {
+		return template.selectOne(id, password);
+		
+		int count = template.selectOne("login", map);
+		return count ==1 ? true : false;
+	}*/
 
 	@Override
 	public int update(MembersDTO dto) throws Exception {
