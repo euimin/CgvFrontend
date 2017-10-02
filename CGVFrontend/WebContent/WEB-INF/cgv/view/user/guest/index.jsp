@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
@@ -241,9 +238,9 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap">
+            <div class="top_extend_ad_wrap" style="background-color:black;">
                 <div class="adreduce" id="adReduce">                    
-                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
+                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
@@ -353,8 +350,8 @@
 		<div class="box-login nomember">
             <h3 class="hidden">비회원 로그인</h3>
             <div class="box-btn">
-                <strong>이용하실 서비스를 선택하세요.</strong>
-                <a class="round inred" href="<c:url value='/guestJoin.front' />"><span>비회원예매</span></a>
+                <span style="font-weight: bold;font-family: inherit;font-size: medium;color:black;">이용하실 서비스를 선택하세요.&nbsp;&nbsp;</span>
+                <a class="round inred" href="<c:url value='/guestReserve.front' />"><span>비회원예매</span></a>
                 <a class="round inblack" href="<c:url value='/guestLogin.front' />"><span>비회원예매 확인/취소</span></a>
             </div>
             <dl class="box-operationguide">
@@ -368,10 +365,10 @@
     </div>    
     <div class="sect-loginguide">
         <div class="box-useguide">
-            <strong>CJ ONE 회원이 아니신가요?</strong>
+            <strong>CGV 회원이 아니신가요?</strong>
             <span>회원가입하시고 다양한 혜택을 누리세요!</span>
             <strong>
-                <a href="<c:url value='/join.front'/>" class="round red"><span>회원가입하기</span></a>
+                <a href="<c:url value='/join.front'/>" class="round red"><span>CGV 회원가입하기</span></a>
             </strong>
         </div>
     </div>
@@ -480,7 +477,6 @@
 
         <div class="adFloat" style="display:block">
 
-            <iframe src='http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon' width='154' height='182' frameborder='0' scrolling='no' topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' allowTransparency="true" id="ad_float1"></iframe>
         </div>
         <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->
@@ -592,7 +588,8 @@
 </li>
 </script>
 
-<script type="text/javascript" src="../../img/R2014/js/system/crypto.js"></script>
+<script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
+
 <script type="text/javascript">
     //<![CDATA[
     function closeBanner(){        

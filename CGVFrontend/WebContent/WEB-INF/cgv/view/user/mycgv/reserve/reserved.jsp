@@ -294,7 +294,7 @@
                             </li>
                         
                             <li  class="last">
-                                MY CGV HOME
+                                나의 예매내역
                             </li>
                         
                         
@@ -471,8 +471,7 @@
                     <a href="/user/mycgv/?g=1" title="현재 선택">MY CGV HOME <i></i></a>
                 </li>
 	            <li >
-	            	<a href="<c:url value='/mycgvReseved.front'/> ">나의 예매내역 <i></i></a>
-	            	<!--  <a href="/user/mycgv/reserve/?g=1" >나의 예매내역 <i></i></a> -->
+                    <a href="<c:url value='/mycgvReseved.front' />" >나의 예매내역 <i></i></a>
                     <ul>
                        <li >
                             <a href="/user/mycgv/reserve/receipt.aspx?g=1" >신용카드 영수증 출력</a>
@@ -703,45 +702,22 @@
         //]]>
 </script>
 
-<div class="sect-mycgv-reserve movielog col4">
-    <div class="box-polaroid">
-        <div class="box-inner wishlist">
-            <a href="<c:url value='/mycgvWishlist.front' />" title="위시리스트">
-                <h3>위시리스트</h3>
-                <span>보고 싶은 영화들을 미리 <br />담아두고 싶다면?</span>
-            </a>
-        </div>
-        <div class="box-inner watched">
-            <a href="<c:url value='/mycgvWatched.front' />" title="내가 본 영화">
-                <h3>내가 본 영화</h3>
-                <span>관람한 영화들을 한번에 <br />모아 보고 싶다면?</span>
-            </a>
-        </div>
-        <div class="box-inner mvdiary">
-            <a href="http://www.cgv.co.kr/user/movielog/diary.aspx" title="무비다이어리">
-                <h3>무비다이어리</h3>
-                <span>관람 후 내 감상평을 적어 <br />추억하고 싶다면?</span>
-            </a>
-        </div>
-        <div class="box-inner photi">
-            <a href="http://phototicket.cgv.co.kr" target="_blank">
-                <h3>포토티켓</h3>
-                <span>단 하나뿐인 나만의<br />티켓을 간직하고 싶다면?</span>
-            </a>
-        </div>
-    </div>
-</div>
-<div class="tit-mycgv">
-	<h3>MY 예매내역</h3>
-	<p><em>1건</em> <a href="<c:url value='/mycgvReseved.front'/> ">예매내역 더보기</a></p>
-	<span>예매번호로만 티켓을 찾을 수 있으니 반드시 확인 부탁드립니다.</span>
-</div>
 
-<form name="aspnetForm" method="post" action="./" id="aspnetForm">
+
+    <!-- MY 예매내역 -->
+<div class="tit-mycgv type2">
+	<h3>나의 예매내역</h3>
+	<p>지난 <em>1개월</em>까지의 예매내역을 확인하실 수 있으며, 영수증은 <em>신용카드 결제 내역</em>만 출력 가능합니다.</p>
+	<a href="<c:url value='/mycgvWatched.front' />" class="round inblack"><span>내가 본 영화</span></a>
+</div>
+  <input type="hidden" id="isIPIN" name="isIPIN" value="aDWHD/lZ2em2d3m3wDGPrkkFP2+dI9nKCU4EwYWd1W3oCs9htNIcGNxHtJaqIZasCtLXoY9vtqEF0D/9M2LVpQ==" />
+<!-- 팝업시작 -->
+        <!-- 팝업 노출 시 .layer-wrap 에 클래스 .off는 없애고 .on 추가해주세요.--><!-- 
+        <form name="aspnetForm" method="post" action="./" id="aspnetForm"> -->
 <div>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjAzNjI1MTIzN2Rkb61/wKC2wl92h7iknOS3c2nC6AQ=" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5NDY1NDQxMDFkZEah75Zdtu6XpPPma/Q4dMjpI747" />
 </div>
 
 <script type="text/javascript">
@@ -763,11 +739,9 @@ function __doPostBack(eventTarget, eventArgument) {
 
 <div>
 
-	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F268F2D4" />
-	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAANEBwag/p6Cyp7NqgHffiIrAAaiyC+ogOIlg3pscMtiP2lKUwCIH8TI/sjrTPJzW34iVv8t0sMzGIw9AmgL9DZ3cbnRDQ==" />
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="34AE05C7" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAANv0hQkNkHl4V1IvCYLEK1JAAaiyC+ogOIlg3pscMtiP2lKUwCIH8TI/sjrTPJzW35p8zhWgpwzGXybRLXgdXeq0qRIuA==" />
 </div>
-    <!-- 팝업시작 -->
-        <!-- 팝업 노출 시 .layer-wrap 에 클래스 .off는 없애고 .on 추가해주세요.-->
             <div class="layer-wrap pop_corp_session logpopup off">
                 <div class="pop_wrap">
                     <h1>자동 로그아웃 안내</h1>
@@ -786,139 +760,308 @@ function __doPostBack(eventTarget, eventArgument) {
                     </div>                
                 </div>
             </div>
-                
+        </form>        
         <!-- 팝업끝 -->
-    <!-- MY 예매내역 -->
-    <input type="hidden" id="hidCancelReserveNo" name="hidCancelReserveNo" />
-    <div class="sect-base-booking">
-	    <div class="box-polaroid">
-	        <div class="box-inner">
-                
-                
-	                <div class="lst-item">
-	            	    <div class="box-number">
-	            		    <em>예매번호</em>
-	            		    <strong>0072-<i>0914-0303-980</i></strong>
-	            		    <span>(2017.09.14)</span>
-	            	    </div>
-		                <div class="box-image">
-		            	    <a href="/movies/detail-view/?midx=79847">
-			            	    <span class="thumb-image"> 
+        <!--포토티켓 수집 동의-->
+        <div class="layer-wrap photi_agree" id="agree" style="display:none" >
+            <div class="popwrap">
+                <h1>선택 입력(수집) 항목</h1>                
+                <button type="button" class="btn-close">개인정보 수집 및 활용 동의 닫기</button>    
+                <div class="pop-contents">
+                    <div class="tbl-breakdown-re pop">
+                        <form>
+                            <fieldset>            
+                                <legend>선택 입력(수집) 항목</legend>                
+                                <table summary="개인정보 수집 및 활용 동의 표">
+                                    <caption>개인정보 수집 및 활용 동의</caption>
+                                    <colgroup>
+                                        <col class="col1"/>
+                                        <col class="col2"/>
+                                        <col class="col3"/>
+                                        <col class="col4"/>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">항목</th>
+                                            <th scope="col">이용목적</th>
+                                            <th scope="col">보유기간</th>
+                                            <th scope="col">동의여부</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">본인 사진 및 이미지</th>
+                                            <td>·포토티켓 서비스 이용</td>
+                                            <td>약권 철회 후 1주일 까지</td>
+                                            <td>                        
+                                                <div>
+                                                    <input type="radio" id="agree1" name="agree_photo" value="Y"/>
+                                                    <label for="agree1">동의함</label>
+                                                </div>
+                                                <div>
+                                                    <input type="radio" id="agree2" name="agree_photo"  value="N" />
+                                                    <label for="agree2">동의안함</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="marginT10">※ 동의를 거부하실 권리가 있으며, 이 경우 포토티켓 서비스는 이용하실 수 없습니다.</br>단, 동의 철회시에도 기존 이용 내역은 조회가 가능합니다.</p>
+                                <div class="set-btn">
+                                    <button type="submit" class="round inred" id="btnPhoto"><span>확인</span></button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>                    
+                </div>                            
+            </div>
+    </div>
+
+  <div style="display:none;">
+     <input type="hidden" id="status1" name="status1" value="" />
+     <input type="hidden" id="message1" name="message1" value="" />
+     <input type="hidden" id="reserveNo1" name="reserveNo1" value="" />
+     <input type="hidden" id="customNo1" name="customNo1" value="" />
+     <input type="hidden" id="saleNo1" name="saleNo1" value="" />
+</div>
+        <!--// 포토티켓 수집 동의-->
+<div class="cols-mycgv-booking">
+
+	<div class="sect-register booking">
+		<p>
+			<strong>현장에서 발권하실 경우 꼭 <em>예매번호</em>를 확인하세요.</strong>
+			<span>티켓판매기에서 예매번호를 입력하면 티켓을 발급받을 수 있습니다.</span>
+		</p>
+	</div>
+
+    
+		    <div class="lst-item">
+		        <div class="box-set-info">
+		    		<div class="box-number">
+		    			<em>예매번호</em>
+		    			<strong>0072-<i>0914-0303-980</i></strong>
+		    		
+                        
+                    </div>
+		    		<div class="box-info">
+			        	<div class="box-image">
+			        		<a href="/movies/detail-view/?midx=79847">
+			            		<span class="thumb-image"> 
 			                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79847/79847_126.jpg" alt="살인자의 기억법 포스터" onerror="errorImage(this)"/>
+			                        <span class="ico-grade grade-15">
+                                        15세 이상
+                                    </span>
 			                    </span>
 			                </a>
-		                </div>
-		                <div class="box-contents">
-		            	    <dl>
-		            		    <dt>
+			            </div>
+			        	<div class="box-contents">
+			        		<dl>
+			        			<dt>
                                     <a href="/movies/detail-view/?midx=79847">살인자의 기억법</a>
-                                                                       
+                                    
+
+                                     
+
+
                                 </dt>
-                            
-			        		    <dd>
+			        			<dd>
                                     <em>관람극장</em> 
                                     <strong>CGV 신도림</strong> 
                                     <a href="/theaters/?theaterCode=0072">[극장정보]</a>
                                 </dd>
-			        		    <dd>
+			        			<dd>
                                     <em>관람일시</em>
-                                    <strong>2017.09.14(목) 19:00</strong>
+                                    <strong class="txt-red">
+                                        2017.09.14(목) 19:00
+                                    </strong>
                                 </dd>
-		            	    </dl>
-		                </div>
-		                <div class="box-detail">
-		            	    <div class="account-info">
-			            	    <dl>
-			            		    <dt> Prime석 일반 1</dt>
+			        			<dd><em>상영관</em> <strong>9관</strong></dd>
+			        			<dd><em>관람인원</em> <strong> Prime석 일반 1</strong></dd>
+			        			<dd><em>관람좌석</em> <strong>E 06</strong></dd>
+			        			<dd><em>매수</em> <strong>1매</strong></dd>
+			        		</dl>
+			        	</div>  
+			        	<div class="box-detail">
+			        		<div class="account-info">
+			            		<table summary="[영화제목] 예매 결제정보">
+			            			<caption>결제정보</caption>
+			            			<tfoot>
+			            				<tr>
+			            					<th scope="row">총 결제금액</th>
+			            					<td><strong>10,000</strong> 원</td>
+			            				</tr>
+			            			</tfoot>
+			            			<tbody>
+			            				<tr>
+			            					<th scope="row">결제 날짜</th>
+			            					<td><strong>2017.09.14</strong></td>
+			            				</tr>
+                                        
+			            				        <tr>
+			            					        <th scope="row">휴대폰결제</th>
+			            					        <td><strong> 9,000</strong> 원</td>
+			            				        </tr>
+                                            
+			            				        <tr>
+			            					        <th scope="row">CJ ONE포인트</th>
+			            					        <td><strong> 1,000</strong> 원</td>
+			            				        </tr>
+                                            
+			            			</tbody>
+			            		</table>
+			        		</div>
+			        	</div>
+			        </div>
+                    <div class="set-btn">
+                        <input type="hidden" class="reserve-no" name="reserve-no" value="ya3gXLoKOiG0O1CXKREH/ODb4XQyz5QffOBipKsilm0=" />
+                        
+                        
+                        
 
-                                    
-                                            <dd>
-                                                <em>휴대폰결제</em> 
-                                                <strong class="txt-lightblue">9,000원</strong>
-                                            </dd>
-                                        
-                                            <dd>
-                                                <em>CJ ONE포인트</em> 
-                                                <strong class="txt-lightblue">1,000원</strong>
-                                            </dd>
-                                        
-			            	    </dl>
-		            	    </div>
-		            	    <div class="set-btn">
-                                <input type="hidden" class="reserve-no" name="reserve-no" value="ya3gXLoKOiG0O1CXKREH/ODb4XQyz5QffOBipKsilm0=" />
+                        
+                        
+
+                        
+                        
+
+                        
+                        <div class="col-expired"><span class="msg_expired">상영시간이 지난영화입니다.</span></div>
+                    </div>
+	        	</div>
+		    </div>	    	           
+        
+    
+</div>
+<!-- TODAY BEST 무비차트 -->
+
+<!-- //TODAY BEST 무비차트 -->
+<div class="sect-mycgv-cancle">
+	<div class="tit-mycgv">
+		<h4>MY 취소내역</h4>
+		<p>상영일 기준 지난 7일 동안의 취소내역입니다.</p>
+	</div>
+	<div class="tbl-data">
+		<table summary="상영일 기준 지난 7일 동안의 취소내역">
+			<caption>MY 취소내역</caption>
+			<thead>
+				<tr>
+					<th scope="col">관람 영화</th>
+					<th scope="col">관람CGV</th>
+					<th scope="col">관람 일시</th>
+					<th scope="col">취소일</th>
+					<th scope="col">결제취소 금액</th>
+				</tr>
+			</thead>
+			<tbody>
+            
+            
+                <tr><td colspan="5" class="nodata">고객님의 최근 취소내역이 존재하지 않습니다.</td></tr>
+            
+			</tbody>
+		</table>
+	</div>
+</div>
+<!-- CGV 예매 관련 정책 안내 Box Type -->
+<div class="sect-box-descri">
+	<h4>CGV 예매 관련 정책 안내</h4>
+	<!-- Box Moudle -->
+	<div class="box-polaroid">
+	    <div class="box-inner">
+	        <ul>
+	            <li>
+	            	<dl>
+	            		<dt>이용안내</dt>
+	            		<dd>
+	            			<ul>
+	            				<li>예매 변경은 불가능하며, 취소 후 재 예매를 하셔야만 합니다.</li>
+	            				<li>영수증은 상영 시간 전까지 My CGV 에서 출력하실 수 있습니다. 단, 신용카드로 예매하신 경우만 한합니다.</li>
+	            				<li>상영 시간 이후 관람하신 영화의 영수증 출력을 원하실 경우, 1544-1122로 문의 주시기 바랍니다.</li>
+	            				<li>취소하신 내역이 나타나지 않거나 궁금하신 사항이 있으시면, 고객센터로 문의해 주시기 바랍니다.</li>
+	            			</ul>
+	            		</dd>
+	            	</dl>
+	            </li>
+	            <li>
+	            	<dl>
+	            		<dt>티켓 교환방법</dt>
+	            		<dd>
+	            			<ul>
+	            				<li>
+	            					<p><strong>티켓판매기(ATM)에서 발권하실 경우</strong><br />예매번호 또는 고객인증번호 (법정생년월일 6자리 + 휴대폰번호 뒷 7~8자리)를 입력하시면 티켓을 편하게 발권하실 수 있습니다.</p>
+	            				</li>
+	            				<li>
+	            					<p><strong>매표소에서 발권하실 경우</strong><br />티켓교환권을 출력하여 매표소에 방문하시면 티켓으로 교환하실 수 있습니다.<br />
+		            				(티켓교환권 출력이 어려운 경우, 예매번호와 신분증을 지참하시면 매표소에서 티켓을 수령하실 수 있습니다.)</p>
+	            				</li>
+	            			</ul>
+	            		</dd>
+	            	</dl>
+	            </li>
+	            <li>
+	            	<dl>
+	            		<dt>예매 취소 안내</dt>
+	            		<dd>
+	            			<ul>
                                 
-                                
-		            	    </div>
-		                </div>
-	                </div>
-                    
-                    
-	        </div>
+                                <li>
+                                    <p><strong>신용카드</strong><br /> 결제 후 3일 이내 취소 시 승인 취소 가능, 3일 이후 매입 취소시 영업일 기준 3~5일 소요</p>
+                                </li>
+                                <li>
+                                    <p><strong>체크카드</strong><br />결제 후 3일 이내 취소 시 당일 카드사에서 환불처리. 3일 이후 매입 취소 시 카드사에 따라 3~10일 이내 카드사에서 환불</p>
+                                </li>
+                                <li>
+                                    <p><strong>휴대폰 결제</strong><br /> 
+                                        결제 일자 기준 당월(1~말일)취소만 가능. 익월 취소 관련 문의는 CGV고객센터(1544-1122) 연락 요망<br />
+                                        예매취소 후 당일 환불이 원칙이나 현장 취소 시 경우에 따라 익일 처리 될 수 있음.
+                                </li>
+                                <li>
+                                    <p><strong>계좌이체</strong><br /> 
+                                        1. 예매일 이후 7일 이내 취소 시<br />
+                                        - 자동 환불 은행: 취소 후 즉시 처리가능<br />
+                                        - 조흥, 신한, 외한, 한미, 우리, 우체국, 전북, 경남, 광주, 대구, 새마을, 제주<br />
+                                        - 우리은행의 경우 당일 취소분만 즉시 처리 가능<br />
+                                        - 수동 환불 은행: 농협(취소 후 2~3일 이내 입금), 부산/제일/우리(취소 후 3~5일 이내 입금)<br /><br />
+
+                                        2. 예매 7일 이후~상영시간 30분 전 취소 시(단, 일부 당일 취소 불가 행사의 경우 전일 취소 시)<br />
+                                        - 환불은 환불 요청일로부터 7일 이상 소요됨<br /><br />
+
+                                        ※ 기타 환불 관련 문의는 CGV고객센터 1544-1122로 연락바랍니다.
+                                    </p>
+                                </li>
+	            			</ul>
+	            		</dd>
+	            	</dl>
+	            </li>
+
+	            <li>
+	            	<dl>
+	            		<dt>환불 규정 안내</dt>
+	            		<dd>
+	            			<ul>
+	            				<li>
+	            					<p><strong>현장 취소를 하는 경우</strong><br />상영시간 이전까지만 가능하며, 상영시간 이후 취소나 환불은 되지 않습니다.</p>
+	            									
+	            				</li>
+	            				<li>
+	            					<p><strong>홈페이지에서 예매 취소할 경우</strong><br />부분 취소는 불가능합니다. (ex. 4장을 인터넷으로 예매한 경우 4장 모두 취소만 가능)<br />홈페이지 예매 취소는 상영시간 20분전까지 가능합니다.<br />상영시간 이후 취소나 환불은 되지 않습니다</p>	            					
+	            				</li>
+                                <li>
+                                    <p><strong>모바일 앱/웹(m.cgv.co.kr)에서 예매 취소할 경우</strong><br />부분 취소는 불가합니다.(ex. 4장을 인터넷으로 예매한 경우 4장 모두 취소만 가능)<br /> 모바일 앱/웹 예매 취소는 상영시간 15분까지 가능합니다.<br /> 상영시간 이후 취소나 환불은 되지 않습니다.</p>
+                                </li>
+                                <li>
+                                    <p><strong>단, 일부 행사의 경우 행사 당일 취소, 변경 불가 합니다.</strong></p>
+                                </li>
+	            			</ul>
+	            		</dd>
+	            	</dl>
+	            </li>
+	        </ul>
 	    </div>
     </div>
-</form>
-<!-- //MY 예매내역 -->
-
-<!-- MY 참여이력 -->
-<div class="sect-mycgv-part">
-    <div class="box-polaroid type1">
-      <!--  <div class="box-inner">
-            <div class="tit-mycgv">
-				<h3>MY 참여이벤트</h3>
-				<p><em>0건</em> <a href="/user/mycgv/event/">MY 참여이벤트 더보기</a></p>
-			</div>
-			<div class="col-myevt">
-                
-                    <ol><li>고객님의 이벤트 참여내역이 존재하지 않습니다.</li></ol>
-                
-			</div>
-        </div>-->
-        <div class="box-inner">
-            <div class="tit-mycgv">
-				<h3>MY Q&amp;A</h3>
-				<p><em>0건</em> <a href="/user/mycgv/inquiry/qna/list.aspx">MY Q&amp;A 더보기</a></p>
-			</div>
-			<div class="col-myqna">
-                
-                    <ul><li>고객님의 1:1 문의내역이 존재하지 않습니다.</li></ul>
-                
-			</div>
-        </div>
-    </div>
 </div>
-<!-- //MY 참여이력 -->
-<!-- MY 구매정보 -->
-<div class="sect-mycgv-buying">
-    <div class="box-polaroid">
-        <div class="box-inner">
-		    <div class="tit-mycgv">
-		        <h3>MY 구매정보</h3>
-		        <span>현재 사용하실 수 있는 쿠폰정보입니다. 상품명을 클릭하시면 내역조회페이지로 이동합니다.</span>
-		    </div>
-		    <ul>
-		        <li class="booth">
-		            <a href="/user/mycgv/culture-shop/?type=1"><strong>매점상품 기프트콘</strong></a>
-		            <span><em>0</em> 개</span>
-		        </li>
-		        <li class="viewing">
-		            <a href="/user/mycgv/culture-shop/?type=0"><strong>영화관람권 기프트콘</strong></a>
-		            <span><em>0</em> 개</span>
-		        </li>
-		        <li class="funcon">
-		            <a href="/user/mycgv/culture-shop/fun-con.aspx"><strong>FUN-CON 기프트콘</strong></a>
-		            <span><em></em>준비중</span>
-		        </li>
-		        <li class="collage">
-		            <a href="/user/mycgv/culture-shop/movie-collage-passcard/"><strong>무비꼴라쥬 패스카드</strong></a>
-		            <span><em>0</em> 개</span>
-		        </li>
-		    </ul>
-		</div>
-    </div>
-</div>
-<form name="targetform" id="targetform" method="post" novalidate="novalidate">
+<!-- <form name="targetform" id="targetform" method="post" novalidate="novalidate">
 	<input type="hidden" name="reverse_no" id="reverse_no" />
-</form>
+</form> -->
 
 <script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">

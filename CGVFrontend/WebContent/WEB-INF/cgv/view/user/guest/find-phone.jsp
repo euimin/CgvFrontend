@@ -1,11 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
-
-<!-- Mirrored from www.cgv.co.kr/user/guest/login-agreement.aspx by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 13:09:20 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,12 +15,12 @@
     <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
     <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
     <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
-    <meta id="ctl00_og_title" property="og:title" content="비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
+    <meta id="ctl00_og_title" property="og:title" content="등록정보 찾기 &lt; 비회원로그인 | 영화 그 이상의 감동. CGV"></meta>
     
     <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/common/cgv_200x200.jpg"></meta>
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
-    <title id="ctl00_headerTitle">비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
+    <title id="ctl00_headerTitle">등록정보 찾기 &lt; 비회원로그인 | 영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
@@ -42,6 +39,7 @@
     <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
@@ -72,10 +70,10 @@
     <script type="text/javascript">
         //<![CDATA[
 
-        _TRK_CP = "/회원서비스/비회원로그인";
+        _TRK_CP = "/회원서비스/비회원로그인/등록정보 찾기";
 
         app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
-            .config('imageDomain', 'http://img.cgv.co.kr/')
+            .config('imageDomain', 'http://img.cgv.co.kr')
             .config('isLogin', 'False');
 
         // AD FLOAT
@@ -214,108 +212,24 @@
 
         //]]>
     </script>
-    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=FwoXmxvITgqzikLxdZzGdfWLz3u9M9ruto1YHgewsXBTOjzF314YQ%2fzUZErngLbUDVDULlCwXF7U5GMe4XUPsDltQ2hIbktOS1lBdW9sREJPUFFOalgzWWZDYzI0NTNDdUtFYWljaWZzLzcvZHZ6bWRMRFF1S0o2OUV2Q3YxK2U%3d"></script>
-
-	<!-- 제이쿼리 코어 임베딩 -->
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
-	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
-	<script type="text/javascript">
-	$(function(){
-		
-		$.validator.setDefaults({"submitHandler":function(form){
-			//submit하기전 수행할 로직
-        	var phone=$("#guestMob1").val()+"-"+$("guestMob2").val()+"-"+$("#guestMob3").val();
-        	$("#phone").val(phone);
-        	
-        	var email=$("#guestEmail1").val()+"@"+$("#guestEmail2").val();
-        	$("#email").val(email);
-			//반드시 submit()함수 호출			
-			form.submit();				
-			//self.close();
-		}});
-	
-		/* 유효성 체크 Validate */
-		$("#form1").validate({
-			errorLabelContainer: $("#form1 div.error"),
-			
-			rules:{
-				name:"required",
-				birth:{required:true,digits:true},
-				guestMob1:{required:true},
-				guestMob2:{required:true,digits:true},
-				guestMob3:{required:true,digits:true},
-				guestEmail1:"required",
-				password:{required:true,minlength:4},
-				passwordChk:{required:true,minlength:4,equalTo:"#password"},	
-				},			
-			messages:{
-				name:"&nbsp;&nbsp;이름을 입력하세요.",	
-				birth:{
-					required:"&nbsp;&nbsp;법정생년월일을 입력하세요.",
-					digits:"&nbsp;&nbsp;숫자만 입력 가능합니다."
-				},
-				guestMob1:"&nbsp;&nbsp;휴대전화 앞번호를 선택하세요.&nbsp;<span style='color:gray;'>│</span>&nbsp;",
-				guestMob2:{
-					required:"휴대전화 중간번호를 입력하세요.&nbsp;<span style='color:gray;'>│</span>&nbsp;",
-					digits:"&nbsp;&nbsp;숫자만 입력 가능합니다.&nbsp;<span style='color:gray;'>│</span>&nbsp;"
-				},
-				guestMob3:{
-					required:"휴대전화 끝번호를 입력하세요.",
-					digits:"숫자만 입력 가능합니다."
-				},
-				guestEmail1:"&nbsp;&nbsp;이메일 주소를 입력하세요.",
-				password:{
-					required:"&nbsp;&nbsp;비밀번호를 입력하세요.",
-					minlength:"&nbsp;&nbsp;비밀번호는 4자리입니다."
-				},
-				passwordChk:{
-					required:"&nbsp;&nbsp;비밀번호를 재입력하세요.",
-					minlength:"&nbsp;&nbsp;비밀번호는 4자리입니다.",
-					equalTo:"&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
-				}
-			}			
-		});////////////////////validate
-		
-	});
-	
-	</script>
-
-	<style>
-	
-	/* 유효성 체크 글씨색상 변경 */
-	#joinForm input +.error{color:red;}
-	
-	/* select option 꾸며주기 */
-	.inputstl {
-	padding: 1px;
-	border: solid 1px #460023;
-	outline: 0;
-	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
-	background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
-	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-	}
-	
-	/* 유효성 체크 글씨색상 변경 */
-	#form1 input +.error{color:red;}
-	
-	/* 일그러진 UI 수정: box 크키, 버튼 위치 조정 */
-	.sect-user .wrap-result, .sect-user .box-simples, .sect-user .box-confirms{  
-	padding:40px 30px 50px; border:1px solid #e8e8dd;}
-	.col-simple > .box-simples ,.col-confirm > .box-confirms{ 
-	height:auto;}
-	
-	.round.inred > *:after{ 
-	right:-3px; bottom:-2.5px; background-position:-5px -15px;}
-
-	</style>
-
+    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=IL56BCAqUebmhaF7a2w4H9FPGGSiqkaNUaz4M2MSBWR%2fkyLJb1zj2QXYCUNn4XFFNFU2uGW%2bmf7EqREBGefRhWdDN2MyS24vckpIbVpRMWltczY0YUNrZ1BZcWV1cnpBd2ZZYWJkZmlURmJnSUdncjNrNTdGeXUzeWZPQ2VIcGw%3d"></script>
 </head>
 <body class="">
 
+    <form name="ssologinfrm" action="https://www.cgv.co.kr/user/login/login-sso.aspx" method="post">
+        <input type="hidden" id="cjssoq" name="cjssoq" />
+        <input type="hidden" name="returnURL" value="/user/guest/find-mobile.aspx" />
+    </form>
+    <script type="text/javascript">
+        function cjsso() {
+            if ((typeof _cjssoEncData) != "undefined" && _cjssoEncData != "") {
+                document.getElementById("cjssoq").value = _cjssoEncData;
+                document.ssologinfrm.submit();
+            }
+        }
 
+        cjsso();
+    </script>
 
 <div class="skipnaiv">
 	<a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
@@ -323,9 +237,9 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap" style="background-color:black;">
+            <div class="top_extend_ad_wrap">
                 <div class="adreduce" id="adReduce">                    
-                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
+                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
@@ -333,7 +247,7 @@
     </div>    
 	<!-- Header -->
 	<div id="header">
-			<div class="head">
+		<div class="head">
 			<!-- 이미지 홈 버튼과 서비스 메뉴 시작 -->
 			<%@include file="/WEB-INF/cgv/template/serviceMenu.jsp"%>
 			<!-- 이미지 홈 버튼과 서비스 메뉴 끝 -->	
@@ -365,7 +279,6 @@
 				<div class="ad-partner">
                     <a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx"  >
                         <img src="http://img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
-
                     </a>
 					 <!-- 외부광고영역 -->
 				</div>
@@ -396,8 +309,12 @@
                                 <a href="/user/login/">회원서비스</a>
                             </li>
                         
+                            <li >
+                                <a href="/user/guest/">비회원로그인</a>
+                            </li>
+                        
                             <li  class="last">
-                                비회원로그인
+                                등록정보 찾기
                             </li>
                         
                         
@@ -422,224 +339,90 @@
 			
 <!-- 실컨텐츠 시작 -->
 <div class="wrap-login">
-    <div class="sect-login">
+    <div class="sect-user">
         <ul class="tab-menu-round">
-            <li>
-                <a href="<c:url value='/login.front'/>">로그인</a>
+           <li>
+                <a href="<c:url value='/findEmail.front'/>">이메일로 찾기</a>
             </li>
             <li class="on">
-                <a href="<c:url value='/guest.front'/>">비회원로그인</a>
+                <a href="<c:url value='/findPhone.front'/>">폰번호로 찾기</a>
             </li>
         </ul>
-        <div class="box-security">
-		 <h3><strong>STEP 1</strong>개인정보 수집 및 이용동의</h3>
-            <p>비회원 예매 고객께서는 먼저 개인정보 수집 및 이용 동의 정책에 동의해 주셔야 합니다.</p>
-
-            <!-- 비회원로그인 : 개인정보 수집 및 활용동의1 -->
-			<div class="tbl-breakdown-re marginT25">
-				<table style="width:100%;" summary="개인정보 수집 및 활용 동의 표">
-					<caption>개인정보 수집 및 활용 동의</caption>
-					<colgroup>
-						<col style="width:17%;" />
-						<col style="width:37%;" />
-						<col style="width:30%;" />
-						<col style="width:16%;" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">항목</th>
-							<th scope="col">이용목적</th>
-							<th scope="col">보유기간</th>
-							<th scope="col">동의여부</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">이름, 법정생년월일, 휴대폰</br>번호, 이메일</br>주소, 비밀번호</th>
-							<td>
-								<ul class="dep1_lst">
-									<li class="dep1_lst_li">&middot; 비회원 예매서비스 제공</li>
-									<li class="dep1_lst_li">&middot; 이용자식별, 요금정산, 추심, 신규서비스 개발, 접속빈도 파악 등</li>
-								</ul>
-							</td>
-							<td>상품사용기한(관람일) 까지</td>
-							<td>
-								<!-- 동의함 또는 동의안함 체크시 inp_inbox에 on 클래스 toggle 처리 필요 -->
-								<span class="inp_inbox on">
-									<input name="agree_chk17" id="agreeChk17-1" type="radio" value="Y"><label for="agreeChk17-1">동의함</label>
-								</span>
-								<span class="inp_inbox">
-									<input name="agree_chk17" id="agreeChk17-2" type="radio" value="N"  checked="checked"><label for="agreeChk17-2">동의안함</label>
-								</span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="inbtn-desc marginT20">
-					<p>※ CGV 비회원 예매서비스 제공을 위해 필요한 최소한의 개인정보이므로 입력(수집)에 동의하시지 않을 경우 서비스를 이용하실 수 없습니다.</p>
-					<a href="http://www.cgv.co.kr/rules/privacy.aspx" target="_blank" class="round red"><span>개인정보처리(취급)방침전문보기</span></a>
-				</div>
-			</div>
-
-        </div>
-    </div>
-    <div class="sect-user nomember">
-        <h3><strong>STEP 2</strong> 개인정보(이름,휴대폰번호,법정생년월일,비밀번호) 입력 후 로그인 </h3>
-        <p>비회원 로그인 정보 오입력 시, 예매내역 확인/취소 및 티켓 발권이 어려울 수 있으니, 입력하신 정보를 다시 한번 확인해주시기 바랍니다.</p>
-        <div class="cols-enterform nomember">
-            <div>
-                <h4>비회원 로그인 입력정보</h4>
-                <div class="box-simples" style="border:1px solid gray;">
-                    <p class="disc-info"> 비회원정보에 등록된 이름, 법정생년월일, 휴대폰 번호, 비밀번호(4자리)를 입력해주세요.<br />
-                <span style="font-size:8pt;color:red;">* 모든 항목은 필수 입력사항입니다.</span></p>
-                    <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestReserve.front'/>">
-                    <input type="hidden" name="nonmember_id" id="nonmember_id"/>
-                    <fieldset>
-                        <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
-                        <table cellpadding="0" cellspacing="0">
-
-                            <tbody>
-                            <tr>
-                                <th scope="row"><label for="name">이름</label></th>
-                                <td><input type="text" placeholder="이름 입력" name="name" id="name"/></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="birth">법정생년월일&nbsp;<em>(6자리)</em>&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-                                <td><input type="text" placeholder="법정생년월일 입력"name="birth" id="birth" length="6" maxlength="6"/> - <i> *******</i>
-                                <label for="birth" class="error" style="color:red;"></label></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">휴대폰번호</th>
-                                <td>
-                                    <select title="휴대폰번호 앞자리" name="guestMob1" id="guestMob1" class="inputstl">
-                                        <option value="" selected="selected">선택</option>
-                                        <option value="010">010</option>
-                                        <option value="011">011</option>
-                                        <option value="016">016</option>
-                                        <option value="017">017</option>
-                                        <option value="018">018</option>
-                                        <option value="019">019</option>
-                                    </select>
-                                    -
-                                    <input type="text" style="width:85px;" placeholder="중간자리 입력" name="guestMob2" id="guestMob2" length="4" maxlength="4"/>
-                                    -
-                                    <input type="text" style="width:85px;" placeholder="끝자리 입력" name="guestMob3" id="guestMob3" length="4" maxlength="4"/>
-                                	<label for="guestMob1" class="error" style="color:red;"></label>
-                                	<label for="guestMob2" class="error" style="color:red;"></label>
-                                	<label for="guestMob3" class="error" style="color:red;"></label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">이메일주소</th>
-                                <td>
-                                    <input type="text" placeholder="이메일 아이디" name="guestEmail1" id="guestEmail1" style="width:85px;" />
-                                    @
-                                    <input type="text" placeholder="이메일 도메인" name="guestEmail2" id="guestEmail2" style="width:85px;" />
-                                	<select title="이메일 도메인 선택" name="Email_Auto" id="Email_AutoF" class="inputstl">
-									  <option value="" selected="selected">직접입력</option>
-									  <option value="gmail.com" >구글</option>
-									  <option value="naver.com" >네이버</option>
-									  <option value="nate.com" >네이트</option>
-									  <option value="hanmail.net" >다음</option>
-									  <option value="yahoo.com" >야후</option>
-									</select>
-                                	<label for="guestEmail1" class="error" style="color:red;"></label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4"/></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordChk" id="passwordChk" length="4" maxlength="4"/></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="box-btn">
-	                        <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
-                        </div>
-                    </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> 
-                
-                  
+        <h3>휴대폰번호 찾기</h3>
+        <p>회원님의 법정생년월일과 비회원 예매 시 입력하셨던 비밀번호를 입력해주세요.</p>
+        <div class="sect-viewform">
+            <h4>개인정보입력</h4>
+			<div class="box-simple">
+                <p class="disc-info">모든 항목이 필수 입력사항입니다.</p>
+                <form id="form1" method="post" novalidate="novalidate" action="">
+                <fieldset>
+                    <legend>비회원정보에 등록된 이름, 법정생년월일, 휴대폰 번호 입력후 회원번호를 찾으실수 있습니다.</legend>
+                    <table cellpadding="0" cellspacing="0" summary="간편 찾기에 필요한 정보를 입력테이블 입니다">
+                        <caption>이름, 법정생년월일, 휴대폰번호 입력하는 테이블</caption>
+                        <colgroup>
+                            <col class="col01" />
+                            <col class="col02" />
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th scope="row"><label for="txtName">이름</label></th>
+                            <td><input type="text" data-title="이름은 " style="ime-mode:active" name="txtName" id="txtName" maxlength="20" required="required"/></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="txtBirthday">법정생년월일<br /><em>(6자리)</em></label></th>
+                            <td><input type="text" class="only-number" data-title="법정생년월일(6자리)은 "
+                                    name="txtBirthday" id="txtBirthday" digits="digits" length="6" maxlength="6" required="required" /> - <i> *******</i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="txtPassword">비밀번호<br />(4자리)</label></th>
+                            <td>                
+                                <input type="password" data-title="비밀번호 " id="txtPassword" name="txtPassword" length="4" maxlength="4" required="required" style="width:85px;" />                            	
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="box-btn">
+                        <button type="submit" class="round inred"><span>휴대폰번호 찾기</span></button>
+                    </div>
+                </fieldset>
+                </form>
+            </div>                     
+        </div>    
+    </div>    
     <div class="sect-loginguide">
         <dl class="box-operationguide">
-            <dt>비회원 <br />로그인 시 <br />참고하세요!</dt>
-            <dd>1.  상기 정보 수집에 동의하지 않을 경우, 비회원 예매 서비스를 이용하실 수 없습니다. </dd>
-            <dd>2.  비회원 예매 시 청소년 관람불가 영화는 예매가 제한됩니다. </dd>
-            <dd>3.  비회원 에매 결제수단은 신용카드만 가능하며 모든 제휴상품권, 쿠폰, 영화예매권 등의 사용은 회원 예매 서비스 이용 시 가능합니다. </dd>
-            <dd>4.  모바일과 ARS에서는 취소가 불가능하며, 홈페이지를 이용하여 입력하신 로그인 정보로 취소 처리하실 수 있습니다.</dd>
-            <dd>5.  비회원 예매 및 비회원 예매 확인/취소 메뉴만 이용 가능합니다. 이 외에 커뮤니티, 댓글, 인정 등의 서비스는 회원 가입 후 이용 가능합니다.</dd>
-            <dd>6.  문의사항은 CGV 고객센터(1544-1122)로 문의해 주시기 바랍니다. <br />
-                - 운영시간 : 매일 09:00 ~ 21:00 (주말, 및 공휴일 상담 가능합니다.)</dd>
+            <dt>이용안내</dt>
+            <dd>CGV 고객센터 : 1544-1122</dd>
+            <dd>상담 가능 시간 : 매일 09:00~21:00 (주말 및 공휴일에도 상담 가능합니다)</dd>
         </dl>
     </div>
-    <div class="sect-loginad"  style="background:#d2cbbe;">
-        <div>
-           <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Login_bigbanner" width="350" height="300" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" title=""></iframe>
-        </div>
-    </div>
 </div>
-<!-- 실컨텐츠 끝 --> 
+<!-- 실컨텐츠 끝 -->
 
 <!-- LogIn -->
-<!-- <form name="frmGuestLogin" id="frmGuestLogin" method="post" action="https://www.cgv.co.kr/user/guest/login-proc.aspx" novalidate="novalidate">
+<form name="frmTarget" id="frmTarget" method="post" action="https://www.cgv.co.kr/user/guest/find-proc.aspx" novalidate="novalidate">
     <input type="hidden" id="username" name="username" />
     <input type="hidden" id="birthday" name="birthday" />
-	<input type="hidden" id="mobile1" name="mobile1" />
-	<input type="hidden" id="mobile2" name="mobile2" />
-	<input type="hidden" id="mobile3" name="mobile3" /> 
-	<input type="hidden" id="pwd" name="pwd" />
-    <input type="hidden" id="returnURL" name="returnURL" value="/ticket/" />
-</form> -->
+	<input type="hidden" id="password" name="password" />
+	<input type="hidden" id="act" name="act" value="mobile" />
+</form>
+<!-- //LogIn -->
+
 <script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 
-/*     (function ($) {
+    (function ($) {
         $(function () {
 
             var $frm = $('#form1');
             $frm.validate({
                 submitHandler: function (form) {
-
-                    //                    if (!$("input[id=agreement]").is(":checked")) {
-                    //                        alert("개인정보 제공에 동의 해 주세요.");
-                    //                        $("input[id=agreement]").focus();
-                    //                        return false;
-                    //                    }
-
-                    var agree_chk17 = $("input[name='agree_chk17']:checked").val();
-                    if (agree_chk17 == "N") {
-                        alert("개인정보 수집 및 활용에 동의 하셔야 비회원 예매서비스 이용이 가능합니다.")
-                        $('#agreeChk17-1').focus();
-                        return false;
-                    }
-
-
-                   
-
-                    if ($('#txtPassword').val() != "" && $('#txtConfirmPassword').val() != "") {
-                        if ($('#txtPassword').val() != $('#txtConfirmPassword').val()) {
-                            alert("비밀번호가 일치하지 않습니다.");
-                            $('#txtPassword').focus();
-                            return false;
-                        }
-                    }
-
-                    var $loginFrm = $('#frmGuestLogin');
+                    var $loginFrm = $('#frmTarget');
 
                     $loginFrm.find('#username').val(app.crypto.AESEncryptToBase64($frm.find('#txtName').val()));
                     $loginFrm.find('#birthday').val(app.crypto.AESEncryptToBase64($frm.find('#txtBirthday').val()));
-                    $loginFrm.find('#mobile1').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile1').val()));
-                    $loginFrm.find('#mobile2').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile2').val()));
-                    $loginFrm.find('#mobile3').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile3').val()));
-                    $loginFrm.find('#pwd').val(app.crypto.AESEncryptToBase64($frm.find('#txtPassword').val()));
+                    $loginFrm.find('#password').val(app.crypto.AESEncryptToBase64($frm.find('#txtPassword').val()));
 
                     $loginFrm.submit();
 
@@ -647,63 +430,9 @@
                 }
             });
 
-
-            $("input[name=agree_chk17]").on('click', function () {
-                //주소
-                if ($('input:radio[name="agree_chk17"]:checked').val() == "Y") {
-                    $('#txtName').attr("disabled", false);
-                    $('#txtBirthday').attr("disabled", false);
-                    $('#txtMobile1').attr("disabled", false);
-                    $('#txtMobile2').attr("disabled", false);
-                    $('#txtMobile3').attr("disabled", false);
-                    $('#txtPassword').attr("disabled", false);
-                    $('#txtConfirmPassword').attr("disabled", false);
-                } else if ($('input:radio[name="agree_chk17"]:checked').val() == "N") {
-
-
-                    $('#txtName').attr("disabled", true);
-                    $('#txtBirthday').attr("disabled", true);
-                    $('#txtMobile1').attr("disabled", true);
-                    $('#txtMobile2').attr("disabled", true);
-                    $('#txtMobile3').attr("disabled", true);
-                    $('#txtPassword').attr("disabled", true);
-                    $('#txtConfirmPassword').attr("disabled", true);
-
-                    $('#txtName').val('');
-                    $('#txtBirthday').val('');
-                    $('#txtMobile2').val('');
-                    $('#txtMobile3').val('');
-                    $('#txtPassword').val('');
-                    $('#txtConfirmPassword').val('');
-
-                }
-            });
-
-
-            $("input[name=agree_chk17]").on('click', function () {
-                //모바일 세팅
-                if ($('input:radio[name="agree_chk17"]:checked').val() == "N") {
-                    $('#txtName').val("");
-                    $('#txtBirthday').val("");
-                    $('#txtMobile2').val("");
-                    $('#txtMobile3').val("");
-                    $('#txtPassword').val("");
-                    $('#txtConfirmPassword').val("");
-
-                }
-            });
         });
-    })(jQuery); */
+    })(jQuery);
 //]]>
-</script>
-<script type="text/javascript">
-//    $('#txtName').attr("disabled", true);
-//    $('#txtBirthday').attr("disabled", true);
-//    $('#txtMobile1').attr("disabled", true);
-//    $('#txtMobile2').attr("disabled", true);
-//    $('#txtMobile3').attr("disabled", true);
-//    $('#txtPassword').attr("disabled", true);
-//    $('#txtConfirmPassword').attr("disabled", true);
 </script>
 
             <!--/ Contents End -->
@@ -802,6 +531,7 @@
 
         <div class="adFloat" style="display:block">
 
+            <iframe src='http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon' width='154' height='182' frameborder='0' scrolling='no' topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' allowTransparency="true" id="ad_float1"></iframe>
         </div>
         <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->
