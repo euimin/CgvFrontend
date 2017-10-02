@@ -67,7 +67,6 @@ public class PointController {
 			movieReviews=service.selectReviewList(map);
 		}
 		Map<String,PointDTO> eggPointByMovie=service.getEggValue();
-		System.out.println(eggPointByMovie.get("a1234").getUpCount());
 		
 		model.addAttribute("movieReviews",movieReviews);
 		model.addAttribute("eggPointByMovie",eggPointByMovie);

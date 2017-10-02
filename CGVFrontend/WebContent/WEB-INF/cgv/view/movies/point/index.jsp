@@ -265,7 +265,7 @@
                             <div class="egg-gage small">
                                 <span class="egg good"></span>
 								<span class="percent">
-									<fmt:formatNumber value="${eggPointByMovie[movie.movie_code].upCount}" type="percent"/>
+									<fmt:formatNumber value="${eggPointByMovie[movie.movie_code].eggNo}" type="percent"/>
 								</span>
 							</div>
                         </div>
@@ -332,7 +332,7 @@
 					<div class="egg-gage big" id="eggIconDiv">
 						<span class="egg good"></span>
                         
-						<span class="percent"><strong><fmt:formatNumber value="${eggPointByMovie[param.movie_code].upCount}" type="percent"/></strong></span>
+						<span class="percent"><strong><fmt:formatNumber value="${eggPointByMovie[param.movie_code].eggNo}" type="percent"/></strong></span>
 					</div>
 
 					<div class="radar-graph" id="chart2">
@@ -450,11 +450,11 @@
                     -->
                 </ul>
                 <div id="my_point_area"></div>
-                <div class="wrap-persongrade">
+                <div id="js-load" class="wrap-persongrade">
                     <ul id="movie_point_list_container" class="point_col2">
                     <c:forEach items="${movieReviews}" var="movieReivew">
                     	<c:if test="${not empty movieReviews}" var="movieReviewsNN">
-                        	<li class="" id="liCommentFirst19312564" style="width:465px;"
+                        	<li class="lists_item js-load" id="liCommentFirst19312564" style="width:465px;"
                                    data-SPOILERCNT="0" 
                                    data-REPORTCNT="0">
                             <a href="javascript:return false;" class="screen_spoiler">&nbsp;</a>
@@ -466,7 +466,7 @@
                             </div>
                             
                             <div class="box-contents">
-                                <ul class="writerinfo">                                        
+                                <ul class="writerinfo">
                                     <li class="writer-name">
                                         <a href="#select_main" onclick="getPopList1('matainijia', '익스텐션')"; >
                                         	<c:choose>
@@ -510,16 +510,23 @@
                         </c:if>
                         </c:forEach>
                         <c:if test="${not movieReviewsNN}">
-                        	<li class="nodata" style="text-align:center;width:980px;">해당 조건에 데이터가 존재하지 않습니다.</li>
+                        	<li class="nodata" style="text-align:center;width:980px;">
+                        	<div style="height:20px;">해당 조건에 데이터가 존재하지 않습니다.</div>
+                        	<div style="height:30px;">평점을 확인할 <span style="color:red">영화</span>를 선택해 주십시오.</div>
+                        	</li>
+                        	
                         </c:if>
                         
                         
                    	</ul>
-                </div> 
-                <div class="paging">
-                    <ul id="paging_point"></ul>
                 </div>
-            </div>        
+            </div>    
+			<c:if test="${movieReviewsNN}">
+				<div id="js-btn-wrap" class="btn-wrap" 
+				style="width:980px;text-align: center;font-size:30px;border-bottom:grey solid thin;">
+					<a href="javascript:;" class="button"><strong>···</strong></a>
+				</div>
+			</c:if>
         </div><!-- .col-detail -->
 
 
@@ -852,7 +859,20 @@
 
 
 </script>
-
+<style>
+	.js-load {
+	    display: none;
+	}
+	.js-load.active {
+	    display: block;
+	}
+	.is_comp.js-load:after {
+	    display: none;
+	}
+	.btn-wrap, .point_col2, .wrap-persongrade {
+	    display: block;
+	}
+</style>
 <script type="text/javascript">
 //<![CDATA[
 
@@ -885,6 +905,27 @@
                 });
    			///////////////////////////////////////////////////////////////////////////카루셀
    			
+			$(window).on('load', function () {
+			    load('#js-load', '6');
+			    $("#js-btn-wrap .button").on("click", function () {
+			        load('#js-load', '4', '#js-btn-wrap');
+			    })
+			});
+			 
+			function load(id, cnt, btn) {
+			    var review_list = id + " .js-load:not(.active)";
+			    var review_length = $(review_list).length;
+			    var review_total_cnt;
+			    if (cnt < review_length) {
+			        review_total_cnt = cnt;
+			    } else {
+			        review_total_cnt = review_length;
+			        $(".button").hide();
+			    }
+			    $(review_list + ":lt(" + review_total_cnt + ")").addClass("active");
+			}
+   			///////////////////////////////////////////////////////////////////////더보기
+			
             var myPointPage = 0;    
             var mypointYN = false;    
             var mypointPaneltyYN = false;    

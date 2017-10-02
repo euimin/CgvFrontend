@@ -18,7 +18,7 @@ public class PointDTO {
 	private String soundtrackpoint;
 	//기타 변수들
 	private String profilepicture;
-	private float upCount;//황금알 숫자
+	private float eggNo;//황금알 숫자
 	//좋아요 관련 변수들
 	private String likesNo;
 	private String likes;
@@ -27,7 +27,7 @@ public class PointDTO {
 
 	public PointDTO(String review_no, String movie_code, String id, String feedback, String content, Date writedate,
 			String directionpoint, String storypoint, String visualpoint, String actingpoint, String soundtrackpoint,
-			String profilepicture, float upCount, String likesNo, String likes) {
+			String profilepicture, float eggNo, String likesNo, String likes) {
 		this.review_no = review_no;
 		this.movie_code = movie_code;
 		this.id = id;
@@ -40,7 +40,7 @@ public class PointDTO {
 		this.actingpoint = actingpoint;
 		this.soundtrackpoint = soundtrackpoint;
 		this.profilepicture = profilepicture;
-		this.upCount = upCount;
+		this.eggNo = eggNo;
 		this.likesNo = likesNo;
 		this.likes = likes;
 	}
@@ -141,12 +141,12 @@ public class PointDTO {
 		this.profilepicture = profilepicture;
 	}
 
-	public float getUpCount() {
-		return upCount;
+	public float getEggNo() {
+		return eggNo;
 	}
 
-	public void setUpCount(float upCount) {
-		this.upCount = upCount;
+	public void setEggNo(float eggNo) {
+		this.eggNo = eggNo;
 	}
 
 	public String getLikesNo() {
