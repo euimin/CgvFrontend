@@ -256,7 +256,6 @@
                                 </div>
 
                                 <div class="box-contents">
-                        <a href="/movies/detail-view/?midx=79949">
                             <strong class="title">${movie.title}</strong>
                         </a>
 
@@ -311,7 +310,7 @@
         <div class="col-detail">
             <div class="sect-grade" style="width: 980px;">
                 <div class="heading-new">
-                    <a class="goto-link"><h4>실관람객 평점</h4></a>
+                    <a class="goto-link"><h4>관람객 평점</h4></a>
                     <p class="txt-write">관람일 포함 7일 이내 관람평을 남기시면 <strong>CJ ONE 20P</strong>가 적립됩니다. 
                         <a class="link-gradewrite" href="javascript:void(0);"><span>평점작성</span></a><a class="link-reviewwrite" href="/movies/point/my-list.aspx"><span>내 평점</span></a>
                     </p>
@@ -875,7 +874,11 @@
 </style>
 <script type="text/javascript">
 //<![CDATA[
-
+	
+	/* function checkLogin(){
+		href="<c:url value='/WEB-INF/cgv/template/isLogin.jsp'/>";
+	} */
+	///////////////////////////////////////////////////////////로그인 확인페이지로
     window.userFavoriteMovie = $.parseJSON('[]');
     (function ($) {
         $(function () {
