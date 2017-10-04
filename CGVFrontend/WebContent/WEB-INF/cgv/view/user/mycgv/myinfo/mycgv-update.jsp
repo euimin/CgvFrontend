@@ -587,14 +587,9 @@
                     <a href="/user/mycgv/?g=1" title="현재 선택">MY CGV HOME <i></i></a>
                 </li>
 	            <li >
-                    <a href="/user/mycgv/reserve/?g=1" >나의 예매내역 <i></i></a>
-                    <ul>
-                       <li >
-                            <a href="/user/mycgv/reserve/receipt.aspx?g=1" >신용카드 영수증 출력</a>
-                        </li>
-                    </ul>
+	            	<a href="<c:url value='/mycgvReseved.front'/> ">나의 예매내역 <i></i></a>
                 </li>
-	            <li >
+<!-- 	            <li >
 	                <a href="/user/mycgv/coupon/movie-ticket/list.aspx?g=1" >관람권/할인쿠폰 관리 <i></i></a>
 	                <ul>                      
                      
@@ -618,9 +613,9 @@
                          <li >
                             <a href="/user/mycgv/coupon/phototicket-passcard/?g=1" >CGV포토티켓 패스카드</a>
                         </li>
-                      <!-- <li >
+                      <li >
                             <a href="/user/mycgv/coupon/partnership/list.aspx?g=1" >제휴 온라인 예매/할인권</a>
-                        </li>-->
+                        </li>
                         <li >       
                                <a href="/user/mycgv/coupon/cjone/list.aspx?g=1" >CJ ONE 쿠폰</a>         
                         </li>
@@ -633,8 +628,8 @@
                         </li>
                          
 	                </ul>
-	            </li>
-	            <li >
+	            </li> -->
+<!-- 	            <li >
                     <a href="/user/mycgv/cjone-point/cafeteria.aspx?g=1" >CJ ONE 포인트 <i></i></a>
 	                <ul>
 	                    <li >                         
@@ -646,23 +641,9 @@
                           
                         </li>
 	                </ul>
-	            </li>
-                <li >
-                    <a href="javascript:fncMoveToPhototicket()" >내가꾸민포토티켓 <i></i></a>
+	            </li> -->
 
-                    <script language="javascript">
-                        function fncMoveToPhototicket() {
-                            var sWidth = Number($(window).width()) + Number(12);    //parent 창의 크기와 동일하게 만들어준다.
-                            var sHeight = Number($(window).height()) + Number(35);
-
-                            var substr = 'scrollbars=yes,menubar=yes,resizable=yes,width=' + sWidth + 'px,height=' + sHeight + 'px';
-
-                            window.open('http://phototicket.cgv.co.kr/Phototicket/HTML/myPhototicket.aspx?g=1', "CJ_CGV_Phototicket", substr, "_NEW");
-                        }
-                    </script>
-
-	            </li>
-	            <li >
+<!-- 	            <li >
                     <a href="/user/mycgv/culture-shop/?g=1" >티켓·팝콘스토어<i></i></a>
 	                <ul>
                         <li >
@@ -677,37 +658,37 @@
                         <li >
                             <a href="/user/mycgv/culture-shop/prepaid-card.aspx?g=1" >CGV기프트카드</a>
                         </li>           
-                        <!--<li >
+                        <li >
                             <a href="/user/mycgv/culture-shop/movie-collage-passcard/?g=1" >무비꼴라쥬 패스카드</a>
-                        </li>//-->
+                        </li>//
 	                </ul>
-	            </li>
+	            </li> -->
 	            <li >
-                    <a href="/user/mycgv/myinfo/?g=1" >회원정보<i></i></a>
+                    <a href="#" >회원정보<i></i></a>
 	                <ul>
 
                         <li >
-                            <a href="#">개인정보 변경</a>
+                            <a href="<c:url value='/updateProcess.front'/>">개인정보 변경</a>
                         </li>
 
-	                    <li >
+<!-- 	                    <li >
                             <a href="/user/mycgv/myinfo/?g=1" >CGV 서비스 이용동의 설정</a>
                         </li>
 	               
 	                    <li >
                             <a href="/user/mycgv/myinfo/edit-myinfo-Email-Sms.aspx?g=1" >Email/SMS 수신설정</a>
-                        </li>
+                        </li> -->
 	                    <li >
-                            <a href="/user/mycgv/myinfo/leave-cjone.aspx?g=1" >회원탈퇴</a>
+                            <a href="<c:url value='/membersDelete.front'/>" >회원탈퇴</a>
                         </li>
                         
 	                </ul>
 	            </li>
-                 <li >
+<!--                  <li >
                     <a href="/user/mycgv/myinfo/edit-myinfo-myprofile.aspx?g=1" >프로필 관리<i></i></a>
                 </li>
-	            <li >
-                    <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >나의 문의내역 <i></i></a>
+ 	            <li >
+                   <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >나의 문의내역 <i></i></a>
 	                <ul>
 	                    <li >
                             <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >1:1 문의</a>
@@ -718,8 +699,8 @@
                             <a href="/user/mycgv/inquiry/lost/list.aspx?g=1" >분실물 문의</a>
                         </li>
 	                </ul>
-	            </li>
-                        <li class="my-event"><a href="/user/movielog/watched.aspx">내가 본 영화</a></li> 
+	            </li>-->
+                        <li class="my-event"><a href="<c:url value='/mycgvWatched.front' />">내가 본 영화</a></li> 
 	           <!-- <li class="my-event"><a href="/user/mycgv/event/?g=1">나의 참여 이벤트</a></li> -->
 	        </ul>
 	        <div class="ad-partner01">

@@ -92,13 +92,13 @@ public class MembersController {
 		return dto==null ?"N":"Y";
 	}
 	
-	//닉네임 중복 확인
+/*	//닉네임 중복 확인
 	@ResponseBody
 	@RequestMapping("/isMemberNick.front")
 	public String isMemberNick(@RequestParam Map map) throws Exception{
 		MembersDTO dto = membersService.selectOne(map);		
 		return dto==null ?"N":"Y";
-	}
+	}*/
 	
 	//로그인 처리]
 	@RequestMapping("/loginProcess.front")
@@ -168,11 +168,13 @@ public class MembersController {
 	}
 	
 	
-	
 	//회원탈퇴
 	@RequestMapping("/membersDelete.front")
-	public String membersDelete() throws Exception{
-		return "#";
+	public String membersDelete(@ModelAttribute MembersDTO dto, Map map) throws Exception{
+		dto=membersService.selectOne(map);
+		membersService.delete(dto);
+		
+		return "forward:/";
 	}
 
 }

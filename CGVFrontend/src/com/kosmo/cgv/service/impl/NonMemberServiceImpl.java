@@ -44,7 +44,7 @@ public class NonMemberServiceImpl implements NonMemberService{
 
 	@Override
 	public int insert(NonMemberDTO dto) throws Exception {
-		return 0; /*dao.insert(dto);*/
+		return dao.insert(dto);
 	}
 
 	@Override
