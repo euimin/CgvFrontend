@@ -97,27 +97,26 @@ preselectSetting(
 						<div class="col-body" style="height: 560px">
 							<!-- 영화선택 -->
 							<div class="movie-select">
-								<script>						
+								<script>
+									var movie_code;
 									$(function(){										
 										$("#movie_list>ul>li").click(function(){																															
 											$("#movie_list>ul>li").each(function(){
 												$(this).removeClass("press selected");
 											});
 											$(this).toggleClass("press selected");
-																																									
+											movie_code = $(this).children("#movie_code").val();										
+											
 											$.ajax({
 												url:"<c:url value='/movieSelect.front'/>",												
 												type:"get",
 												dataType:"json",
 												data:$(this).find("#frm").serialize(),
-												success:function(data){										
-													console.log(data.movie_title);
-													console.log(data.movie_poster);
-													console.log(data.movie_rating);
+												success:function(data){
 													$(".movie_poster>img").attr("src", "http://192.168.0.128:8080/CGVBackend/images/posters/"+data.movie_poster);
-													$("#movie_title>span>a").html(data.movie_title);
+													$("#movie_title>span>a").html(data.movie_title);													
 													$("#movie_rating>span").html(data.movie_rating);
-													$("#info_movie>.placeholder").addClass("hidden");
+													$("#info_movie>.placeholder").addClass("hidden");						
 												},
 												error:function(request,status,error){
 													alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
@@ -144,6 +143,7 @@ preselectSetting(
 													<li class="rating-18">
 												</c:otherwise>
 											</c:choose><!-- li class="press selected" -->										
+												<input type="hidden" id="movie_code" value="${movie.movie_code}"/>
 												<a href="#" onclick="return false;">
 													<span class="icon">&nbsp;</span>
 													<span class="text">${movie.title}</span>
@@ -198,6 +198,7 @@ preselectSetting(
 														<span class="count">(${theaterCountMap[region]})</span>
 													</a>
 													<script>
+														var theater_code;
 														$(function(){
 															$("#theaterDiv>ul>li").click(function(){																															
 																$("#theaterDiv>ul>li").each(function(){
@@ -206,6 +207,7 @@ preselectSetting(
 																$(this).toggleClass("selected");
 																
 																$("#theater_name").html("CGV"+$(this).children("a").html());
+																theater_code = $(this).children("#theater_code").val();
 																$("#contents_info_theater").css("display", "inline");
 																$("#info_theater>.placeholder").addClass("hidden");																												
 															});
@@ -217,8 +219,9 @@ preselectSetting(
 															<c:forEach items="${theaterMap[region]}" var="theater">
 																<li>
 																	<a href="#" onclick="return false;"><!-- onclick="theaterAreaClickListener(event);return false;" -->
-																		${theater.replace("CGV", "")}
+																		${theater.NAME.replace("CGV", "")}
 																	</a>
+																	<input type="hidden" id="theater_code" value="${theater.THEATER_CODE}"/>				
 																</li>
 															</c:forEach>
 														</ul>
@@ -240,6 +243,7 @@ preselectSetting(
 						<div class="col-body" style="height: 560px">
 							<!-- 날짜선택 -->
 							<script>
+								var screeningdate;
 								$(function(){
 									$("#date_list>ul>div>li").click(function(){																															
 										$("#date_list>ul>div>li").each(function(){
@@ -248,8 +252,23 @@ preselectSetting(
 										$(this).toggleClass("selected");	
 										
 										$("#date_data").html($(this).find("#dateStr").val());
+										screeningdate = $(this).find("#dateData").val();
 										$("#contents_info_theater").css("display", "inline");
 										$("#info_theater>.placeholder").addClass("hidden");
+										if(movie_code!=undefined && theater_code!=undefined && screeningdate!=undefined){
+											$.ajax({
+												url:"<c:url value='/dateSelect.front'/>",												
+												type:"get",
+												dataType:"json",
+												data:"movie_code="+movie_code+"&theater_code="+theater_code+"&screeningdate="+screeningdate,
+												success:function(data){
+													$("#screenPlaceHolder").addClass("hidden");
+												},
+												error:function(request,status,error){
+													alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
+												}
+											});
+										}
 									});
 								});
 							</script>							
@@ -281,6 +300,8 @@ preselectSetting(
 													<span class="day">${dateMap.day}</span>
 													<input type="hidden" id="dateStr" 
 														value="${dateMap.year}.${dateMap.month}.${dateMap.day}(${dateMap.dayweek})"/>
+													<input type="hidden" id="dateData" 
+														value="${dateMap.year}-${dateMap.month}-${dateMap.day}"/>
 												</a>
 											</li>
 											<c:set value="${dateMap.year}" var="prevYearVal"/>
@@ -305,18 +326,20 @@ preselectSetting(
 							<div class="time-option">
 								<span class="morning">조조</span><span class="night">심야</span>
 							</div>
-							<div class="placeholder hidden">영화, 극장, 날짜를 선택해주세요.</div><!-- class="hidden" -->
+							<div id="screenPlaceHolder" class="placeholder" style="height: 522px;">영화, 극장, 날짜를 선택해주세요.</div><!-- class="hidden" -->
 							
-							<div class="time-list nano has-scrollbar">
+							<div class="time-list nano has-scrollbar" style="height: 522px;">
 								<div class="content scroll-y" tabindex="-1" style="right: -17px;">
-									<div class="theater" screen_cd="005" movie_cd="20014137">
+									
+									<div class="theater">
 										<span class="title">
-											<span class="name">2D(추석탈출특가)</span>
-											<span class="floor">5관 10층</span>
+											<span class="name">2D</span>
+											<span class="floor">5관</span>
 											<span class="seatcount">(총172석)</span>
 										</span>
 										<ul>
-											<li data-index="0" data-remain_seat="172" play_start_tm="2350" screen_cd="005" movie_cd="20014137" play_num="7">
+											
+											<li>
 												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
 													<span class="time">
 														<span>23:50</span>
@@ -326,87 +349,10 @@ preselectSetting(
 													<span class="sreader mod"></span>
 												</a>
 											</li>
-											<li data-index="1" data-remain_seat="172" play_start_tm="2640" screen_cd="005" movie_cd="20014137" play_num="8" class="night">
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
-													<span class="time">
-														<span>26:40</span>
-													</span>
-													<span class="count">156석</span>
-													<div class="sreader">종료시간 29:11</div>
-													<span class="sreader mod"> 심야</span>
-												</a>
-											</li>
+											
 										</ul>
 									</div>
-									<div class="theater" screen_cd="005" movie_cd="20013728" style="border: none;">
-										<span class="title">
-											<span class="name">2D</span>
-											<span class="floor">5관 10층</span>
-											<span class="seatcount">(총172석)</span>
-										</span>
-										<ul>
-											<li data-index="2" data-remain_seat="172" play_start_tm="0650" screen_cd="005" movie_cd="20013728" play_num="1" class="morning">
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;" title="">
-													<span class="time">
-														<span>06:50</span>
-													</span>
-													<span class="count">156석</span>
-													<div class="sreader">종료시간 09:21</div>
-													<span class="sreader mod"> 조조</span>
-												</a>
-											</li>
-											<li data-index="3" data-remain_seat="172" play_start_tm="0940" screen_cd="005" movie_cd="20013728" play_num="2" class="morning">
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
-													<span class="time">
-														<span>09:40</span>
-													</span>
-													<span class="count">155석</span>
-													<div class="sreader">종료시간 12:11</div>
-													<span class="sreader mod"> 조조</span>
-												</a>
-											</li>
-											<li data-index="4" data-remain_seat="172" play_start_tm="1230" screen_cd="005" movie_cd="20013728" play_num="3">
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
-													<span class="time">
-														<span>12:30</span>
-													</span>
-													<span class="count">156석</span>
-													<div class="sreader">종료시간 15:01</div>
-													<span class="sreader mod"></span>
-												</a>
-											</li>
-											<li data-index="5" data-remain_seat="172" play_start_tm="1520" screen_cd="005" movie_cd="20013728" play_num="4">
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
-													<span class="time">
-														<span>15:20</span>
-													</span>
-													<span class="count">151석</span>
-													<div class="sreader">종료시간 17:51</div>
-													<span class="sreader mod"></span>
-												</a>
-											</li>
-											<li data-index="6" data-remain_seat="172" play_start_tm="1810" screen_cd="005" movie_cd="20013728" play_num="5">
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
-													<span class="time">
-														<span>18:10</span>
-													</span>
-													<span class="count">156석</span>
-													<div class="sreader">종료시간 20:41</div>
-													<span class="sreader mod"></span>
-												</a>
-											</li>
-											<li data-index="7" data-remain_seat="172" play_start_tm="2100" screen_cd="005" movie_cd="20013728" play_num="6">
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
-													<span class="time">
-														<span>21:00</span>
-													</span>
-													<span class="count">156석</span>
-													<div class="sreader">종료시간 23:31</div>
-													<span class="sreader mod"></span>
-												</a>
-											</li>
-										</ul>
-									</div>
+									
 								</div>
 								<div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;">
 									<div class="slider slider-y" style="height: 50px;"></div>

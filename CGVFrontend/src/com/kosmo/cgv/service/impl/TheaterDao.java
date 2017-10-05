@@ -1,6 +1,7 @@
 package com.kosmo.cgv.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -21,7 +22,12 @@ public class TheaterDao implements TheaterService{
 	}
 
 	@Override
-	public List<String> selectTheaterListByRegion(String region) throws Exception {
+	public List<Map<String, String>> selectTheaterListByRegion(String region) throws Exception {
 		return template.selectList("selectTheaterListByRegion", region);
+	}
+
+	@Override
+	public List<Map<String,String>> selectScreenList(String theater_code) throws Exception {
+		return template.selectList("selectScreenList", theater_code);
 	}	
 }
