@@ -19,6 +19,7 @@ public class PointDTO {
 	//기타 변수들
 	private String profilepicture;
 	private float eggNo;//황금알 숫자
+	private String title;
 	//좋아요 관련 변수들
 	private String likesNo;
 	private String likes;

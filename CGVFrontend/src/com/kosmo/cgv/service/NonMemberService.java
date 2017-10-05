@@ -6,8 +6,7 @@ import java.util.Map;
 public interface NonMemberService {
 	//로그인 처리]
 	boolean login(Map map) throws Exception;
-	//답변형 게시판 관련 CRUD작업용]
-	//목록
+	//회원 목록
 	List<NonMemberDTO> selectList(Map map) throws Exception;
 	//상세보기
 	NonMemberDTO selectOne(Map map) throws Exception;

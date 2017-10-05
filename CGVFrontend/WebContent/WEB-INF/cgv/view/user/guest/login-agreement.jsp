@@ -225,7 +225,7 @@
 		
 		$.validator.setDefaults({"submitHandler":function(form){
 			//submit하기전 수행할 로직
-        	var phone=$("#guestMob1").val()+"-"+$("guestMob2").val()+"-"+$("#guestMob3").val();
+        	var phone=$("#guestMob1").val()+"-"+$("#guestMob2").val()+"-"+$("#guestMob3").val();
         	$("#phone").val(phone);
         	
         	var email=$("#guestEmail1").val()+"@"+$("#guestEmail2").val();
@@ -492,8 +492,10 @@
                 <div class="box-simples" style="border:1px solid gray;">
                     <p class="disc-info"> 비회원정보에 등록된 이름, 법정생년월일, 휴대폰 번호, 비밀번호(4자리)를 입력해주세요.<br />
                 <span style="font-size:8pt;color:red;">* 모든 항목은 필수 입력사항입니다.</span></p>
-                    <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestReserve.front'/>">
+                    <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestReseve.front'/>">
                     <input type="hidden" name="nonmember_id" id="nonmember_id"/>
+                    <input type="hidden" name="phone" id="phone"/>
+                    <input type="hidden" name="email" id="email"/>
                     <fieldset>
                         <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
                         <table cellpadding="0" cellspacing="0">
@@ -1033,7 +1035,7 @@
             
             
 
-            $('.btn_send').on('click', function() {
+/*             $('.btn_send').on('click', function() {
 
                var smsyn = $('input:radio[name="myapp"]:checked').val();
                var phoneNum_1 = $('#phoneNum1').val();
@@ -1068,7 +1070,7 @@
                     return $('#phoneNum3').focus();
                 }
 
-                $.ajax({    
+                 $.ajax({    
                     type:"POST",
                     url: '/common/ajax/user.aspx/GetSMSMaster',
                     data: "{'sms_yn':'" + smsyn + "' , 'phoneNum1':'" + app.crypto.AESEncryptToBase64(phoneNum_1) +"',  'phoneNum2':'" + app.crypto.AESEncryptToBase64(phoneNum_2) +"', 'phoneNum3':'" + app.crypto.AESEncryptToBase64(phoneNum_3) +"'  }",                
@@ -1102,7 +1104,7 @@
                             }
                         }
                     }); 
-               });  // SMS
+               });  // SMS */
 
 
         });
@@ -1130,7 +1132,7 @@
         }
     }
 
-    $("#phoneNum1").keyup(function (event) {
+/*     $("#phoneNum1").keyup(function (event) {
         if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
             var inputVal = $(this).val();
             $(this).val(inputVal.replace(/[^0-9]/gi, ''));
@@ -1149,7 +1151,7 @@
             var inputVal = $(this).val();
             $(this).val(inputVal.replace(/[^0-9]/gi, ''));
         }
-    });
+    }); */
 
     function appDownInfoPop() {
 

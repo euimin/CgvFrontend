@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.kosmo.cgv.service.MembersDTO;
 import com.kosmo.cgv.service.NonMemberDTO;
 import com.kosmo.cgv.service.impl.NonMemberServiceImpl;
 
@@ -52,21 +55,24 @@ public class NonMemberController {
 	public String guestReseve() throws Exception{
 		return "user/guest/login-agreement";
 	}
-	//비회원 임시가입후 임시 아이디 및 입력정보 확인
+	//비회원 임시가입후 임시 아이디 및 입력정보 확인폼으로 이동
 	@RequestMapping(value="/guestReseve.front", method=RequestMethod.POST)
-	public String guestReseve(@ModelAttribute NonMemberDTO dto, Map map) throws Exception{
+	public String guestReseve(@ModelAttribute NonMemberDTO dto, @RequestParam Map map, Model model) throws Exception{
 		//데이타 저장]
 		map.put("dto", dto);			
 		nonMemberService.insert(dto);
+		
+		//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
+		model.addAllAttributes(map);
 		//뷰정보 반환]
-		return "forward:/guestReserving.front";
+		return "user/guest/join-sucess";
 	}
 	//비회원 임시 아이디 및 입력정보 확인 후 예매폼으로 이동.
-	@RequestMapping(value="/guestReserving.front", method=RequestMethod.POST)
+	@RequestMapping("/guestReserving.front")
 	public String guestReserving(@RequestParam Map map,Model model) throws Exception{
 		model.addAllAttributes(map);
 		//뷰정보 반환]
-		return "user/ticket/index";
+		return "forward:/ticket.front";
 	}
 	
 	
@@ -84,7 +90,7 @@ public class NonMemberController {
 			//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
 			model.addAllAttributes(map);
 		}else {
-			model.addAttribute("guestLoginError","예매 내역이 확인되지 않습니다.<br/>지금 예매하시겠습니까?");
+			model.addAttribute("guestLoginError","예매 내역이 확인되지 않습니다.");
 			return "user/guest/index";
 		}
 		return "user/guest/reserve-chk";
@@ -92,41 +98,14 @@ public class NonMemberController {
 	
 	
 	
-/*	@RequestMapping(value="/guestLogin.front", method=RequestMethod.POST)
-	public String guestLogin(@RequestParam Map map,Model model) throws Exception{
-		//서비스 호출]
-		boolean guestLogin=nonMemberService.login(map);
-		if(guestLogin){//비회원 로그인 경우
-			//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
-			model.addAllAttributes(map);
-		}else {
-			model.addAttribute("guestLoginError","예매 내역이 확인되지 않습니다.<br/>지금 예매하시겠습니까?");
-			return "user/guest/index";
-		}
-		//임시 아이디 및 입력정보 확인
-		return "forward:/guestLoginSuccess.front";
-	}
-	//임시 아이디 및 입력정보 확인폼으로 이동
-	@RequestMapping(value="/guestLoginSuccess.front", method=RequestMethod.POST)
-	public String guestLoginSuccess(@RequestParam Map map,Model model) throws Exception{
-		//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
-		model.addAllAttributes(map);
-		//뷰 반환
-		return "user/guest/login-sucess";
-	}*/
-	
-	
-	//비회원 로그아웃 처리]
 	@RequestMapping("/guestLogout.front")
 	public String logout(SessionStatus status) throws Exception{
 		//로그 아웃처리-세션영역에 속성 삭제]
 		status.setComplete();
 		//뷰(JSP)정보 반환]- 메인페이지로 이동
 		return "user/login/index";
-	}///////////////////logout
+	}
 
-	
-	
 	
 	/* 아이디 비밀번호 분실 시 휴대폰 번호 및 이메일로 찾기 */
 	//휴대폰 번호로 찾기

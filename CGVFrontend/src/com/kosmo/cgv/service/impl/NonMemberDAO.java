@@ -35,7 +35,14 @@ public class NonMemberDAO implements NonMemberService{
 
 	@Override
 	public int insert(NonMemberDTO dto) throws Exception {
-		return 0;/*template.insert("NonMemberInsert", dto);*/
+		System.out.println("nonmember_id: "+dto.getNonmember_id());
+		System.out.println("name: "+dto.getName());
+		System.out.println("birth: "+dto.getBirth());
+		System.out.println("phone: "+dto.getPhone());
+		System.out.println("email: "+dto.getEmail());
+		System.out.println("password: "+dto.getPassword());
+		
+		return template.insert("NonMemberInsert", dto);
 	}
 
 	@Override

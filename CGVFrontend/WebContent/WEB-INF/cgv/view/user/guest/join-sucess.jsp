@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 
-<!-- Mirrored from www.cgv.co.kr/user/guest/login.aspx by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 13:09:23 GMT -->
+<!-- Mirrored from www.cgv.co.kr/user/guest/login-agreement.aspx by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 13:09:20 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     
@@ -35,6 +35,7 @@
     <link rel="stylesheet" media="print" type="text/css" href="http://img.cgv.co.kr/R2014/css/print.css" />    
    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/content_prepaid_card_170421.css" />
+  
 
     <link rel="stylesheet" type="text/css" href="http://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.config.js"></script>
@@ -52,14 +53,21 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
+
+    
+
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
+    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
 	<link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
 
+  
+
     <!-- 각페이지 Header Start--> 
     
+
     <!--/각페이지 Header End--> 
     <script type="text/javascript">
         //<![CDATA[
@@ -67,7 +75,7 @@
         _TRK_CP = "/회원서비스/비회원로그인";
 
         app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
-            .config('imageDomain', 'http://img.cgv.co.kr')
+            .config('imageDomain', 'http://img.cgv.co.kr/')
             .config('isLogin', 'False');
 
         // AD FLOAT
@@ -206,7 +214,8 @@
 
         //]]>
     </script>
-    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=h%2fWbTq57CullxPvpQNMR5dE2jwVLqlq6twsxR%2bYN2xcaJCdMuo8QClcMAxKlp4bEY%2bVxer3J9U3YhmiNOrck%2fHQyTEVibkdkMkQ0RkpzYyt3VURRYjZud0svcVRvaWNwNzlMellEVHVVajlLTXFITUJTVnRoTHJEalVXdmttNHA%3d"></script>
+    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=FwoXmxvITgqzikLxdZzGdfWLz3u9M9ruto1YHgewsXBTOjzF314YQ%2fzUZErngLbUDVDULlCwXF7U5GMe4XUPsDltQ2hIbktOS1lBdW9sREJPUFFOalgzWWZDYzI0NTNDdUtFYWljaWZzLzcvZHZ6bWRMRFF1S0o2OUV2Q3YxK2U%3d"></script>
+
 	<!-- 제이쿼리 코어 임베딩 -->
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
@@ -214,37 +223,23 @@
 	<script type="text/javascript">
 	$(function(){
 		
-		/* 유효성 체크 Validate */
-		$("#form1").validate({
-
-			rules:{
-				nonmember_id:"required",
-				password:{required:true,minlength:4},
-				passwordChk:{required:true,minlength:4,equalTo:"#password"},	
-				},			
-			messages:{
-				nonmember_id:"<br/>&nbsp;&nbsp;아이디를 입력하세요.",
-				password:{
-					required:"<br/>&nbsp;&nbsp;비밀번호를 입력하세요.",
-					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다."
-				},
-				passwordChk:{
-					required:"<br/>&nbsp;&nbsp;비밀번호를 재입력하세요.",
-					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다.",
-					equalTo:"<br/>&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
-				}
-			}			
-		});////////////////////validate	
-	
+		$.validator.setDefaults({"submitHandler":function(form){
+			//submit하기전 수행할 로직
+        	var phone=$("#guestMob1").val()+"-"+$("guestMob2").val()+"-"+$("#guestMob3").val();
+        	$("#phone").val(phone);
+        	
+        	var email=$("#guestEmail1").val()+"@"+$("#guestEmail2").val();
+        	$("#email").val(email);
+			//반드시 submit()함수 호출			
+			form.submit();				
+			//self.close();
+		}});
+		
 	});
 	
 	</script>
-	
 
 	<style>
-	
-	/* 유효성 체크 글씨색상 변경 */
-	#form1 input +.error{color:red;}
 	
 	/* select option 꾸며주기 */
 	.inputstl {
@@ -260,13 +255,13 @@
 	
 	/* 일그러진 UI 수정: box 크키, 버튼 위치 조정 */
 	.sect-user .wrap-result, .sect-user .box-simples, .sect-user .box-confirms{  
-	padding:40px 30px 0px; border:1px solid #e8e8dd;}
+	padding:40px 30px 120px; border:1px solid #e8e8dd;}
 	.col-simple > .box-simples ,.col-confirm > .box-confirms{ 
 	height:auto;}
 	
 	.round.inred > *:after{ 
 	right:-3px; bottom:-2.5px; background-position:-5px -15px;}
-	
+
 	.round.black:before{ 
 	left:-2px; top:-2px; background-position:-10px 0;}
 	.round.black:after{ 
@@ -282,7 +277,7 @@
 
 <!--     <form name="ssologinfrm" action="https://www.cgv.co.kr/user/login/login-sso.aspx" method="post">
         <input type="hidden" id="cjssoq" name="cjssoq" />
-        <input type="hidden" name="returnURL" value="/user/guest/login.aspx" />
+        <input type="hidden" name="returnURL" value="/user/guest/login-agreement.aspx" />
     </form>
     <script type="text/javascript">
         function cjsso() {
@@ -309,10 +304,9 @@
             </div><!-- //.top_extend_ad_wrap -->
         </div>    
     </div>    
-
 	<!-- Header -->
 	<div id="header">
-		<div class="head">
+			<div class="head">
 			<!-- 이미지 홈 버튼과 서비스 메뉴 시작 -->
 			<%@include file="/WEB-INF/cgv/template/serviceMenu.jsp"%>
 			<!-- 이미지 홈 버튼과 서비스 메뉴 끝 -->	
@@ -343,7 +337,8 @@
                 
 				<div class="ad-partner">
                     <a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx"  >
-                        <img src="../../../img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
+                        <img src="http://img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
+
                     </a>
 					 <!-- 외부광고영역 -->
 				</div>
@@ -368,7 +363,7 @@
             <div class="sect-linemap">
                 <div class="sect-bcrumb">
                     <ul>
-                        <li><a href="/"><img alt="home" src="../../img/R2014/images/common/btn/btn_home.png" /></a></li>
+                        <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
                                 <a href="/user/login/">회원서비스</a>
@@ -398,10 +393,9 @@
             
             <!-- Contents Start -->
 			
-
 <!-- 실컨텐츠 시작 -->
 <div class="wrap-login">
-    <div class="sect-user">
+    <div class="sect-login">
         <ul class="tab-menu-round">
             <li>
                 <a href="<c:url value='/login.front'/>">로그인</a>
@@ -410,15 +404,18 @@
                 <a href="<c:url value='/guest.front'/>">비회원로그인</a>
             </li>
         </ul>
-        <h3>개인정보(아이디,비밀번호) 입력 후 로그인 </h3>
-        <p>비회원 로그인 정보 오입력 시, 예매내역 확인/취소 및 티켓 발권이 어려울 수 있으니, 입력하신 정보를 다시 한번 확인해주시기 바랍니다.</p>
+
+    </div>
+    <div class="sect-user nomember">
+        <h3><strong>★</strong> 개인정보(임시발급 아이디,이름,법정생년월일,휴대폰번호,이메일주소,비밀번호) 확인 후 예매하기 </h3>
+        <p></p>
         <div class="cols-enterform nomember">
-            <div class="col-simple">
-                <h4>비회원 예매확인/취소 로그인 입력정보</h4>
+
+                <h4>비회원 임시 가입 확인 입력정보</h4>
                 <div class="box-simples">
-                    <p class="disc-info"> 비회원정보에 등록된 임시발급 아이디, 비밀번호(4자리)를 입력해주세요.<br />
-                <span style="font-size:8pt;color:red;">* Caps Lock 을 반드시 해제해주세요.</span></p>
-                    <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestLogin.front'/>">
+                    <p class="disc-info"> <br />
+                <span style="font-size:8pt;color:red;">* 아이디와 비밀번호가 있어야 로그인이 가능하므로 반드시 기억해주세요.</span></p>
+                    <form id="form1" novalidate="novalidate" action="<c:url value='/guestReserving.front'/>">
                     
                       <fieldset>
                         <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
@@ -426,45 +423,66 @@
 
                             <tbody>
                             <tr>
-                                <th scope="row"><label for="nonmember_id">아이디</label></th>
-                                <td><input type="text" placeholder="아이디 입력" name="nonmember_id" id="nonmember_id"/></td>
+                                <th scope="row">
+                                	<label for="nonmember_id">아이디</label>
+                                </th>
+                                <td>
+                                	<input type="text" name="nonmember_id" id="nonmember_id" value="${dto.nonmember_id }" disabled="disabled"/></td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                	<label for="name">이름</label>
+                                </th>
+                                <td>
+                                	<input type="text" name="name" id="name" value="${dto.name }"disabled="disabled"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                	<label for="birth">법정생년월일&nbsp;<em>(6자리)</em>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                </th>
+                                <td>
+                                	<input type="text" disabled="disabled" value="${dto.birth }" name="birth" id="birth"/> - <i> *******</i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">휴대폰번호</th>
+                                <td>
+                                    <input type="text" disabled="disabled" value="${dto.phone }" name="phone" id="phone"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">이메일주소</th>
+                                <td>
+                                    <input type="text" disabled="disabled" value="${dto.email }" name="email" id="email"/>
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4" /></td>
+                                <td>
+                                	<input type="text" disabled="disabled" value="${dto.password }" name="password" id="password" />
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordChk" id="passwordChk" length="4" maxlength="4" /></td>
+                                <td>
+                                	<input type="text" disabled="disabled" value="${dto.password }" name="passwordChk" id="passwordChk" />
+                                </td>
                             </tr>
                             </tbody>
                         </table>
                       	   <div class="box-btn">
-                      	   		${guestLoginError }
 		                    <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
 	                      </div>
                       </fieldset>
                     </form>
                 </div>
-            </div>
-            <div class="col-confirm">
-                <h4>비회원 로그인 등록정보 분실 안내</h4>
-                <div class="box-confirms">
-                    <p class="disc-info">비회원 등록정보 찾기를 통해 비회원 예매번호 및 비밀번호를 확인하실 수 있습니다.</p>
-                    <div class="confirm-type">
-                        <h5>휴대폰 인증을 통해 확인</h5>
-                        <!-- <p>휴대폰 인증을 통해 확인</p> -->
-                        <a href="<c:url value='/findPhone.front'/>" class="round black"><span>휴대폰 번호로 찾기</span></a>
-                        <!-- <h5>휴대폰 번호 분실 시</h5>
-                        <p>이름 + 법정생년월일+ 비밀번호 입력 후 확인</p> -->
-                        <p>&nbsp;</p>
-                        <h5>이메일 인증을 통해 확인</h5>
-                        <a href="<c:url value='/findEmail.front'/>" class="round black"><span>이메일 주소로 찾기</span></a>
-                    </div>
-                </div>
-            </div>
+
         </div>
-   </div> 
+    </div> 
+                
+                  
     <div class="sect-loginguide">
         <dl class="box-operationguide">
             <dt>비회원 <br />로그인 시 <br />참고하세요!</dt>
@@ -478,7 +496,7 @@
         </dl>
     </div>
 </div>
-<!-- 실컨텐츠 끝 -->
+<!-- 실컨텐츠 끝 --> 
 
 <!-- LogIn -->
 <!-- <form name="frmGuestLogin" id="frmGuestLogin" method="post" action="https://www.cgv.co.kr/user/guest/login-proc.aspx" novalidate="novalidate">
@@ -488,11 +506,8 @@
 	<input type="hidden" id="mobile2" name="mobile2" />
 	<input type="hidden" id="mobile3" name="mobile3" /> 
 	<input type="hidden" id="pwd" name="pwd" />
-    <input type="hidden" id="returnURL" name="returnURL" value="/user/guest/reserve.aspx" />
+    <input type="hidden" id="returnURL" name="returnURL" value="/ticket/" />
 </form> -->
-<!-- //LogIn -->
-
-
 <script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">
 //<![CDATA[
@@ -503,6 +518,22 @@
             var $frm = $('#form1');
             $frm.validate({
                 submitHandler: function (form) {
+
+                    //                    if (!$("input[id=agreement]").is(":checked")) {
+                    //                        alert("개인정보 제공에 동의 해 주세요.");
+                    //                        $("input[id=agreement]").focus();
+                    //                        return false;
+                    //                    }
+
+                    var agree_chk17 = $("input[name='agree_chk17']:checked").val();
+                    if (agree_chk17 == "N") {
+                        alert("개인정보 수집 및 활용에 동의 하셔야 비회원 예매서비스 이용이 가능합니다.")
+                        $('#agreeChk17-1').focus();
+                        return false;
+                    }
+
+
+                   
 
                     if ($('#txtPassword').val() != "" && $('#txtConfirmPassword').val() != "") {
                         if ($('#txtPassword').val() != $('#txtConfirmPassword').val()) {
@@ -522,16 +553,69 @@
                     $loginFrm.find('#pwd').val(app.crypto.AESEncryptToBase64($frm.find('#txtPassword').val()));
 
                     $loginFrm.submit();
+
                     return false;
                 }
             });
 
 
+            $("input[name=agree_chk17]").on('click', function () {
+                //주소
+                if ($('input:radio[name="agree_chk17"]:checked').val() == "Y") {
+                    $('#txtName').attr("disabled", false);
+                    $('#txtBirthday').attr("disabled", false);
+                    $('#txtMobile1').attr("disabled", false);
+                    $('#txtMobile2').attr("disabled", false);
+                    $('#txtMobile3').attr("disabled", false);
+                    $('#txtPassword').attr("disabled", false);
+                    $('#txtConfirmPassword').attr("disabled", false);
+                } else if ($('input:radio[name="agree_chk17"]:checked').val() == "N") {
+
+
+                    $('#txtName').attr("disabled", true);
+                    $('#txtBirthday').attr("disabled", true);
+                    $('#txtMobile1').attr("disabled", true);
+                    $('#txtMobile2').attr("disabled", true);
+                    $('#txtMobile3').attr("disabled", true);
+                    $('#txtPassword').attr("disabled", true);
+                    $('#txtConfirmPassword').attr("disabled", true);
+
+                    $('#txtName').val('');
+                    $('#txtBirthday').val('');
+                    $('#txtMobile2').val('');
+                    $('#txtMobile3').val('');
+                    $('#txtPassword').val('');
+                    $('#txtConfirmPassword').val('');
+
+                }
+            });
+
+
+            $("input[name=agree_chk17]").on('click', function () {
+                //모바일 세팅
+                if ($('input:radio[name="agree_chk17"]:checked').val() == "N") {
+                    $('#txtName').val("");
+                    $('#txtBirthday').val("");
+                    $('#txtMobile2').val("");
+                    $('#txtMobile3').val("");
+                    $('#txtPassword').val("");
+                    $('#txtConfirmPassword').val("");
+
+                }
+            });
         });
     })(jQuery); */
 //]]>
 </script>
-
+<script type="text/javascript">
+//    $('#txtName').attr("disabled", true);
+//    $('#txtBirthday').attr("disabled", true);
+//    $('#txtMobile1').attr("disabled", true);
+//    $('#txtMobile2').attr("disabled", true);
+//    $('#txtMobile3').attr("disabled", true);
+//    $('#txtPassword').attr("disabled", true);
+//    $('#txtConfirmPassword').attr("disabled", true);
+</script>
 
             <!--/ Contents End -->
 
