@@ -10,6 +10,7 @@ public class MembersDTO {
 	private String phone;
 	private String email;
 	private String nickname;
+	private String profilepicture;
 	
 	public String getName() {
 		return name;
@@ -59,5 +60,11 @@ public class MembersDTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-		
+	public String getProfilepicture() {
+		return profilepicture;
+	}
+	public void setProfilepicture(String profilepicture) {
+		this.profilepicture = profilepicture;
+	}
+	
 }

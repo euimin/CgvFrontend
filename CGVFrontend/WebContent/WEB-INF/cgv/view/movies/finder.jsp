@@ -434,10 +434,10 @@
 							<c:set var="movies" value="${requestScope.movies.items}" />
 							<c:if test="${not empty movies }" var="result">
 							<div class="sect-movie-chart" style="text-align: left;">
+							
 							<span style="font-size:15px">'<b>${param.keyword}</b>'의 검색결과는 총 <b>${fn:length(movies)}</b>건 입니다.</span>
 								<ol>
 								<c:forEach items="${movies}" var="movie">
-
 									
 											<li style="">
 												<div class="box-image">
@@ -466,7 +466,8 @@
 													<div class="score">
 														<strong class="percent"><span></span></strong><br/>
 														<div class="egg-gage small">
-															<span class="egg good"></span> <span class="percent">${movie.userRating}점</span>
+															<img style="padding-right:3px;padding-top:7px;width:16px;height:16px;" src="<c:url value='/img/banner/naverlogo.png'/>"/>
+															 <span class="percent">${movie.userRating}점</span>
 															
 													</strong>
 														</div>

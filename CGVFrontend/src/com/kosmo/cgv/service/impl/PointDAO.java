@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
+import com.kosmo.cgv.service.MembersDTO;
 import com.kosmo.cgv.service.MovieDto;
 import com.kosmo.cgv.service.PointDTO;
 import com.kosmo.cgv.service.PointService;
@@ -23,6 +24,11 @@ public class PointDAO implements PointService {
 	@Override
 	public List<MovieDto> selectMovieList() throws Exception {
 		return template.selectList("SelectMovieList");
+	}
+	
+	@Override
+	public PointDTO selectOneMovieOneMember(PointDTO dto) throws Exception {
+		return template.selectOne("SelectOneMovieOneMember",dto);
 	}
 
 	@Override
@@ -37,8 +43,7 @@ public class PointDAO implements PointService {
 
 	@Override
 	public int insertReview(PointDTO dto) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.insert("insertReview", dto);
 	}
 
 	@Override
