@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="StillDto" type="com.kosmo.cgv.service.StillDto"/>
 		<typeAlias alias="TrailerDto" type="com.kosmo.cgv.service.TrailerDto"/>
 		<typeAlias alias="MembersDTO" type="com.kosmo.cgv.service.MembersDTO"/>
+		<typeAlias alias="NonMemberDTO" type="com.kosmo.cgv.service.NonMemberDTO"/>
 		<typeAlias alias="PointDTO" type="com.kosmo.cgv.service.PointDTO"/>
 	</typeAliases>
 	<mappers>

@@ -3,9 +3,6 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
-
-<!-- Mirrored from www.cgv.co.kr/user/guest/login.aspx by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 13:09:23 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,12 +15,12 @@
     <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
     <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
     <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
-    <meta id="ctl00_og_title" property="og:title" content="비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
+    <meta id="ctl00_og_title" property="og:title" content="무비다이어리 &lt; 무비로그 | 영화 그 이상의 감동. CGV"></meta>
     
     <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/common/cgv_200x200.jpg"></meta>
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
-    <title id="ctl00_headerTitle">비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
+    <title id="ctl00_headerTitle">무비다이어리 &lt; 무비로그 | 영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
@@ -35,12 +32,14 @@
     <link rel="stylesheet" media="print" type="text/css" href="http://img.cgv.co.kr/R2014/css/print.css" />    
    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/content_prepaid_card_170421.css" />
+  
 
     <link rel="stylesheet" type="text/css" href="http://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.config.js"></script>
     <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
@@ -52,23 +51,53 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
+
+    
+
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
+    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
 	<link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
 
+  
+
     <!-- 각페이지 Header Start--> 
     
+<script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.custom-scrollbar.js"></script>
+<script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.form.js"></script>
+<link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.custom-scrollbar.css" />
+
+<script type="text/javascript">
+//<![CDATA[
+    /* 무비다이어리 등록 */
+    function addMovieDiary() {
+        if ($('#watchedIdx').val() == "") {
+            alert("등록할 영화를 선택해 주세요.");
+            $('#open_watched_movie_list').focus();
+            return false;
+        }
+
+        if (confirm("등록 하시겠습니까?")) {
+            $('#aspnetForm').attr('action', 'diary.aspx');
+            return true;
+        }
+        else
+            return false;
+    }
+//]]>
+</script>
+
     <!--/각페이지 Header End--> 
     <script type="text/javascript">
         //<![CDATA[
 
-        _TRK_CP = "/회원서비스/비회원로그인";
+        _TRK_CP = "/무비로그/무비다이어리";
 
         app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
             .config('imageDomain', 'http://img.cgv.co.kr')
-            .config('isLogin', 'False');
+            .config('isLogin', 'True');
 
         // AD FLOAT
         // 암호화 할 문자열과 키값(상수값)을 매개변수로 받는다.
@@ -206,94 +235,9 @@
 
         //]]>
     </script>
-    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=h%2fWbTq57CullxPvpQNMR5dE2jwVLqlq6twsxR%2bYN2xcaJCdMuo8QClcMAxKlp4bEY%2bVxer3J9U3YhmiNOrck%2fHQyTEVibkdkMkQ0RkpzYyt3VURRYjZud0svcVRvaWNwNzlMellEVHVVajlLTXFITUJTVnRoTHJEalVXdmttNHA%3d"></script>
-	<!-- 제이쿼리 코어 임베딩 -->
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
-	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
-	<script type="text/javascript">
-	$(function(){
-		
-		/* 유효성 체크 Validate */
-		$("#form1").validate({
-
-			rules:{
-				nonmember_id:"required",
-				password:{required:true,minlength:4},
-				passwordChk:{required:true,minlength:4,equalTo:"#password"},	
-				},			
-			messages:{
-				nonmember_id:"<br/>&nbsp;&nbsp;아이디를 입력하세요.",
-				password:{
-					required:"<br/>&nbsp;&nbsp;비밀번호를 입력하세요.",
-					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다."
-				},
-				passwordChk:{
-					required:"<br/>&nbsp;&nbsp;비밀번호를 재입력하세요.",
-					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다.",
-					equalTo:"<br/>&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
-				}
-			}			
-		});////////////////////validate	
-	
-	});
-	
-	</script>
-	
-
-	<style>
-	
-	/* 유효성 체크 글씨색상 변경 */
-	#form1 input +.error{color:red;}
-	
-	/* select option 꾸며주기 */
-	.inputstl {
-	padding: 1px;
-	border: solid 1px #460023;
-	outline: 0;
-	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
-	background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
-	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-	}
-	
-	/* 일그러진 UI 수정: box 크키, 버튼 위치 조정 */
-	.sect-user .wrap-result, .sect-user .box-simples, .sect-user .box-confirms{  
-	padding:40px 30px 0px; border:1px solid #e8e8dd;}
-	.col-simple > .box-simples ,.col-confirm > .box-confirms{ 
-	height:auto;}
-	
-	.round.inred > *:after{ 
-	right:-3px; bottom:-2.5px; background-position:-5px -15px;}
-	
-	.round.black:before{ 
-	left:-2px; top:-2px; background-position:-10px 0;}
-	.round.black:after{ 
-	left:-2px; bottom:-1.5px; background-position: -10px -5px;}
-	.round.black > *:before{ 
-	right:-1.5px; top:-2px; background-position:-15px 0;}
-	.round.black > *:after{ 
-	right:-1.5px; bottom:-1.5px; background-position:-15px -5px;}
-	</style>
-
+    
 </head>
 <body class="">
-
-<!--     <form name="ssologinfrm" action="https://www.cgv.co.kr/user/login/login-sso.aspx" method="post">
-        <input type="hidden" id="cjssoq" name="cjssoq" />
-        <input type="hidden" name="returnURL" value="/user/guest/login.aspx" />
-    </form>
-    <script type="text/javascript">
-        function cjsso() {
-            if ((typeof _cjssoEncData) != "undefined" && _cjssoEncData != "") {
-                document.getElementById("cjssoq").value = _cjssoEncData;
-                document.ssologinfrm.submit();
-            }
-        }
-
-        cjsso();
-    </script> -->
 
 <div class="skipnaiv">
 	<a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
@@ -301,15 +245,14 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap" style="background-color:black;">
+            <div class="top_extend_ad_wrap">
                 <div class="adreduce" id="adReduce">                    
-                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
+                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
         </div>    
     </div>    
-
 	<!-- Header -->
 	<div id="header">
 		<div class="head">
@@ -343,7 +286,7 @@
                 
 				<div class="ad-partner">
                     <a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx"  >
-                        <img src="../../../img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
+                        <img src="http://img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
                     </a>
 					 <!-- 외부광고영역 -->
 				</div>
@@ -368,14 +311,14 @@
             <div class="sect-linemap">
                 <div class="sect-bcrumb">
                     <ul>
-                        <li><a href="/"><img alt="home" src="../../img/R2014/images/common/btn/btn_home.png" /></a></li>
+                        <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
-                                <a href="/user/login/">회원서비스</a>
+                                <a href="/user/movielog/">무비로그</a>
                             </li>
                         
                             <li  class="last">
-                                비회원로그인
+                                무비다이어리
                             </li>
                         
                         
@@ -398,140 +341,708 @@
             
             <!-- Contents Start -->
 			
-
-<!-- 실컨텐츠 시작 -->
-<div class="wrap-login">
-    <div class="sect-user">
-        <ul class="tab-menu-round">
-            <li>
-                <a href="<c:url value='/login.front'/>">로그인</a>
-            </li>
-            <li class="on">
-                <a href="<c:url value='/guest.front'/>">비회원로그인</a>
-            </li>
-        </ul>
-        <h3>개인정보(아이디,비밀번호) 입력 후 로그인 </h3>
-        <p>비회원 로그인 정보 오입력 시, 예매내역 확인/취소 및 티켓 발권이 어려울 수 있으니, 입력하신 정보를 다시 한번 확인해주시기 바랍니다.</p>
-        <div class="cols-enterform nomember">
-            <div class="col-simple">
-                <h4>비회원 예매확인/취소 로그인 입력정보</h4>
-                <div class="box-simples">
-                    <p class="disc-info"> 비회원정보에 등록된 임시발급 아이디, 비밀번호(4자리)를 입력해주세요.<br />
-                <span style="font-size:8pt;color:red;">* Caps Lock 을 반드시 해제해주세요.</span></p>
-                    <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestLogin.front'/>">
-                    
-                      <fieldset>
-                        <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
-                        <table cellpadding="0" cellspacing="0">
-
-                            <tbody>
-                            <tr>
-                                <th scope="row"><label for="nonmember_id">아이디</label></th>
-                                <td><input type="text" placeholder="아이디 입력" name="nonmember_id" id="nonmember_id"/></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4" /></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordChk" id="passwordChk" length="4" maxlength="4" /></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                      	   <div class="box-btn">
-                      	   		${guestLoginError }
-		                    <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
-	                      </div>
-                      </fieldset>
-                    </form>
-                </div>
-            </div>
-            <div class="col-confirm">
-                <h4>비회원 로그인 등록정보 분실 안내</h4>
-                <div class="box-confirms">
-                    <p class="disc-info">비회원 등록정보 찾기를 통해 비회원 예매번호 및 비밀번호를 확인하실 수 있습니다.</p>
-                    <div class="confirm-type">
-                        <h5>휴대폰 인증을 통해 확인</h5>
-                        <!-- <p>휴대폰 인증을 통해 확인</p> -->
-                        <a href="<c:url value='/findPhone.front'/>" class="round black"><span>휴대폰 번호로 찾기</span></a>
-                        <!-- <h5>휴대폰 번호 분실 시</h5>
-                        <p>이름 + 법정생년월일+ 비밀번호 입력 후 확인</p> -->
-                        <p>&nbsp;</p>
-                        <h5>이메일 인증을 통해 확인</h5>
-                        <a href="<c:url value='/findEmail.front'/>" class="round black"><span>이메일 주소로 찾기</span></a>
+<div class="cols-content">
+    
+<div class="col-aside">
+	<h2>프로필 및 서브메뉴</h2>
+	<div class="box-round-dgray">
+        <div class="box-round-inner">
+            <div class="inner-contents-profile">
+                <div class="box-image">
+                	<div class="thumb-image">
+                        <img src="" alt="회원이름 님 프로필 사진" onerror="errorImage(this, {type:'profile'})" />
+                        <span class="profile-mask"></span>
+                        
                     </div>
+                     <!-- 등급종류 클래스 : vip, rvip, vvip -->
                 </div>
+                <div class="box-contents">
+	        		<strong>회원이름 님</strong>
+	        		<a id="go_edit_page" href="#" class="edit" target="_blank" title="새창열림">나의 정보 변경</a>
+	        		<em></em>
+	        		
+		        </div>
             </div>
         </div>
-   </div> 
-    <div class="sect-loginguide">
-        <dl class="box-operationguide">
-            <dt>비회원 <br />로그인 시 <br />참고하세요!</dt>
-            <dd>1.  상기 정보 수집에 동의하지 않을 경우, 비회원 예매 서비스를 이용하실 수 없습니다. </dd>
-            <dd>2.  비회원 예매 시 청소년 관람불가 영화는 예매가 제한됩니다. </dd>
-            <dd>3.  비회원 에매 결제수단은 신용카드만 가능하며 모든 제휴상품권, 쿠폰, 영화예매권 등의 사용은 회원 예매 서비스 이용 시 가능합니다. </dd>
-            <dd>4.  모바일과 ARS에서는 취소가 불가능하며, 홈페이지를 이용하여 입력하신 로그인 정보로 취소 처리하실 수 있습니다.</dd>
-            <dd>5.  비회원 예매 및 비회원 예매 확인/취소 메뉴만 이용 가능합니다. 이 외에 커뮤니티, 댓글, 인정 등의 서비스는 회원 가입 후 이용 가능합니다.</dd>
-            <dd>6.  문의사항은 CGV 고객센터(1544-1122)로 문의해 주시기 바랍니다. <br />
-                - 운영시간 : 매일 09:00 ~ 21:00 (주말, 및 공휴일 상담 가능합니다.)</dd>
-        </dl>
+    </div>
+    <div class="box-round-wgray">
+        <div class="box-round-inner">
+            <div class="inner-contents-log">
+                <a href="<c:url value='/mycgvWishlist.front' />">
+                    <em>0</em>
+                    <strong>위시리스트</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="box-round-wgray">
+        <div class="box-round-inner">
+            <div class="inner-contents-log">
+                <a href="<c:url value='/mycgvWatched.front' />">
+                    <em>3</em>
+                    <strong>내가 본 영화</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="box-round-on">
+        <div class="box-round-inner">
+            <div class="inner-contents-log">
+                <a href="<c:url value='/mycgvDiary.front' />">
+                    <em>0</em>
+                    <strong>무비다이어리</strong>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
-<!-- 실컨텐츠 끝 -->
 
-<!-- LogIn -->
-<!-- <form name="frmGuestLogin" id="frmGuestLogin" method="post" action="https://www.cgv.co.kr/user/guest/login-proc.aspx" novalidate="novalidate">
-    <input type="hidden" id="username" name="username" />
-    <input type="hidden" id="birthday" name="birthday" />
-	<input type="hidden" id="mobile1" name="mobile1" />
-	<input type="hidden" id="mobile2" name="mobile2" />
-	<input type="hidden" id="mobile3" name="mobile3" /> 
-	<input type="hidden" id="pwd" name="pwd" />
-    <input type="hidden" id="returnURL" name="returnURL" value="/user/guest/reserve.aspx" />
-</form> -->
-<!-- //LogIn -->
-
-
-<script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 
-/*     (function ($) {
+    (function ($) {
         $(function () {
 
-            var $frm = $('#form1');
+            $('#go_edit_page').on('click', function () {
+                var win = window.open("/user/popup/edit-profile.aspx", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                win.focus();
+                return false;
+            });
+
+        });
+    })(jQuery);
+
+//]]>
+</script>
+	<div class="col-detail">
+	    <div class="movielog-detail-wrap">
+	        <!-- Title & Button Combo -->
+	        <div class="tit-mycgv">
+		        <h3>무비다이어리</h3>
+		        <p>CGV와 함께한 추억들 <em>0건</em></p>
+		        <div class="set-combo">
+		            <label for="">내가 본 영화 년도별 정렬</label>
+		            <select id="ddlYear" name="ddlYear">
+		                <option value="0" selected='selected'>전체</option>
+                        
+		            </select>
+		            <button type="button" class="round gray" id="btn-search"><span>GO</span></button>
+		        </div>
+		    </div>
+		    <!-- //Title & Button Combo -->
+            <!-- 작성 영역 -->
+            
+            <form name="aspnetForm" method="post" action="./diary.aspx" id="aspnetForm" enctype="multipart/form-data" novalidate="novalidate">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1MDM3OTI0MDZkZHoOkVoLIB5GUJ0CUPnu6FY8zL+z" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6361D8EB" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAKutYmMIl7pP5i3diDeHSSVf2CBCZ85OBcw/q3uyOapNcSG5+z2gCmGI2vu1uJYxlscNYUR" />
+</div>
+            <input type="hidden" id="watchedIdx" name="watchedIdx" />
+
+            <input type="hidden" id="hdnImageType1" name="hdnImageType1" value="-1" /> <!-- 스틸컷 101 -->
+            <input type="hidden" id="hdnImageType2" name="hdnImageType2" value="-1" /> <!-- 동영상 썸네일 201 -->
+            <input type="hidden" id="hdnImageType3" name="hdnImageType3" value="-1" /> <!-- 동영상 URL 202 -->
+            <input type="hidden" id="hdnImageType4" name="hdnImageType4" value="-1" /> <!-- 사용자 업로드 301 -->
+            
+            <input type="hidden" id="hdnImagePath1" name="hdnImagePath1" value="" /> <!-- 스틸컷 ImagePath -->
+            <input type="hidden" id="hdnImagePath2" name="hdnImagePath2" value="" /> <!-- 동영상 ImagePath -->
+            <input type="hidden" id="hdnImagePath3" name="hdnImagePath3" value="" /> <!-- 동영상 URL -->
+            <input type="hidden" id="hdnImagePath4" name="hdnImagePath4" value="" /> <!-- 사용자 ImagePath -->
+
+            <input type="hidden" id="hdnImageGalleryIdx1" name="hdnImageGalleryIdx1" /> <!-- 스틸컷 관련 GalleryIdx1 -->
+            <input type="hidden" id="hdnImageGalleryIdx3" name="hdnImageGalleryIdx3" /> <!-- 동영상 관련 GalleryIdx3 -->
+            <input type="hidden" id="hdnImageDesc4" name="hdnImageDesc4" /> <!-- 사용자 이미지 업로드 대체 텍스트 -->
+
+            <div class="diary-register-wrap">
+                <div class="sect-diary-register">
+                    <h4 class="hidden">무비다이어리 작성</h4>
+                    <!-- 어떤 영화를 보셨나요? -->
+                    <div class="article-any-movie">
+                        <a href="#" title="영화리스트 열림" id="open_watched_movie_list">
+                            <span><em>어떤 영화를 보셨나요?</em></span>
+                            <i>열림</i>
+                        </a>
+                    </div>
+                    <!-- //어떤 영화를 보셨나요? -->
+                    <!-- 누구와 함게 보셨나요? -->
+                    <div class="article-who-together">
+                        <label for="txtMovieWith">같이 본 사람 기입</label>
+                        <input type="text" id="txtMovieWith" name="txtMovieWith" placeholder="누구와 함께 보셨나요?" maxlength="60" />
+                    </div>
+                    <!-- //누구와 함게 보셨나요? -->
+                    <!-- 영화 어떻게 보셨나요? -->
+                    <div class="article-how-see">
+                        <label for="textContent">영화 감상평</label>
+                        <textarea id="textContent" name="textContent" required="required" minlength="2" cols="55" rows="5">영화 어떻게 보셨나요?</textarea>
+                    </div>
+                    <!-- //영화 어떻게 보셨나요? -->
+                    <!-- 내가 본 영화 트레일러, 스틸컷, 업로드 등록 -->
+                    <div class="article-info-select">
+                        <ul>
+                            <li>
+                                <a href="#" class="trailer" id="btn_trailer" title="현재 선택됨">트레일러</a>                                        
+                            </li>
+                            <li>
+                                <a href="#" class="stillcut" id="btn_stillcut">스틸컷</a>                                        
+                            </li>
+                            <li>
+                                <a href="#" class="upload" id="btn_upload">업로드</a>
+                            </li>
+                        </ul>
+                        <dl>
+                            <dt>함께 올리기</dt>
+                            <dd>
+                                <button type="button" id="btn_facebook" class="facebook"><span>페이스북 공유하기</span></button>
+                                <i></i>
+                                <button type="button" id="btn_twitter" class="twitter"><span>트위터 공유하기</span></button>
+                            </dd>
+                        </dl>
+                        <!-- 내가 선택한 정보 Layer -->
+                        <div class="select-range" id="layer_user_choice" style="display:none">
+                            <div class="layer-contents"> <!-- Class 추가 시 선택화살표 노출 : trailer, stillcut, upload -->
+                                <div class="box-polaroid">
+                                    <div class="layer-tit">
+                                        <strong>선택정보</strong>
+                                    </div>
+                                    <div class="layer-conts-info">
+                                        <ul id="layer_user_choice_item">
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <i></i>
+                            </div>
+                        </div>
+                        <!-- //내가 선택한 정보 Layer -->
+                        <div class="set-btn">
+                            <button type="button" class="round gray on" id="btn_write_cancel"><span>취소</span></button>
+                            <button onclick="if (addMovieDiary() == false) {return false;} __doPostBack('ctl00$PlaceHolderContent$ctl00','')" type="button" class="round red on"><span>게시</span></button>
+                        </div>
+                    </div>
+                    <!-- //내가 본 영화 트레일러, 스틸컷, 업로드 등록 -->
+                </div>
+                
+            </div>
+            </form>
+            <!-- //작성 영역 -->
+            <div class='movie-diary-wrap none'><p>작성하신 무비다이어리가 없습니다. 영화와 함께한 추억을 기록해보세요!</p><a class='round black' href='./watched.aspx'><span>내가 본 영화</span></a></div>
+	    </div>
+	</div>
+</div>
+<form id="deleteform" method="post" action="./diary.aspx" novalidate="novalidate">
+    <input type="hidden" name="hdnmdidx" id="hdnmdidx" />
+    <input type="hidden" name="selectedyear" value="0" />
+</form>
+<script id="temp_movie_diary" type="text/x-jquery-tmpl">
+<li data-mdidx="${MovieDiaryIdx}" class="movie_info_${MovieIdx}">
+    <div class="sect-movie-info">
+        <p class="wrt-date">
+            <strong>${MovieDiaryViewDateTimeText}</strong>
+            <i></i>
+        </p>
+        
+        <div class="article-movie-info">
+            <div class="box-image"> 
+                <span class="thumb-image"> 
+                    <img src="${PosterImage.ThumbNailImage}" alt="${MOVIE_NM_KOR} 포스터" /> 
+                    <span class="ico-grade ${MovieGrade.StyleClassName}">${MovieGrade.GradeText}</span> 
+                </span> 
+            </div>
+            <div class="box-contents">
+                <div class="title"> 
+                    <a href="/movies/detail-view/?midx=${MovieIdx}"><strong>${MOVIE_NM_KOR}</strong></a>
+                    <p>${MOVIE_NM_ENG}</p>
+                </div>
+                <p class="theater">${TheaterName} ${MovieDiaryWatchInfo.SCREEN_NM} <span class="peer">${MovieWith}</span></p>
+                <div class="score"> 
+                    <strong class="percent">내평점</strong>
+                    <div class="my-point">
+                        <a href="#" class="write_point" title="새창" data-midx="${MovieIdx}" data-widx="${WatchingIdx}" data-cidx="${CommentIdx}">
+                            <em>${MyStarPoint}</em>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-del" type="button" data-mdidx="${MovieDiaryIdx}"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_del.gif" alt="${MOVIE_NM_KOR} 삭제" /></button>
+        </div>
+        {{if (IsImageData) }}
+        <div class="slider-wrap">
+            <div class="slider">
+                
+                {{each MovieDiaryImageList}}
+                <div class="item-wrap">
+                    <div class="item" style="width: 800px; height: 450px;">
+                        <img alt="${MOVIE_NM_KOR} ${MovieDiaryImageTypeText}" data-src="http://img.cgv.co.kr${ImagePath}" src="http://img.cgv.co.kr${ImagePath}" />
+                    </div>
+                </div>
+                {{/each}}
+
+                {{if (IsImageOne != true)}}
+                <button class="btn-prev" type="button">이전 페이지 이동</button>
+                <button class="btn-next" type="button">다음 페이지 이동</button>
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+        <div class="article-wrt-details">
+            <p>${MovieDiaryRegExpContentText}</p>
+        </div>
+        <div class="set-combo">
+            <span>${MovieDiaryWriteDateTimeText} 작성</span>
+            <a href="./diary-modify.aspx?mdidx=${MovieDiaryIdx}" class="link-edit">수정</a>
+            <a href="./diary-view.aspx?mdidx=${MovieDiaryIdx}" class="link-detailview">자세히 보기</a>
+        </div>
+    </div>
+</li>
+</script>
+
+<!-- 내가본영화 Layer Popup -->
+<script type="text/template" id="temp_watched_wrap">
+<div class="layer-contents"> <!--Class 추가 시 선택화살표 노출 : trailer, stillcut, upload-->
+	<div class="box-polaroid">
+		<div class="layer-conts-lst default-skin" id="layout_watched">
+			<ul id="watched_item_list"></ul>
+		</div>
+	</div>
+	<button type="button" class="btn-close">닫기</button>
+</div>
+</script>
+
+<script type="text/template" id="temp_layout_movie_multimedia">
+<!-- 트레일러 Layer -->
+<div class="layer-contents trailer"> <!-- Class 추가 시 선택화살표 노출 : trailer, stillcut, upload -->
+	<div class="box-polaroid">
+		<div class="layer-tit">
+			<strong>함께 담아두고 싶은 영상이 있으신가요?</strong>
+		</div>
+		<div class="layer-conts-trailer default-skin" id="layout_movie_multimedia">
+			<ul id="movie_item_list"></ul>
+		</div>
+	</div>
+	<i></i>
+	<button type="button" class="btn-close"><span>트레일러 레이어 닫기</span></button>
+</div>
+<!-- //트레일러 Layer -->
+</script>
+
+<!-- 내가본영화 item template -->
+<script type="text/x-jquery-tmpl" id="temp_watched_item">
+<li>
+	<div class="box-image">
+		<span class="thumb-image"> 
+			<img src="${PosterImage.MiddleImage}" alt="${Title} 포스터" onerror="errorImage(this)"/>
+			<span class="ico-grade ${MovieGrade.StyleClassName}">${MovieGrade.GradeText}</span>
+		</span>
+	</div>
+	<div class="box-contents">
+		<div class="title"> 
+			<strong>${Title}</strong>
+			<p>${EnglishTitle}</p>
+		</div>
+		<p class="date"><strong>${ViewDateTime}</strong></p>
+		<p class="theater">${TheaterName} ${ScreenName} / ${ReserveQty}명</p>
+		<button type="button" class="round gray" value="${WatchingIdx}"><span>선택</span></button>
+	</div>
+</li>
+</script>
+
+<script type="text/x-jquery-tmpl" id="temp_watched_select_item">
+<div class="movie-select">
+    <div class="box-image">
+        <span class="thumb-image"> 
+            <img src="${PosterImage.MiddleImage}" alt="${Title} 포스터" onerror="errorImage(this)"/>
+            <span class="ico-grade ${MovieGrade.StyleClassName}">${MovieGrade.GradeText}</span>
+        </span>
+    </div>
+    <div class="box-contents">
+        <div class="title"> 
+            <strong>${Title}</strong>
+            <p>${EnglishTitle}</p>
+        </div>
+        <p class="date"><strong>${ViewDateTime}</strong></p>
+        <p class="theater">${TheaterName} ${ScreenName} / ${ReserveQty}명</p>
+    </div>
+</div>
+</script>
+
+<script type="text/template" id="temp_trailer">
+<li>
+    <div class="box-image">
+	    <span class="thumb-image">
+		    <img src="${ThumnailImageUrl}" alt="${Title}_트레일러_이미지" onerror="errorImage(this)"/>
+            <span class="ico-play">동영상표시용 아이콘</span>
+	    </span>
+    </div>
+    <div class="box-contents">
+	    <strong class="title">
+            {{if IsExclusive}}
+                <span class="ico-trailer monopoly">독점</span>
+            {{/if}}
+            ${Title}
+        </strong>
+	    <button type="button" class="round gray" value="${AttachFile}" data-image="${ImageUrl}" data-gallery-idx="${GalleryIdx}" title="${Title} 트레일러 선택"><span>선택</span></button>
+    </div>
+</li>
+</script>
+
+<script type="text/template" id="temp_stillcut">
+<!-- 스틸컷 Layer -->
+<div class="layer-contents stillcut"> <!-- Class 추가 시 선택화살표 노출 : trailer, stillcut, upload -->
+	<div class="box-polaroid">
+		<div class="layer-tit">
+			<strong>함께 기억하고 싶은 영화의 한 장면이 있으셨나요?</strong>
+		</div>
+		<div class="layer-conts-stillcut default-skin" id="layout_movie_multimedia">
+			<div class="curation clear" id="movie_item_list"></div>
+		</div>
+	</div>
+	<i></i>
+	<button type="button" class="btn-close"><span>스틸컷 레이어 닫기</span></button>
+</div>
+<!-- //스틸컷 Layer -->
+</script>
+<script type="text/template" id="temp_upload">
+<!-- 업로드 Layer -->
+<div class="layer-contents upload"> <!-- Class 추가 시 선택화살표 노출 : trailer, stillcut, upload -->
+	<div class="box-polaroid">
+		<div class="layer-tit">
+			<strong>함께 기록하고 싶은 사진이 있으신가요?</strong>
+		</div>
+		<div class="layer-conts-upload">
+			<input type="file" title="내용" name="userUpload" id="userUpload"> <span>JPG, GIF, BMP 파일만 등록 가능합니다. (최대 3M)</span>
+			<input type="text" id="txtUserImageDesc" style="width:610px;" placeholder="이미지에 대한 설명을 작성해 주세요." /><button type="button" class="btn-upload round red on"><span>등록</span></button>
+		</div>
+	</div>
+	<i></i>
+	<button type="button" class="btn-close"><span>업로드 레이어 닫기</span></button>
+</div>
+<!-- //업로드 Layer -->
+</script>
+
+<script type="text/template" id="temp_user_choice_item">
+<li>
+    <div class="box-image">
+        <span class="thumb-image">
+            <img alt="${Title}" src="${imageURL}">
+            <button type="button" class="btn-del" value="${typeCode}"><span>선택한 정보 삭제</span></button>
+
+            {{if typeCode == '201'}}
+            <span class="ico-play">영상보기</span>
+            {{/if}}
+        </span>
+    </div>
+</li>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+    (function ($) {
+        $(function () {
+
+            //일반 submit안되게(S) <= 
+            var $frm = $('#aspnetForm');
             $frm.validate({
                 submitHandler: function (form) {
-
-                    if ($('#txtPassword').val() != "" && $('#txtConfirmPassword').val() != "") {
-                        if ($('#txtPassword').val() != $('#txtConfirmPassword').val()) {
-                            alert("비밀번호가 일치하지 않습니다.");
-                            $('#txtPassword').focus();
-                            return false;
-                        }
+                    if ($('#watchedIdx').val() == "") {
+                        alert("무비다이어리를 등록할 영화를 선택해 주세요");
+                        $('#open_watched_movie_list').focus();
+                        return false;
                     }
-
-                    var $loginFrm = $('#frmGuestLogin');
-
-                    $loginFrm.find('#username').val(app.crypto.AESEncryptToBase64($frm.find('#txtName').val()));
-                    $loginFrm.find('#birthday').val(app.crypto.AESEncryptToBase64($frm.find('#txtBirthday').val()));
-                    $loginFrm.find('#mobile1').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile1').val()));
-                    $loginFrm.find('#mobile2').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile2').val()));
-                    $loginFrm.find('#mobile3').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile3').val()));
-                    $loginFrm.find('#pwd').val(app.crypto.AESEncryptToBase64($frm.find('#txtPassword').val()));
-
-                    $loginFrm.submit();
                     return false;
+                }
+            });
+            //일반 submit안되게(E)
+
+
+            $('.my-point a').point(); //포인트 
+
+            //무비다이어리 슬라이드 멀티 처리
+            var $sliderList = $(document).find('.slider');
+            for (var i = 0; i < $sliderList.length; i++) {
+                var silderId = 'slider_' + i;
+                $sliderList[i].id = silderId;
+                $('#' + silderId).visualMotion({ 'type': 'photo' });
+            }
+            
+            var itemCount = 10;
+            var itemTotalCount = 0;
+
+            $("#emItemCount").text(itemCount);
+            if (itemCount >= itemTotalCount) {
+                $('#btn-more').hide();
+            }
+
+            $('#btn-more').on('click', function () {
+                var selectYear = $('#ddlYear').val();
+                var lastMovieDiaryIdx = $("#moviediary_list_container > li:last-child").data("mdidx");
+                //alert(lastMovieDiaryIdx);
+                app.movie().getMovieDiaryList({ selectedYear : selectYear, movieDiaryIdx : lastMovieDiaryIdx, pageSize : itemCount }, setMovieDiaryList);
+            });
+
+            function setMovieDiaryList(result) {
+                if(result == null || result == undefined) return;
+
+                $("#temp_movie_diary").tmpl(result).appendTo("#moviediary_list_container");
+
+                var itemCount = parseInt($("#emItemCount").text()) + result.length;
+                if (itemCount >= itemTotalCount) {
+                    $('#btn-more').hide();
+                }
+                else {
+                    $("#emItemCount").text(itemCount);
+                }
+
+                $('.my-point a').point(); //포인트 
+
+                var $sliderList = $(document).find('.slider');
+                for (var i = 0; i < $sliderList.length; i++) {
+                    var silderId = 'slider_' + i;
+                    $sliderList[i].id = silderId;
+                    $('#' + silderId).visualMotion({ 'type': 'photo' });
+                }
+
+                
+                // 평점 쓰기/보기 팝업
+                $('.write_point').on('click', function (e) {
+                    openPointPopUp($(this));
+                    return false;
+                });
+                
+            }
+
+            $('#btn-search').on('click', function () {
+                var selectedYear = $('#ddlYear').val();
+                location.href = "./diary.aspx?selectedyear=" + selectedYear;
+            });
+
+            $('.btn-del').on('click', function () {
+                $('#hdnmdidx').val($(this).data('mdidx'));
+                $("#deleteform").submit();
+            });
+            
+            $('#textContent').focusin( function () {
+                var tempText = $(this).val();
+                if (tempText === "영화 어떻게 보셨나요?") {
+                    $(this).val("");
+                }
+            }).focusout(function() {
+                var tempText = $(this).val();
+                if (tempText == "") {
+                    $(this).val("영화 어떻게 보셨나요?");
                 }
             });
 
 
+////////////////////////////////////// write(S) ///////////
+
+            //영화선택 아이콘 클릭 시
+            var watchedMovieJson = [{"WatchingIdx":304690521,"Title":"살인자의 기억법","EnglishTitle":"Memoir of a Murderer","OriginalTitle":"Memoir of a Murderer","ReserveNo":"0072201709140303984","SaleNo":"2017091420907499","MovieIdx":79847,"MovieGrade":{"Idx":231,"GradeText":"15세 이상","StyleClassName":"grade-15"},"PosterImage":{"ThumbNailImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79847/79847_73.jpg","SmallImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79847/79847_126.jpg","MiddleImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79847/79847_185.jpg","LargeImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79847/79847_320.jpg","OrgImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79847/79847_1000.jpg"},"ReserveQty":1,"TheaterCode":"0072","TheaterName":"CGV신도림","ScreenCode":"","ScreenName":"9관","ViewDateTime":"2017.09.14 (목) 19:00 ~ 20:58","CGVCode":"20013396","MyStarPoint":"0.0","CommentIdx":0,"MovieDiaryIdx":0,"PhotoTicketStatus":0,"PhotoTicketMessage":null,"PlayNum":0,"EggPoint":0,"ViewDate":"\/Date(1505314800000+0900)\/","ViewDateHHmm":"1900","ViewDateHHmmNonData":"2017.09.14 (목) 19:00 ~ 20:58","RegistQtyNonData":" / 1명","MovieType":"","ViewDateDay":"20170914"},{"WatchingIdx":290326352,"Title":"캐리비안의 해적-죽은 자는 말이 없다","EnglishTitle":"Pirates of the Caribbean: Dead Men Tell No","OriginalTitle":"Pirates of the Caribbean: Dead Men Tell No Tales","ReserveNo":"0046201706050258921","SaleNo":"2017060505371301","MovieIdx":79598,"MovieGrade":{"Idx":230,"GradeText":"12세 이상","StyleClassName":"grade-12"},"PosterImage":{"ThumbNailImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79598/79598_73.jpg","SmallImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79598/79598_126.jpg","MiddleImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79598/79598_185.jpg","LargeImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79598/79598_320.jpg","OrgImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79598/79598_1000.jpg"},"ReserveQty":1,"TheaterCode":"0046","TheaterName":"CGV상봉","ScreenCode":"","ScreenName":"7관","ViewDateTime":"2017.06.06 (화) 12:55 ~ 15:04","CGVCode":"20012926","MyStarPoint":"0.0","CommentIdx":0,"MovieDiaryIdx":0,"PhotoTicketStatus":0,"PhotoTicketMessage":null,"PlayNum":0,"EggPoint":0,"ViewDate":"\/Date(1496674800000+0900)\/","ViewDateHHmm":"1255","ViewDateHHmmNonData":"2017.06.06 (화) 12:55 ~ 15:04","RegistQtyNonData":" / 1명","MovieType":"","ViewDateDay":"20170606"},{"WatchingIdx":283893477,"Title":"히든 피겨스","EnglishTitle":"Hidden Figures","OriginalTitle":"Hidden Figures, 2016","ReserveNo":"0046201704030353266","SaleNo":"2017040354142942","MovieIdx":79444,"MovieGrade":{"Idx":230,"GradeText":"12세 이상","StyleClassName":"grade-12"},"PosterImage":{"ThumbNailImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79444/79444_73.jpg","SmallImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79444/79444_126.jpg","MiddleImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79444/79444_185.jpg","LargeImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79444/79444_320.jpg","OrgImage":"http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79444/79444_1000.jpg"},"ReserveQty":1,"TheaterCode":"0046","TheaterName":"CGV상봉","ScreenCode":"","ScreenName":"3관","ViewDateTime":"2017.04.05 (수) 11:55 ~ 14:02","CGVCode":"20012209","MyStarPoint":"0.0","CommentIdx":0,"MovieDiaryIdx":0,"PhotoTicketStatus":0,"PhotoTicketMessage":null,"PlayNum":0,"EggPoint":0,"ViewDate":"\/Date(1491318000000+0900)\/","ViewDateHHmm":"1155","ViewDateHHmmNonData":"2017.04.05 (수) 11:55 ~ 14:02","RegistQtyNonData":" / 1명","MovieType":"","ViewDateDay":"20170405"}];
+            var widx = 0;
+            console.log("data");
+            console.log(watchedMovieJson);
+            //초기화
+            moviediary.init(watchedMovieJson);
+
+
+            if(widx > 0) {
+                var isWatchedMovie = false;
+                for (var i = 0; i < watchedMovieJson.length; i++) {
+                    if (watchedMovieJson[i].WatchingIdx == widx) {
+                        isWatchedMovie = true;
+                    }
+                }
+
+                if(isWatchedMovie) { moviediary.setWatchedIdx(widx); }
+            }
+
+            $('.article-any-movie > a').on('click', function(e) {
+                moviediary.movieListHandler($(this));
+                return false;
+            });
+
+			//Trailer 아이콘 선택	
+            $('#btn_trailer').on('click', function (e) {
+                moviediary.getMovieItemList(e, 'trailer');
+                return false;
+            });
+
+            //스틸컷 선택
+            $('#btn_stillcut').on('click', function (e) {
+                moviediary.getMovieItemList(e, 'still');
+                return false;
+            });
+
+            //업로드 선택
+            $('#btn_upload').on('click', function (e) {
+                
+                var watchedIdx = $('#watchedIdx').val();
+                if(watchedIdx == "" || watchedIdx < 1)
+                {
+                    alert("영화를 먼저 선택하셔야 합니다.");
+                    return false;
+                }
+
+                var $std = $(this),
+                    options = {
+                        '$target': $std,
+                        'html': $('#temp_upload').html(),
+                        'position': 'position',
+				        'mask': 'none'
+                    };
+                app.instWin.add(options);
+                $('#txtUserImageDesc').val($('#hdnImageDesc4').val());
+
+                $('.btn-upload').on('click', function () {
+
+                    if($('#userUpload').val() == "") {
+                        alert("업로드할 이미지를 선택하셔야 합니다.");
+                        return false;
+                    }
+
+                    var $imageText = $('#txtUserImageDesc');
+                    if($imageText.val().trim() == "") {
+                        alert("이미지에 대한 설명을 작성해 주세요.");
+                        $imageText.focus();
+                        return false;
+                    }
+
+                    var form = $("#aspnetForm").get(0);
+                    app.movie().setUpload(form, setUserUploadImageResult);
+                });
+
+                return false;
+            });
+            
+            //업로드 결과
+            function setUserUploadImageResult(result){
+                
+                try {
+                    moviediary.setChoiceData('301', (app.config('imageDomain') + result.physicalName));        //value setting
+                    moviediary.setUserChoice();                 //display setting
+
+                    $('#hdnImageDesc4').val($('#txtUserImageDesc').val());
+                    $('.layer-wrap').remove();
+                }
+                catch(e) {
+                }
+            }
+
+            //취소버튼 클릭 시
+            $('#btn_write_cancel').on('click', function(e) {
+
+                moviediary.removeWatchedIdx();  //영화선택영역 삭제
+                moviediary.removeItemAll(e);   //사용자 3종셋트 삭제
+
+                $('.article-any-movie > a').on('click', function(e) {
+                    moviediary.movieListHandler($(this));
+                    return false;
+                });
+            });
+
+////////////////////////////////////// write(E) ///////////
+
+
+            // 평점 쓰기/보기 팝업
+            $('.write_point').on('click', function (e) {
+                openPointPopUp($(this));
+                return false;
+            });
+
+            // Facebook 체크 하였을 때
+            $("#btn_facebook").click(function () {
+               // getIsSnsConnection("btn_facebook");
+                alert("페이스북 정책 변경으로  '함께 올리기' 기능이 일시적으로 지원되지 않습니다. 양해부탁드립니다.");
+                return false;
+            });
+
+            // Twitter 체크 하였을 때
+            $("#btn_twitter").click(function () {
+                getIsSnsConnection("btn_twitter");
+            });
+
+            function getIsSnsConnection(elementId) {
+                var objId = $("#" + elementId);
+
+                var message;
+                var signInPage;
+                var cookieParentName;
+                var className;
+
+                if (elementId == "btn_facebook") {
+                    message = "페이스북";
+                    signInPage = "/common/sns/facebooklogin.aspx";
+                    cookieParentName = "facebook";
+                    className = "facebook";
+                }
+                else {
+                    message = "트위터";
+                    signInPage = "/common/sns/twitterlogin.aspx";
+                    cookieParentName = "twitter";
+                    className = "twitter";
+                }
+
+                var attributeValue = objId.attr('class');
+
+                if (attributeValue == className) {
+                    objId.attr('class', className + ' on');
+                    if (confirm(message + " 연동 하시겠습니까?")) {
+                        var winPop = window.open(signInPage, "elementId");
+                        winPop.focus();
+                    }
+                    else {
+                        objId.attr('class', className);
+                    }
+                }
+                else {
+                    if (confirm(message + "연동을 해제 하시겠습니까?")) {
+                        setCookie(cookieParentName, "", -1);
+                        objId.attr('class', className);
+                    }
+                }
+            }
+
+            function setCookie(name, value, expiredays) {
+                var todayDate = new Date();
+                todayDate.setDate(todayDate.getDate() + expiredays);
+                document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+            }
         });
-    })(jQuery); */
+    })(jQuery);
+
+    function SetClosePointPopup(targetObj, value) {
+        var htmlText = value == '' ? '0.0' : value;
+        targetObj.find('.write_point').attr('data-cidx', value);
+        targetObj.find('.my-point a > em').html(htmlText);
+        $('.my-point a').point();
+    }
+
 //]]>
 </script>
-
 
             <!--/ Contents End -->
 
@@ -629,6 +1140,7 @@
 
         <div class="adFloat" style="display:block">
 
+            <iframe src='http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon' width='154' height='182' frameborder='0' scrolling='no' topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' allowTransparency="true" id="ad_float1"></iframe>
         </div>
         <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->

@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
-
-<!-- Mirrored from www.cgv.co.kr/user/guest/login.aspx by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 13:09:23 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,12 +16,12 @@
     <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
     <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
     <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
-    <meta id="ctl00_og_title" property="og:title" content="비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
+    <meta id="ctl00_og_title" property="og:title" content="로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
     
     <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/common/cgv_200x200.jpg"></meta>
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
-    <title id="ctl00_headerTitle">비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
+    <title id="ctl00_headerTitle">로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
@@ -35,6 +33,7 @@
     <link rel="stylesheet" media="print" type="text/css" href="http://img.cgv.co.kr/R2014/css/print.css" />    
    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/content_prepaid_card_170421.css" />
+  
 
     <link rel="stylesheet" type="text/css" href="http://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.config.js"></script>
@@ -52,11 +51,17 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
+
+    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
+    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
 	<link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
+
+  
 
     <!-- 각페이지 Header Start--> 
     
@@ -64,7 +69,7 @@
     <script type="text/javascript">
         //<![CDATA[
 
-        _TRK_CP = "/회원서비스/비회원로그인";
+        _TRK_CP = "/회원서비스/로그인";
 
         app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
             .config('imageDomain', 'http://img.cgv.co.kr')
@@ -206,45 +211,108 @@
 
         //]]>
     </script>
-    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=h%2fWbTq57CullxPvpQNMR5dE2jwVLqlq6twsxR%2bYN2xcaJCdMuo8QClcMAxKlp4bEY%2bVxer3J9U3YhmiNOrck%2fHQyTEVibkdkMkQ0RkpzYyt3VURRYjZud0svcVRvaWNwNzlMellEVHVVajlLTXFITUJTVnRoTHJEalVXdmttNHA%3d"></script>
-	<!-- 제이쿼리 코어 임베딩 -->
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
-	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
-	<script type="text/javascript">
-	$(function(){
-		
-		/* 유효성 체크 Validate */
-		$("#form1").validate({
 
-			rules:{
-				nonmember_id:"required",
-				password:{required:true,minlength:4},
-				passwordChk:{required:true,minlength:4,equalTo:"#password"},	
-				},			
-			messages:{
-				nonmember_id:"<br/>&nbsp;&nbsp;아이디를 입력하세요.",
-				password:{
-					required:"<br/>&nbsp;&nbsp;비밀번호를 입력하세요.",
-					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다."
-				},
-				passwordChk:{
-					required:"<br/>&nbsp;&nbsp;비밀번호를 재입력하세요.",
-					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다.",
-					equalTo:"<br/>&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
+<!-- 	<script type="text/javascript">
+		$(function(){
+			
+			$.validator.setDefaults({"submitHandler":function(form){
+				//submit하기전 수행할 로직
+				var birth=$("#birth_yy").val()+"-"+$("#birth_mm").val()+"-"+$("#birth_dd").val();
+	        	$("#birth").val(birth);
+	        	
+	        	var phone=$("#mob_no_1").val()+"-"+$("#mob_no_2").val()+"-"+$("#mob_no_3").val();
+	        	$("#phone").val(phone);
+	        	
+	        	var email=$("#email_addr1").val()+"@"+$("#email_addr2").val();
+	        	$("#email").val(email);
+				//반드시 submit()함수 호출			
+				form.submit();				
+				//self.close();
+			}});
+			
+			$("#updateForm").validate({
+				errorLabelContainer: $("#updateForm div.error"),
+				
+				rules:{
+					nickname:"required",
+					password:{required:true,rangelength:[4,12]},
+					pwdChk:{required:true,rangelength:[4,12],equalTo:"#password"},	
+					mob_no_1:"required",
+					mob_no_2:"required",
+					mob_no_3:"required",
+					email_addr1:"required"
+					},			
+				messages:{
+					name:"&nbsp;&nbsp;이름을 입력하세요.",	
+					nickname:"&nbsp;&nbsp;닉네임을 입력하세요.",
+					password:{
+						required:"&nbsp;&nbsp;비밀번호를 입력해주세요.",
+						rangelength:"&nbsp;&nbsp;비밀번호는 4자 이상 12자 이하입니다.",
+					},
+					pwdChk:{
+						required:"&nbsp;&nbsp;비밀번호를 입력해주세요.",
+						rangelength:"&nbsp;&nbsp;비밀번호는 4자 이상 12자 이하입니다.",
+						equalTo:"&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
+					},
+					mob_no_1:"휴대전화 앞번호 선택하세요.<span style='color: gray;'>&nbsp;&nbsp;│&nbsp;</span>",
+					mob_no_2:"휴대전화 중간번호를 입력하세요.<span style='color: gray;'>&nbsp;&nbsp;│&nbsp;</span>",
+					mob_no_3:"휴대전화 끝번호를 입력하세요.",
+					email_addr1:"&nbsp;&nbsp;이메일 주소를 입력하세요."
+							
+				}			
+			});////////////////////validate
+			
+
+			
+			/* 도메인 선택 시 자동으로 텍스트에 입력 */
+			$("#email_addr_opt").on("change",function(){
+				
+				if($(this).val() !=""){
+					
+					$("#email_addr2").val($(this).val());
 				}
-			}			
-		});////////////////////validate	
-	
-	});
-	
-	</script>
-	
+				else $("#email_addr2").val("");
+			});
+			
+			/* 닉네임 중복체크 */
+			$("#nickcheck").click(function(){
+				if($("#nickname").val()==""){
+					alert("닉네임을 먼저 입력하세요?");
+					$("#nickname").get(0).focus();
+					
+				}
+				else{
+					$.ajax(
+							{url:"<c:url value='/isMemberId.front'/>",
+							 type:"post",
+							 dataType:"text",
+							 data:"id="+$("#id").val(),
+							 success:function(data){
+								
+								if(data=='N') alert("사용가능한 닉네임 입니다.");
+								else{
+									alert("이미 사용중인 닉네임 입니다.");
+									$("#nickname").val("");
+									$("#nickname").get(0).focus();
+								}
+							 }
+							}
+							 
+						  );//.ajax
+				}	
+				
+			});
+			
+		});
+			
+  			
+		
+	</script> 
 
 	<style>
 	
 	/* 유효성 체크 글씨색상 변경 */
-	#form1 input +.error{color:red;}
+	updateForm input +.error{color:red;}
 	
 	/* select option 꾸며주기 */
 	.inputstl {
@@ -257,43 +325,12 @@
 	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 	}
-	
-	/* 일그러진 UI 수정: box 크키, 버튼 위치 조정 */
-	.sect-user .wrap-result, .sect-user .box-simples, .sect-user .box-confirms{  
-	padding:40px 30px 0px; border:1px solid #e8e8dd;}
-	.col-simple > .box-simples ,.col-confirm > .box-confirms{ 
-	height:auto;}
-	
-	.round.inred > *:after{ 
-	right:-3px; bottom:-2.5px; background-position:-5px -15px;}
-	
-	.round.black:before{ 
-	left:-2px; top:-2px; background-position:-10px 0;}
-	.round.black:after{ 
-	left:-2px; bottom:-1.5px; background-position: -10px -5px;}
-	.round.black > *:before{ 
-	right:-1.5px; top:-2px; background-position:-15px 0;}
-	.round.black > *:after{ 
-	right:-1.5px; bottom:-1.5px; background-position:-15px -5px;}
-	</style>
 
+	</style>
+ -->
+    
 </head>
 <body class="">
-
-<!--     <form name="ssologinfrm" action="https://www.cgv.co.kr/user/login/login-sso.aspx" method="post">
-        <input type="hidden" id="cjssoq" name="cjssoq" />
-        <input type="hidden" name="returnURL" value="/user/guest/login.aspx" />
-    </form>
-    <script type="text/javascript">
-        function cjsso() {
-            if ((typeof _cjssoEncData) != "undefined" && _cjssoEncData != "") {
-                document.getElementById("cjssoq").value = _cjssoEncData;
-                document.ssologinfrm.submit();
-            }
-        }
-
-        cjsso();
-    </script> -->
 
 <div class="skipnaiv">
 	<a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
@@ -309,7 +346,6 @@
             </div><!-- //.top_extend_ad_wrap -->
         </div>    
     </div>    
-
 	<!-- Header -->
 	<div id="header">
 		<div class="head">
@@ -332,7 +368,6 @@
                         <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/main@Search_txt" width="0" height="0" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 					</fieldset>
 				</div>
-				<!-- /Integrated search(통합검색) -->
 				<!-- Quick Phototicket -->
 				<div class="sect-phototicket">
 					<h2>CGV 포토티켓</h2>
@@ -343,7 +378,7 @@
                 
 				<div class="ad-partner">
                     <a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx"  >
-                        <img src="../../../img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
+                        <img src="http://img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
                     </a>
 					 <!-- 외부광고영역 -->
 				</div>
@@ -360,22 +395,22 @@
 	</div>
 	<!-- /Header -->
 	<!-- Contaniner -->
-	<div id="contaniner" class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
+	<div id="contaniner" class="bg-bricks"><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
 
         <!-- LineMap -->
 
-        <div id="ctl00_navigation_line" class="linemap-wrap">
+        <div id="ctl00_ctl00_navigation_line" class="linemap-wrap">
             <div class="sect-linemap">
                 <div class="sect-bcrumb">
                     <ul>
-                        <li><a href="/"><img alt="home" src="../../img/R2014/images/common/btn/btn_home.png" /></a></li>
+                        <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
-                                <a href="/user/login/">회원서비스</a>
+                                <a href="/user/mycgv/">My CGV</a>
                             </li>
                         
                             <li  class="last">
-                                비회원로그인
+                                MY CGV HOME
                             </li>
                         
                         
@@ -398,140 +433,439 @@
             
             <!-- Contents Start -->
 			
+    <script type="text/javascript">
+    //<![CDATA[
+        (function ($) {
+            $(function () {
 
-<!-- 실컨텐츠 시작 -->
-<div class="wrap-login">
-    <div class="sect-user">
-        <ul class="tab-menu-round">
-            <li>
-                <a href="<c:url value='/login.front'/>">로그인</a>
-            </li>
-            <li class="on">
-                <a href="<c:url value='/guest.front'/>">비회원로그인</a>
-            </li>
-        </ul>
-        <h3>개인정보(아이디,비밀번호) 입력 후 로그인 </h3>
-        <p>비회원 로그인 정보 오입력 시, 예매내역 확인/취소 및 티켓 발권이 어려울 수 있으니, 입력하신 정보를 다시 한번 확인해주시기 바랍니다.</p>
-        <div class="cols-enterform nomember">
-            <div class="col-simple">
-                <h4>비회원 예매확인/취소 로그인 입력정보</h4>
-                <div class="box-simples">
-                    <p class="disc-info"> 비회원정보에 등록된 임시발급 아이디, 비밀번호(4자리)를 입력해주세요.<br />
-                <span style="font-size:8pt;color:red;">* Caps Lock 을 반드시 해제해주세요.</span></p>
-                    <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestLogin.front'/>">
-                    
-                      <fieldset>
-                        <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
-                        <table cellpadding="0" cellspacing="0">
-
-                            <tbody>
-                            <tr>
-                                <th scope="row"><label for="nonmember_id">아이디</label></th>
-                                <td><input type="text" placeholder="아이디 입력" name="nonmember_id" id="nonmember_id"/></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4" /></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordChk" id="passwordChk" length="4" maxlength="4" /></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                      	   <div class="box-btn">
-                      	   		${guestLoginError }
-		                    <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
-	                      </div>
-                      </fieldset>
-                    </form>
-                </div>
-            </div>
-            <div class="col-confirm">
-                <h4>비회원 로그인 등록정보 분실 안내</h4>
-                <div class="box-confirms">
-                    <p class="disc-info">비회원 등록정보 찾기를 통해 비회원 예매번호 및 비밀번호를 확인하실 수 있습니다.</p>
-                    <div class="confirm-type">
-                        <h5>휴대폰 인증을 통해 확인</h5>
-                        <!-- <p>휴대폰 인증을 통해 확인</p> -->
-                        <a href="<c:url value='/findPhone.front'/>" class="round black"><span>휴대폰 번호로 찾기</span></a>
-                        <!-- <h5>휴대폰 번호 분실 시</h5>
-                        <p>이름 + 법정생년월일+ 비밀번호 입력 후 확인</p> -->
-                        <p>&nbsp;</p>
-                        <h5>이메일 인증을 통해 확인</h5>
-                        <a href="<c:url value='/findEmail.front'/>" class="round black"><span>이메일 주소로 찾기</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-   </div> 
-    <div class="sect-loginguide">
-        <dl class="box-operationguide">
-            <dt>비회원 <br />로그인 시 <br />참고하세요!</dt>
-            <dd>1.  상기 정보 수집에 동의하지 않을 경우, 비회원 예매 서비스를 이용하실 수 없습니다. </dd>
-            <dd>2.  비회원 예매 시 청소년 관람불가 영화는 예매가 제한됩니다. </dd>
-            <dd>3.  비회원 에매 결제수단은 신용카드만 가능하며 모든 제휴상품권, 쿠폰, 영화예매권 등의 사용은 회원 예매 서비스 이용 시 가능합니다. </dd>
-            <dd>4.  모바일과 ARS에서는 취소가 불가능하며, 홈페이지를 이용하여 입력하신 로그인 정보로 취소 처리하실 수 있습니다.</dd>
-            <dd>5.  비회원 예매 및 비회원 예매 확인/취소 메뉴만 이용 가능합니다. 이 외에 커뮤니티, 댓글, 인정 등의 서비스는 회원 가입 후 이용 가능합니다.</dd>
-            <dd>6.  문의사항은 CGV 고객센터(1544-1122)로 문의해 주시기 바랍니다. <br />
-                - 운영시간 : 매일 09:00 ~ 21:00 (주말, 및 공휴일 상담 가능합니다.)</dd>
-        </dl>
-    </div>
-</div>
-<!-- 실컨텐츠 끝 -->
-
-<!-- LogIn -->
-<!-- <form name="frmGuestLogin" id="frmGuestLogin" method="post" action="https://www.cgv.co.kr/user/guest/login-proc.aspx" novalidate="novalidate">
-    <input type="hidden" id="username" name="username" />
-    <input type="hidden" id="birthday" name="birthday" />
-	<input type="hidden" id="mobile1" name="mobile1" />
-	<input type="hidden" id="mobile2" name="mobile2" />
-	<input type="hidden" id="mobile3" name="mobile3" /> 
-	<input type="hidden" id="pwd" name="pwd" />
-    <input type="hidden" id="returnURL" name="returnURL" value="/user/guest/reserve.aspx" />
-</form> -->
-<!-- //LogIn -->
+                //특별관 >
 
 
-<script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
-<script type="text/javascript">
-//<![CDATA[
-
-/*     (function ($) {
-        $(function () {
-
-            var $frm = $('#form1');
-            $frm.validate({
-                submitHandler: function (form) {
-
-                    if ($('#txtPassword').val() != "" && $('#txtConfirmPassword').val() != "") {
-                        if ($('#txtPassword').val() != $('#txtConfirmPassword').val()) {
-                            alert("비밀번호가 일치하지 않습니다.");
-                            $('#txtPassword').focus();
-                            return false;
-                        }
-                    }
-
-                    var $loginFrm = $('#frmGuestLogin');
-
-                    $loginFrm.find('#username').val(app.crypto.AESEncryptToBase64($frm.find('#txtName').val()));
-                    $loginFrm.find('#birthday').val(app.crypto.AESEncryptToBase64($frm.find('#txtBirthday').val()));
-                    $loginFrm.find('#mobile1').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile1').val()));
-                    $loginFrm.find('#mobile2').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile2').val()));
-                    $loginFrm.find('#mobile3').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile3').val()));
-                    $loginFrm.find('#pwd').val(app.crypto.AESEncryptToBase64($frm.find('#txtPassword').val()));
-
-                    $loginFrm.submit();
+                //동성로타운
+                $('.special1_pop').on('click', function () {
+                    openDownTown();
                     return false;
+                });
+
+
+
+                function openDownTown() {
+                    var win = window.open('http://section.cgv.co.kr/event/2016/0419_dongsungro_town/pop_service.aspx', 'winDownTown', 'left=0,top=0,width=670,height=800,toolbar=no,scrollbars=yes');
+                    win.focus();
                 }
             });
+        })(jQuery);
+    //]]>
+</script>
+<div class="sect-common">
+<input type="hidden" id="isTown" name="isTown" value="Y" />
+<input type="hidden" id="userTownMemberInfo" name="userTownMemberInfo" value="" />
+    <div class="mycgv-info-wrap">
+		<div class="skipnaiv" >
+			<a href="#menu" id="skipPersoninfo">개인화영역 건너띄기</a>
+		</div>
+        <div class="sect-person-info">
+        	<h2 class="hidden">개인화 영역</h2> 
+        	<div class="box-image">
+				<span class="thumb-image">
+					<img src="" alt="조미영님 프로필 사진" onerror="errorImage(this, {'type':'profile'})" />
+					<span class="profile-mask"></span>
+				</span>
+        	</div>
+        	<div class="box-contents newtype">
+        		<div class="person-info">
+        			<strong>[ 회원 이름 ]</strong>
+        			<em>[ 회원 아이디]</em>
+        			<span>닉네임 : <i>닉네임을 설정해주세요.</i> </span> //닉네임을 설정하지 않았을 경우 이렇게 뜬다
+        			<button id="go_edit_page" type="button" title="새창열림">나의 정보 변경</button>
+        		</div>
+        		<div class="grade-info">
+        	        
+                    <p style="margin-bottom:4px;color: #342929;font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;font-size: 20px;line-height: 20px;">
+                      
+                   
+                       
+                          고객님은   <strong class="txt-purple">일반</strong> 입니다.             
+                      
 
+
+
+                    </p>
+        			<button type="button" id="view_usergrade" class="round black"><span>MY 지난등급이력 보기</span></button>
+        			
+                    
+
+                    <div class="mycgv_btn_special2">
+					<!-- 대구 아이피접속자 중 : 동성로 미가입 고객시 a.special_pop_text 노출/ 가입 고객은 a.special0_pop 노출 부탁드립니다.
+						또한 아무 해당 없는 고객에게는 .mycgv_btn_special2 에 클래스 none 추가 부탁드립니다. 
+						-->
+
+                        <h5 class="special_tit">SPECIAL MEMBERSHIP</h5>
+					   
+				    </div>
+
+
+        		</div>
+        	</div>
+        </div>
+        <div class="cols-benefit-info">
+        	<div class="col-my-coupon">
+        		<h3>MY COUPON</h3>
+        		<ul>
+                    
+                    <li>
+        				<strong>CGV VIP에 도전하세요!</strong>
+        				<span><a href="/user/vip-lounge/" class="round black1"><i>CGV VIP 혜택보기</i></a></span>
+        			</li>
+                    
+        			<li>
+        				<strong>CGV 할인쿠폰</strong>
+        				<span><em>0</em> 개</span>
+        			</li>
+        			<li>
+        				<strong>영화관람권</strong>
+        				<span><em>0</em> 개</span>
+        			</li>
+        		</ul>
+        	</div>
+        	
+                
+                <div class="col-one-point">
+               	<h3>CJ ONE POINT</h3>
+        		<a href="/user/mycgv/cjone-point/pointlist.aspx">CJ ONE POINT 더보기</a>
+        		<ul>
+        			<li>
+        				<strong>CJ ONE 사용가능 포인트</strong>
+        				<span><em class="txt-maroon">4,241</em> 점</span>
+        			</li>
+        		    <li class="tooltip_list cf">
+        				<strong>VIP선정 포인트</strong><a href="/user/mycgv/cjone-point/pointlist.aspx" class="mycgv_tooltip"><img src="http://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/ico_tooltip.png" alt="i" /></a>
+
+                        <div class="tooltip_con tc2"><span><img src="http://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/tooltip_con2.png" alt="CGV에서 구매를 통해 적립된 매표 구매 포인트/매점&amp;씨네샵 구매 포인트/VIP 선정에 포함되는 이벤트 포인트가 누적으로 합산된 포인트 입니다" /></span></div>
+        				<span><em>830</em> 점</span>
+        			</li>
+        		</ul>
+                
+        	</div>
+        	<div class="col-favorite-theater">
+        		<h3 class="hidden">자주가는 CGV</h3>
+	    		<div class="sect-favorite">
+		            <ul id="favoriteTheaters">
+                        
+                            <li><a href="#" data-regioncode="01" data-theatercode="0046"><span>1<em>순위</em></span>CGV상봉</a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>2<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>3<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>4<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>5<em>순위</em></span></a></li>
+                        
+		            </ul>
+		            <button id="btn_set_my_favorite" title="새창" type="button" class="setting">자주가는 CGV<br />설정하기</button>
+		        </div>
+	        </div>
+         
+                <div class="cols-point-wrap">
+                
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="cols-content" id="menu">
+    <div class="col-aside">
+		<div class="skipnaiv">
+			<a href="#mycgv_contents" id="skipMycgvMenu">MYCGV 서브메뉴 건너띄기</a>
+		</div>
+	    <h2>MY CGV 서브메뉴</h2>
+	    <div class="snb">
+	        <ul>
+	            <li class="on">
+                    <a href="/user/mycgv/?g=1" title="현재 선택">MY CGV HOME <i></i></a>
+                </li>
+	            <li >
+                    <a href="/user/mycgv/reserve/?g=1" >나의 예매내역 <i></i></a>
+                    <ul>
+                       <li >
+                            <a href="/user/mycgv/reserve/receipt.aspx?g=1" >신용카드 영수증 출력</a>
+                        </li>
+                    </ul>
+                </li>
+	            <li >
+	                <a href="/user/mycgv/coupon/movie-ticket/list.aspx?g=1" >관람권/할인쿠폰 관리 <i></i></a>
+	                <ul>                      
+                     
+	                    <li >
+                            <a href="/user/mycgv/coupon/movie-ticket/list.aspx?g=1" >CGV 영화관람권</a>
+                        </li>
+	                    <li >
+                            <a href="/user/mycgv/coupon/discount/list.aspx?g=1" >CGV할인쿠폰</a>
+                        </li>
+
+	                    <li >
+                            <a href="/user/mycgv/coupon/redcard/list.aspx?g=1" >4DX RED CARD</a>
+                        </li>
+
+                        <li >
+                            <a href="/user/mycgv/coupon/movie-passcard/?g=1" >CGV무비패스카드</a>
+                        </li>
+                         <li >
+                            <a href="/user/mycgv/coupon/prepaid-card/?g=1" >CGV기프트카드</a>
+                        </li>
+                         <li >
+                            <a href="/user/mycgv/coupon/phototicket-passcard/?g=1" >CGV포토티켓 패스카드</a>
+                        </li>
+                      <!-- <li >
+                            <a href="/user/mycgv/coupon/partnership/list.aspx?g=1" >제휴 온라인 예매/할인권</a>
+                        </li>-->
+                        <li >       
+                               <a href="/user/mycgv/coupon/cjone/list.aspx?g=1" >CJ ONE 쿠폰</a>         
+                        </li>
+                        <li >
+                            <a href="/user/mycgv/coupon/giftcon/list.aspx?g=1" >CGV 기프트콘(영화관람권)</a>
+                        </li>
+
+                        <li >
+                            <a href="/user/mycgv/coupon/partner-discount/list.aspx?g=1" >카드사 할인쿠폰</a>
+                        </li>
+                         
+	                </ul>
+	            </li>
+	            <li >
+                    <a href="/user/mycgv/cjone-point/cafeteria.aspx?g=1" >CJ ONE 포인트 <i></i></a>
+	                <ul>
+	                    <li >                         
+                               <a href="/user/mycgv/cjone-point/cafeteria.aspx?g=1" >매점이용 포인트 적립</a>  
+                        </li>
+                        <li >                        
+                                <a href="/user/mycgv/cjone-point/pointlist.aspx?g=1" >포인트 적립/사용내역</a>                            
+                        
+                          
+                        </li>
+	                </ul>
+	            </li>
+                <li >
+                    <a href="javascript:fncMoveToPhototicket()" >내가꾸민포토티켓 <i></i></a>
+
+                    <script language="javascript">
+                        function fncMoveToPhototicket() {
+                            var sWidth = Number($(window).width()) + Number(12);    //parent 창의 크기와 동일하게 만들어준다.
+                            var sHeight = Number($(window).height()) + Number(35);
+
+                            var substr = 'scrollbars=yes,menubar=yes,resizable=yes,width=' + sWidth + 'px,height=' + sHeight + 'px';
+
+                            window.open('http://phototicket.cgv.co.kr/Phototicket/HTML/myPhototicket.aspx?g=1', "CJ_CGV_Phototicket", substr, "_NEW");
+                        }
+                    </script>
+
+	            </li>
+	            <li >
+                    <a href="/user/mycgv/culture-shop/?g=1" >티켓·팝콘스토어<i></i></a>
+	                <ul>
+                        <li >
+                            <a href="/user/mycgv/culture-shop/?type=1&g=1" >매점상품 기프트콘</a>
+                        </li>
+                        <li >
+                            <a href="/user/mycgv/culture-shop/?type=0&g=1" >영화관람권 기프트콘</a>
+                        </li>
+                        <li >
+                            <a href="/user/mycgv/culture-shop/fun-con.aspx?g=1" >FUN-CON</a>
+                        </li>
+                        <li >
+                            <a href="/user/mycgv/culture-shop/prepaid-card.aspx?g=1" >CGV기프트카드</a>
+                        </li>           
+                        <!--<li >
+                            <a href="/user/mycgv/culture-shop/movie-collage-passcard/?g=1" >무비꼴라쥬 패스카드</a>
+                        </li>//-->
+	                </ul>
+	            </li>
+	            <li >
+                    <a href="/user/mycgv/myinfo/?g=1" >회원정보<i></i></a>
+	                <ul>
+
+                        <li >
+                            <a href="#">개인정보 변경</a>
+                        </li>
+
+	                    <li >
+                            <a href="/user/mycgv/myinfo/?g=1" >CGV 서비스 이용동의 설정</a>
+                        </li>
+	               
+	                    <li >
+                            <a href="/user/mycgv/myinfo/edit-myinfo-Email-Sms.aspx?g=1" >Email/SMS 수신설정</a>
+                        </li>
+	                    <li >
+                            <a href="/user/mycgv/myinfo/leave-cjone.aspx?g=1" >회원탈퇴</a>
+                        </li>
+                        
+	                </ul>
+	            </li>
+                 <li >
+                    <a href="/user/mycgv/myinfo/edit-myinfo-myprofile.aspx?g=1" >프로필 관리<i></i></a>
+                </li>
+	            <li >
+                    <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >나의 문의내역 <i></i></a>
+	                <ul>
+	                    <li >
+                            <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >1:1 문의</a>
+                        </li>
+
+
+                        <li >
+                            <a href="/user/mycgv/inquiry/lost/list.aspx?g=1" >분실물 문의</a>
+                        </li>
+	                </ul>
+	            </li>
+                        <li class="my-event"><a href="/user/movielog/watched.aspx">내가 본 영화</a></li> 
+	           <!-- <li class="my-event"><a href="/user/mycgv/event/?g=1">나의 참여 이벤트</a></li> -->
+	        </ul>
+	        <div class="ad-partner01">
+                <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@M_Rectangle" width="160" height="300" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" id="M_Rectangle"></iframe>
+            </div>
+            <div class="ad-partner02">
+                <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Image_text" width="160" height="35" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" id="Image_text"></iframe>
+            </div>
+	    </div>
+    </div>
+	<div class="col-detail" id="mycgv_contents">
+			
+  		<!-- 실컨텐츠 시작 -->
+        <div class="wrap-login">
+		<div class="info"><p class="msg_mandatory"><span style="color:red">(*)</span> 표시는 수정가능한 항목입니다.</p><br></br></div>
+		</div>
+		
+	    <div class="table_col" style="border:1px solid gray; padding:30px;">
+		<form id="pwCheck"  action="<c:url value='/pwCheck.front'/>" method="post">	
+
+		</form>
+		
+		</div>
+		
+		<div style="height:10px"></div>
+		
+        <!-- 실컨텐츠 끝 -->
+</div>
+<script id="temp_view_usergrade" type="text/x-jquery-tmpl">
+
+<div class="popwrap" style="width:330px;margin-top:-500px;margin-left:-165px">
+
+						<h1>VIP 등급 이력</h1>
+						<div class="pop-contents">
+						<!-- Contents Addon -->
+							<div class="sect-my-grade">
+								<p><strong>조미영</strong> 고객님의 연도별 고객 등급 이력입니다.</p>
+								<div class="grade-lst-light scrollbox">
+									<table summary="연도별 VIP 세부 등급 이력" id="mytable">
+										<caption>VIP 등급 이력 리스트</caption>
+										<colgroup>
+											<col width="50%">
+											<col width="*">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">승급 년/월별</th>
+												<th scope="col">등급</th>
+											</tr>
+										</thead>
+										<tbody>
+											
+										</tbody>
+									</table>
+								</div>
+								<ul class="tb-desclist">
+									<li>- 고객님의 등급은 당해년도 VIP 규정에 따라 부여된 등급입니다</li>
+									<li>- 연속 VIP는 전년도와 등급 갱신월이 일치해야 인정됩니다<br />
+									(예. 17년 4월 RVIP의 경우, 18년 4월 RVIP 갱신 시에만 2년 연속 RVIP로 인정되며, 2017년 5월 RVIP 승급 시 17년 5월에 1년 차 RVIP로 인정)</li>
+									<li>- 등급이 하락된 경우 하락된 등급의 1년 차로 인정됩니다<br />
+									(예. 17년 4월 SVIP의 경우 18년 4월 VVIP로 등급 하락 시 VVIP 1년 차로 인정)</li>
+								</ul>
+
+							
+							</div>
+						<!-- //Contents Addon -->
+						</div>
+						<button type="button" class="btn-close">MY 지난 등급 이력 팝업 닫기</button>
+					</div>
+
+</script>
+<script type="text/javascript">
+    //<![CDATA[
+    (function ($) {
+        $(function () {
+
+            $('#go_edit_page').on('click', function () {
+                var win = window.open("/user/popup/edit-profile.aspx", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                win.focus();
+            });
+
+            $('#btn_set_my_favorite').on('click', function () {
+                var win = window.open("/user/popup/favoriteTheaters.aspx?ismycgv=true", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
+                win.focus();
+            });
+
+            $('#view_usergrade').on('click', function () {
+                GetUserGradeList(this);
+                return false;
+            });
+
+            function GetUserGradeList(_this) {
+
+                var url = '/common/ajax/user.aspx/GetUserGradeList_2017';
+                var data = null;
+                var callback = function (result) {
+                    app.log(result);
+
+                    var $std = $(_this),
+                    options = {
+                        '$target': $std,
+                        'html': $('#temp_view_usergrade').html(),
+                        'position': 'absolute',
+                        'mask': 'none'
+                    };
+                    app.instWin.add(options);
+
+                    var $tbody = $('#mytable > tbody:last'),
+                        $tr1 = $('#tempUserGradeTbodyTr1')
+                    //  $tr2 = $('#tempUserGradeTbodyTr2');
+                    $.each(result, function (i, v) {
+
+                        $tbody.append("<tr><th scope='row'>" + v.YearMonthSub + "년" + v.MonthSub + "월" + "</th><td>" + v.GradeCode + "</td></tr>");
+
+                    });
+                }
+                app.ajax().get({ dataType: 'json', url: url, data: data, contentType: "application/json; charset=utf-8", successHandler: callback });
+            }
+            //개인화영역스킵
+            $('#skipPersoninfo').on('click', function () {
+                var $ctn = $('#menu');
+                $ctn.attr({
+                    tabIndex: -1
+                }).focus();
+                return false;
+            });
+            //mycgv 메뉴스킵
+            $('#skipMycgvMenu').on('click', function () {
+                var $ctn = $('#mycgv_contents');
+                $ctn.attr({
+                    tabIndex: -1
+                }).focus();
+                return false;
+            });
+
+            //my cgv 상단영역 skip처리
+            var isGoContainer = "False";
+            if (isGoContainer == "True") {
+                location.href = location.href + "#contaniner";
+            }
 
         });
-    })(jQuery); */
-//]]>
+    })(jQuery);
+    //]]>
 </script>
-
+</div>
 
             <!--/ Contents End -->
 
@@ -629,6 +963,7 @@
 
         <div class="adFloat" style="display:block">
 
+            <iframe src='http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon' width='154' height='182' frameborder='0' scrolling='no' topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' allowTransparency="true" id="ad_float1"></iframe>
         </div>
         <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->
@@ -636,7 +971,7 @@
 	<!-- /Footer -->
 
     <!-- Aside Banner :  -->
-	<div id="ctl00_sect_person_right" class="sect-aside-banner" style="padding:0; margin:0; position:fixed; z-index:1;">
+	<div id="ctl00_ctl00_sect_person_right" class="sect-aside-banner" style="padding:0; margin:0; position:fixed; z-index:1;">
 		<div class="aside-content-top">
 			<div class="aside-content-btm">
 				<a href="/theaters/"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_person_theater.gif" alt="CGV THEATER" /></a>
@@ -760,7 +1095,7 @@
         $(function () {
 
             /* side menu move script */
-            var isBricks = false;
+            var isBricks = true;
             $('.sect-aside-banner').asideMenu({'isBricks': isBricks });            
             $('.movie_player_popup').moviePlayer();     //동영상플레이어                       
             //특별관 클럽

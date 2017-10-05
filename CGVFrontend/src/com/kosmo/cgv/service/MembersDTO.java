@@ -66,5 +66,5 @@ public class MembersDTO {
 	public void setProfilepicture(String profilepicture) {
 		this.profilepicture = profilepicture;
 	}
-	
+		
 }

@@ -63,14 +63,21 @@
 	</ul>
 	
 	<ul class="gnb">
-         <c:if test="${sessionScope.id == null}" var="isNotMember">
-        	<li><a href="<c:url value='/login.front'/>" class="login" ><span>로그인</span></a></li>
-        	<li><a href="<c:url value='/join.front'/>" class="join"><span>회원가입</span></a></li>
-         </c:if>    
-         <c:if test="${not isNotMember }">     	
+
+		<c:if test="${sessionScope.id == null}" var="isNotMember">
+			<c:if test="${sessionScope.nonmember_id == null}">
+	        	<li><a href="<c:url value='/login.front'/>" class="login" ><span>로그인</span></a></li>
+	        	<li><a href="<c:url value='/join.front'/>" class="join"><span>회원가입</span></a></li>
+			</c:if>
+	      	<c:if test="${sessionScope.nonmember_id != null}">
+		        <li><a href="<c:url value='/guestLogout.front'/>" class="logout">로그아웃</a></li>
+		        <li><a href="<c:url value='/guestMyCGV.front'/>" onClick="return confirm('회원만 이용 가능한 서비스입니다. 회원가입 하시겠습니까?');" class="mycgv required-login" data-url="/user/mycgv/" ><span>MY CGV</span></a></li>
+	      	</c:if>
+		</c:if>    
+		<c:if test="${not isNotMember }">     	
          	<li><a href="<c:url value='/logout.front'/>" class="logout">로그아웃</a></li>
          	<li><a href="<c:url value='/myCGV.front'/>" class="mycgv required-login" data-url="/user/mycgv/" ><span>MY CGV</span></a></li>
-      	 </c:if>  
+		</c:if>
 
 		<!-- 2014.12.8 리뉴얼-->
 		<li><a href="<c:url value='/support.front'/>" class="customer" ><span>고객센터</span></a></li>

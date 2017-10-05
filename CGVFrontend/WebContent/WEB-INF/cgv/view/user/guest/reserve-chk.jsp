@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
-
-<!-- Mirrored from www.cgv.co.kr/user/guest/login.aspx by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 13:09:23 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,12 +16,12 @@
     <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
     <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
     <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
-    <meta id="ctl00_og_title" property="og:title" content="비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
+    <meta id="ctl00_og_title" property="og:title" content="나의 예매내역 | 영화 그 이상의 감동. CGV"></meta>
     
     <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/common/cgv_200x200.jpg"></meta>
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
-    <title id="ctl00_headerTitle">비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
+    <title id="ctl00_headerTitle">나의 예매내역 | 영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
@@ -35,12 +33,14 @@
     <link rel="stylesheet" media="print" type="text/css" href="http://img.cgv.co.kr/R2014/css/print.css" />    
    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/content_prepaid_card_170421.css" />
+  
 
     <link rel="stylesheet" type="text/css" href="http://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.config.js"></script>
     <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
@@ -52,19 +52,26 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
+
+    
+
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
+    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
 	<link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
 
+  
+
     <!-- 각페이지 Header Start--> 
     
+
     <!--/각페이지 Header End--> 
     <script type="text/javascript">
         //<![CDATA[
 
-        _TRK_CP = "/회원서비스/비회원로그인";
+        _TRK_CP = "/나의 예매내역";
 
         app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
             .config('imageDomain', 'http://img.cgv.co.kr')
@@ -206,83 +213,22 @@
 
         //]]>
     </script>
-    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=h%2fWbTq57CullxPvpQNMR5dE2jwVLqlq6twsxR%2bYN2xcaJCdMuo8QClcMAxKlp4bEY%2bVxer3J9U3YhmiNOrck%2fHQyTEVibkdkMkQ0RkpzYyt3VURRYjZud0svcVRvaWNwNzlMellEVHVVajlLTXFITUJTVnRoTHJEalVXdmttNHA%3d"></script>
-	<!-- 제이쿼리 코어 임베딩 -->
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
-	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
-	<script type="text/javascript">
-	$(function(){
-		
-		/* 유효성 체크 Validate */
-		$("#form1").validate({
+    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=kOrrMtxLuWGiRjYB0IIDA7EUhoynjc%2bbKguJOggJEgktCxWG0aCQPQBlUer7dLqIJSLz9bp5NwSvr2X0RKIm5Wx5cFJVVGQ5b0dnWFo5ZmhqUU5zSkNob1NjT2RDY1YwWDZGTnJ2WWtUYjRSVlhFbnh1cjNJaFk2clNTbTFVVEw%3d"></script>
+<script type="text/javascript">
 
-			rules:{
-				nonmember_id:"required",
-				password:{required:true,minlength:4},
-				passwordChk:{required:true,minlength:4,equalTo:"#password"},	
-				},			
-			messages:{
-				nonmember_id:"<br/>&nbsp;&nbsp;아이디를 입력하세요.",
-				password:{
-					required:"<br/>&nbsp;&nbsp;비밀번호를 입력하세요.",
-					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다."
-				},
-				passwordChk:{
-					required:"<br/>&nbsp;&nbsp;비밀번호를 재입력하세요.",
-					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다.",
-					equalTo:"<br/>&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
-				}
-			}			
-		});////////////////////validate	
-	
-	});
-	
-	</script>
-	
-
-	<style>
-	
-	/* 유효성 체크 글씨색상 변경 */
-	#form1 input +.error{color:red;}
-	
-	/* select option 꾸며주기 */
-	.inputstl {
-	padding: 1px;
-	border: solid 1px #460023;
-	outline: 0;
-	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
-	background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
-	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
-	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	function("form1"){
+		alert("들어오니");
+		document.write("${sessionScope.nonmember_id }");
 	}
-	
-	/* 일그러진 UI 수정: box 크키, 버튼 위치 조정 */
-	.sect-user .wrap-result, .sect-user .box-simples, .sect-user .box-confirms{  
-	padding:40px 30px 0px; border:1px solid #e8e8dd;}
-	.col-simple > .box-simples ,.col-confirm > .box-confirms{ 
-	height:auto;}
-	
-	.round.inred > *:after{ 
-	right:-3px; bottom:-2.5px; background-position:-5px -15px;}
-	
-	.round.black:before{ 
-	left:-2px; top:-2px; background-position:-10px 0;}
-	.round.black:after{ 
-	left:-2px; bottom:-1.5px; background-position: -10px -5px;}
-	.round.black > *:before{ 
-	right:-1.5px; top:-2px; background-position:-15px 0;}
-	.round.black > *:after{ 
-	right:-1.5px; bottom:-1.5px; background-position:-15px -5px;}
-	</style>
+
+</script>
 
 </head>
 <body class="">
 
 <!--     <form name="ssologinfrm" action="https://www.cgv.co.kr/user/login/login-sso.aspx" method="post">
         <input type="hidden" id="cjssoq" name="cjssoq" />
-        <input type="hidden" name="returnURL" value="/user/guest/login.aspx" />
+        <input type="hidden" name="returnURL" value="/user/guest/reserve.aspx" />
     </form>
     <script type="text/javascript">
         function cjsso() {
@@ -301,15 +247,14 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap" style="background-color:black;">
+            <div class="top_extend_ad_wrap">
                 <div class="adreduce" id="adReduce">                    
-                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
+                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
         </div>    
     </div>    
-
 	<!-- Header -->
 	<div id="header">
 		<div class="head">
@@ -343,7 +288,7 @@
                 
 				<div class="ad-partner">
                     <a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx"  >
-                        <img src="../../../img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
+                        <img src="http://img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
                     </a>
 					 <!-- 외부광고영역 -->
 				</div>
@@ -368,14 +313,10 @@
             <div class="sect-linemap">
                 <div class="sect-bcrumb">
                     <ul>
-                        <li><a href="/"><img alt="home" src="../../img/R2014/images/common/btn/btn_home.png" /></a></li>
-                        
-                            <li >
-                                <a href="/user/login/">회원서비스</a>
-                            </li>
+                        <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li  class="last">
-                                비회원로그인
+                                나의 예매내역
                             </li>
                         
                         
@@ -398,140 +339,691 @@
             
             <!-- Contents Start -->
 			
+<div id="contents">
 
-<!-- 실컨텐츠 시작 -->
-<div class="wrap-login">
-    <div class="sect-user">
-        <ul class="tab-menu-round">
-            <li>
-                <a href="<c:url value='/login.front'/>">로그인</a>
-            </li>
-            <li class="on">
-                <a href="<c:url value='/guest.front'/>">비회원로그인</a>
-            </li>
-        </ul>
-        <h3>개인정보(아이디,비밀번호) 입력 후 로그인 </h3>
-        <p>비회원 로그인 정보 오입력 시, 예매내역 확인/취소 및 티켓 발권이 어려울 수 있으니, 입력하신 정보를 다시 한번 확인해주시기 바랍니다.</p>
-        <div class="cols-enterform nomember">
-            <div class="col-simple">
-                <h4>비회원 예매확인/취소 로그인 입력정보</h4>
-                <div class="box-simples">
-                    <p class="disc-info"> 비회원정보에 등록된 임시발급 아이디, 비밀번호(4자리)를 입력해주세요.<br />
-                <span style="font-size:8pt;color:red;">* Caps Lock 을 반드시 해제해주세요.</span></p>
-                    <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestLogin.front'/>">
-                    
-                      <fieldset>
-                        <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
-                        <table cellpadding="0" cellspacing="0">
 
-                            <tbody>
-                            <tr>
-                                <th scope="row"><label for="nonmember_id">아이디</label></th>
-                                <td><input type="text" placeholder="아이디 입력" name="nonmember_id" id="nonmember_id"/></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4" /></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordChk" id="passwordChk" length="4" maxlength="4" /></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                      	   <div class="box-btn">
-                      	   		${guestLoginError }
-		                    <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
-	                      </div>
-                      </fieldset>
-                    </form>
-                </div>
-            </div>
-            <div class="col-confirm">
-                <h4>비회원 로그인 등록정보 분실 안내</h4>
-                <div class="box-confirms">
-                    <p class="disc-info">비회원 등록정보 찾기를 통해 비회원 예매번호 및 비밀번호를 확인하실 수 있습니다.</p>
-                    <div class="confirm-type">
-                        <h5>휴대폰 인증을 통해 확인</h5>
-                        <!-- <p>휴대폰 인증을 통해 확인</p> -->
-                        <a href="<c:url value='/findPhone.front'/>" class="round black"><span>휴대폰 번호로 찾기</span></a>
-                        <!-- <h5>휴대폰 번호 분실 시</h5>
-                        <p>이름 + 법정생년월일+ 비밀번호 입력 후 확인</p> -->
-                        <p>&nbsp;</p>
-                        <h5>이메일 인증을 통해 확인</h5>
-                        <a href="<c:url value='/findEmail.front'/>" class="round black"><span>이메일 주소로 찾기</span></a>
-                    </div>
-                </div>
-            </div>
+<div class="cols-content">
+    <div class="col-aside">
+	    <h2>MY CGV 서브메뉴</h2>
+	    <div class="snb">
+	        <ul>
+	            
+	            <li class="on"><a href="/user/guest/reserve.aspx" title="현재 선택됨">예매확인/취소 <i></i></a></li>
+	        </ul>
+	        
+	    </div>
+	</div>
+	<div class="col-detail">
+	    <div class="tit-mycgv">
+	        <h3>예매확인/취소</h3>
+	    </div>
+        <div class="sect-mycgv-reserve">
+            <div class="box-polaroid">
+	            <div class="box-inner issuing">
+	                <p><strong>예매번호로 현장발권</strong> <a href="/culture-event/event/detail-view.aspx?idx=9277" class="round gray on" target="_blank" title="새창"><span>바로가기</span></a></p>
+	                <span>현장 발권시 예매번호로만 티켓을 찾을 수 있습니다.</span>
+	            </div>
+	            <div class="box-inner perform">
+	                <p><strong>공연예매안내</strong>  <a href="http://ticket.interest.me/?path=cgv&type=3" class="round gray on" target="_blank" title="새창"><span>바로가기</span></a></p>
+	                <span>공연예매 확인은 CJ E&amp;M Ticket에서 확인하세요</span>
+	            </div>
+	        </div>
         </div>
-   </div> 
-    <div class="sect-loginguide">
-        <dl class="box-operationguide">
-            <dt>비회원 <br />로그인 시 <br />참고하세요!</dt>
-            <dd>1.  상기 정보 수집에 동의하지 않을 경우, 비회원 예매 서비스를 이용하실 수 없습니다. </dd>
-            <dd>2.  비회원 예매 시 청소년 관람불가 영화는 예매가 제한됩니다. </dd>
-            <dd>3.  비회원 에매 결제수단은 신용카드만 가능하며 모든 제휴상품권, 쿠폰, 영화예매권 등의 사용은 회원 예매 서비스 이용 시 가능합니다. </dd>
-            <dd>4.  모바일과 ARS에서는 취소가 불가능하며, 홈페이지를 이용하여 입력하신 로그인 정보로 취소 처리하실 수 있습니다.</dd>
-            <dd>5.  비회원 예매 및 비회원 예매 확인/취소 메뉴만 이용 가능합니다. 이 외에 커뮤니티, 댓글, 인정 등의 서비스는 회원 가입 후 이용 가능합니다.</dd>
-            <dd>6.  문의사항은 CGV 고객센터(1544-1122)로 문의해 주시기 바랍니다. <br />
-                - 운영시간 : 매일 09:00 ~ 21:00 (주말, 및 공휴일 상담 가능합니다.)</dd>
-        </dl>
-    </div>
+        <!-- MY 예매내역 -->
+        <div class="cols-mycgv-booking">
+	        <div class="tit-mycgv">
+		        <h4>MY(회원이름 님) 예매내역</h4>
+		        
+	        </div>
+	        <div class="info-log">
+		        비회원으로 예매시 상영일 기준 2일 간의 예매 내역만 조회하실 수 있습니다.
+	        </div>
+            
+            
+            <div class="lst-item">
+		        <div class="box-set-info nodata">
+		            고객님의 최근 예매내역이 존재하지 않습니다.
+		        </div>
+	        </div>
+            
+        </div>
+        <!-- TODAY BEST 무비차트 -->
+        
+        <div class="sect-today-best">
+	        <div class="info-log best">TODAY BEST 무비차트</div>
+	        <div class="sect-slider">
+		        <div id="slider" class="slider">
+                
+                        <div class="item-wrap"><div class="item"><ul>
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79949">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79949/79949_185.jpg" alt="킹스맨: 골든 서클 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-19">청소년 관람불가</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79949">
+                                    <strong class="title">킹스맨: 골든 서클</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>71.5%</span></strong>
+                                    <div class="point">
+                                        <em>93.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.27 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79910">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79910/79910_185.jpg" alt="아이 캔 스피크 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-12">12세 이상</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79910">
+                                    <strong class="title">아이 캔 스피크</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>11.0%</span></strong>
+                                    <div class="point">
+                                        <em>101.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.21 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79902">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79902/79902_185.jpg" alt="남한산성 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-15">15세 이상</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79902">
+                                    <strong class="title">남한산성</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>4.7%</span></strong>
+                                    <div class="point">
+                                        <em>103.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.10.03 </i>
+					                <strong>개봉</strong>
+					                <em class="dday">D-4</em>
+					            </span>
+					        </div>
+				        </li>
+                        </ul></div></div>
+                        
+                        <div class="item-wrap"><div class="item"><ul>
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=80006">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000080/80006/80006_185.jpg" alt="극장판 요괴워치: 하늘을 나는 고래와 더블세계다냥! 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-all">전체</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=80006">
+                                    <strong class="title">극장판 요괴워치: 하늘을 나는 고래와 더블세계다냥!</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>1.9%</span></strong>
+                                    <div class="point">
+                                        <em>94.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.27 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79923">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79923/79923_185.jpg" alt="레고 닌자고 무비 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-all">전체</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79923">
+                                    <strong class="title">레고 닌자고 무비</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>1.8%</span></strong>
+                                    <div class="point">
+                                        <em>91.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.28 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79915">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79915/79915_185.jpg" alt="베이비 드라이버 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-15">15세 이상</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79915">
+                                    <strong class="title">베이비 드라이버</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>1.1%</span></strong>
+                                    <div class="point">
+                                        <em>97.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.14 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        </ul></div></div>
+                        
+                        <div class="item-wrap"><div class="item"><ul>
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79935">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79935/79935_185.jpg" alt="우리의 20세기 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-15">15세 이상</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79935">
+                                    <strong class="title">우리의 20세기</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.9%</span></strong>
+                                    <div class="point">
+                                        <em>100.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.27 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79847">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79847/79847_185.jpg" alt="살인자의 기억법 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-15">15세 이상</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79847">
+                                    <strong class="title">살인자의 기억법</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.8%</span></strong>
+                                    <div class="point">
+                                        <em>92.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.06 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79960">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79960/79960_185.jpg" alt="범죄도시 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-19">청소년 관람불가</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79960">
+                                    <strong class="title">범죄도시</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.7%</span></strong>
+                                    <div class="point">
+                                        <em>107.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.10.03 </i>
+					                <strong>개봉</strong>
+					                <em class="dday">D-4</em>
+					            </span>
+					        </div>
+				        </li>
+                        </ul></div></div>
+                        
+                        <div class="item-wrap"><div class="item"><ul>
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79913">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79913/79913_185.jpg" alt="인비저블 게스트 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-15">15세 이상</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79913">
+                                    <strong class="title">인비저블 게스트</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.6%</span></strong>
+                                    <div class="point">
+                                        <em>105.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.21 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79685">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79685/79685_185.jpg" alt="킬러의 보디가드 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-15">15세 이상</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79685">
+                                    <strong class="title">킬러의 보디가드</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.6%</span></strong>
+                                    <div class="point">
+                                        <em>98.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.08.30 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79974">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79974/79974_185.jpg" alt="멀홀랜드 드라이브 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-19">청소년 관람불가</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79974">
+                                    <strong class="title">멀홀랜드 드라이브</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.4%</span></strong>
+                                    <div class="point">
+                                        <em>105.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.21 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        </ul></div></div>
+                        
+                        <div class="item-wrap"><div class="item"><ul>
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=80062">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000080/80062/80062_185.jpg" alt="윈드 리버-감독판 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-19">청소년 관람불가</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=80062">
+                                    <strong class="title">윈드 리버-감독판</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.3%</span></strong>
+                                    <div class="point">
+                                        <em>112.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.21 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79932">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79932/79932_185.jpg" alt="해피 버스데이 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-all">전체</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79932">
+                                    <strong class="title">해피 버스데이</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.3%</span></strong>
+                                    <div class="point">
+                                        <em>109.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.09.28 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        
+                        
+                        
+				        <li>
+					        <div class="box-image">
+					            <a href="/movies/detail-view/?midx=79896">
+                                    <span class="thumb-image">
+                                        <img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79896/79896_185.jpg" alt="김광석 포스터" onerror="errorImage(this)"/>
+                                        <span class="ico-grade grade-15">15세 이상</span>
+                                    </span>
+                                </a>
+					        </div>
+					        <div class="box-contents">
+					            <a href="/movies/detail-view/?midx=79896">
+                                    <strong class="title">김광석</strong>
+                                </a>
+					            <div class="score">
+                                    <strong class="percent">예매율<span>0.3%</span></strong>
+                                    <div class="point">
+                                        <em>102.0</em>
+                                    </div>
+                                </div>
+					            <span class="txt-info">
+					                <i>2017.08.30 </i>
+					                <strong>개봉</strong>
+					                
+					            </span>
+					        </div>
+				        </li>
+                        </ul></div></div>
+                        
+			        <button class="btn-prev" type="button">이전 페이지 이동</button>
+			        <button class="btn-next" type="button">다음 페이지 이동</button>
+		        </div>
+	        </div>
+        </div>
+        
+        <!-- //TODAY BEST 무비차트 -->
+        <div class="sect-mycgv-cancle">
+	        <div class="tit-mycgv">
+		        <h4>MY 취소내역</h4>
+		        <p>상영일 기준 지난 7일 동안의 취소내역입니다.</p>
+	        </div>
+	        <div class="tbl-data">
+		        <table summary="상영일 기준 지난 7일 동안의 취소내역">
+			        <caption>MY 취소내역</caption>
+			        <thead>
+				        <tr>
+					        <th scope="col">관람 영화</th>
+					        <th scope="col">관람CGV</th>
+					        <th scope="col">관람 일시</th>
+					        <th scope="col">취소 일시</th>
+					        <th scope="col">결제취소 금액</th>
+				        </tr>
+			        </thead>
+			        <tbody>
+                    
+                    
+                        <tr><td colspan="5" class="nodata">고객님의 최근 취소내역이 존재하지 않습니다.</td></tr>
+                    
+			        </tbody>
+		        </table>
+	        </div>
+        </div>
+		<!-- //MY 취소내역 -->
+	    <!-- CGV 예매 관련 정책 안내 Box Type -->
+	    <div class="sect-box-descri">
+	        <h4>CGV 예매 관련 정책 안내</h4>
+	        <!-- Box Moudle -->
+	        <div class="box-polaroid">
+	            <div class="box-inner">
+	            	<ul>
+	            		<li>
+	            			<dl>
+	            				<dt>이용안내</dt>
+	            				<dd>
+	            					<ul>
+	            						<li>예매 변경은 불가능하며, 취소 후 재 예매를 하셔야만 합니다.</li>
+	            						<li>영수증은 상영 시간 전까지 My CGV 에서 출력하실 수 있습니다. 단, 신용카드로 예매하신 경우만 한합니다.</li>
+	            						<li>상영 시간 이후 관람하신 영화의 영수증 출력을 원하실 경우, 1544-1122로 문의 주시기 바랍니다.</li>
+	            						<li>취소하신 내역이 나타나지 않거나 궁금하신 사항이 있으시면, 고객센터로 문의해 주시기 바랍니다.</li>
+	            					</ul>
+	            				</dd>
+	            			</dl>
+	            		</li>
+	            		<li>
+	            			<dl>
+	            				<dt>티켓 교환방법</dt>
+	            				<dd>
+	            					<ul>
+	            						<li>
+	            							<p><strong>티켓판매기(ATM)에서 발권하실 경우</strong><br />주민번호를 입력하시면 티켓을 편하게 발권하실 수 있습니다.</p>
+	            						</li>
+	            						<li>
+	            							<p><strong>매표소에서 발권하실 경우</strong><br />티켓교환권을 출력하여 매표소에 방문하시면 티켓으로 교환하실 수 있습니다.<br />
+		            						(티켓교환권 출력이 어려운 경우, 예매번호와 신분증을 지참하시면 매표소에서 티켓을 수령하실 수 있습니다.)</p>
+	            						</li>
+	            					</ul>
+	            				</dd>
+	            			</dl>
+	            		</li>
+	            		<li>
+	            			<dl>
+	            				<dt>취소 및 환불 규정</dt>
+	            				<dd>
+	            					<ul>
+	            						<li>
+	            							<p><strong>현장 취소를 하는 경우</strong><br />상영시간 이전까지만 가능하며, 상영시간 이후 취소나 환불은 되지 않습니다.</p>
+	            									
+	            						</li>
+	            						<li>
+	            							<p><strong>인터넷으로 예매한 내역을 취소 할 경우</strong><br />부분 취소는 불가능합니다.<br />(인터넷과 현장 동일하게 적용, ex.4장을 인터넷으로 예매한 경우 4장 모두 취소만 가능)</p>
+	            							<p>인터넷 예매 취소는 상영시간 20분 전까지 가능하며, 예매가능 시간 또한 상영시간 30분 전까지 가능합니다.<br />상영시간 이후 취소나 환불은 되지 않습니다.</p>
+	            						</li>
+	            						<li>
+	            							<p><strong class="underline">계좌이체 취소 시, 다음사항을 꼭 확인 해 주시기 바랍니다.</strong></p>
+	            							<p><strong>예매일 이후 7일 이내 취소</strong></p>
+	            							<ul>
+	            								<li>자동 환불 은행 : 취소 후 즉시 처리가능</li>
+	            								<li>조흥, 신한, 외한, 한미, 우리, 우체국, 전북, 경남, 광주, 대구, 새마을, 제주</li>
+	            								<li>우리은행의 경우 당일 취소분만 즉시 처리 가능</li>
+	            								<li>수동 환불 은행 : 농협(취소 후 2~3일 이내 입금), 부산/제일/우리(최소 후 3~5일 이내 입금)</li>
+	            							</ul>
+	            							<p><strong>예매 7일 이후~상영시간 30분 전 취소 시</strong><br />환불은 환불 요청일로 부터 7일 이상 소요됨</p>
+	            						</li>
+	            					</ul>
+	            				</dd>
+	            			</dl>
+	            		</li>
+	            	</ul>
+	            </div>
+	        </div>
+	        <!-- //Box Moudle -->
+	    </div>
+	    <!-- //CGV 예매 관련 정책 안내 Box Type -->
+	</div>
 </div>
-<!-- 실컨텐츠 끝 -->
-
-<!-- LogIn -->
-<!-- <form name="frmGuestLogin" id="frmGuestLogin" method="post" action="https://www.cgv.co.kr/user/guest/login-proc.aspx" novalidate="novalidate">
-    <input type="hidden" id="username" name="username" />
-    <input type="hidden" id="birthday" name="birthday" />
-	<input type="hidden" id="mobile1" name="mobile1" />
-	<input type="hidden" id="mobile2" name="mobile2" />
-	<input type="hidden" id="mobile3" name="mobile3" /> 
-	<input type="hidden" id="pwd" name="pwd" />
-    <input type="hidden" id="returnURL" name="returnURL" value="/user/guest/reserve.aspx" />
-</form> -->
-<!-- //LogIn -->
-
-
-<script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 
-/*     (function ($) {
+    (function ($) {
         $(function () {
 
-            var $frm = $('#form1');
-            $frm.validate({
-                submitHandler: function (form) {
+            //visualMotion.
+            var sliderOptions = { 'effect': 'none', 'auto': true };
+            $('#slider').visualMotion(sliderOptions);
 
-                    if ($('#txtPassword').val() != "" && $('#txtConfirmPassword').val() != "") {
-                        if ($('#txtPassword').val() != $('#txtConfirmPassword').val()) {
-                            alert("비밀번호가 일치하지 않습니다.");
-                            $('#txtPassword').focus();
-                            return false;
-                        }
-                    }
-
-                    var $loginFrm = $('#frmGuestLogin');
-
-                    $loginFrm.find('#username').val(app.crypto.AESEncryptToBase64($frm.find('#txtName').val()));
-                    $loginFrm.find('#birthday').val(app.crypto.AESEncryptToBase64($frm.find('#txtBirthday').val()));
-                    $loginFrm.find('#mobile1').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile1').val()));
-                    $loginFrm.find('#mobile2').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile2').val()));
-                    $loginFrm.find('#mobile3').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile3').val()));
-                    $loginFrm.find('#pwd').val(app.crypto.AESEncryptToBase64($frm.find('#txtPassword').val()));
-
-                    $loginFrm.submit();
-                    return false;
-                }
+            $('.receipt').on('click', function () {
+                var url = 'http://cgv.buymovie.co.kr/PgWeb/ui/receipt.aspx?controlNo=' + $(this).attr("data");
+                var win = window.open(url, "receipt", "left=0,top=o,width=650,height=800,toolbar=no,scrollbars=no");
+                win.focus();
             });
 
+            $('.hometicket').on('click', function () {
+                var url = 'http://ticket.cgv.co.kr/CGV2011/RIA/home_ticket.aspx?booking_no=' + $(this).attr("data");
+                var win = window.open(url, "hometicket", "left=0,top=o,width=640,height=897,toolbar=no,scrollbars=no");
+                win.focus();
+            });
+
+            $('.cancel').on('click', function () {
+
+                if (!confirm('예매를 취소하시겠습니까?\n\n※ 인터넷 예매 취소는 상영시간 20분 전까지 가능하며, \n예매 가능은 상영시간 30분 전까지 가능합니다.'))
+                    return false;
+
+                CancelReserve($(this));
+            });
+
+            function CancelReserve(obj) {
+                var reserveNo = obj.parents('.set-btn').find('.reserve-no').val();
+
+                var url = '/common/ajax/user.aspx/CancelReserveByGuest';
+                var data = { 'reserveNo': reserveNo };
+                var callback = function (result) {
+                    obj.attr('disabled', false);
+                    $('.loading').remove();
+                    if (result == null || result["resultCode"] == null)
+                        return;
+
+                    var resultCode = result["resultCode"];
+                    var resultMessage = result["resultData"];
+
+
+                    switch (resultCode) {
+                        case "-9":
+                            alert('로그인 되어 있지 않습니다.\n확인 후 다시 진행해 주세요.');
+                            location.href = "./login.aspx";
+                            break;
+                        case "-8":
+                            alert('잘못된 경로로 접근하였습니다.\n확인 후 다시 진행해 주세요.');
+                            break;
+                        case "-1":
+                            alert('이미 취소되었거나 존재하지 않는 예매번호입니다.\n확인 후 다시 진행해 주세요.');
+                            break;
+                        case "-2":
+                            alert('예매취소 가능시간이 종료되었습니다.\n자세한 문의는 고객센터 1544-1122를 통하여 진행 가능합니다.');
+                            break;
+                        case "0":
+                            alert('취소처리가 실패하였습니다.\n(' + resultMessage + ')');
+                            break;
+                        case "1":
+                            if ($('.cols-mycgv-booking > .lst-item').length < 2) {
+                                obj.parents('.lst-item').remove();
+                                $('.cols-mycgv-booking .info-log').after('<div class="lst-item"><div class="box-set-info nodata">고객님의 최근 예매내역이 존재하지 않습니다.</div></div>');
+                            }
+                            else {
+                                obj.parents('.lst-item').remove();
+                            }
+
+                            var options = { '$target': null, 'type': 'center', 'position': 'position', 'mask': true };
+                            app.htmlLoad2(options, app.config('html').reservation_cancel);
+
+                            break;
+                    }
+                };
+
+                app.loading().show({ 'target': obj.parents('.lst-item'), 'circleType': 'large' });
+                obj.attr('disabled', true);
+
+                app.ajax().set({ dataType: 'json', url: url, data: JSON.stringify(data), contentType: "application/json; charset=utf-8", successHandler: callback });
+            }
 
         });
-    })(jQuery); */
+    })(jQuery);
+
 //]]>
 </script>
-
 
             <!--/ Contents End -->
 
@@ -629,6 +1121,7 @@
 
         <div class="adFloat" style="display:block">
 
+            <iframe src='http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon' width='154' height='182' frameborder='0' scrolling='no' topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' allowTransparency="true" id="ad_float1"></iframe>
         </div>
         <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->
