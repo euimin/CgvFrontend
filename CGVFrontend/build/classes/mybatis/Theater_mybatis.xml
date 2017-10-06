@@ -7,7 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectRegionList" resultType="String">
 		select region from (select distinct region, regionid from theater order by regionid)
 	</select>
-	<select id="selectTheaterListByRegion" parameterType="String" resultType="String">
-		select name from theater where region=#{region} order by name asc
+	<select id="selectTheaterListByRegion" parameterType="String" resultType="java.util.Map">
+		select name, theater_code from theater where region=#{region} order by name asc
+	</select>
+	<select id="selectScreenList" parameterType="String" resultType="java.util.Map">
+		select screen_code, no from screen where theater_code=#{theater_code}
 	</select>
 </mapper>

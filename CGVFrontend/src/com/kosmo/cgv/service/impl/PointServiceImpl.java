@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.kosmo.cgv.service.MembersDTO;
 import com.kosmo.cgv.service.MovieDto;
 import com.kosmo.cgv.service.PointDTO;
 import com.kosmo.cgv.service.PointService;
@@ -21,7 +22,13 @@ public class PointServiceImpl implements PointService {
 	public List<MovieDto> selectMovieList() throws Exception {
 		return dao.selectMovieList();
 	}
-
+	
+	@Override
+	public PointDTO selectOneMovieOneMember(PointDTO dto) throws Exception {
+		return dao.selectOneMovieOneMember(dto);
+	}
+	
+	
 	@Override
 	public List<PointDTO> selectReviewList(Map map) throws Exception {
 		return dao.selectReviewList(map);
@@ -34,8 +41,7 @@ public class PointServiceImpl implements PointService {
 
 	@Override
 	public int insertReview(PointDTO dto) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insertReview(dto);
 	}
 
 	@Override
@@ -84,7 +90,4 @@ public class PointServiceImpl implements PointService {
 		return dao.getWishCount(movie_code);
 	}
 
-	
-
-	
 }

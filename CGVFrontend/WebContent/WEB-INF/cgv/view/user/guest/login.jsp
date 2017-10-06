@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 
@@ -35,14 +35,12 @@
     <link rel="stylesheet" media="print" type="text/css" href="http://img.cgv.co.kr/R2014/css/print.css" />    
    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/content_prepaid_card_170421.css" />
-  
 
     <link rel="stylesheet" type="text/css" href="http://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/app.config.js"></script>
     <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
@@ -54,21 +52,14 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
-
-    
-
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
-    
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
 	<link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
 
-  
-
     <!-- 각페이지 Header Start--> 
     
-
     <!--/각페이지 Header End--> 
     <script type="text/javascript">
         //<![CDATA[
@@ -216,10 +207,80 @@
         //]]>
     </script>
     <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=h%2fWbTq57CullxPvpQNMR5dE2jwVLqlq6twsxR%2bYN2xcaJCdMuo8QClcMAxKlp4bEY%2bVxer3J9U3YhmiNOrck%2fHQyTEVibkdkMkQ0RkpzYyt3VURRYjZud0svcVRvaWNwNzlMellEVHVVajlLTXFITUJTVnRoTHJEalVXdmttNHA%3d"></script>
+	<!-- 제이쿼리 코어 임베딩 -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
+	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+	<script type="text/javascript">
+	$(function(){
+		
+		/* 유효성 체크 Validate */
+		$("#form1").validate({
+
+			rules:{
+				nonmember_id:"required",
+				password:{required:true,minlength:4},
+				passwordChk:{required:true,minlength:4,equalTo:"#password"},	
+				},			
+			messages:{
+				nonmember_id:"<br/>&nbsp;&nbsp;아이디를 입력하세요.",
+				password:{
+					required:"<br/>&nbsp;&nbsp;비밀번호를 입력하세요.",
+					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다."
+				},
+				passwordChk:{
+					required:"<br/>&nbsp;&nbsp;비밀번호를 재입력하세요.",
+					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다.",
+					equalTo:"<br/>&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
+				}
+			}			
+		});////////////////////validate	
+	
+	});
+	
+	</script>
+	
+
+	<style>
+	
+	/* 유효성 체크 글씨색상 변경 */
+	#form1 input +.error{color:red;}
+	
+	/* select option 꾸며주기 */
+	.inputstl {
+	padding: 1px;
+	border: solid 1px #460023;
+	outline: 0;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	}
+	
+	/* 일그러진 UI 수정: box 크키, 버튼 위치 조정 */
+	.sect-user .wrap-result, .sect-user .box-simples, .sect-user .box-confirms{  
+	padding:40px 30px 0px; border:1px solid #e8e8dd;}
+	.col-simple > .box-simples ,.col-confirm > .box-confirms{ 
+	height:auto;}
+	
+	.round.inred > *:after{ 
+	right:-3px; bottom:-2.5px; background-position:-5px -15px;}
+	
+	.round.black:before{ 
+	left:-2px; top:-2px; background-position:-10px 0;}
+	.round.black:after{ 
+	left:-2px; bottom:-1.5px; background-position: -10px -5px;}
+	.round.black > *:before{ 
+	right:-1.5px; top:-2px; background-position:-15px 0;}
+	.round.black > *:after{ 
+	right:-1.5px; bottom:-1.5px; background-position:-15px -5px;}
+	</style>
+
 </head>
 <body class="">
 
-    <form name="ssologinfrm" action="https://www.cgv.co.kr/user/login/login-sso.aspx" method="post">
+<!--     <form name="ssologinfrm" action="https://www.cgv.co.kr/user/login/login-sso.aspx" method="post">
         <input type="hidden" id="cjssoq" name="cjssoq" />
         <input type="hidden" name="returnURL" value="/user/guest/login.aspx" />
     </form>
@@ -232,7 +293,7 @@
         }
 
         cjsso();
-    </script>
+    </script> -->
 
 <div class="skipnaiv">
 	<a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
@@ -240,9 +301,9 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap">
+            <div class="top_extend_ad_wrap" style="background-color:black;">
                 <div class="adreduce" id="adReduce">                    
-                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
+                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
@@ -349,87 +410,61 @@
                 <a href="<c:url value='/guest.front'/>">비회원로그인</a>
             </li>
         </ul>
-        <h3>개인정보(이름,휴대폰번호,법정생년월일,비밀번호) 입력 후 로그인 </h3>
+        <h3>개인정보(아이디,비밀번호) 입력 후 로그인 </h3>
         <p>비회원 로그인 정보 오입력 시, 예매내역 확인/취소 및 티켓 발권이 어려울 수 있으니, 입력하신 정보를 다시 한번 확인해주시기 바랍니다.</p>
         <div class="cols-enterform nomember">
             <div class="col-simple">
                 <h4>비회원 예매확인/취소 로그인 입력정보</h4>
-                <div class="box-simple">
-                    <p class="disc-info">비회원정보에 등록된 이름, 법정생년월일, 휴대폰 번호, 비밀번호(4자리)를 입력해주세요.<br />
-                    모든 항목은 필수 입력사항입니다.</p>
-                    <form id="form1" method="post" novalidate="novalidate" action="#">
-                    <fieldset>
+                <div class="box-simples">
+                    <p class="disc-info"> 비회원정보에 등록된 임시발급 아이디, 비밀번호(4자리)를 입력해주세요.<br />
+                <span style="font-size:8pt;color:red;">* Caps Lock 을 반드시 해제해주세요.</span></p>
+                    <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestLogin.front'/>">
+                    
+                      <fieldset>
                         <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
-                        <table cellpadding="0" cellspacing="0" summary="비회원예매확인/취소를 하기위해 정보를 입력하는 테이블 입니다">
-                            <caption>이름, 법정생년월일, 휴대폰번호, 비밀번호(4자리) 입력하는 테이블</caption>
-                            <colgroup>
-                                <col class="col01" />
-                                <col class="col02" />
-                            </colgroup>
+                        <table cellpadding="0" cellspacing="0">
+
                             <tbody>
                             <tr>
-                                <th scope="row"><label for="txtName">이름</label></th>
-                                <td><input type="text"  data-title="이름" data-message="을 입력해주세요." style="ime-mode:active"
-                                    name="txtName" id="txtName" maxlength="20" required="required"/></td>
+                                <th scope="row"><label for="nonmember_id">아이디</label></th>
+                                <td><input type="text" placeholder="아이디 입력" name="nonmember_id" id="nonmember_id"/></td>
                             </tr>
                             <tr>
-                                <th scope="row"><label for="txtBirthday">법정생년월일<br /><em>(6자리) </em></label></th>
-                                <td><input type="text" class="only-number" title="법정생년월일(6자리)" data-title="법정생년월일(6자리)" data-message="을 입력해주세요."
-                                    name="txtBirthday" id="txtBirthday" digits="digits" length="6" maxlength="6" required="required" /> - <i> *******</i></td>
+                                <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
+                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4" /></td>
                             </tr>
                             <tr>
-                                <th scope="row">휴대폰번호</th>
-                                <td>
-                                    <select title="휴대폰번호 앞자리" name="txtMobile1" id="txtMobile1">
-                                        <option value="010">010</option>
-                                        <option value="011">011</option>
-                                        <option value="016">016</option>
-                                        <option value="017">017</option>
-                                        <option value="018">018</option>
-                                        <option value="019">019</option>
-                                    </select>
-                                    -
-                                    <input type="text" class="only-number" style="width:85px;" title="휴대폰번호 중간자리" data-title="휴대폰번호 중간자리" data-message="를 입력해주세요."
-                                        name="txtMobile2" id="txtMobile2" digits="digits" length="4" maxlength="4" required="required" />
-                                    -
-                                    <input type="text" class="only-number" style="width:85px;" title="휴대폰번호 끝자리" data-title="휴대폰번호 끝자리" data-message="를 입력해주세요."
-                                        name="txtMobile3" id="txtMobile3" digits="digits" length="4" maxlength="4" required="required" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="txtPassword">비밀번호(4자리)</em></label></th>
-                                <td><input type="password" class="only-number" title="비밀번호(4자리)" data-title="비밀번호(4자리)" data-message="를 입력해주세요." 
-                                    name="txtPassword" id="txtPassword" digits="digits" length="4" maxlength="4" required="required" /></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="txtConfirmPassword">비밀번호확인</em></label></th>
-                                <td><input type="password" class="only-number" title="비밀번호(4자리)" data-title="비밀번호(4자리)" data-message="를 입력해주세요." 
-                                    name="txtConfirmPassword" id="txtConfirmPassword" digits="digits" length="4" maxlength="4" required="required" /></td>
+                                <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
+                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordChk" id="passwordChk" length="4" maxlength="4" /></td>
                             </tr>
                             </tbody>
                         </table>
-                        <div class="box-btn">
-	                        <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
-                        </div>
-                    </fieldset>
+                      	   <div class="box-btn">
+                      	   		${guestLoginError }
+		                    <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
+	                      </div>
+                      </fieldset>
                     </form>
                 </div>
             </div>
             <div class="col-confirm">
-                <h4>비회원 로그인 등록정보분실 안내</h4>
-                <div class="box-confirm">
-                    <p class="disc-info">비회원 등록정보 찾기를 통해 비회원 등록정보를 확인하실 수 있습니다.</p>
+                <h4>비회원 로그인 등록정보 분실 안내</h4>
+                <div class="box-confirms">
+                    <p class="disc-info">비회원 등록정보 찾기를 통해 비회원 예매번호 및 비밀번호를 확인하실 수 있습니다.</p>
                     <div class="confirm-type">
-                        <h5>비밀번호 분실 시</h5>
-                        <p>휴대폰 인증을 통해 확인</p>
-                        <h5>휴대폰 번호 분실 시</h5>
-                        <p>이름 + 법정생년월일+ 비밀번호 입력 후 확인</p>
-                        <a href="find-pw.jsp" class="round black"><span>비회원 등록정보 찾기</span></a>
+                        <h5>휴대폰 인증을 통해 확인</h5>
+                        <!-- <p>휴대폰 인증을 통해 확인</p> -->
+                        <a href="<c:url value='/findPhone.front'/>" class="round black"><span>휴대폰 번호로 찾기</span></a>
+                        <!-- <h5>휴대폰 번호 분실 시</h5>
+                        <p>이름 + 법정생년월일+ 비밀번호 입력 후 확인</p> -->
+                        <p>&nbsp;</p>
+                        <h5>이메일 인증을 통해 확인</h5>
+                        <a href="<c:url value='/findEmail.front'/>" class="round black"><span>이메일 주소로 찾기</span></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+   </div> 
     <div class="sect-loginguide">
         <dl class="box-operationguide">
             <dt>비회원 <br />로그인 시 <br />참고하세요!</dt>
@@ -446,7 +481,7 @@
 <!-- 실컨텐츠 끝 -->
 
 <!-- LogIn -->
-<form name="frmGuestLogin" id="frmGuestLogin" method="post" action="https://www.cgv.co.kr/user/guest/login-proc.aspx" novalidate="novalidate">
+<!-- <form name="frmGuestLogin" id="frmGuestLogin" method="post" action="https://www.cgv.co.kr/user/guest/login-proc.aspx" novalidate="novalidate">
     <input type="hidden" id="username" name="username" />
     <input type="hidden" id="birthday" name="birthday" />
 	<input type="hidden" id="mobile1" name="mobile1" />
@@ -454,7 +489,7 @@
 	<input type="hidden" id="mobile3" name="mobile3" /> 
 	<input type="hidden" id="pwd" name="pwd" />
     <input type="hidden" id="returnURL" name="returnURL" value="/user/guest/reserve.aspx" />
-</form>
+</form> -->
 <!-- //LogIn -->
 
 
@@ -462,7 +497,7 @@
 <script type="text/javascript">
 //<![CDATA[
 
-    (function ($) {
+/*     (function ($) {
         $(function () {
 
             var $frm = $('#form1');
@@ -493,7 +528,7 @@
 
 
         });
-    })(jQuery);
+    })(jQuery); */
 //]]>
 </script>
 
@@ -594,7 +629,6 @@
 
         <div class="adFloat" style="display:block">
 
-            <iframe src='http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon' width='154' height='182' frameborder='0' scrolling='no' topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' allowTransparency="true" id="ad_float1"></iframe>
         </div>
         <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->

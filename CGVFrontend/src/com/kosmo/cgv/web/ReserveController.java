@@ -19,15 +19,17 @@ import org.springframework.web.context.annotation.RequestScope;
 
 import com.kosmo.cgv.service.MovieDto;
 import com.kosmo.cgv.service.impl.MovieServiceImpl;
+import com.kosmo.cgv.service.impl.ScreeningServiceImpl;
 import com.kosmo.cgv.service.impl.TheaterServiceImpl;
 
 @Controller
 public class ReserveController {
 	@Resource(name="movieService")
-	private MovieServiceImpl movieService;
-	
+	private MovieServiceImpl movieService;	
 	@Resource(name="theaterService")
 	private TheaterServiceImpl theaterService;
+	@Resource(name="screeningService")
+	private ScreeningServiceImpl screeningService;
 	
 	@RequestMapping("/ticket.front")
 	public String ticket() throws Exception{
@@ -42,11 +44,10 @@ public class ReserveController {
 		List<String> regionList = theaterService.selectRegionList();
 		
 		model.addAttribute("regionList", regionList);
-		
-		Map<String, List<String>> theaterMap = new HashMap<String, List<String>>();
+		Map<String, List<Map<String, String>>> theaterMap = new HashMap<String, List<Map<String, String>>>();
 		Map<String, Integer> theaterCountMap = new HashMap<String, Integer>();
 		for(String region: regionList) {
-			List<String> theaterList = theaterService.selectTheaterListByRegion(region);
+			List<Map<String, String>> theaterList = theaterService.selectTheaterListByRegion(region);
 			theaterMap.put(region, theaterList);
 			int theaterCount = theaterList.size();
 			theaterCountMap.put(region, theaterCount);
@@ -93,7 +94,30 @@ public class ReserveController {
 		json.put("movie_poster", movie.getPoster());
 		json.put("movie_rating", movie.getRating());		
 		return json.toJSONString();
-	}	
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/dateSelect.front" ,produces="text/html;charset=UTF-8")
+	public String dateSelect(@RequestParam String movie_code,
+							 @RequestParam String theater_code,
+							 @RequestParam String screeningdate) throws Exception{		
+		List<Map<String,String>> screenList = theaterService.selectScreenList(theater_code);
+		for(Map screen: screenList){
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("movie_code", movie_code);
+			map.put("screen_code", screen.get("SCREEN_CODE").toString());			
+			map.put("screeningdate", screeningdate);
+			System.out.println(map.get("movie_code"));
+			System.out.println(map.get("screen_code"));
+			System.out.println(map.get("screeningdate"));
+			List<String> timeList = screeningService.selectTimeList(map);
+			for(String time: timeList) System.out.println(time);
+		}
+		//List<ScreeningDto> screeningList = screeningService.selectScreeningList(screen_code); 
+		JSONObject json = new JSONObject();				
+		return json.toJSONString();
+	}
 	
 	@RequestMapping("/proxy.front")
 	public String proxy() throws Exception{	

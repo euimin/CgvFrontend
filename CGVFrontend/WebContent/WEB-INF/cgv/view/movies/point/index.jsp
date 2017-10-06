@@ -256,7 +256,6 @@
                                 </div>
 
                                 <div class="box-contents">
-                        <a href="/movies/detail-view/?midx=79949">
                             <strong class="title">${movie.title}</strong>
                         </a>
 
@@ -264,7 +263,9 @@
                             <strong class="percent">예매율<span>${reserveRateMap[movie.movie_code]}%</span></strong>
                             <div class="egg-gage small">
                                 <span class="egg good"></span>
-								<span class="percent">?</span>
+								<span class="percent">
+									<fmt:formatNumber value="${eggPointByMovie[movie.movie_code].eggNo}" type="percent"/>
+								</span>
 							</div>
                         </div>
 
@@ -309,9 +310,9 @@
         <div class="col-detail">
             <div class="sect-grade" style="width: 980px;">
                 <div class="heading-new">
-                    <a class="goto-link"><h4>실관람객 평점</h4></a>
+                    <a class="goto-link"><h4>관람객 평점</h4></a>
                     <p class="txt-write">관람일 포함 7일 이내 관람평을 남기시면 <strong>CJ ONE 20P</strong>가 적립됩니다. 
-                        <a class="link-gradewrite" href="javascript:void(0);"><span>평점작성</span></a><a class="link-reviewwrite" href="/movies/point/my-list.aspx"><span>내 평점</span></a>
+                        <a class="link-gradewrite" id="reviewPopup" href="#openReviewPopup" onclick="checkLogin();"><span>평점작성</span></a><a class="link-reviewwrite" href="/movies/point/my-list.aspx"><span>내 평점</span></a>
                     </p>
                 </div>
                 
@@ -330,7 +331,7 @@
 					<div class="egg-gage big" id="eggIconDiv">
 						<span class="egg good"></span>
                         
-						<span class="percent"><strong><fmt:formatNumber value="1" type="percent"/></strong></span>
+						<span class="percent"><strong><fmt:formatNumber value="${eggPointByMovie[param.movie_code].eggNo}" type="percent"/></strong></span>
 					</div>
 
 					<div class="radar-graph" id="chart2">
@@ -448,11 +449,11 @@
                     -->
                 </ul>
                 <div id="my_point_area"></div>
-                <div class="wrap-persongrade">
+                <div id="js-load" class="wrap-persongrade">
                     <ul id="movie_point_list_container" class="point_col2">
                     <c:forEach items="${movieReviews}" var="movieReivew">
                     	<c:if test="${not empty movieReviews}" var="movieReviewsNN">
-                        	<li class="" id="liCommentFirst19312564" style="width:465px;"
+                        	<li class="lists_item js-load" id="liCommentFirst19312564" style="width:465px;"
                                    data-SPOILERCNT="0" 
                                    data-REPORTCNT="0">
                             <a href="javascript:return false;" class="screen_spoiler">&nbsp;</a>
@@ -464,7 +465,7 @@
                             </div>
                             
                             <div class="box-contents">
-                                <ul class="writerinfo">                                        
+                                <ul class="writerinfo">
                                     <li class="writer-name">
                                         <a href="#select_main" onclick="getPopList1('matainijia', '익스텐션')"; >
                                         	<c:choose>
@@ -479,7 +480,7 @@
                                         </a>
                                     </li>
 									<li class="writer-etc">
-										<span class="vip">Movie Mania</span>
+										<div><span class="round red on" style="vertical-align: middle;"><em class="see">실관람객</em></span></div>					
 										<span class="day">${movieReivew.writedate}</span>
 										<span class="like point_like" id="matainijia19312564" data-isMyGood="False" data-CommentIdx="19312564">
 											<a href="javascript:return false;" class="btn_point_like" ><span><img src="http://img.cgv.co.kr/R2014/images/point/ico_point_default.png" alt="like" class="like_red" /></span><span id='idLikeValue'>0</span></a>
@@ -508,16 +509,23 @@
                         </c:if>
                         </c:forEach>
                         <c:if test="${not movieReviewsNN}">
-                        	<li class="nodata" style="text-align:center;width:980px;">해당 조건에 데이터가 존재하지 않습니다.</li>
+                        	<li class="nodata" style="text-align:center;width:980px;">
+                        	<div style="height:20px;">해당 조건에 데이터가 존재하지 않습니다.</div>
+                        	<div style="height:30px;">평점을 확인할 <span style="color:red">영화</span>를 선택해 주십시오.</div>
+                        	</li>
+                        	
                         </c:if>
                         
                         
                    	</ul>
-                </div> 
-                <div class="paging">
-                    <ul id="paging_point"></ul>
                 </div>
-            </div>        
+            </div>    
+			<c:if test="${movieReviewsNN}">
+				<div id="js-btn-wrap" class="btn-wrap" 
+				style="width:980px;text-align: center;font-size:30px;border-bottom:grey solid thin;">
+					<a href="javascript:;" class="button"><strong>···</strong></a>
+				</div>
+			</c:if>
         </div><!-- .col-detail -->
 
 
@@ -787,7 +795,7 @@
 </li>
 -->
 </script>
-<script id="temp_view" type="text/template">
+<script type="text/template">
 <div class="layer-contents" style="width:633px; height:467px">
     <div class="popwrap sect-operation-rule">
         <h1>운영원칙</h1>
@@ -812,8 +820,7 @@
                 </ul>
             </div>
         </div>
-
-        <button type="button" class="btn-close">운영원칙 닫기</button>
+        <button type="button" class="js_close">운영원칙 닫기</button>
     </div>
 </div>
 </script>
@@ -850,12 +857,78 @@
 
 
 </script>
-
+<style>
+	.js-load {
+	    display: none;
+	}
+	.js-load.active {
+	    display: block;
+	}
+	.is_comp.js-load:after {
+	    display: none;
+	}
+	.btn-wrap, .point_col2, .wrap-persongrade {
+	    display: block;
+	}
+</style>
+<style>	
+	.layer-contents {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+	}
+	.layer-contents:target {
+	    opacity:1;
+	    pointer-events: auto;
+	}
+	.layer-contents > div {
+		position: absolute;
+		top: 15%;
+		left: 27.5%;
+		width: 45%;
+		height: 67.2%;
+		background-color: white;
+		overflow: auto;	
+	}
+</style>
 <script type="text/javascript">
 //<![CDATA[
-
+	
     window.userFavoriteMovie = $.parseJSON('[]');
     (function ($) {
+    	
+    	$("#reviewPopup").on("click",function(event){
+    		location.href="<c:url value='/reviewPopup.front'/>";
+    		if(${param.movie_code == null}){
+    			alert('평점을 작성할 영화를 선택해주세요');
+    			event.preventDefault();
+    		}
+    	});
+		///////////////////////////////////////////////////////////로그인 후 평점 작성
+		
+		//좋아요 , 별로에요 클릭시 빨간 테두리 on
+        $('.likebox label').on('click', function () {
+			var $wrap = $(this).parents('.likebox');
+			$wrap.siblings().removeClass('on');
+			$wrap.addClass('on');
+		});
+
+        //좋아요 , 별로에요 클릭시 빨간 테두리 on
+        $('.likebox input').on('focusin', function () {
+            var $wrap = $(this).parents('.likebox');
+            $wrap.siblings().removeClass('on');
+            $wrap.addClass('on');
+        });
+
+		
         $(function () {
         	//카루셀
         	$('[class|="sect"][class*="chart"].gradelist').jcarousel();
@@ -883,6 +956,27 @@
                 });
    			///////////////////////////////////////////////////////////////////////////카루셀
    			
+			$(window).on('load', function () {
+			    load('#js-load', '6');
+			    $("#js-btn-wrap .button").on("click", function () {
+			        load('#js-load', '4', '#js-btn-wrap');
+			    })
+			});
+			 
+			function load(id, cnt, btn) {
+			    var review_list = id + " .js-load:not(.active)";
+			    var review_length = $(review_list).length;
+			    var review_total_cnt;
+			    if (cnt < review_length) {
+			        review_total_cnt = cnt;
+			    } else {
+			        review_total_cnt = review_length;
+			        $(".button").hide();
+			    }
+			    $(review_list + ":lt(" + review_total_cnt + ")").addClass("active");
+			}
+   			///////////////////////////////////////////////////////////////////////더보기
+			
             var myPointPage = 0;    
             var mypointYN = false;    
             var mypointPaneltyYN = false;    
@@ -944,10 +1038,10 @@
 
 
 
-            $('.btn-close').click(function () {
+            /* $('.btn-close').click(function () {
                 $(this).parent().parent('#review_pop').hide();
                 return false;
-            });
+            }); */
 
 
             var isLogin = app.config('isLogin');
@@ -2115,6 +2209,36 @@
 			</div>
 		</div>
 	</div>
+<div class="layer-contents on-shadow" style="width:577px;">
+    <div class="popwrap">
+        <h1>매력포인트</h1>
+        <div class="pop-contents charm-point">
+            
+			<div class="charm-cont">
+				<div class="headtxt">
+					<p>이영화의 매력포인트를 선택해주세요. 중복선택이 가능합니다.</p>
+				</div>
+				<div class="inp-choose">
+					<input type="checkbox" id="Effect" />
+					<label for="charm1-5">감독연출</label>
+					<input type="checkbox" id="story" />
+					<label for="charm1-2">스토리</label>
+					<input type="checkbox" id="visual" />
+					<label for="charm1-3">영상미</label>
+                    <input type="checkbox" id="acting" />
+					<label for="charm1-1">배우연기</label>
+					<input type="checkbox" id="ost" />
+					<label for="charm1-4">O.S.T</label>
+				</div>
+				<div class="set-btn">
+					<button class="round red on w70" id="charmRegBtn"><span>확인</span></button>
+				</div>
+			</div>
+
+        </div>
+        <button type="button" class="btn-close" id="regCharmCloseBtn">매력포인트 닫기</button>
+    </div>
+</div>
 </script>
 
 <script id="Script1" type="text/template">
@@ -2354,7 +2478,7 @@
             }
 
             
-			function likeOrNot() {
+			/* function likeOrNot() {
 				$('.likebox label').on('click', function () {
 					var $wrap = $(this).parents('.likebox');
 					$wrap.siblings().removeClass('on');
@@ -2379,7 +2503,7 @@
 					app.instWin.add(options);
 					return false;
 				});
-			}
+			} */
 
 			// 매력포인트 레이어팝업
 			function charmPointPop(commentIdx) {
@@ -2760,6 +2884,56 @@
         <input type="hidden" id="my-list-withviewcnt" value="${withviewcnt}"/>
         <input type="hidden" id="my-list-withviewer" value="${withviewer}"/>
 	</div>
+<div class="layer-contents on-shadow" style="width:577px;" id="my-list-charmLayer">
+    <div class="popwrap">
+        <h1>매력포인트</h1>
+        <div class="pop-contents charm-point">
+            
+			<div class="charm-cont">
+				<div class="headtxt">
+					<p>이영화의 매력포인트를 선택해주세요. 중복선택이 가능합니다.</p>
+				</div>
+				<div class="inp-choose">
+                    {{if Effect == "Y"}}
+                    <input type="checkbox" id="charm1-5" checked/>
+                    {{else}}
+                    <input type="checkbox" id="charm1-5" />
+                    {{/if}}
+					<label for="charm1-5">감독연출</label>
+                    {{if Story == "Y"}}
+					<input type="checkbox" id="charm1-2" checked/>
+                    {{else}}
+                    <input type="checkbox" id="charm1-2" />
+                    {{/if}}
+					<label for="charm1-2">스토리</label>
+                    {{if Visual == "Y"}}
+					<input type="checkbox" id="charm1-3" checked/>
+                    {{else}}
+                    <input type="checkbox" id="charm1-3" />
+                    {{/if}}
+					<label for="charm1-3">영상미</label>
+                    {{if Acting == "Y"}}
+					<input type="checkbox" id="charm1-1" checked/>
+                    {{else}}
+                    <input type="checkbox" id="charm1-1"/>
+                    {{/if}}
+					<label for="charm1-1">배우연기</label>
+                    {{if OST == "Y"}}
+					<input type="checkbox" id="charm1-4" checked/>
+                    {{else}}
+                    <input type="checkbox" id="charm1-4" />
+                    {{/if}}
+					<label for="charm1-4">O.S.T</label>
+				</div>
+				<div class="set-btn">
+					<button class="round red on w70" id="my-list-charmBtn"><span>확인</span></button>
+				</div>
+			</div>
+            <input type="hidden" id="my-list-charmMovieIdx" value="${MovieIdx}" />
+        </div>
+        <button type="button" class="btn-close" id="my-list-charmCloseBtn">매력포인트 닫기</button>
+    </div>
+</div>
 </script>
 <!--[2015-12-15] 평점 수정 레이어 팝업 템플릿 end : add_mwpark-->
 
@@ -2840,30 +3014,6 @@
             function layerAllClose() {
                 $("#my-list-uptLayer").remove();
                 $("#my-list-charmLayer").remove();
-            };
-
-            /*[2015-12-15] 평점 수정 레이어 팝업 start : add_mwpark*/
-            $(document).on("click", ".ico_edit", function () {
-            
-                //var movieIdx = $(this).attr('data-MovieIdx');
-                var movieIdx = 79949
-                var $std = $(this)
-                app.movie().getCommentMy({ 'movieIdx': parseInt(movieIdx) }, getCommentResult);
-                function getCommentResult(result) {
-
-                    options = {
-                        '$target': $std,
-                        'type': 'center',
-                        'html': $("#Script2").tmpl(result),
-                        'independence': true,
-                        'mask': 'none'
-                    };
-                    app.instWin.add(options);
-                    updateLayerSetting();
-                    return false;
-                }
-            });
-            /*[2015-12-15] 평점 수정 레이어 팝업 end : add_mwpark*/
 
             /*[2015-12-15]레이어 팝업 띄운 후 이벤트 및 각종 설정 처리. start : add_mwpark*/
             function updateLayerSetting() {
@@ -2880,9 +3030,6 @@
 
                 // 평점 등록 버튼 클릭
                 $("#my-list-uptBtn").on("click", function () {
-                    
-                    
-
                     
                     if (isLogin) {
                         var textReviewContent = $('#my-list-commentTextArea').val();
@@ -2917,7 +3064,7 @@
                 });
 
                 //좋아요 , 별로에요 클릭시 빨간 테두리 on
-                $('.likebox label').on('click', function () {
+                /* $('.likebox label').on('click', function () {
                     var $wrap = $(this).parents('.likebox');
                     $wrap.siblings().removeClass('on');
                     $wrap.addClass('on');
@@ -2928,7 +3075,7 @@
                     var $wrap = $(this).parents('.likebox');
                     $wrap.siblings().removeClass('on');
                     $wrap.addClass('on');
-                });
+                }); */
 
                 //운영원칙 ? 클릭시 팝업.
                 $('#viewpopup').on('click', function () {
@@ -3683,5 +3830,100 @@
 <!-- 비즈스프링 통계태그 -->
 <!-- <script type="text/javascript" language="javascript" src="http://img.cgv.co.kr/common/js/insightIS.js"></script>-->
 
+<div class="layer-contents" id="openReviewPopup" style="width:100%;">
+<c:if test="${not empty reviewMovieMember}" var="oneReviewNN">
+	 <div>
+	 	평점은 영화당 하나씩만 작성 가능합니다
+	 </div>
+</c:if>
+<c:if test="${not oneReviewNN}">
+	<div class="popup-general">
+		<form action="<c:url value='/reviewWrite.front'/>">
+			<div class="popwrap">
+				<h1>평점작성</h1>
+				<div class="pop-contents write-mygrade">
+
+					<div class="mygrade-cont">
+						<div class="movietit"><strong id="regTitle">${reviewMovieMember.title }</strong></div>
+						<div class="likeornot">
+							<div class="writerinfo">
+								<div class="box-image">
+									<span class="thumb-image">   
+										<img id="regUserPro" src="${reviewMovieMember.profilepicture}" alt="사용자 프로필" onerror="errorImage(this, {'type':'profile'})">                                            
+										
+                                        <span class="profile-mask"></span>
+									</span>
+								</div>
+								
+								<span class="writer-name" id="regUserName">${reviewMovieMember.id}</span>
+							</div>
+
+							<div style="position:absolute;top:55px;left:100px;">
+								<div class="likebox-inner">
+									<label id="U" for="likeornot1-1">
+										<span class="egg-icon good"></span>
+											<input type="radio" name="likeornot1" id="likeornot1-1" value="U" />
+										
+										<span class="txt">좋았어요~^^</span>
+									</label>
+								</div>
+							</div>
+							<div style="position:absolute;top:55px;left:400px;">
+								<div>
+									<label id="D" for="likeornot1-2">
+										<span class="egg-icon"></span>
+											<input type="radio" name="likeornot1" id="likeornot1-2" value="D" />
+										
+										<span class="txt">흠~좀 별로였어요;;;</span>
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="textbox">
+							<!--
+                            <textarea cols="" rows="" id="textReviewContent"></textarea>
+                            -->
+                            <textarea id="textReviewContent" name="textReviewContent" title="영화평점 입력" cols="70" rows="2" maxlength="140" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다."></textarea>
+						</div>
+
+						<div class="footbox">							
+							<div class="rbox">
+								<span class="count">글자 수 제한(최대 <strong id="text_count">140</strong>자)</span>
+							</div>
+						</div>
+						<div class="charm-cont">
+				<div class="headtxt">
+					<p>이영화의 매력포인트를 선택해주세요. 중복선택이 가능합니다.</p>
+				</div>
+				<div class="inp-choose">
+					<input type="checkbox" name="directorpoint" value="U" id="Effect" />
+					<label for="charm1-5">감독연출</label>
+					<input type="checkbox" name="storypoint" value="U" id="story" />
+					<label for="charm1-2">스토리</label>
+					<input type="checkbox" name="visualpoint" value="U" id="visual" />
+					<label for="charm1-3">영상미</label>
+                    <input type="checkbox" name="actingpoint" value="U" id="acting" />
+					<label for="charm1-1">배우연기</label>
+					<input type="checkbox" name="soundtrackpoint" value="U" id="ost" />
+					<label for="charm1-4">O.S.T</label>
+				</div>
+				<div class="set-btn">
+				<input type="hidden" name="movie_code" value="${param.movie_code}"/>
+					<input type="submit" value="확인" class="round red on w70" id="charmRegBtn"/>
+					
+				</div>
+			</div>
+
+					</div>
+					
+				</div>
+				<a href="#close"><button type="button" class="btn-close">평점수정 팝업 닫기</button></a>
+				
+			</div>
+		</form>
+	</div>
+</c:if>
+</div>
 </body>
 </html>

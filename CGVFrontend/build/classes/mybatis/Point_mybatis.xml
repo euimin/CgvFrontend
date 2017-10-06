@@ -6,6 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="SelectMovieList" resultType="MovieDto">
 		select * from movie
 	</select>
+	<select id="SelectOneMovieOneMember" parameterType="PointDTO" resultType="PointDTO">
+		select r.movie_code,mv.title,r.id,mb.profilepicture from review r 
+		join members mb on r.id=mb.id and mb.id=#{id}
+		join movie mv on r.movie_code=mv.movie_code and mv.movie_code=#{movie_code}
+	</select>
 	<select id="SelectReservedSeatList" parameterType="java.util.Map" resultType="java.util.List">
 		select seatnumber from reserve 
 		<if test="movie_code != null">
@@ -15,7 +20,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="SelectWishCount" parameterType="String" resultType="int">
 		select count(*) from wish where movie_code=#{movie_code} 
 	</select>
-	
 	<select id="SelectReviewList" parameterType="java.util.Map" resultType="PointDTO">
 		select r.*,m.profilepicture from review r join members m on r.id=m.id 
 		<choose>
@@ -23,13 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<otherwise>where m.id=#{id}</otherwise>
 		</choose>
 	</select>
-	
-	<resultMap id="PointDTO" type="com.kosmo.cgv.service.PointDTO">
-  		<id property="movie_code" column="movie_code" />
-  		<result property="upCount" column="upCount"/>
-	</resultMap>
 	<select id="GetEggValue" resultType="PointDTO">
-		select movie_code,count(*) upCount from review where feedback='U' group by movie_code
+		select u.movie_code,(upCount/totalCount) eggNo
+ 		from (select movie_code,count(*) totalCount from review group by movie_code) t 
+ 		join (select movie_code,count(*) upCount from review where feedback='U' group by movie_code) u 
+ 		on u.movie_code=t.movie_code
 	</select>
+	<insert id="insertReview" parameterType="">
+		insert into review values(SEQ_REVIEW.nextval,#{movie_code},#{id},#{feedback},#{content},default,#{directionpoint},#{storypoint},#{visualpoint},#{actingpoint},#{soundtrackpoint})
+	</insert>
 	
 </mapper>

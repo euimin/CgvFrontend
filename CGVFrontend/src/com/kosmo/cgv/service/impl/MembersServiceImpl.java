@@ -47,7 +47,7 @@ public class MembersServiceImpl implements MembersService{
 
 	@Override
 	public int logout(MembersDTO dto) throws Exception {
-		return 0;
+		return dao.logout(dto);
 	}
 	
 	@Override
