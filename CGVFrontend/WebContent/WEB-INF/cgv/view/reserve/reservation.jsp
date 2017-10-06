@@ -261,7 +261,24 @@ preselectSetting(
 												type:"get",
 												dataType:"json",
 												data:"movie_code="+movie_code+"&theater_code="+theater_code+"&screeningdate="+screeningdate,
-												success:function(data){
+												success:function(data){			
+													var timeTable="";
+													$.each(data,function(index,record){
+														timeTable += '<div class="theater"><span class="title"><span class="name">2D</span><span class="floor">';
+														timeTable += record.no+'관</span><span class="seatcount">(총';
+														timeTable += record.seats+'석)</span></span><ul>';
+														var timeList = record.timeSchedule;
+														timeList = timeList.substring(0, timeList.length-1);
+														var timeArray = timeList.split(",");
+														var timeSect="";
+														timeArray.forEach(function(time){
+															//li class="morning/night selected"
+															timeSect += '<li><a class="button" href="#" onclick="return false;"><span class="time"><span>';
+															timeSect += time+'</span></span><span class="count">잔여석</span><div class="sreader">종료시간 00:00</div><span class="sreader mod">심야</span></a></li>';
+														});
+														timeTable += timeSect+'</ul></div>';
+													});
+													$("#timeDiv").html(timeTable);
 													$("#screenPlaceHolder").addClass("hidden");
 												},
 												error:function(request,status,error){
@@ -329,29 +346,9 @@ preselectSetting(
 							<div id="screenPlaceHolder" class="placeholder" style="height: 522px;">영화, 극장, 날짜를 선택해주세요.</div><!-- class="hidden" -->
 							
 							<div class="time-list nano has-scrollbar" style="height: 522px;">
-								<div class="content scroll-y" tabindex="-1" style="right: -17px;">
+								<div id="timeDiv" class="content scroll-y" tabindex="-1" style="right: -17px;">
 									
-									<div class="theater">
-										<span class="title">
-											<span class="name">2D</span>
-											<span class="floor">5관</span>
-											<span class="seatcount">(총172석)</span>
-										</span>
-										<ul>
-											
-											<li>
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
-													<span class="time">
-														<span>23:50</span>
-													</span>
-													<span class="count">156석</span>
-													<div class="sreader">종료시간 26:21</div>
-													<span class="sreader mod"></span>
-												</a>
-											</li>
-											
-										</ul>
-									</div>
+									<!--상영시간표-->
 									
 								</div>
 								<div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;">
