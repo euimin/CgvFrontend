@@ -33,8 +33,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		join (select movie_code,count(*) upCount from review where feedback='U' group by movie_code) u 
  		on u.movie_code=t.movie_code
 	</select>
-	<insert id="insertReview" parameterType="">
+	<!-- <insert id="insertReview" parameterType="">
 		insert into review values(SEQ_REVIEW.nextval,#{movie_code},#{id},#{feedback},#{content},default,#{directionpoint},#{storypoint},#{visualpoint},#{actingpoint},#{soundtrackpoint})
-	</insert>
+	</insert> -->
 	
 </mapper>
