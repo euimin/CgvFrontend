@@ -316,7 +316,7 @@
 			});
 			
 			/* 닉네임 중복체크 */
-			$("#nickname").click(function(){
+ 			$("#nickeck").click(function(){
 				if($("#nickname").val()==""){
 					alert("닉네임을 입력하세요.");
 					$("#nickname").get(0).focus();
@@ -324,10 +324,10 @@
 				}
 				else{
 					$.ajax(
-							{url:"<c:url value='/isMemberId.front'/>",
+							{url:"<c:url value='/isMemberNick.front'/>",
 							 type:"post",
 							 dataType:"text",
-							 data:"id="+$("#id").val(),
+							 data:"nickname="+$("#nickname").val(),
 							 success:function(data){
 								
 								if(data=='N') alert("사용가능한 닉네임 입니다.");
@@ -502,8 +502,11 @@
 							<label for="name" style="font-size:1.1em">닉네임 <span style="color:red;line-height:3.5em">*</span></label>
 						</th>
 						<td>
-							<span class="input_txt"><input type="text" placeholder="닉네임 입력" value="" class="text" name="nickname" id="nickname" /></span><!-- 에러시 .error 클래스 추가 -->
+							<span class="input_txt"><input type="text" placeholder="닉네임 입력" class="text" name="nickname" id="nickname" /></span>
 							
+							&nbsp;&nbsp;<button type="button" style="width:100px;line-height:2.3em;background-color:lightblue;font-weight:bold" class="btn btn_search" id="nickeck"> 닉네임 중복확인 </button>
+							
+							<label for="nickname" class="error" style="color:red;"></label>
 						</td>
 					</tr>
 					
@@ -516,7 +519,7 @@
 							<div class="input_group">
 								<span class="input_txt w250"><input type="text" class="text" placeholder="아이디 입력" name="id" id="id" maxlength="12" /></span>
 								
-									&nbsp;&nbsp;<button type="button" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" class="btn btn_search" id="idcheck"> 중복확인 </button>
+									&nbsp;&nbsp;<button type="button" style="width:100px;line-height:2.3em;background-color:lightblue;font-weight:bold" class="btn btn_search" id="idcheck"> 아이디 중복확인 </button>
 								
 								<label for="id" class="error" style="color:red;"></label>
 							</div>

@@ -222,9 +222,9 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap">
+            <div class="top_extend_ad_wrap" style="background-color:black;">
                 <div class="adreduce" id="adReduce">                    
-                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
+                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
@@ -290,7 +290,7 @@
                         <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
-                                <a href="/user/mycgv/">My CGV</a>
+                                <a href="#">My CGV</a>
                             </li>
                         
                             <li  class="last">
@@ -358,10 +358,9 @@
         	</div>
         	<div class="box-contents newtype">
         		<div class="person-info">
-        			<strong>[ 회원 이름 ]</strong>
-        			<em>[ 회원 아이디]</em>
-        			<span>닉네임 : <i>닉네임을 설정해주세요.</i> </span> //닉네임을 설정하지 않았을 경우 이렇게 뜬다
-        			<button id="go_edit_page" type="button" title="새창열림">나의 정보 변경</button>
+        			<strong>[ ${dto.name } ]</strong>
+        			<em>[ ${dto.id }]</em>
+        			<span>닉네임 : <i>${dto.nickname }</i> </span>
         		</div>
         		<div class="grade-info">
         	        
@@ -467,10 +466,10 @@
 	    <h2>MY CGV 서브메뉴</h2>
 	    <div class="snb">
 	        <ul>
-	            <li class="on">
+	            <li >
                     <a href="/user/mycgv/?g=1" title="현재 선택">MY CGV HOME <i></i></a>
                 </li>
-	            <li >
+	            <li class="on">
 	            	<a href="<c:url value='/mycgvReseved.front'/> ">나의 예매내역 <i></i></a>
                 </li>
 <!-- 	            <li >
@@ -550,9 +549,11 @@
 	            <li >
                     <a href="#" >회원정보<i></i></a>
 	                <ul>
-
+                        <li>
+                            <a href="<c:url value='/profilepicture.front'/>">프로필 관리</a>
+                        </li>
                         <li >
-                            <a href="<c:url value='/updateProcess.front'/>">개인정보 변경</a>
+                            <a href="<c:url value='/pwCheckMod.front'/>">개인정보 변경</a>
                         </li>
 
 <!-- 	                    <li >
@@ -563,7 +564,7 @@
                             <a href="/user/mycgv/myinfo/edit-myinfo-Email-Sms.aspx?g=1" >Email/SMS 수신설정</a>
                         </li> -->
 	                    <li >
-                            <a href="<c:url value='/membersDelete.front'/>" >회원탈퇴</a>
+                            <a href="<c:url value='/pwCheckDel.front'/>" >회원탈퇴</a>
                         </li>
                         
 	                </ul>

@@ -245,9 +245,9 @@
 <div id="cgvwrap">
     <div class="cgv-ad-wrap" id="cgv_main_ad">
         <div id="TopBarWrapper" class="sect-head-ad">
-            <div class="top_extend_ad_wrap">
+            <div class="top_extend_ad_wrap" style="background-color:black;">
                 <div class="adreduce" id="adReduce">                    
-                    <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@TopBar_EX" width="100%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner"></iframe>
+                    <img src="<c:url value='/img/banner/user/TopBanner.jpg' />" width="80%" height="80" title="" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" name="TopBanner" id="TopBanner" />
                 </div> 
                 <div class="adextend" id="adExtend"></div>
             </div><!-- //.top_extend_ad_wrap -->
@@ -314,7 +314,7 @@
                         <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
-                                <a href="/user/movielog/">무비로그</a>
+                                <a href="#">무비로그</a>
                             </li>
                         
                             <li  class="last">
@@ -357,8 +357,7 @@
                      <!-- 등급종류 클래스 : vip, rvip, vvip -->
                 </div>
                 <div class="box-contents">
-	        		<strong>회원이름 님</strong>
-	        		<a id="go_edit_page" href="#" class="edit" target="_blank" title="새창열림">나의 정보 변경</a>
+	        		<strong>${dto.name } 님</strong>
 	        		<em></em>
 	        		
 		        </div>

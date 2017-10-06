@@ -1,11 +1,12 @@
 package com.kosmo.cgv.service;
 
+
 public class MembersDTO {
 
 	private String name;
 	private String id;
 	private String password;
-	private String birth;
+	private java.sql.Date birth;
 	private String gender;
 	private String phone;
 	private String email;
@@ -30,10 +31,10 @@ public class MembersDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getBirth() {
+	public java.sql.Date getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
+	public void setBirth(java.sql.Date birth) {
 		this.birth = birth;
 	}
 	public String getGender() {
@@ -66,5 +67,7 @@ public class MembersDTO {
 	public void setProfilepicture(String profilepicture) {
 		this.profilepicture = profilepicture;
 	}
+
+
 		
 }

@@ -51,7 +51,11 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
+
+    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
+
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+
     
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
@@ -133,35 +137,6 @@
             setCookieAD(CurCookieName, CookieUrl, '1');
             $(document).find('#ad_float1').hide();
         }
-        function OpenAD() {
-            var AdUrl = window.location.href;
-            var ArrAdUrl = AdUrl.split("/");
-            var CookieUrl = ArrAdUrl[3];
-            var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
-            var CurCookieUrl = GetCookieAd(CurCookieName);
-
-            if (CurCookieUrl == null) {
-                CurCookieUrl = "";
-            }
-            else {
-                CurCookieUrl = DecryptAD(CurCookieUrl, "15442280");
-            }
-
-            if (CurCookieUrl.indexOf(CookieUrl) != -1) {
-                $(document).find('#ad_float1').hide();
-            }
-
-            //section.cgv.co.kr 매거진 체크
-            var magazineckurl = GetCookieAd("CgvPopAd-magazine");
-            if (magazineckurl != null) {
-                var magazineck = DecryptAD(magazineckurl, "15442280");
-                if (magazineck != null && magazineck == "magazine") {
-                    //값이있는경우 표시하지않음
-                    $(document).find('#ad_float1').hide();
-                }
-            }
-        }
-
 
 
         //상단 키워드 광고 (S)
@@ -207,67 +182,39 @@
 
         //]]>
     </script>
-	<!-- 제이쿼리 코어 임베딩 -->
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
-	<script src="<c:url value='/JS/jquery.validate.min.js'/>"></script>
-	<script type="text/javascript">
-/* 		var gender=document.getElementById("#gender");
-		var female="여자";
-		var male="남자";
-		if(gender=="F"){
-			return female;	
-		}
-		else return male;	 */	
 
-	
-	$(function(){
-		
-/* 		if(("input[name=gender]").val() == "F") return female;
-		else return male; */
-		
-/* 		 if($('#gender').val() == 'F')
-			 return $('#gender').text('여자'); */
-/* 		function genderPrint(){
-		    female = a+b;
-		    female.text('여자');
-		    return add;
-		} */
-		
-
-		/* $("input[name=gender]").val('이름을 입력하세요'); */
-
-		
-		/* 닉네임 중복체크 */
-		$("#nickeck").click(function(){
-		if($("#nickname").val()==""){
-			alert("닉네임을 입력하세요.");
-			$("#nickname").get(0).focus();
+ 	<script type="text/javascript">
+$(function(){
 			
-		}
-		else{
-			$.ajax(
-					{url:"<c:url value='/isMemberNick.front'/>",
-					 type:"post",
-					 dataType:"text",
-					 data:"nickname="+$("#nickname").val(),
-					 success:function(data){
-						
-						if(data=='N') alert("사용가능한 닉네임 입니다.");
-						else{
-							alert("이미 사용중인 닉네임 입니다.");
-							$("#nickname").val("");
-							$("#nickname").get(0).focus();
-						}
-					 }
-					}
-					 
-				  );//.ajax
-		}	
-		
+		$("#pwCheck").validate({
+			errorLabelContainer: $("#pwCheck div.error"),
+			
+			rules:{
+				password:"required",
+				pwdChk:{required:true,equalTo:"#password"}
+				},			
+			messages:{
+				password:"<br/><span style='line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;'>비밀번호를 입력해주세요.</span>",
+				pwdChk:{
+					required:"<br/><span style='line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;'>비밀번호를 입력해주세요.</span>",
+					equalTo:"<br/><span style='line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;'>비밀번호가 일치하지 않습니다.</span>"
+				}
+			}			
+		});////////////////////validate
+			
+		//2]input type="submit"버튼이 아닐때
+		//Step1] $(폼객체 선택자).validate()적용
+		//Step2] $(폼객체 선택자).valid()호출 
+		//       true반환시 $(폼객체 선택자).submit()호출한다
+		$("#save").click(function(){
+			if($("#pwCheck").valid()){
+				$("#pwCheck").submit();				
+			}	
+			
 		});
 
-	});		
+});
+			
   			
 		
 	</script> 
@@ -290,7 +237,7 @@
 	}
 
 	</style>
-
+ -->
     
 </head>
 <body class="">
@@ -371,11 +318,13 @@
                             <li >
                                 <a href="#">My CGV</a>
                             </li>
+                        
                             <li >
                                 <a href="#">나의 정보</a>
                             </li>
+                        
                             <li  class="last">
-                                회원정보 수정
+                                비밀번호 확인
                             </li>
                         
                         
@@ -422,7 +371,6 @@
         })(jQuery);
     //]]>
 </script>
-
 <div class="sect-common">
 <input type="hidden" id="isTown" name="isTown" value="Y" />
 <input type="hidden" id="userTownMemberInfo" name="userTownMemberInfo" value="" />
@@ -441,7 +389,7 @@
         	<div class="box-contents newtype">
         		<div class="person-info">
         			<strong>[ ${dto.name } ]</strong>
-        			<em>[ ${dto.id }]</em>
+        			<em>[ ${dto.id} ]</em>
         			<span>닉네임 : <i>${dto.nickname }</i> </span>
         		</div>
         		<div class="grade-info">
@@ -680,135 +628,43 @@
     </div>
 	<div class="col-detail" id="mycgv_contents">
 			
-  		<!-- 실컨텐츠 시작 -->
-        <div class="wrap-login">
-		<div class="info"><p class="msg_mandatory"><span style="color:red">(*)</span> 표시는 수정 가능한 항목입니다.</p><br></br></div>
-		</div>
-		
-	    <div class="table_col" style="border:1px solid gray; padding:30px;">
-		<form id="updateForm"  action="<c:url value='/updateProcess.front'/>" method="post">	
+  		<!-- 실컨텐츠 시작 -->		
 
-			<table>
-				<tbody>
-			
-					<tr class="input">
-						<th scope="row" class="mandatory">
-							<label for="name" style="font-size:1.1em;font-weight: bold;line-height:3.5em">이름</label>
-						</th>
-						<td>
-							<%-- <input type="text" disabled="disabled" name="name" value="${dto.name }"/> --%>${dto.name }
-						</td>
-					</tr>
-					<tr class="input">
-						<th scope="row" class="mandatory">
-							<label for="name" style="font-size:1.1em;font-weight: bold;line-height:3.5em">닉네임 <span style="color:red;">*</span></label>
-						</th>
-						<td>
-							<div class="input_group">
-								<input type="text" name="nickname" id="nickname" value="${dto.nickname }"/>
+<div class="tit-mycgv">
+    <h3>비밀번호 확인</h3>
+</div>
 
-									&nbsp;&nbsp;<button type="button" style="width:100px;line-height:2.3em;background-color:lightblue;font-weight:bold" class="btn btn_search" id="nickeck"> 닉네임 중복확인 </button>
 
-								 <label for="nickname" class="error" style="color:red;"></label>
-							</div>
-						</td>
-					</tr>
-					
-					
-					<tr class="input">
-						<th scope="row" class="mandatory">
-							<label for="id" style="font-size:1.1em;font-weight: bold;line-height:3.5em">아이디</label>
-						</th>
-						<td>
-							<div class="input_group">
-								<%-- <input type="text" disabled="disabled" name="id" value="${dto.id }"/> --%>${dto.id }
-							</div>
-						</td>
-					</tr>
-					<tr class="input">
-						<th scope="row" class="mandatory">
-							<label for="password" style="font-size:1.1em;font-weight: bold;line-height:3.5em">비밀번호 <span style="color:red;">*</span></label>
-						</th>
-						<td>
-							<div class="input_group">
-								<input type="password" name="password" value="${dto.password }"/>
-							</div>
-						</td>
-					</tr>
-					<tr class="input">
-						<th scope="row" class="mandatory">
-							<label for="passwordChk" style="font-size:1.1em;font-weight: bold;line-height:3.5em">비밀번호 확인 <span style="color:red;">*</span></label>
-						</th>
-						<td>
-							<div class="input_group">
-								<input type="password" name="passwordChk" value="${dto.password }"/>
-							</div>
-						</td>
-					</tr>
-					<tr class="input">
-						<th scope="row" class="mandatory">
-							<label for="birth" style="font-size:1.1em;font-weight: bold;line-height:3.5em">
-							생년월일</label>
-						</th>
-						<td align="left">
-							<div class="birthday_select">
-								<%-- <input type="text" disabled="disabled" name="birth" value="${dto.birth }"/> --%>${dto.birth }
-							</div>
-						</td>
-					</tr>
-					<tr class="input">
-						<th scope="row" class="mandatory">
-							<label for="gender" style="font-size:1.1em;font-weight: bold;line-height:3.5em">
-							성별</label>
-						</th>
-						<td align="left">
-							<div class="birthday_select">
-								<input type="hidden" id="gender" name="gender" value="${dto.gender }"/>${dto.gender }
-							</div>
-						</td>
-					</tr>
-		
-	
-		
-		<tr class="input">
-			<th scope="row" class="mandatory">
-				<label for="phone" style="font-size:1.1em;font-weight: bold;line-height:3.5em">휴대전화 <span style="color:red;">*</span></label>
-			</th>
-			<td>
-				<div class="phon_write">
-					<input id="phone" type="text" value="${dto.phone }" name="phone" />&nbsp;&nbsp;<span style="color:red;">※ 슬러시(-)를 반드시 포함해서 입력하세요.</span>
-				</div>
-			</td>
-		</tr>
-											
-		
-		<tr class="input">
-			<th scope="row" class="mandatory">
-				<label for="email_addr1" style="font-size:1.1em;font-weight: bold;line-height:3.5em">이메일 <span style="color:red;">*</span></label>
-			</th>
-			<td>
-				<input id="email" type="text" value="${dto.email }" name="email" />&nbsp;&nbsp;<span style="color:red;">※ 골뱅이(@)를 반드시 포함해서 입력하세요.</span>
-			</td>
-		</tr>
-		<tr class="input" >
-						
-						<td style="text-align: center" colspan="2"> 
-						<div style="height:30px"></div> 
-							<input type="submit" name="subit" value="수정" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />&nbsp;
-							<input type="reset" name="reset" value="취소" style="width:70px;line-height:2.3em;background-color:lightblue;font-weight:bold" />  
-						</td>				
-		</tr>		
-				</tbody>
-			</table>
-		</form>
-		
-		</div>
-		
-		<div style="height:10px"></div>
+<p class="info-com">고객님의 개인정보 보호를 위한 절차이오니, CGV 로그인 시 사용하는 비밀번호를 입력해 주세요.</p>
+<form id="pwCheck"  action="<c:url value='/pwCheckModify.front'/>">
+<input type="hidden" id="id" name="id" />
+<input type="hidden" id="name" name="name" />
+<input type="hidden" id="nickname" name="nickname" />
+    <fieldset class="confirm">
+        <legend>비밀번호 확인</legend>
+        <div class="info-confirm">
+            <p>
+                <strong>아이디</strong> 
+                <strong>${dto.id }</strong>
+            </p>
+
+                    <input type="hidden" id="password" name="password" value="${dto.password }" maxlength="20" class="small" />
+
+                <p>
+                    <strong><label for="txtPassword">비밀번호 확인</label></strong> 
+                    <input type="password" id="pwdChk" name="pwdChk" maxlength="20" class="small" />
+                    <label for="password" class="error"></label>
+                </p>
+        </div>
+    </fieldset>
+    <div class="set-btn">
+        <button type="submit" id="save" class="round inred on"><span>확인</span></button>
+        <a href="<c:url value='forward:/'/>" class="round gray"><span>CGV 첫화면으로</span></a>
+    </div>
+</form>
 		
         <!-- 실컨텐츠 끝 -->
 </div>
-
 <script id="temp_view_usergrade" type="text/x-jquery-tmpl">
 
 <div class="popwrap" style="width:330px;margin-top:-500px;margin-left:-165px">
@@ -853,78 +709,20 @@
 
 </script>
 <script type="text/javascript">
-    //<![CDATA[
-    (function ($) {
-        $(function () {
-
-            $('#go_edit_page').on('click', function () {
-                var win = window.open("/user/popup/edit-profile.aspx", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
-                win.focus();
-            });
-
-            $('#btn_set_my_favorite').on('click', function () {
-                var win = window.open("/user/popup/favoriteTheaters.aspx?ismycgv=true", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
-                win.focus();
-            });
-
-            $('#view_usergrade').on('click', function () {
-                GetUserGradeList(this);
-                return false;
-            });
-
-            function GetUserGradeList(_this) {
-
-                var url = '/common/ajax/user.aspx/GetUserGradeList_2017';
-                var data = null;
-                var callback = function (result) {
-                    app.log(result);
-
-                    var $std = $(_this),
-                    options = {
-                        '$target': $std,
-                        'html': $('#temp_view_usergrade').html(),
-                        'position': 'absolute',
-                        'mask': 'none'
-                    };
-                    app.instWin.add(options);
-
-                    var $tbody = $('#mytable > tbody:last'),
-                        $tr1 = $('#tempUserGradeTbodyTr1')
-                    //  $tr2 = $('#tempUserGradeTbodyTr2');
-                    $.each(result, function (i, v) {
-
-                        $tbody.append("<tr><th scope='row'>" + v.YearMonthSub + "년" + v.MonthSub + "월" + "</th><td>" + v.GradeCode + "</td></tr>");
-
-                    });
-                }
-                app.ajax().get({ dataType: 'json', url: url, data: data, contentType: "application/json; charset=utf-8", successHandler: callback });
-            }
-            //개인화영역스킵
-            $('#skipPersoninfo').on('click', function () {
-                var $ctn = $('#menu');
-                $ctn.attr({
-                    tabIndex: -1
-                }).focus();
-                return false;
-            });
-            //mycgv 메뉴스킵
-            $('#skipMycgvMenu').on('click', function () {
-                var $ctn = $('#mycgv_contents');
-                $ctn.attr({
-                    tabIndex: -1
-                }).focus();
-                return false;
-            });
-
-            //my cgv 상단영역 skip처리
-            var isGoContainer = "False";
-            if (isGoContainer == "True") {
-                location.href = location.href + "#contaniner";
-            }
-
-        });
-    })(jQuery);
-    //]]>
+function check_passwd(input) {
+	if(!input.value) {
+		alert('비밀번호를 입력해 주십시오.');
+		input.focus();
+		return false;
+	}
+	else if(input.value != password.value) {
+		alert('비밀번호가 일치하지 않습니다.');
+		input2.value='';
+		input2.focus();
+		return false;
+	}
+	else return true; 
+}
 </script>
 </div>
 
@@ -1022,7 +820,6 @@
 		</div>
         <!-- Float Ad -->
 
-        <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->
 	</div>
 	<!-- /Footer -->
@@ -1249,6 +1046,7 @@
                 return false;
             });
 
+
         });
     })(jQuery);
 	
@@ -1273,7 +1071,6 @@
             }
         }
     }
-
 
     function appDownInfoPop() {
 

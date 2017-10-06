@@ -12,7 +12,6 @@ public interface NonMemberService {
 	NonMemberDTO selectOne(Map map) throws Exception;
 	//비회원 예매/예매취소]
 	int insert(NonMemberDTO dto) throws Exception;
-	int delete(NonMemberDTO dto) throws Exception;
 	//로그아웃
 	int logout(NonMemberDTO dto) throws Exception;
 	
