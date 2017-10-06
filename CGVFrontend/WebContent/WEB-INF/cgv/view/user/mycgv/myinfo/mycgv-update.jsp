@@ -212,31 +212,8 @@
 	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
 	<script src="<c:url value='/JS/jquery.validate.min.js'/>"></script>
 	<script type="text/javascript">
-/* 		var gender=document.getElementById("#gender");
-		var female="여자";
-		var male="남자";
-		if(gender=="F"){
-			return female;	
-		}
-		else return male;	 */	
-
 	
 	$(function(){
-		
-/* 		if(("input[name=gender]").val() == "F") return female;
-		else return male; */
-		
-/* 		 if($('#gender').val() == 'F')
-			 return $('#gender').text('여자'); */
-/* 		function genderPrint(){
-		    female = a+b;
-		    female.text('여자');
-		    return add;
-		} */
-		
-
-		/* $("input[name=gender]").val('이름을 입력하세요'); */
-
 		
 		/* 닉네임 중복체크 */
 		$("#nickeck").click(function(){
@@ -763,7 +740,8 @@
 						</th>
 						<td align="left">
 							<div class="birthday_select">
-								<input type="hidden" id="gender" name="gender" value="${dto.gender }"/>${dto.gender }
+								<c:if test="${dto.gender == 'F'}" var="female"> 여자 </c:if>
+								<c:if test="${not female }">남자</c:if>
 							</div>
 						</td>
 					</tr>

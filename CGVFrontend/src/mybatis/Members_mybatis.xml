@@ -26,17 +26,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from members where nickname=#{nickname}
 	</select>	
 	
+	
+	
+	
 	<select id="NonMemberLogin" parameterType="java.util.Map" resultType="int">
-		select count(*) from nonmember where nonmember_id=#{nonmember_id} and password=#{password}
+		select count(*) from nonmember where name=#{name} and birth=#{birth} and phone=#{phone} and password=#{password}
 	</select>
-	<select id="NonMemberOne" parameterType="NonMemberDTO" resultType="NonMemberDTO">    	
-    	select * from nonmember where nonmember_id=#{nonmember_id}
+	<select id="NonMemberOne" parameterType="java.util.Map" resultType="NonMemberDTO">
+		select * from nonmember where name=#{name} and birth=#{birth} and phone=#{phone} and password=#{password}
     </select>
     <!-- 파라미터 타입을 Map이 아닌 NonMemberDTO로 받아야 값과 폼이 넘어간다. -->
     
 	<insert id="NonMemberInsert" parameterType="com.kosmo.cgv.service.NonMemberDTO">
 	insert into nonmember values (
-	'guest'||seq_nonmember.nextval ,#{name}, #{birth}, #{phone}, #{email}, #{password})
+	'guest'||seq_nonmember.nextval ,#{name}, #{birth}, #{phone}, #{password})
 	<selectKey keyProperty="nonmember_id" resultType="String" order="AFTER">
 	    select 'guest'||seq_nonmember.currval FROM dual
 	  </selectKey>

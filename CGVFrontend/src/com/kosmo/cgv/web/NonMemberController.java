@@ -50,26 +50,18 @@ public class NonMemberController {
 
 
 	
-	//비회원 임시가입 폼으로 이동
+	//비회원 예매하기 폼으로 이동
 	@RequestMapping("/guestReserve.front")
 	public String guestReseve() throws Exception{
 		return "user/guest/login-agreement";
 	}
-	//비회원 임시가입후 임시 아이디 및 입력정보 확인폼으로 이동
+	//비회원 로그인 후 예매하기 폼으로 이동.
 	@RequestMapping(value="/guestReseve.front", method=RequestMethod.POST)
 	public String guestReseve(@ModelAttribute NonMemberDTO dto, @RequestParam Map map, Model model) throws Exception{
 		//데이타 저장]
 		map.put("dto", dto);			
 		nonMemberService.insert(dto);
-		
 		//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
-		model.addAllAttributes(map);
-		//뷰정보 반환]
-		return "user/guest/join-sucess";
-	}
-	//비회원 임시 아이디 및 입력정보 확인 후 예매폼으로 이동.
-	@RequestMapping("/guestReserving.front")
-	public String guestReserving(@RequestParam Map map,Model model) throws Exception{
 		model.addAllAttributes(map);
 		//뷰정보 반환]
 		return "forward:/ticket.front";
@@ -81,18 +73,14 @@ public class NonMemberController {
 	public String guestLogin() throws Exception{
 		return "user/guest/login";
 	}
-	//비회원 로그인후 예매확인폼으로 이동
+	//비회원 로그인후 예매내역폼으로 이동
 	@RequestMapping(value="/guestLogin.front", method=RequestMethod.POST)
 	public String guestLogin(@RequestParam Map map,Model model) throws Exception{
 		//서비스 호출]
-		boolean guestLogin=nonMemberService.login(map);
-		if(guestLogin){//비회원 로그인 경우
-			//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
-			model.addAllAttributes(map);
-		}else {
-			model.addAttribute("guestLoginError","예매 내역이 확인되지 않습니다.");
-			return "user/guest/index";
-		}
+		NonMemberDTO dto=nonMemberService.selectOne(map);
+		//로그인 처리-세션영역에도(리퀘스트 영역과 함께) 저장
+		model.addAttribute("dto", dto);
+		
 		return "user/guest/reserve-chk";
 	}
 	
