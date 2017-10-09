@@ -353,8 +353,6 @@
                                    
                                     <button type="submit" id="submit" title="로그인"><span>로그인</span></button>
                                     <div class="login-option">
-                                        <a href="find-account.jsp">아이디 찾기</a>
-                                        <a href="find-pw5366.jsp?act=pw">비밀번호 찾기</a>
                                     </div>
                                 </fieldset>
                             </form>
