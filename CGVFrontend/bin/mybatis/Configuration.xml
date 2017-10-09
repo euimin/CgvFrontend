@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="MembersDTO" type="com.kosmo.cgv.service.MembersDTO"/>
 		<typeAlias alias="NonMemberDTO" type="com.kosmo.cgv.service.NonMemberDTO"/>
 		<typeAlias alias="PointDTO" type="com.kosmo.cgv.service.PointDTO"/>
+		<typeAlias alias="SeatDto" type="com.kosmo.cgv.service.SeatDto"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Movie_mybatis.xml"/>
@@ -18,5 +19,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/Members_mybatis.xml"/>
 		<mapper resource="mybatis/Point_mybatis.xml"/>
 		<mapper resource="mybatis/Screening_mybatis.xml"/>
+		<mapper resource="mybatis/Seat_mybatis.xml"/>
 	</mappers>
 </configuration>
