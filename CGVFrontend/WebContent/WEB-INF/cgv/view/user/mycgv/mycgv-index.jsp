@@ -688,34 +688,6 @@
         //]]>
 </script>
 
-<div class="sect-mycgv-reserve movielog col4">
-    <div class="box-polaroid">
-        <div class="box-inner wishlist">
-            <a href="<c:url value='/mycgvWishlist.front' />" title="위시리스트">
-                <h3>위시리스트</h3>
-                <span>보고 싶은 영화들을 미리 <br />담아두고 싶다면?</span>
-            </a>
-        </div>
-        <div class="box-inner watched">
-            <a href="<c:url value='/mycgvWatched.front' />" title="내가 본 영화">
-                <h3>내가 본 영화</h3>
-                <span>관람한 영화들을 한번에 <br />모아 보고 싶다면?</span>
-            </a>
-        </div>
-        <div class="box-inner mvdiary">
-            <a href="<c:url value='/mycgvDiary.front' />" title="무비다이어리">
-                <h3>무비다이어리</h3>
-                <span>관람 후 내 감상평을 적어 <br />추억하고 싶다면?</span>
-            </a>
-        </div>
-        <div class="box-inner photi">
-            <a href="http://phototicket.cgv.co.kr" target="_blank">
-                <h3>포토티켓</h3>
-                <span>단 하나뿐인 나만의<br />티켓을 간직하고 싶다면?</span>
-            </a>
-        </div>
-    </div>
-</div>
 <div class="tit-mycgv">
 	<h3>MY 예매내역</h3>
 	<p><em>1건</em> <a href="<c:url value='/mycgvReseved.front'/> ">예매내역 더보기</a></p>

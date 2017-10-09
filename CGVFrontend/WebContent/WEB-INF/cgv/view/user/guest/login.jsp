@@ -440,7 +440,7 @@
         </ul>
         <h3>개인정보(이름,휴대폰번호,법정생년월일,비밀번호) 입력 후 로그인 </h3>
         <p>비회원 로그인 정보 오입력 시, 예매내역 확인/취소 및 티켓 발권이 어려울 수 있으니, 입력하신 정보를 다시 한번 확인해주시기 바랍니다.</p>
-        <div class="cols-enterform nomember">
+         <div class="cols-enterform nomember">
             <div class="col-simple">
                 <h4>비회원 예매확인/취소 로그인 입력정보</h4>
                 <div class="box-simples">
@@ -507,7 +507,7 @@
 
             
             
-            <div class="col-confirm">
+<%--             <div class="col-confirm">
                 <h4>비회원 로그인 등록정보 분실 안내</h4>
                 <div class="box-confirms">
                     <p class="disc-info">비회원 등록정보 찾기를 통해 비밀번호를 확인하실 수 있습니다.</p>
@@ -518,8 +518,8 @@
                         <a href="<c:url value='/findPhone.front'/>" class="round black"><span>휴대폰 번호로 찾기</span></a>
                   </div>
                 </div>
-            </div>
-        </div>
+            </div> --%>
+         </div>
     </div> 
 
     <div class="sect-loginguide">
