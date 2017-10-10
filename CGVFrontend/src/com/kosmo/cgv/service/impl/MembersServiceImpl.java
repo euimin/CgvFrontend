@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.kosmo.cgv.service.MembersDTO;
 import com.kosmo.cgv.service.MembersService;
 
@@ -65,5 +67,11 @@ public class MembersServiceImpl implements MembersService{
 	public void close() throws Exception {
 		dao.close();
 	}
+
+	@Override
+	public boolean nickCheck(Map map) throws Exception {
+		return dao.nickCheck(map);
+	}
+	
 
 }

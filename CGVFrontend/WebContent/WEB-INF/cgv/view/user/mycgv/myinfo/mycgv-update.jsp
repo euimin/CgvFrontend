@@ -51,11 +51,7 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
-
-    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
-
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
-
     
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/slick.css" />
@@ -211,99 +207,44 @@
 
         //]]>
     </script>
-
+	<!-- 제이쿼리 코어 임베딩 -->
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
+	<script src="<c:url value='/JS/jquery.validate.min.js'/>"></script>
 	<script type="text/javascript">
-		$(function(){
+	
+	$(function(){
+		
+		/* 닉네임 중복체크 */
+		$("#nickeck").click(function(){
+		if($("#nickname").val()==""){
+			alert("닉네임을 입력하세요.");
+			$("#nickname").get(0).focus();
 			
-			$.validator.setDefaults({"submitHandler":function(form){
-				//submit하기전 수행할 로직
-				var birth = new Date().toISOString().slice(0, 10);
-				$("#birth").val(birth);
-				
-	        	var phone=$("#mob_no_1").val()+"-"+$("#mob_no_2").val()+"-"+$("#mob_no_3").val();
-	        	$("#phone").val(phone);
-	        	
-	        	var email=$("#email_addr1").val()+"@"+$("#email_addr2").val();
-	        	$("#email").val(email);
-				//반드시 submit()함수 호출			
-				form.submit();				
-				//self.close();
-			}});
-			
-			$("#updateForm").validate({
-				errorLabelContainer: $("#updateForm div.error"),
-				
-				rules:{
-					nickname:"required",
-					password:{required:true,rangelength:[4,12]},
-					pwdChk:{required:true,rangelength:[4,12],equalTo:"#password"},	
-					mob_no_1:"required",
-					mob_no_2:"required",
-					mob_no_3:"required",
-					email_addr1:"required"
-					},			
-				messages:{
-					name:"&nbsp;&nbsp;이름을 입력하세요.",	
-					nickname:"&nbsp;&nbsp;닉네임을 입력하세요.",
-					password:{
-						required:"&nbsp;&nbsp;비밀번호를 입력해주세요.",
-						rangelength:"&nbsp;&nbsp;비밀번호는 4자 이상 12자 이하입니다.",
-					},
-					pwdChk:{
-						required:"&nbsp;&nbsp;비밀번호를 입력해주세요.",
-						rangelength:"&nbsp;&nbsp;비밀번호는 4자 이상 12자 이하입니다.",
-						equalTo:"&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
-					},
-					mob_no_1:"휴대전화 앞번호 선택하세요.<span style='color: gray;'>&nbsp;&nbsp;│&nbsp;</span>",
-					mob_no_2:"휴대전화 중간번호를 입력하세요.<span style='color: gray;'>&nbsp;&nbsp;│&nbsp;</span>",
-					mob_no_3:"휴대전화 끝번호를 입력하세요.",
-					email_addr1:"&nbsp;&nbsp;이메일 주소를 입력하세요."
-							
-				}			
-			});////////////////////validate
-			
-
-			
-			/* 도메인 선택 시 자동으로 텍스트에 입력 */
-			$("#email_addr_opt").on("change",function(){
-				
-				if($(this).val() !=""){
-					
-					$("#email_addr2").val($(this).val());
-				}
-				else $("#email_addr2").val("");
-			});
-			
-			/* 닉네임 중복체크 */
-			$("#nickeck").click(function(){
-				if($("#nickname").val()==""){
-					alert("닉네임을 먼저 입력하세요.");
-					$("#nickname").get(0).focus();
-				}
-				else{
-					$.ajax(
-							{url:"<c:url value='/isMemberNick.front'/>",
-							 type:"post",
-							 dataType:"text",
-							 data:"nickname="+$("#nickname").val(),
-							 success:function(data){
-								
-								if(data=='N') alert("사용가능한 닉네임 입니다.");
-								else{
-									alert("이미 사용중인 닉네임 입니다.");
-									$("#nickname").val("");
-									$("#nickname").get(0).focus();
-								}
-							 }
-							}
-							 
-						  );//.ajax
-				}	
-				
-			});
-			
+		}
+		else{
+			$.ajax(
+					{url:"<c:url value='/isMemberNick.front'/>",
+					 type:"post",
+					 dataType:"text",
+					 data:"nickname="+$("#nickname").val(),
+					 success:function(data){
+						
+						if(data=='N') alert("사용가능한 닉네임 입니다.");
+						else{
+							alert("이미 사용중인 닉네임 입니다.");
+							$("#nickname").val("");
+							$("#nickname").get(0).focus();
+						}
+					 }
+					}
+					 
+				  );//.ajax
+		}	
+		
 		});
-			
+
+	});		
   			
 		
 	</script> 
@@ -405,11 +346,13 @@
                         <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
-                                <a href="/user/mycgv/">My CGV</a>
+                                <a href="#">My CGV</a>
                             </li>
-                        
+                            <li >
+                                <a href="#">나의 정보</a>
+                            </li>
                             <li  class="last">
-                                MY CGV HOME
+                                회원정보 수정
                             </li>
                         
                         
@@ -474,10 +417,9 @@
         	</div>
         	<div class="box-contents newtype">
         		<div class="person-info">
-        			<strong>[ 회원 이름 ]</strong>
-        			<em>[ 회원 아이디]</em>
-        			<span>닉네임 : <i>닉네임을 설정해주세요.</i> </span> //닉네임을 설정하지 않았을 경우 이렇게 뜬다
-        			<button id="go_edit_page" type="button" title="새창열림">나의 정보 변경</button>
+        			<strong>[ ${dto.name } ]</strong>
+        			<em>[ ${dto.id }]</em>
+        			<span>닉네임 : <i>${dto.nickname }</i> </span>
         		</div>
         		<div class="grade-info">
         	        
@@ -583,8 +525,8 @@
 	    <h2>MY CGV 서브메뉴</h2>
 	    <div class="snb">
 	        <ul>
-	            <li class="on">
-                    <a href="/user/mycgv/?g=1" title="현재 선택">MY CGV HOME <i></i></a>
+	            <li >
+                    <a href="<c:url value='/myCGV.front'/>" title="현재 선택">MY CGV HOME <i></i></a>
                 </li>
 	            <li >
 	            	<a href="<c:url value='/mycgvReseved.front'/> ">나의 예매내역 <i></i></a>
@@ -663,12 +605,14 @@
                         </li>//
 	                </ul>
 	            </li> -->
-	            <li >
+	            <li class="on">
                     <a href="#" >회원정보<i></i></a>
 	                <ul>
-
-                        <li >
-                            <a href="<c:url value='/updateProcess.front'/>">개인정보 변경</a>
+                        <li>
+                            <a href="<c:url value='/profilepicture.front'/>">프로필 관리</a>
+                        </li>
+                        <li class="on">
+                            <a href="<c:url value='/pwCheckMod.front'/>">개인정보 변경</a>
                         </li>
 
 <!-- 	                    <li >
@@ -679,7 +623,7 @@
                             <a href="/user/mycgv/myinfo/edit-myinfo-Email-Sms.aspx?g=1" >Email/SMS 수신설정</a>
                         </li> -->
 	                    <li >
-                            <a href="<c:url value='/membersDelete.front'/>" >회원탈퇴</a>
+                            <a href="<c:url value='/pwCheckDel.front'/>" >회원탈퇴</a>
                         </li>
                         
 	                </ul>
@@ -720,9 +664,7 @@
 		
 	    <div class="table_col" style="border:1px solid gray; padding:30px;">
 		<form id="updateForm"  action="<c:url value='/updateProcess.front'/>" method="post">	
-			<input id="birth" type="hidden" name="birth" />
-			<input id="phone" type="hidden" name="phone" />
-			<input id="email" type="hidden" name="email" />	
+
 			<table>
 				<tbody>
 			
@@ -731,7 +673,7 @@
 							<label for="name" style="font-size:1.1em;font-weight: bold;line-height:3.5em">이름</label>
 						</th>
 						<td>
-							<input type="text" disabled="disabled" name="id" value="${dto.name }"/>
+							<%-- <input type="text" disabled="disabled" name="name" value="${dto.name }"/> --%>${dto.name }
 						</td>
 					</tr>
 					<tr class="input">
@@ -740,10 +682,10 @@
 						</th>
 						<td>
 							<div class="input_group">
-								<input type="text" name="nickname" value="${dto.nickname }"/>
-								<!-- 아직 작동 안됨
-								&nbsp;&nbsp;<button type="button" style="width:100px;line-height:2.3em;background-color:lightblue;font-weight:bold" class="btn btn_search" id="nickeck"> 닉네임 중복확인 </button>
-								 -->
+								<input type="text" name="nickname" id="nickname" value="${dto.nickname }"/>
+
+									&nbsp;&nbsp;<button type="button" style="width:100px;line-height:2.3em;background-color:lightblue;font-weight:bold" class="btn btn_search" id="nickeck"> 닉네임 중복확인 </button>
+
 								 <label for="nickname" class="error" style="color:red;"></label>
 							</div>
 						</td>
@@ -756,7 +698,7 @@
 						</th>
 						<td>
 							<div class="input_group">
-								<input type="text" disabled="disabled" name="id" value="${dto.id }"/>
+								<%-- <input type="text" disabled="disabled" name="id" value="${dto.id }"/> --%>${dto.id }
 							</div>
 						</td>
 					</tr>
@@ -787,7 +729,7 @@
 						</th>
 						<td align="left">
 							<div class="birthday_select">
-								<input type="text" disabled="disabled" name="birth" value="${dto.birth }"/>
+								<%-- <input type="text" disabled="disabled" name="birth" value="${dto.birth }"/> --%>${dto.birth }
 							</div>
 						</td>
 					</tr>
@@ -798,7 +740,8 @@
 						</th>
 						<td align="left">
 							<div class="birthday_select">
-								<input type="text" disabled="disabled" name="gender" value="${dto.gender }"/>
+								<c:if test="${dto.gender == 'F'}" var="female"> 여자 </c:if>
+								<c:if test="${not female }">남자</c:if>
 							</div>
 						</td>
 					</tr>
@@ -843,6 +786,7 @@
 		
         <!-- 실컨텐츠 끝 -->
 </div>
+
 <script id="temp_view_usergrade" type="text/x-jquery-tmpl">
 
 <div class="popwrap" style="width:330px;margin-top:-500px;margin-left:-165px">
@@ -1056,10 +1000,6 @@
 		</div>
         <!-- Float Ad -->
 
-        <div class="adFloat" style="display:block">
-
-            <iframe src='http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon' width='154' height='182' frameborder='0' scrolling='no' topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' allowTransparency="true" id="ad_float1"></iframe>
-        </div>
         <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->
 	</div>
@@ -1287,81 +1227,6 @@
                 return false;
             });
 
-            
-            
-
-            $('.btn_send').on('click', function() {
-
-               var smsyn = $('input:radio[name="myapp"]:checked').val();
-               var phoneNum_1 = $('#phoneNum1').val();
-               var phoneNum_2 = $('#phoneNum2').val();
-               var phoneNum_3 = $('#phoneNum3').val();
-             
-
-               var $btn = $('.util .app');
-               var $btnli = $btn.parent();
-               var $layer = $btnli.find('.app-downinfo');
-               var $closebtn = $layer.find('.btn_close');              
-
-               if (  $("input:radio[name='myapp']:checked").val() == undefined) {
-            
-                    alert('앱을 선택해주세요.');
-                    return;
-                }
-
-                if ( $('#phoneNum1').val() == '') {
-            
-                    alert('첫번째 휴대폰번호를 입력해주세요.');
-                    return $('#phoneNum1').focus();
-                }
-
-                if ( $('#phoneNum2').val() == '') {
-                    alert('두번째 휴대폰번호를 입력해주세요.');
-                    return $('#phoneNum2').focus();
-                }
-
-                if ( $('#phoneNum3').val() == '') {
-                    alert('세번째 휴대폰번호를 입력해주세요.');
-                    return $('#phoneNum3').focus();
-                }
-
-                $.ajax({    
-                    type:"POST",
-                    url: '/common/ajax/user.aspx/GetSMSMaster',
-                    data: "{'sms_yn':'" + smsyn + "' , 'phoneNum1':'" + app.crypto.AESEncryptToBase64(phoneNum_1) +"',  'phoneNum2':'" + app.crypto.AESEncryptToBase64(phoneNum_2) +"', 'phoneNum3':'" + app.crypto.AESEncryptToBase64(phoneNum_3) +"'  }",                
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
-                    success: function (result) {
-                        switch (result.d.toString()) {
-                            case "0":
-                                // 등록되지 않음
-                                  alert('전송에 실패하였습니다. 잠시후 다시 시도해주시길 바랍니다.');
-                                break;
-                            case "1":
-                               
-                                //alert('성공');
-                                alert('고객님의 핸드폰 번호 '+phoneNum_1+'-'+phoneNum_2+'-'+phoneNum_3+'로 전송완료 하였습니다.');
-                                $('#phoneNum1').val('')
-                                $('#phoneNum2').val('')
-                                $('#phoneNum3').val('')
-                                $layer.removeClass('on');
-                                $(this).blur();
-
-                                // 등록완료
-                                break;
-                            case "2":
-                                // 등록되지 않음
-                                  alert('1일 3회까지만 발송 가능합니다.');
-                                break;
-                            default:
-                             //   alert('Error result Value : ' + result);
-                                break;
-                            }
-                        }
-                    }); 
-               });  // SMS
-
-
         });
     })(jQuery);
 	
@@ -1387,26 +1252,6 @@
         }
     }
 
-    $("#phoneNum1").keyup(function (event) {
-        if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-            var inputVal = $(this).val();
-            $(this).val(inputVal.replace(/[^0-9]/gi, ''));
-        }
-    });
-
-    $("#phoneNum2").keyup(function (event) {
-        if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-            var inputVal = $(this).val();
-            $(this).val(inputVal.replace(/[^0-9]/gi, ''));
-        }
-    });
-
-    $("#phoneNum3").keyup(function (event) {
-        if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-            var inputVal = $(this).val();
-            $(this).val(inputVal.replace(/[^0-9]/gi, ''));
-        }
-    });
 
     function appDownInfoPop() {
 

@@ -48,11 +48,6 @@ public class NonMemberServiceImpl implements NonMemberService{
 	}
 
 	@Override
-	public int delete(NonMemberDTO dto) throws Exception {
-		return 0; /*dao.delete(dto);*/
-	}
-
-	@Override
 	public int logout(NonMemberDTO dto) throws Exception {
 		return dao.logout(dto);
 	}

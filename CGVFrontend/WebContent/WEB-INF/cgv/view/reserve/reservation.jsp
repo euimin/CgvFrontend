@@ -73,11 +73,9 @@ preselectSetting(
 			
 			<!-- 타이틀 -->
 			<div class="navi">
-				<span class="right">				
-					<a class="button button-english" href="#" onmousedown="javascript:logClick('옵션/ENGLISH');" onclick="switchLanguage(); return false;"><span>ENGLISH</span></a>
+				<span class="right">					
 					<a class="button button-guide" href="#" onmousedown="javascript:logClick('옵션/예매가이드');" onclick="ticketPopupShow('popup_guide'); return false;"><span>예매가이드 - 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span></a>				
-					<a class="button button-schedule" href="#" onmousedown="javascript:logClick('옵션/상영시간표');" onclick="openSchedulePopup();return false;" title="새창열기"><span>상영시간표</span></a>
-					<a class="button button-reservation-restart" href="#" onmousedown="javascript:logClick('옵션/예매다시하기');" onclick="ticketRestart(); return false;"><span>예매 다시하기</span></a>				
+					<a class="button button-schedule" href="#" onmousedown="javascript:logClick('옵션/상영시간표');" onclick="openSchedulePopup();return false;" title="새창열기"><span>상영시간표</span></a>			
 				</span>
 				<div class="ie7_sucks" id="ie7_sucks"><span>Internet Explorer 9 이상에서 최적화된 서비스 이용이 가능합니다.</span></div>
 			</div>
@@ -207,6 +205,7 @@ preselectSetting(
 																$(this).toggleClass("selected");
 																
 																$("#theater_name").html("CGV"+$(this).children("a").html());
+																$(".site").html("CGV"+$(this).children("a").html());
 																theater_code = $(this).children("#theater_code").val();
 																$("#contents_info_theater").css("display", "inline");
 																$("#info_theater>.placeholder").addClass("hidden");																												
@@ -244,6 +243,7 @@ preselectSetting(
 							<!-- 날짜선택 -->
 							<script>
 								var screeningdate;
+								var screen_code;
 								$(function(){
 									$("#date_list>ul>div>li").click(function(){																															
 										$("#date_list>ul>div>li").each(function(){
@@ -262,7 +262,35 @@ preselectSetting(
 												dataType:"json",
 												data:"movie_code="+movie_code+"&theater_code="+theater_code+"&screeningdate="+screeningdate,
 												success:function(data){
-													$("#screenPlaceHolder").addClass("hidden");
+													if(data.length!=0){
+														var jqueryStr = '<script>$(function(){$(".theater>ul>li").click(function(){$(".theater>ul>li").each(function(){$(this).removeClass("selected");});$(this).toggleClass("selected");$("#date_data").html($("#date_data").html().substring(0, $("#date_data").html().length));$("#date_data").append(" "+$(this).find("#timeData").html());$(".playYMD-info>b").html($("#date_data").html());screen_code=$(this).children("#screenCodeData").val();getSeatInfo();$("#screen_data").html($(this).children("#screenData").val());$("#step2Screen").html($(this).children("#screenData").val());$(".restNum").html($(this).children("#seatsData").val());$(".totalNum").html($(this).children("#seatsData").val());$(".btn-right").addClass("on").attr("onclick", "OnTnbRightClick(); return false;");});});<\/script>';
+														var timeTable = '';
+														$.each(data,function(index,record){
+															timeTable += '<div class="theater"><span class="title"><span class="name">2D</span><span class="floor">';
+															timeTable += record.no+'관</span><span class="seatcount">(총';
+															timeTable += record.seats+'석)</span></span><ul>';
+															var timeList = record.timeSchedule;
+															timeList = timeList.substring(0, timeList.length-1);
+															var timeArray = timeList.split(",");
+															var timeSect="";
+															timeArray.forEach(function(time){
+																//li class="morning/night selected"
+																timeSect += '<li><input type="hidden" id="screenData" value="'+record.no+'관"/><input type="hidden" id="seatsData" value="'+record.seats+'"/><input type="hidden" id="screenCodeData" value="'+record.screen_code+'"/><a class="button" href="#" onclick="return false;"><span class="time"><span id="timeData">';
+																timeSect += time+'</span></span><span class="count">잔여석</span><div class="sreader">종료시간 00:00</div><span class="sreader mod">심야</span></a></li>';
+															});
+															timeTable += timeSect+'</ul></div>';
+														});
+														$("#timeDiv").html(timeTable);
+														$("#timeDiv").append(jqueryStr);
+														$("#screenPlaceHolder").addClass("hidden");	
+													}
+													else{
+														$("#timeDiv").html("");
+														$("#date_data").html($("#date_data").html().substring(0, 13));
+														$("#screen_data").html("");
+														$(".btn-right").removeClass("on").attr("onclick" ,"return false;");
+														$("#screenPlaceHolder").removeClass("hidden");
+													}									
 												},
 												error:function(request,status,error){
 													alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
@@ -299,7 +327,7 @@ preselectSetting(
 													<span class="dayweek">${dateMap.dayweek}</span>
 													<span class="day">${dateMap.day}</span>
 													<input type="hidden" id="dateStr" 
-														value="${dateMap.year}.${dateMap.month}.${dateMap.day}(${dateMap.dayweek})"/>
+														value="${dateMap.year}.${dateMap.month}.${dateMap.day} (${dateMap.dayweek})"/>
 													<input type="hidden" id="dateData" 
 														value="${dateMap.year}-${dateMap.month}-${dateMap.day}"/>
 												</a>
@@ -326,34 +354,12 @@ preselectSetting(
 							<div class="time-option">
 								<span class="morning">조조</span><span class="night">심야</span>
 							</div>
-							<div id="screenPlaceHolder" class="placeholder" style="height: 522px;">영화, 극장, 날짜를 선택해주세요.</div><!-- class="hidden" -->
-							
-							<div class="time-list nano has-scrollbar" style="height: 522px;">
-								<div class="content scroll-y" tabindex="-1" style="right: -17px;">
-									
-									<div class="theater">
-										<span class="title">
-											<span class="name">2D</span>
-											<span class="floor">5관</span>
-											<span class="seatcount">(총172석)</span>
-										</span>
-										<ul>
-											
-											<li>
-												<a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
-													<span class="time">
-														<span>23:50</span>
-													</span>
-													<span class="count">156석</span>
-													<div class="sreader">종료시간 26:21</div>
-													<span class="sreader mod"></span>
-												</a>
-											</li>
-											
-										</ul>
-									</div>
-									
-								</div>
+							<div id="screenPlaceHolder" class="placeholder" style="height: 522px;">영화, 극장, 날짜를 선택해주세요.</div><!-- class="hidden" -->							
+							<div class="time-list nano has-scrollbar" style="height: 522px;">				
+								<div id="timeDiv" class="content scroll-y" tabindex="-1" style="right: -17px;">
+									<!-- 상영시간표 -->				
+									<!-- jquery -->																								
+								</div>								
 								<div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;">
 									<div class="slider slider-y" style="height: 50px;"></div>
 								</div>
@@ -366,9 +372,9 @@ preselectSetting(
 				</div>
 				<!-- //step1 -->
 				<!-- step2 -->
-				<div class="step step2">
+				<div class="step step2" style="height: 595px; display: none;">
 					<!-- SEAT 섹션 -->
-					<div class="section section-seat">
+					<div class="section section-seat" style="height: 595px;"> 
 						<div class="col-head" id="skip_seat_list">
 							<h3 class="sreader">
 								인원 / 좌석
@@ -377,11 +383,11 @@ preselectSetting(
 							<a href="#" class="skip_to_something" onclick="skipToSomething('tnb_step_btn_right');return false;">인원/좌석선택 건너뛰기</a>
 						</div>
 						<div class="col-body">
-							<div class="person_screen">
+							<div class="person_screen" style="height: 120px">
 								<!-- NUMBEROFPEOPLE 섹션 -->
 								<div class="section section-numberofpeople">
-									<div class="col-body">
-										<div class="numberofpeople-select">
+									<div class="col-body" style="height: 595px;">
+										<div class="numberofpeople-select" style="height: 110px; margin-top: 5px">
 											<div class="group adult" id="nop_group_adult">
 												<span class="title">일반</span>
 												<ul>
@@ -424,7 +430,7 @@ preselectSetting(
 													<li data-count="8"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>8<span class='sreader'>명</span></a></li>
 												</ul>
 											</div>
-											<div class="group special hide" id="nop_group_sepcial">
+											<div class="group special" id="nop_group_sepcial">
 												<span class="title">우대</span>
 												<ul>
 													<li data-count="0" class="selected"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>0<span class='sreader'>명</span></a></li>
@@ -441,48 +447,234 @@ preselectSetting(
 										</div>
 									</div>
 								</div>
-								<!-- 인접좌석 -->
-								<div class="adjacent_seat_wrap">
-									<div class="adjacent_seat" id="adjacent_seat">
-										<span class="title">좌석 붙임 설정</span>
-										<div class="block_wrap">
-											<span class="seat_block block1"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(1, this);" disabled><span class="box"></span><span class="sreader">1석 좌석붙임</span></label></span>
-											<span class="seat_block block2"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(2, this);" disabled><span class="box"></span><span class="box"></span><span class="sreader">2석 좌석붙임</span></label></span>
-											<span class="seat_block block3"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(3, this);" disabled><span class="box"></span><span class="box"></span><span class="box"></span><span class="sreader">3석 좌석붙임</span></label></span>
-											<span class="seat_block block4"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(4, this);" disabled><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span><span class="sreader">4석 좌석붙임</span></label></span>
-										</div>
-									</div>
-								</div>
 								<!-- NUMBEROFPEOPLE 섹션 -->
 								<div class="section section-screen-select">
-									<!-- UI 변경으로 삭제 
-									<div class="title">선택하신 상영관<span>/</span>시간</div>
-									-->
-									<!-- UI 변경
-									<div class="screen-time">
-										<span class="screen"><b></b></span>
-										<span class="seats seat_all"></span>
-										<span class="time"></span>
-										<span class="seats seat_remain"></span>
-									</div>
-									-->
 									<div id="user-select-info">
 										<p class="theater-info">
 											<span class="site">CGV 천왕성</span>
-											<span class="screen">11층 8관 [Business]</span>
+											<span class="screen" id="step2Screen">11층 8관 [Business]</span>
 											<span class="seatNum">남은좌석  <b class="restNum">100</b>/<b class="totalNum">900</b></span>
 										</p>
-										<p class="playYMD-info"><b>2017.04.10</b><b class="exe">(월)</b><b>00:00 - 00:00</b></p>
+										<p class="playYMD-info"><b>2017.04.10</b></p>
 									</div>	
 									<a class="change_time_btn" href="#" onmousedown="if(event.stopPropagation){event.stopPropagation();}return false;" onclick="ticketStep2TimeSelectPopupShow();return false;"><span>상영시간 변경하기</span></a>
 								</div>
 							</div>
 							<!-- THEATER -->
-							<div class="theater_minimap">
+							<div class="theater_minimap" style="margin-top: 10px">
 								<div class="theater nano" id="seat_minimap_nano">
 									<div class="content">
 										<div class="screen" title="SCREEN"><span class="text"></span></div>
-										<div class="seats" id="seats_list"></div>
+										<div class="seats" id="seats_list" style="height: 400px; margin: 10px auto 0px auto; text-align: center;">
+											<canvas id="canvas" width="500" height="400"></canvas>
+											<script>
+												var row = 0;
+												var col = 0;
+												var numberlist = new Array();
+												var seatlist = new Array();
+												function getSeatInfo(){
+													$(function(){											
+														$.ajax({
+															url:"<c:url value='/seatSelect.front'/>",												
+															type:"get",
+															dataType:"json",
+															data:"screen_code="+screen_code,
+															success:function(data){								
+																var totalRow = 0;
+																var totalCol = 0;
+																$.each(data,function(index,record){
+																	var l_row = record.seatnumber.charCodeAt(0);				
+																	var l_col = parseInt(record.seatnumber.substring(1));
+																	if(l_row>totalRow) totalRow = l_row;
+																	if(l_col>totalCol) totalCol = l_col;
+																	
+																	numberlist.push(record.seatnumber);
+																	seatlist.push(record.seat);
+																});
+																totalRow -= 64;
+																row = totalRow;
+																col = totalCol;								
+																makeSeats();
+															},
+															error:function(request,status,error){
+																alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
+															}
+														});													
+													});
+												}
+											
+											    function makeSeats(){												
+													var canvas = document.getElementById("canvas");
+													var ctx = canvas.getContext("2d");
+													var seats = new Array(col*row);
+													var rows = new Array(row);
+													
+													function Row(){
+														this.x;
+														this.y;
+														this.row;
+														
+														this.draw = drawRow;
+													}
+													
+													function drawRow(){
+														ctx.fillStyle = "black";
+														ctx.font = "bold 13px verdana";
+														ctx.fillText(this.row, this.x+5, this.y+13);
+													}
+													
+													function initRow(){
+														var yPos = 0;
+														var rowNo = 65;
+														for(var i=0; i<row; i++){
+															rows[i] = new Row();
+															rows[i].x = 0;
+															rows[i].y = yPos;
+															rows[i].row = String.fromCharCode(rowNo);
+															yPos += 21;
+															rowNo++;
+														}
+													}
+													
+													function Seat(){
+														this.x;
+														this.y;
+														this.color;
+														this.size;
+														this.fontColor;
+														this.colnumber;
+														this.visible;
+														this.number;
+														this.type;
+														
+														this.drawSeat = drawSeat;
+													}
+													
+													function drawSeat(){
+														if(this.type=="sweetbox"){
+															this.color = "#FF0066";
+														}
+														else if(this.type=="hadicapped"){
+															this.color = "#1E8449";
+														}
+														else{
+															this.color = "#808B96";
+														}
+														ctx.fillStyle = this.color;
+														ctx.fillRect(this.x, this.y, this.size, this.size);
+														if(this.type=="prime"||this.type=="standard"||this.type=="economy"){
+															var borderColor;
+															switch(this.type){
+																case "prime": borderColor = "red"; break;
+																case "standard": borderColor = "green"; break;
+																case "economy": borderColor = "yellow";
+															}
+															ctx.strokeStyle = borderColor;
+															ctx.lineWidth = 5;
+															ctx.strokeRect(this.x, this.y, this.size, this.size);
+														}
+														ctx.fillStyle = this.fontColor;
+														ctx.font = "10px verdana";
+														ctx.fillText(this.colnumber, this.x+5, this.y+13);
+													}
+													
+													function initSeat(){
+														var xPos = 21;
+														var yPos = 0;
+														var rowNo = 65;
+														for(var i=1; i<=(row*col); i++){
+															seats[i-1] = new Seat();
+															seats[i-1].x = xPos;
+															seats[i-1].y = yPos;
+															seats[i-1].color = "#808B96";
+															seats[i-1].size = 20;
+															seats[i-1].fontColor = "white";
+															seats[i-1].colnumber = ((i-1)%col)+1;
+															seats[i-1].number = String.fromCharCode(rowNo)+seats[i-1].colnumber;
+															seats[i-1].visible = false;
+															seats[i-1].type = "general";
+																			
+															for(var j=0; j<numberlist.length; j++){
+																if(seats[i-1].number==numberlist[j]){
+																	seats[i-1].visible = true;
+																	seats[i-1].type = seatlist[j];
+																	break;
+																}					
+															}
+															
+															xPos += 21;
+															if(i%col==0){
+																xPos = 21;
+																yPos += 21;
+																rowNo++;
+															}
+														}		
+													}
+													
+													var clickEvent = "arrangement";								
+													function clickEventHandler(e){
+														console.log("x:"+e.offsetX+",y:"+e.offsetY);
+														for(var i=0; i<(row*col); i++){
+															if((e.offsetX>seats[i].x)&&(e.offsetX<(seats[i].x+seats[i].size))&&
+																(e.offsetY>seats[i].y)&&(e.offsetY<(seats[i].y+seats[i].size))){
+																if(clickEvent=="arrangement"){
+																	seats[i].visible = !seats[i].visible;
+																}
+																else if(clickEvent=="prime"||clickEvent=="standard"||clickEvent=="economy"){
+																	var targetRow = Math.floor(i/col);
+																	console.log(targetRow);
+																	for(var j=0; j<(row*col); j++){
+																		if(Math.floor(j/col)==targetRow){
+																			if(seats[j].type != clickEvent)seats[j].type = clickEvent;
+																			else seats[j].type = "general";
+																		}
+																	}
+																}
+																else{
+																	if(seats[i].colnumber%2==0||(seats[i].colnumber==col)){
+																		if(seats[i].type != clickEvent){
+																			seats[i].type = clickEvent;
+																			seats[i-1].type = clickEvent;
+																		}
+																		else{
+																			seats[i].type = "general";
+																			seats[i-1].type = "general";
+																		}
+																	}
+																	else if((seats[i].colnumber%2==1)){
+																		if(seats[i].type != clickEvent){
+																			seats[i].type = clickEvent;
+																			seats[i+1].type = clickEvent;
+																		}
+																		else{
+																			seats[i].type = "general";
+																			seats[i+1].type = "general";
+																		}
+																	}
+																}
+															}
+														}
+													}
+													canvas.addEventListener("click", clickEventHandler);
+													
+													initRow();
+													initSeat();
+													
+													function viewLoop(){
+														ctx.clearRect(0, 0, canvas.width, canvas.height);
+														for(var i=0; i<row; i++){
+															rows[i].draw();
+														}
+														for(var i=0; i<(row*col); i++){
+															if(seats[i].visible){
+																seats[i].drawSeat();
+															}
+														}		
+													}		
+													var interval = setInterval(viewLoop, 33.33);	
+												}
+										    </script>
+										</div>
 									</div>
 								</div>
 								<div class="minimap opened" id="minimap">
@@ -494,7 +686,7 @@ preselectSetting(
 									</div>
 									<div class="mini_region"><span></span></div>
 								</div>
-								<div class="legend">
+								<div class="legend" style="width: 110px">
 									<div class="buttons">
 										<a class="btn-zoom" id="seat_zoom_btn" href="#" onclick="ts2SeatZoomClickListener();return false;">크게보기</a>
 									</div>
@@ -504,15 +696,12 @@ preselectSetting(
 										<span class="icon notavail"><span class="icon"></span>선택불가</span>
 									</div>
 									<div class="seat-type">
-										<span class="radiobutton type-prime" title="최적의 영상과 사운드로 영화를 감상할 수 있는 CGV 추천좌석"><span class="icon"></span>Prime Zone</span>
-										<span class="radiobutton type-normal"><span class="icon"></span>일반석</span>
-										<span class="radiobutton type-couple" title="연인, 가족, 친구를 위한 둘만의 좌석"><span class="icon"></span>커플석</span>
+										<span class="radiobutton type-rating_prime" title="최적의 영상과 사운드로 영화를 감상할 수 있는 CGV 추천좌석"><span class="icon"></span>Prime Zone</span>
+										<span class="radiobutton type-rating_comfort" title="최적의 영상과 사운드로 영화를 감상할 수 있는 CGV 추천좌석"><span class="icon"></span>Standard Zone</span>
+										<span class="radiobutton type-rating_economy" title="최적의 영상과 사운드로 영화를 감상할 수 있는 CGV 추천좌석"><span class="icon"></span>Economy Zone</span>
+										
 										<span class="radiobutton type-handicap"><span class="icon"></span>장애인석</span>
 										<span class="radiobutton type-sweetbox" title="국내 최대 넓이의 프리미엄 커플좌석"><span class="icon"></span>SWEETBOX</span>
-										<span class="radiobutton type-veatbox" title="음향 진동 시스템이 적용된 특별좌석"><span class="icon"></span>VEATBOX</span>
-										<span class="radiobutton type-4d" title="바람, 진동 등 오감으로 영화 관람, 4DX"><span class="icon"></span>4DX</span>
-										<span class="radiobutton type-widebox" title="일반석보다 더 넓고 편안한 좌석"><span class="icon"></span>WIDEBOX</span>
-										<span class="radiobutton type-cinekids last" title="365일 어린이 전용 상영관"><span class="icon"></span>CINEKIDS</span>
 									</div>
 								</div>
 							</div>
@@ -574,7 +763,7 @@ preselectSetting(
 							<span class="data"></span>
 						</div>						
 						<div class="placeholder" title="영화선택"></div>											
-					</div>
+					</div>	
 					<div class="info theater" id="info_theater">
 						<div id="contents_info_theater" style="display: none;">
 							<div class="row name">
@@ -587,7 +776,7 @@ preselectSetting(
 							</div>
 							<div class="row screen">
 								<span class="header">상영관</span>
-								<span class="data"></span>
+								<span class="data" id="screen_data"></span>
 							</div>
 							<div class="row number">
 								<span class="header">인원</span>
@@ -637,7 +826,15 @@ preselectSetting(
 					</div>
 					<!-- btn-right -->
 					<div class="tnb_step_btn_right_before" id="tnb_step_btn_right_before"></div>
-					<a class="btn-right" id="tnb_step_btn_right" href="#" onclick="OnTnbRightClick(); return false;" title="">다음단계로 이동 - 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</a>
+					<a class="btn-right" id="tnb_step_btn_right" href="#" onclick="return false;" title="">다음단계로 이동 - 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</a>
+					<script>
+						function OnTnbRightClick(){
+							$(".step.step1").css("display", "none");
+							$(".step.step2").css("display", "block");
+							$(".btn-right").removeClass("on");
+							$(".tnb").removeClass("step1").addClass("step2");
+						}
+					</script>
 				</div>
 			</div>
 			</div>
@@ -856,12 +1053,19 @@ preselectSetting(
         </div>
     </div><!-- //bd -->  
     <div class="ft">
-        <a title="닫기" href="#" onclick="return false;" class="btn btn_white btn_close"><span>닫기</span></a>
-        <a title="닫기" href="#" onclick="return false;" class="layer_close">닫기</a>
+        <a title="닫기" href="#" onclick="guideLayoutClose();return false;" class="btn btn_white btn_close"><span>닫기</span></a>
+        <a title="닫기" href="#" onclick="guideLayoutClose();return false;" class="layer_close">닫기</a>
     </div><!-- //ft -->  
 </div>
+<script>
+	function guideLayoutClose(){
+		$(function(){
+			$(".ft_layer_popup").css("display", "none");
+			$(".blackscreen").css("display", "none");
+		});
+	}
+</script>
 <!-- //Popup -->
-
 			</div>
 			<!-- //팝업 -->
 		</div>

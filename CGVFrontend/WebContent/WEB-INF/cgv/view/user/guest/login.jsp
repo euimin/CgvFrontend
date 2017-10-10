@@ -214,28 +214,56 @@
 	<script type="text/javascript">
 	$(function(){
 		
+		$.validator.setDefaults({"submitHandler":function(form){
+			//submit하기전 수행할 로직
+        	var phone=$("#guestMob1").val()+"-"+$("#guestMob2").val()+"-"+$("#guestMob3").val();
+        	$("#phone").val(phone);
+        	
+			//반드시 submit()함수 호출			
+			form.submit();				
+			//self.close();
+		}});
+	
 		/* 유효성 체크 Validate */
 		$("#form1").validate({
-
+			errorLabelContainer: $("#form1 div.error"),
+			
 			rules:{
-				nonmember_id:"required",
+				name:"required",
+				birth:{required:true,digits:true},
+				guestMob1:{required:true},
+				guestMob2:{required:true,digits:true},
+				guestMob3:{required:true,digits:true},
 				password:{required:true,minlength:4},
-				passwordChk:{required:true,minlength:4,equalTo:"#password"},	
+				passwordCheck:{required:true,minlength:4,equalTo:"#password"},	
 				},			
 			messages:{
-				nonmember_id:"<br/>&nbsp;&nbsp;아이디를 입력하세요.",
+				name:"<br/>&nbsp;&nbsp;이름을 입력하세요.",	
+				birth:{
+					required:"<br/>&nbsp;&nbsp;법정생년월일을 입력하세요.",
+					digits:"<br/>&nbsp;&nbsp;숫자만 입력 가능합니다."
+				},
+				guestMob1:"<br/>&nbsp;&nbsp;휴대전화 앞번호를 선택하세요.",
+				guestMob2:{
+					required:"<br/>&nbsp;&nbsp;휴대전화 중간번호를 입력하세요.",
+					digits:"<br/>&nbsp;&nbsp;숫자만 입력 가능합니다."
+				},
+				guestMob3:{
+					required:"<br/>&nbsp;&nbsp;휴대전화 끝번호를 입력하세요.",
+					digits:"<br/>&nbsp;&nbsp;숫자만 입력 가능합니다."
+				},
 				password:{
 					required:"<br/>&nbsp;&nbsp;비밀번호를 입력하세요.",
 					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다."
 				},
-				passwordChk:{
+				passwordCheck:{
 					required:"<br/>&nbsp;&nbsp;비밀번호를 재입력하세요.",
 					minlength:"<br/>&nbsp;&nbsp;비밀번호는 4자리입니다.",
 					equalTo:"<br/>&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
 				}
 			}			
-		});////////////////////validate	
-	
+		});////////////////////validate
+		
 	});
 	
 	</script>
@@ -260,7 +288,7 @@
 	
 	/* 일그러진 UI 수정: box 크키, 버튼 위치 조정 */
 	.sect-user .wrap-result, .sect-user .box-simples, .sect-user .box-confirms{  
-	padding:40px 30px 0px; border:1px solid #e8e8dd;}
+	padding:40px 30px 75px; border:1px solid #e8e8dd;}
 	.col-simple > .box-simples ,.col-confirm > .box-confirms{ 
 	height:auto;}
 	
@@ -410,61 +438,90 @@
                 <a href="<c:url value='/guest.front'/>">비회원로그인</a>
             </li>
         </ul>
-        <h3>개인정보(아이디,비밀번호) 입력 후 로그인 </h3>
+        <h3>개인정보(이름,휴대폰번호,법정생년월일,비밀번호) 입력 후 로그인 </h3>
         <p>비회원 로그인 정보 오입력 시, 예매내역 확인/취소 및 티켓 발권이 어려울 수 있으니, 입력하신 정보를 다시 한번 확인해주시기 바랍니다.</p>
-        <div class="cols-enterform nomember">
+         <div class="cols-enterform nomember">
             <div class="col-simple">
                 <h4>비회원 예매확인/취소 로그인 입력정보</h4>
                 <div class="box-simples">
-                    <p class="disc-info"> 비회원정보에 등록된 임시발급 아이디, 비밀번호(4자리)를 입력해주세요.<br />
-                <span style="font-size:8pt;color:red;">* Caps Lock 을 반드시 해제해주세요.</span></p>
+                    <p class="disc-info">비회원정보에 등록된 이름, 법정생년월일, 휴대폰 번호, 비밀번호(4자리)를 입력해주세요.<br />
+                    모든 항목은 필수 입력사항입니다.</p>
                     <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestLogin.front'/>">
-                    
-                      <fieldset>
+                    <input type="hidden" name="nonmember_id" id="nonmember_id"/>
+                    <input type="hidden" name="phone" id="phone"/>
+                    <fieldset>
                         <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
                         <table cellpadding="0" cellspacing="0">
 
                             <tbody>
+
                             <tr>
-                                <th scope="row"><label for="nonmember_id">아이디</label></th>
-                                <td><input type="text" placeholder="아이디 입력" name="nonmember_id" id="nonmember_id"/></td>
+                                <th scope="row"><label for="name">이름</label></th>
+                                <td><input type="text" placeholder="이름 입력" name="name" id="name"/></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label for="birth">법정생년월일&nbsp;<em>(6자리)</em>&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+                                <td><input type="text" placeholder="법정생년월일 입력"name="birth" id="birth" length="6" maxlength="6"/> - <i> *******</i>
+                                <label for="birth" class="error" style="color:red;"></label></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">휴대폰번호</th>
+                                <td>
+                                    <select title="휴대폰번호 앞자리" name="guestMob1" id="guestMob1" class="inputstl">
+                                        <option value="" selected="selected">선택</option>
+                                        <option value="010">010</option>
+                                        <option value="011">011</option>
+                                        <option value="016">016</option>
+                                        <option value="017">017</option>
+                                        <option value="018">018</option>
+                                        <option value="019">019</option>
+                                    </select>
+                                    -
+                                    <input type="text" style="width:85px;" placeholder="중간자리 입력" name="guestMob2" id="guestMob2" length="4" maxlength="4"/>
+                                    -
+                                    <input type="text" style="width:85px;" placeholder="끝자리 입력" name="guestMob3" id="guestMob3" length="4" maxlength="4"/>
+                                	<label for="guestMob1" class="error" style="color:red;"></label>
+                                	<label for="guestMob2" class="error" style="color:red;"></label>
+                                	<label for="guestMob3" class="error" style="color:red;"></label>
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4" /></td>
+                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4"/></td>
                             </tr>
                             <tr>
-                                <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordChk" id="passwordChk" length="4" maxlength="4" /></td>
+                                <th scope="row"><label for="passwordCheck">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
+                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordCheck" id="passwordCheck" length="4" maxlength="4"/></td>
                             </tr>
+
                             </tbody>
                         </table>
                       	   <div class="box-btn">
-                      	   		${guestLoginError }
+
 		                    <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
 	                      </div>
-                      </fieldset>
+                    </fieldset>
                     </form>
-                </div>
+ 				</div>
             </div>
-            <div class="col-confirm">
+
+            
+            
+<%--             <div class="col-confirm">
                 <h4>비회원 로그인 등록정보 분실 안내</h4>
                 <div class="box-confirms">
-                    <p class="disc-info">비회원 등록정보 찾기를 통해 비회원 예매번호 및 비밀번호를 확인하실 수 있습니다.</p>
+                    <p class="disc-info">비회원 등록정보 찾기를 통해 비밀번호를 확인하실 수 있습니다.</p>
                     <div class="confirm-type">
+                        <h5>비밀번호 분실 시</h5>
+                        <p>이름 + 법정생년월일+ 휴대폰 번호 입력 후 확인</p>
                         <h5>휴대폰 인증을 통해 확인</h5>
-                        <!-- <p>휴대폰 인증을 통해 확인</p> -->
                         <a href="<c:url value='/findPhone.front'/>" class="round black"><span>휴대폰 번호로 찾기</span></a>
-                        <!-- <h5>휴대폰 번호 분실 시</h5>
-                        <p>이름 + 법정생년월일+ 비밀번호 입력 후 확인</p> -->
-                        <p>&nbsp;</p>
-                        <h5>이메일 인증을 통해 확인</h5>
-                        <a href="<c:url value='/findEmail.front'/>" class="round black"><span>이메일 주소로 찾기</span></a>
-                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-   </div> 
+            </div> --%>
+         </div>
+    </div> 
+
     <div class="sect-loginguide">
         <dl class="box-operationguide">
             <dt>비회원 <br />로그인 시 <br />참고하세요!</dt>

@@ -228,8 +228,6 @@
         	var phone=$("#guestMob1").val()+"-"+$("#guestMob2").val()+"-"+$("#guestMob3").val();
         	$("#phone").val(phone);
         	
-        	var email=$("#guestEmail1").val()+"@"+$("#guestEmail2").val();
-        	$("#email").val(email);
 			//반드시 submit()함수 호출			
 			form.submit();				
 			//self.close();
@@ -241,19 +239,19 @@
 			
 			rules:{
 				name:"required",
-				birth:{required:true,digits:true},
+				birth:{required:true,digits:true,minlength:6},
 				guestMob1:{required:true},
 				guestMob2:{required:true,digits:true},
 				guestMob3:{required:true,digits:true},
-				guestEmail1:"required",
 				password:{required:true,minlength:4},
-				passwordChk:{required:true,minlength:4,equalTo:"#password"},	
+				passwordCheck:{required:true,minlength:4,equalTo:"#password"},	
 				},			
 			messages:{
 				name:"&nbsp;&nbsp;이름을 입력하세요.",	
 				birth:{
 					required:"&nbsp;&nbsp;법정생년월일을 입력하세요.",
-					digits:"&nbsp;&nbsp;숫자만 입력 가능합니다."
+					digits:"&nbsp;&nbsp;숫자만 입력 가능합니다.",
+					minlength:"&nbsp;&nbsp;법정생년월일은 6자리입니다."
 				},
 				guestMob1:"&nbsp;&nbsp;휴대전화 앞번호를 선택하세요.&nbsp;<span style='color:gray;'>│</span>&nbsp;",
 				guestMob2:{
@@ -264,12 +262,11 @@
 					required:"휴대전화 끝번호를 입력하세요.",
 					digits:"숫자만 입력 가능합니다."
 				},
-				guestEmail1:"&nbsp;&nbsp;이메일 주소를 입력하세요.",
 				password:{
 					required:"&nbsp;&nbsp;비밀번호를 입력하세요.",
 					minlength:"&nbsp;&nbsp;비밀번호는 4자리입니다."
 				},
-				passwordChk:{
+				passwordCheck:{
 					required:"&nbsp;&nbsp;비밀번호를 재입력하세요.",
 					minlength:"&nbsp;&nbsp;비밀번호는 4자리입니다.",
 					equalTo:"&nbsp;&nbsp;비밀번호가 일치하지 않습니다."
@@ -493,9 +490,7 @@
                     <p class="disc-info"> 비회원정보에 등록된 이름, 법정생년월일, 휴대폰 번호, 비밀번호(4자리)를 입력해주세요.<br />
                 <span style="font-size:8pt;color:red;">* 모든 항목은 필수 입력사항입니다.</span></p>
                     <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestReseve.front'/>">
-                    <input type="hidden" name="nonmember_id" id="nonmember_id"/>
                     <input type="hidden" name="phone" id="phone"/>
-                    <input type="hidden" name="email" id="email"/>
                     <fieldset>
                         <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
                         <table cellpadding="0" cellspacing="0">
@@ -532,29 +527,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">이메일주소</th>
-                                <td>
-                                    <input type="text" placeholder="이메일 아이디" name="guestEmail1" id="guestEmail1" style="width:85px;" />
-                                    @
-                                    <input type="text" placeholder="이메일 도메인" name="guestEmail2" id="guestEmail2" style="width:85px;" />
-                                	<select title="이메일 도메인 선택" name="Email_Auto" id="Email_AutoF" class="inputstl">
-									  <option value="" selected="selected">직접입력</option>
-									  <option value="gmail.com" >구글</option>
-									  <option value="naver.com" >네이버</option>
-									  <option value="nate.com" >네이트</option>
-									  <option value="hanmail.net" >다음</option>
-									  <option value="yahoo.com" >야후</option>
-									</select>
-                                	<label for="guestEmail1" class="error" style="color:red;"></label>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" length="4" maxlength="4"/></td>
+                                <td><input type="password" placeholder="비밀번호 입력" name="password" id="password" maxlength="4"/></td>
                             </tr>
                             <tr>
-                                <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
-                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordChk" id="passwordChk" length="4" maxlength="4"/></td>
+                                <th scope="row"><label for="passwordCheck">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
+                                <td><input type="password" placeholder="비밀번호 재입력" name="passwordCheck" id="passwordCheck" maxlength="4"/></td>
                             </tr>
                             </tbody>
                         </table>

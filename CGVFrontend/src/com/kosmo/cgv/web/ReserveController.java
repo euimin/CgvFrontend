@@ -7,18 +7,19 @@ import java.util.Map;
 import java.util.Vector;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.annotation.RequestScope;
 
 import com.kosmo.cgv.service.MovieDto;
+import com.kosmo.cgv.service.SeatDto;
 import com.kosmo.cgv.service.impl.MovieServiceImpl;
+import com.kosmo.cgv.service.impl.SeatServiceImpl;
 import com.kosmo.cgv.service.impl.ScreeningServiceImpl;
 import com.kosmo.cgv.service.impl.TheaterServiceImpl;
 
@@ -30,6 +31,8 @@ public class ReserveController {
 	private TheaterServiceImpl theaterService;
 	@Resource(name="screeningService")
 	private ScreeningServiceImpl screeningService;
+	@Resource(name="seatService")
+	private SeatServiceImpl seatService;
 	
 	@RequestMapping("/ticket.front")
 	public String ticket() throws Exception{
@@ -96,27 +99,53 @@ public class ReserveController {
 		return json.toJSONString();
 	}
 	
-	
 	@ResponseBody
 	@RequestMapping(value="/dateSelect.front" ,produces="text/html;charset=UTF-8")
 	public String dateSelect(@RequestParam String movie_code,
 							 @RequestParam String theater_code,
-							 @RequestParam String screeningdate) throws Exception{		
-		List<Map<String,String>> screenList = theaterService.selectScreenList(theater_code);
+							 @RequestParam String screeningdate) throws Exception{
+		List<Map<String, String>> timeTable = new Vector<Map<String, String>>();
+		//keys:SCREEN_CODE, NO, SEATS
+		List<Map<String,String>> screenList = theaterService.selectScreenList(theater_code);		
 		for(Map screen: screenList){
+			String no = screen.get("NO").toString();
+			String seats = screen.get("SEATS").toString();
+			String screen_code = screen.get("SCREEN_CODE").toString();
+			
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("movie_code", movie_code);
-			map.put("screen_code", screen.get("SCREEN_CODE").toString());			
+			map.put("screen_code", screen_code);			
 			map.put("screeningdate", screeningdate);
-			System.out.println(map.get("movie_code"));
-			System.out.println(map.get("screen_code"));
-			System.out.println(map.get("screeningdate"));
 			List<String> timeList = screeningService.selectTimeList(map);
-			for(String time: timeList) System.out.println(time);
+			if(!timeList.isEmpty()){
+				StringBuffer timeBuffer = new StringBuffer();
+				for(String time: timeList){
+					timeBuffer.append(time+",");
+				}
+				
+				Map<String, String> screeningInfo = new HashMap<String, String>();
+				screeningInfo.put("screen_code", screen_code);
+				screeningInfo.put("no", no);
+				screeningInfo.put("seats", seats);
+				screeningInfo.put("timeSchedule", timeBuffer.toString());
+				timeTable.add(screeningInfo);
+			}
 		}
-		//List<ScreeningDto> screeningList = screeningService.selectScreeningList(screen_code); 
-		JSONObject json = new JSONObject();				
-		return json.toJSONString();
+		return JSONArray.toJSONString(timeTable);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/seatSelect.front" ,produces="text/html;charset=UTF-8")
+	public String seatSelect(@RequestParam String screen_code) throws Exception{
+		List<Map<String, String>> seats = new Vector<Map<String, String>>();
+		List<SeatDto> seatList = seatService.selectSeatList(screen_code);
+		for(SeatDto seat: seatList){
+			Map<String, String> seatMap = new HashMap<String, String>();
+			seatMap.put("seatnumber", seat.getSeatnumber());
+			seatMap.put("seat", seat.getSeat());
+			seats.add(seatMap);
+		}
+		return JSONArray.toJSONString(seats);
 	}
 	
 	@RequestMapping("/proxy.front")

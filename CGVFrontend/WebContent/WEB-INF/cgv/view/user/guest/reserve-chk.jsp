@@ -216,11 +216,6 @@
     <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=kOrrMtxLuWGiRjYB0IIDA7EUhoynjc%2bbKguJOggJEgktCxWG0aCQPQBlUer7dLqIJSLz9bp5NwSvr2X0RKIm5Wx5cFJVVGQ5b0dnWFo5ZmhqUU5zSkNob1NjT2RDY1YwWDZGTnJ2WWtUYjRSVlhFbnh1cjNJaFk2clNTbTFVVEw%3d"></script>
 <script type="text/javascript">
 
-	function("form1"){
-		alert("들어오니");
-		document.write("${sessionScope.nonmember_id }");
-	}
-
 </script>
 
 </head>
@@ -372,7 +367,15 @@
         <!-- MY 예매내역 -->
         <div class="cols-mycgv-booking">
 	        <div class="tit-mycgv">
-		        <h4>MY(회원이름 님) 예매내역</h4>
+	        <input type="hidden" name="name" id="name"/>
+	        <input type="hidden" name="nonmember_id" id="nonmember_id"/>
+			
+			<c:if test="${dto.name == null}" var="isNotMember">
+		        <h4>MY(비회원 님) 예매내역</h4>
+			</c:if>
+			<c:if test="${not isNotMember}">
+		        <h4>MY(${dto.name } 님) 예매내역</h4>
+			</c:if>
 		        
 	        </div>
 	        <div class="info-log">
@@ -382,7 +385,12 @@
             
             <div class="lst-item">
 		        <div class="box-set-info nodata">
-		            고객님의 최근 예매내역이 존재하지 않습니다.
+		        <c:if test="${dto.nonmember_id == null}" var="isNotMember">
+					고객님의 최근 예매내역이 존재하지 않습니다.
+		        </c:if>
+		        <c:if test="${not isNotMember}">
+		        	뿌려주기
+		        </c:if>
 		        </div>
 	        </div>
             

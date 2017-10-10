@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kosmo.cgv.service.MembersDTO;
 import com.kosmo.cgv.service.MembersService;
@@ -37,14 +38,6 @@ public class MembersDAO implements MembersService{
 	public int insert(MembersDTO dto) throws Exception {
 	      return template.insert("MembersInsert", dto);
 	}
-	
-/*	@Override
-	public boolean pwCheck(String id, String password) throws Exception {
-		return template.selectOne(id, password);
-		
-		int count = template.selectOne("login", map);
-		return count ==1 ? true : false;
-	}*/
 
 	@Override
 	public int update(MembersDTO dto) throws Exception {
@@ -64,6 +57,12 @@ public class MembersDAO implements MembersService{
 		return 0;
 	}
 
-	
+	@Override
+	public boolean nickCheck(Map map) throws Exception {
+		int nickCount=template.selectOne("nickCheck", map);
+		return nickCount ==1 ? true : false;
+	}
+
+
 	
 }

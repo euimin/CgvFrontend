@@ -11,6 +11,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select name, theater_code from theater where region=#{region} order by name asc
 	</select>
 	<select id="selectScreenList" parameterType="String" resultType="java.util.Map">
-		select screen_code, no from screen where theater_code=#{theater_code}
+		select screen_code, no, seats from screen where theater_code=#{theater_code}
 	</select>
 </mapper>

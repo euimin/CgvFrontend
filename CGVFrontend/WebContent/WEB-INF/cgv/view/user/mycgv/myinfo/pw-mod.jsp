@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
-
-<!-- Mirrored from www.cgv.co.kr/user/guest/login-agreement.aspx by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jul 2017 13:09:20 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,12 +16,12 @@
     <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
     <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
     <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
-    <meta id="ctl00_og_title" property="og:title" content="비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
+    <meta id="ctl00_og_title" property="og:title" content="로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV"></meta>
     
     <meta id="ctl00_og_image" property="og:image" content="http://img.cgv.co.kr/common/cgv_200x200.jpg"></meta>
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
-    <title id="ctl00_headerTitle">비회원로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
+    <title id="ctl00_headerTitle">로그인 &lt; 회원서비스 | 영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
@@ -54,7 +52,7 @@
     <script type="text/javascript" src="http://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
 
 
-    
+    <script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
 
 	<script src="http://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
@@ -67,15 +65,14 @@
 
     <!-- 각페이지 Header Start--> 
     
-
     <!--/각페이지 Header End--> 
     <script type="text/javascript">
         //<![CDATA[
 
-        _TRK_CP = "/회원서비스/비회원로그인";
+        _TRK_CP = "/회원서비스/로그인";
 
         app.config('staticDomain', 'http://img.cgv.co.kr/R2014/')
-            .config('imageDomain', 'http://img.cgv.co.kr/')
+            .config('imageDomain', 'http://img.cgv.co.kr')
             .config('isLogin', 'False');
 
         // AD FLOAT
@@ -140,35 +137,6 @@
             setCookieAD(CurCookieName, CookieUrl, '1');
             $(document).find('#ad_float1').hide();
         }
-        function OpenAD() {
-            var AdUrl = window.location.href;
-            var ArrAdUrl = AdUrl.split("/");
-            var CookieUrl = ArrAdUrl[3];
-            var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
-            var CurCookieUrl = GetCookieAd(CurCookieName);
-
-            if (CurCookieUrl == null) {
-                CurCookieUrl = "";
-            }
-            else {
-                CurCookieUrl = DecryptAD(CurCookieUrl, "15442280");
-            }
-
-            if (CurCookieUrl.indexOf(CookieUrl) != -1) {
-                $(document).find('#ad_float1').hide();
-            }
-
-            //section.cgv.co.kr 매거진 체크
-            var magazineckurl = GetCookieAd("CgvPopAd-magazine");
-            if (magazineckurl != null) {
-                var magazineck = DecryptAD(magazineckurl, "15442280");
-                if (magazineck != null && magazineck == "magazine") {
-                    //값이있는경우 표시하지않음
-                    $(document).find('#ad_float1').hide();
-                }
-            }
-        }
-
 
 
         //상단 키워드 광고 (S)
@@ -214,32 +182,47 @@
 
         //]]>
     </script>
-    <script type="text/javascript" src="https://nsso.cjone.com/findCookieSecured.jsp?cjssoq=FwoXmxvITgqzikLxdZzGdfWLz3u9M9ruto1YHgewsXBTOjzF314YQ%2fzUZErngLbUDVDULlCwXF7U5GMe4XUPsDltQ2hIbktOS1lBdW9sREJPUFFOalgzWWZDYzI0NTNDdUtFYWljaWZzLzcvZHZ6bWRMRFF1S0o2OUV2Q3YxK2U%3d"></script>
 
-	<!-- 제이쿼리 코어 임베딩 -->
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
-	<!-- 폼의 유효성 체크용 제이쿼리 플러그인 -->
-	<script src="<c:url value='/js/jquery.validate.min.js'/>"></script>
-	<script type="text/javascript">
-	$(function(){
+ 	<script type="text/javascript">
+$(function(){
+			
+		$("#pwCheck").validate({
+			errorLabelContainer: $("#pwCheck div.error"),
+			
+			rules:{
+				password:"required",
+				pwdChk:{required:true,equalTo:"#password"}
+				},			
+			messages:{
+				password:"<br/><span style='line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;'>비밀번호를 입력해주세요.</span>",
+				pwdChk:{
+					required:"<br/><span style='line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;'>비밀번호를 입력해주세요.</span>",
+					equalTo:"<br/><span style='line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;'>비밀번호가 일치하지 않습니다.</span>"
+				}
+			}			
+		});////////////////////validate
+			
+		//2]input type="submit"버튼이 아닐때
+		//Step1] $(폼객체 선택자).validate()적용
+		//Step2] $(폼객체 선택자).valid()호출 
+		//       true반환시 $(폼객체 선택자).submit()호출한다
+		$("#save").click(function(){
+			if($("#pwCheck").valid()){
+				$("#pwCheck").submit();				
+			}	
+			
+		});
+
+});
+			
+  			
 		
-		$.validator.setDefaults({"submitHandler":function(form){
-			//submit하기전 수행할 로직
-        	var phone=$("#guestMob1").val()+"-"+$("guestMob2").val()+"-"+$("#guestMob3").val();
-        	$("#phone").val(phone);
-        	
-        	var email=$("#guestEmail1").val()+"@"+$("#guestEmail2").val();
-        	$("#email").val(email);
-			//반드시 submit()함수 호출			
-			form.submit();				
-			//self.close();
-		}});
-		
-	});
-	
-	</script>
+	</script> 
 
 	<style>
+	
+	/* 유효성 체크 글씨색상 변경 */
+	updateForm input +.error{color:red;}
 	
 	/* select option 꾸며주기 */
 	.inputstl {
@@ -252,43 +235,12 @@
 	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 	}
-	
-	/* 일그러진 UI 수정: box 크키, 버튼 위치 조정 */
-	.sect-user .wrap-result, .sect-user .box-simples, .sect-user .box-confirms{  
-	padding:40px 30px 120px; border:1px solid #e8e8dd;}
-	.col-simple > .box-simples ,.col-confirm > .box-confirms{ 
-	height:auto;}
-	
-	.round.inred > *:after{ 
-	right:-3px; bottom:-2.5px; background-position:-5px -15px;}
 
-	.round.black:before{ 
-	left:-2px; top:-2px; background-position:-10px 0;}
-	.round.black:after{ 
-	left:-2px; bottom:-1.5px; background-position: -10px -5px;}
-	.round.black > *:before{ 
-	right:-1.5px; top:-2px; background-position:-15px 0;}
-	.round.black > *:after{ 
-	right:-1.5px; bottom:-1.5px; background-position:-15px -5px;}
 	</style>
-
+ -->
+    
 </head>
 <body class="">
-
-<!--     <form name="ssologinfrm" action="https://www.cgv.co.kr/user/login/login-sso.aspx" method="post">
-        <input type="hidden" id="cjssoq" name="cjssoq" />
-        <input type="hidden" name="returnURL" value="/user/guest/login-agreement.aspx" />
-    </form>
-    <script type="text/javascript">
-        function cjsso() {
-            if ((typeof _cjssoEncData) != "undefined" && _cjssoEncData != "") {
-                document.getElementById("cjssoq").value = _cjssoEncData;
-                document.ssologinfrm.submit();
-            }
-        }
-
-        cjsso();
-    </script> -->
 
 <div class="skipnaiv">
 	<a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
@@ -306,7 +258,7 @@
     </div>    
 	<!-- Header -->
 	<div id="header">
-			<div class="head">
+		<div class="head">
 			<!-- 이미지 홈 버튼과 서비스 메뉴 시작 -->
 			<%@include file="/WEB-INF/cgv/template/serviceMenu.jsp"%>
 			<!-- 이미지 홈 버튼과 서비스 메뉴 끝 -->	
@@ -326,7 +278,6 @@
                         <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/main@Search_txt" width="0" height="0" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
 					</fieldset>
 				</div>
-				<!-- /Integrated search(통합검색) -->
 				<!-- Quick Phototicket -->
 				<div class="sect-phototicket">
 					<h2>CGV 포토티켓</h2>
@@ -338,7 +289,6 @@
 				<div class="ad-partner">
                     <a href="http://section.cgv.co.kr/discount/Special/discount/Default.aspx"  >
                         <img src="http://img.cgv.co.kr/Event/Event/JehuBanner/2015/0917/web_BC_133.png" alt="비씨카드" />
-
                     </a>
 					 <!-- 외부광고영역 -->
 				</div>
@@ -355,22 +305,26 @@
 	</div>
 	<!-- /Header -->
 	<!-- Contaniner -->
-	<div id="contaniner" class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
+	<div id="contaniner" class="bg-bricks"><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
 
         <!-- LineMap -->
 
-        <div id="ctl00_navigation_line" class="linemap-wrap">
+        <div id="ctl00_ctl00_navigation_line" class="linemap-wrap">
             <div class="sect-linemap">
                 <div class="sect-bcrumb">
                     <ul>
                         <li><a href="/"><img alt="home" src="http://img.cgv.co.kr/R2014/images/common/btn/btn_home.png" /></a></li>
                         
                             <li >
-                                <a href="/user/login/">회원서비스</a>
+                                <a href="#">My CGV</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#">나의 정보</a>
                             </li>
                         
                             <li  class="last">
-                                비회원로그인
+                                비밀번호 확인
                             </li>
                         
                         
@@ -393,229 +347,384 @@
             
             <!-- Contents Start -->
 			
-<!-- 실컨텐츠 시작 -->
-<div class="wrap-login">
-    <div class="sect-login">
-        <ul class="tab-menu-round">
-            <li>
-                <a href="<c:url value='/login.front'/>">로그인</a>
-            </li>
-            <li class="on">
-                <a href="<c:url value='/guest.front'/>">비회원로그인</a>
-            </li>
-        </ul>
+    <script type="text/javascript">
+    //<![CDATA[
+        (function ($) {
+            $(function () {
 
-    </div>
-    <div class="sect-user nomember">
-        <h3><strong>★</strong> 개인정보(임시발급 아이디,이름,법정생년월일,휴대폰번호,이메일주소,비밀번호) 확인 후 예매하기 </h3>
-        <p></p>
-        <div class="cols-enterform nomember">
+                //특별관 >
 
-                <h4>비회원 임시 가입 확인 입력정보</h4>
-                <div class="box-simples">
-                    <p class="disc-info"> <br />
-                <span style="font-size:8pt;color:red;">* 아이디와 비밀번호가 있어야 로그인이 가능하므로 반드시 기억해주세요.</span></p>
-                    <form id="form1" novalidate="novalidate" action="<c:url value='/guestReserving.front'/>">
+
+                //동성로타운
+                $('.special1_pop').on('click', function () {
+                    openDownTown();
+                    return false;
+                });
+
+
+
+                function openDownTown() {
+                    var win = window.open('http://section.cgv.co.kr/event/2016/0419_dongsungro_town/pop_service.aspx', 'winDownTown', 'left=0,top=0,width=670,height=800,toolbar=no,scrollbars=yes');
+                    win.focus();
+                }
+            });
+        })(jQuery);
+    //]]>
+</script>
+<div class="sect-common">
+<input type="hidden" id="isTown" name="isTown" value="Y" />
+<input type="hidden" id="userTownMemberInfo" name="userTownMemberInfo" value="" />
+    <div class="mycgv-info-wrap">
+		<div class="skipnaiv" >
+			<a href="#menu" id="skipPersoninfo">개인화영역 건너띄기</a>
+		</div>
+        <div class="sect-person-info">
+        	<h2 class="hidden">개인화 영역</h2> 
+        	<div class="box-image">
+				<span class="thumb-image">
+					<img src="" alt="조미영님 프로필 사진" onerror="errorImage(this, {'type':'profile'})" />
+					<span class="profile-mask"></span>
+				</span>
+        	</div>
+        	<div class="box-contents newtype">
+        		<div class="person-info">
+        			<strong>[ ${dto.name } ]</strong>
+        			<em>[ ${dto.id} ]</em>
+        			<span>닉네임 : <i>${dto.nickname }</i> </span>
+        		</div>
+        		<div class="grade-info">
+        	        
+                    <p style="margin-bottom:4px;color: #342929;font-family: 'NanumBarunGothicBold', '맑은 고딕', '돋움', Dotum, sans-serif;font-size: 20px;line-height: 20px;">
+                      
+                   
+                       
+                          고객님은   <strong class="txt-purple">일반</strong> 입니다.             
+                      
+
+
+
+                    </p>
+        			<button type="button" id="view_usergrade" class="round black"><span>MY 지난등급이력 보기</span></button>
+        			
                     
-                      <fieldset>
-                        <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
-                        <table cellpadding="0" cellspacing="0">
 
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                	<label for="nonmember_id">아이디</label>
-                                </th>
-                                <td>
-                                	<input type="text" name="nonmember_id" id="nonmember_id" value="${dto.nonmember_id }" disabled="disabled"/></td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                	<label for="name">이름</label>
-                                </th>
-                                <td>
-                                	<input type="text" name="name" id="name" value="${dto.name }"disabled="disabled"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                	<label for="birth">법정생년월일&nbsp;<em>(6자리)</em>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                </th>
-                                <td>
-                                	<input type="text" disabled="disabled" value="${dto.birth }" name="birth" id="birth"/> - <i> *******</i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">휴대폰번호</th>
-                                <td>
-                                    <input type="text" disabled="disabled" value="${dto.phone }" name="phone" id="phone"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">이메일주소</th>
-                                <td>
-                                    <input type="text" disabled="disabled" value="${dto.email }" name="email" id="email"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="password">비밀번호&nbsp;<em>(4자리)</em></label></th>
-                                <td>
-                                	<input type="text" disabled="disabled" value="${dto.password }" name="password" id="password" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="passwordChk">비밀번호확인&nbsp;<em>(4자리)</em></label></th>
-                                <td>
-                                	<input type="text" disabled="disabled" value="${dto.password }" name="passwordChk" id="passwordChk" />
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                      	   <div class="box-btn">
-		                    <button type="submit" class="round inred" id="btn_submit"><span>비회원 로그인</span></button>
-	                      </div>
-                      </fieldset>
-                    </form>
-                </div>
+                    <div class="mycgv_btn_special2">
+					<!-- 대구 아이피접속자 중 : 동성로 미가입 고객시 a.special_pop_text 노출/ 가입 고객은 a.special0_pop 노출 부탁드립니다.
+						또한 아무 해당 없는 고객에게는 .mycgv_btn_special2 에 클래스 none 추가 부탁드립니다. 
+						-->
 
+                        <h5 class="special_tit">SPECIAL MEMBERSHIP</h5>
+					   
+				    </div>
+
+
+        		</div>
+        	</div>
         </div>
-    </div> 
+        <div class="cols-benefit-info">
+        	<div class="col-my-coupon">
+        		<h3>MY COUPON</h3>
+        		<ul>
+                    
+                    <li>
+        				<strong>CGV VIP에 도전하세요!</strong>
+        				<span><a href="/user/vip-lounge/" class="round black1"><i>CGV VIP 혜택보기</i></a></span>
+        			</li>
+                    
+        			<li>
+        				<strong>CGV 할인쿠폰</strong>
+        				<span><em>0</em> 개</span>
+        			</li>
+        			<li>
+        				<strong>영화관람권</strong>
+        				<span><em>0</em> 개</span>
+        			</li>
+        		</ul>
+        	</div>
+        	
                 
-                  
-    <div class="sect-loginguide">
-        <dl class="box-operationguide">
-            <dt>비회원 <br />로그인 시 <br />참고하세요!</dt>
-            <dd>1.  상기 정보 수집에 동의하지 않을 경우, 비회원 예매 서비스를 이용하실 수 없습니다. </dd>
-            <dd>2.  비회원 예매 시 청소년 관람불가 영화는 예매가 제한됩니다. </dd>
-            <dd>3.  비회원 에매 결제수단은 신용카드만 가능하며 모든 제휴상품권, 쿠폰, 영화예매권 등의 사용은 회원 예매 서비스 이용 시 가능합니다. </dd>
-            <dd>4.  모바일과 ARS에서는 취소가 불가능하며, 홈페이지를 이용하여 입력하신 로그인 정보로 취소 처리하실 수 있습니다.</dd>
-            <dd>5.  비회원 예매 및 비회원 예매 확인/취소 메뉴만 이용 가능합니다. 이 외에 커뮤니티, 댓글, 인정 등의 서비스는 회원 가입 후 이용 가능합니다.</dd>
-            <dd>6.  문의사항은 CGV 고객센터(1544-1122)로 문의해 주시기 바랍니다. <br />
-                - 운영시간 : 매일 09:00 ~ 21:00 (주말, 및 공휴일 상담 가능합니다.)</dd>
-        </dl>
+                <div class="col-one-point">
+               	<h3>CJ ONE POINT</h3>
+        		<a href="/user/mycgv/cjone-point/pointlist.aspx">CJ ONE POINT 더보기</a>
+        		<ul>
+        			<li>
+        				<strong>CJ ONE 사용가능 포인트</strong>
+        				<span><em class="txt-maroon">4,241</em> 점</span>
+        			</li>
+        		    <li class="tooltip_list cf">
+        				<strong>VIP선정 포인트</strong><a href="/user/mycgv/cjone-point/pointlist.aspx" class="mycgv_tooltip"><img src="http://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/ico_tooltip.png" alt="i" /></a>
+
+                        <div class="tooltip_con tc2"><span><img src="http://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/tooltip_con2.png" alt="CGV에서 구매를 통해 적립된 매표 구매 포인트/매점&amp;씨네샵 구매 포인트/VIP 선정에 포함되는 이벤트 포인트가 누적으로 합산된 포인트 입니다" /></span></div>
+        				<span><em>830</em> 점</span>
+        			</li>
+        		</ul>
+                
+        	</div>
+        	<div class="col-favorite-theater">
+        		<h3 class="hidden">자주가는 CGV</h3>
+	    		<div class="sect-favorite">
+		            <ul id="favoriteTheaters">
+                        
+                            <li><a href="#" data-regioncode="01" data-theatercode="0046"><span>1<em>순위</em></span>CGV상봉</a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>2<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>3<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>4<em>순위</em></span></a></li>
+                        
+                            <li><a href="#" data-regioncode="" data-theatercode=""><span>5<em>순위</em></span></a></li>
+                        
+		            </ul>
+		            <button id="btn_set_my_favorite" title="새창" type="button" class="setting">자주가는 CGV<br />설정하기</button>
+		        </div>
+	        </div>
+         
+                <div class="cols-point-wrap">
+                
+                </div>
+            
+        </div>
     </div>
 </div>
-<!-- 실컨텐츠 끝 --> 
 
-<!-- LogIn -->
-<!-- <form name="frmGuestLogin" id="frmGuestLogin" method="post" action="https://www.cgv.co.kr/user/guest/login-proc.aspx" novalidate="novalidate">
-    <input type="hidden" id="username" name="username" />
-    <input type="hidden" id="birthday" name="birthday" />
-	<input type="hidden" id="mobile1" name="mobile1" />
-	<input type="hidden" id="mobile2" name="mobile2" />
-	<input type="hidden" id="mobile3" name="mobile3" /> 
-	<input type="hidden" id="pwd" name="pwd" />
-    <input type="hidden" id="returnURL" name="returnURL" value="/ticket/" />
-</form> -->
-<script type="text/javascript" src="http://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
-<script type="text/javascript">
-//<![CDATA[
+<div class="cols-content" id="menu">
+    <div class="col-aside">
+		<div class="skipnaiv">
+			<a href="#mycgv_contents" id="skipMycgvMenu">MYCGV 서브메뉴 건너띄기</a>
+		</div>
+	    <h2>MY CGV 서브메뉴</h2>
+	    <div class="snb">
+	        <ul>
+	            <li >
+                    <a href="<c:url value='/myCGV.front'/>" title="현재 선택">MY CGV HOME <i></i></a>
+                </li>
+	            <li >
+	            	<a href="<c:url value='/mycgvReseved.front'/> ">나의 예매내역 <i></i></a>
+                </li>
+<!-- 	            <li >
+	                <a href="/user/mycgv/coupon/movie-ticket/list.aspx?g=1" >관람권/할인쿠폰 관리 <i></i></a>
+	                <ul>                      
+                     
+	                    <li >
+                            <a href="/user/mycgv/coupon/movie-ticket/list.aspx?g=1" >CGV 영화관람권</a>
+                        </li>
+	                    <li >
+                            <a href="/user/mycgv/coupon/discount/list.aspx?g=1" >CGV할인쿠폰</a>
+                        </li>
 
-/*     (function ($) {
-        $(function () {
+	                    <li >
+                            <a href="/user/mycgv/coupon/redcard/list.aspx?g=1" >4DX RED CARD</a>
+                        </li>
 
-            var $frm = $('#form1');
-            $frm.validate({
-                submitHandler: function (form) {
+                        <li >
+                            <a href="/user/mycgv/coupon/movie-passcard/?g=1" >CGV무비패스카드</a>
+                        </li>
+                         <li >
+                            <a href="/user/mycgv/coupon/prepaid-card/?g=1" >CGV기프트카드</a>
+                        </li>
+                         <li >
+                            <a href="/user/mycgv/coupon/phototicket-passcard/?g=1" >CGV포토티켓 패스카드</a>
+                        </li>
+                      <li >
+                            <a href="/user/mycgv/coupon/partnership/list.aspx?g=1" >제휴 온라인 예매/할인권</a>
+                        </li>
+                        <li >       
+                               <a href="/user/mycgv/coupon/cjone/list.aspx?g=1" >CJ ONE 쿠폰</a>         
+                        </li>
+                        <li >
+                            <a href="/user/mycgv/coupon/giftcon/list.aspx?g=1" >CGV 기프트콘(영화관람권)</a>
+                        </li>
 
-                    //                    if (!$("input[id=agreement]").is(":checked")) {
-                    //                        alert("개인정보 제공에 동의 해 주세요.");
-                    //                        $("input[id=agreement]").focus();
-                    //                        return false;
-                    //                    }
+                        <li >
+                            <a href="/user/mycgv/coupon/partner-discount/list.aspx?g=1" >카드사 할인쿠폰</a>
+                        </li>
+                         
+	                </ul>
+	            </li> -->
+<!-- 	            <li >
+                    <a href="/user/mycgv/cjone-point/cafeteria.aspx?g=1" >CJ ONE 포인트 <i></i></a>
+	                <ul>
+	                    <li >                         
+                               <a href="/user/mycgv/cjone-point/cafeteria.aspx?g=1" >매점이용 포인트 적립</a>  
+                        </li>
+                        <li >                        
+                                <a href="/user/mycgv/cjone-point/pointlist.aspx?g=1" >포인트 적립/사용내역</a>                            
+                        
+                          
+                        </li>
+	                </ul>
+	            </li> -->
 
-                    var agree_chk17 = $("input[name='agree_chk17']:checked").val();
-                    if (agree_chk17 == "N") {
-                        alert("개인정보 수집 및 활용에 동의 하셔야 비회원 예매서비스 이용이 가능합니다.")
-                        $('#agreeChk17-1').focus();
-                        return false;
-                    }
+<!-- 	            <li >
+                    <a href="/user/mycgv/culture-shop/?g=1" >티켓·팝콘스토어<i></i></a>
+	                <ul>
+                        <li >
+                            <a href="/user/mycgv/culture-shop/?type=1&g=1" >매점상품 기프트콘</a>
+                        </li>
+                        <li >
+                            <a href="/user/mycgv/culture-shop/?type=0&g=1" >영화관람권 기프트콘</a>
+                        </li>
+                        <li >
+                            <a href="/user/mycgv/culture-shop/fun-con.aspx?g=1" >FUN-CON</a>
+                        </li>
+                        <li >
+                            <a href="/user/mycgv/culture-shop/prepaid-card.aspx?g=1" >CGV기프트카드</a>
+                        </li>           
+                        <li >
+                            <a href="/user/mycgv/culture-shop/movie-collage-passcard/?g=1" >무비꼴라쥬 패스카드</a>
+                        </li>//
+	                </ul>
+	            </li> -->
+	            <li class="on">
+                    <a href="#" >회원정보<i></i></a>
+	                <ul>
+                        <li>
+                            <a href="<c:url value='/profilepicture.front'/>">프로필 관리</a>
+                        </li>
+                        <li class="on">
+                            <a href="<c:url value='/pwCheckMod.front'/>">개인정보 변경</a>
+                        </li>
+
+<!-- 	                    <li >
+                            <a href="/user/mycgv/myinfo/?g=1" >CGV 서비스 이용동의 설정</a>
+                        </li>
+	               
+	                    <li >
+                            <a href="/user/mycgv/myinfo/edit-myinfo-Email-Sms.aspx?g=1" >Email/SMS 수신설정</a>
+                        </li> -->
+	                    <li >
+                            <a href="<c:url value='/pwCheckDel.front'/>" >회원탈퇴</a>
+                        </li>
+                        
+	                </ul>
+	            </li>
+<!--                  <li >
+                    <a href="/user/mycgv/myinfo/edit-myinfo-myprofile.aspx?g=1" >프로필 관리<i></i></a>
+                </li>
+ 	            <li >
+                   <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >나의 문의내역 <i></i></a>
+	                <ul>
+	                    <li >
+                            <a href="/user/mycgv/inquiry/qna/list.aspx?g=1" >1:1 문의</a>
+                        </li>
 
 
-                   
+                        <li >
+                            <a href="/user/mycgv/inquiry/lost/list.aspx?g=1" >분실물 문의</a>
+                        </li>
+	                </ul>
+	            </li>-->
+                        <li class="my-event"><a href="<c:url value='/mycgvWatched.front' />">내가 본 영화</a></li> 
+	           <!-- <li class="my-event"><a href="/user/mycgv/event/?g=1">나의 참여 이벤트</a></li> -->
+	        </ul>
+	        <div class="ad-partner01">
+                <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@M_Rectangle" width="160" height="300" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" id="M_Rectangle"></iframe>
+            </div>
+            <div class="ad-partner02">
+                <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Image_text" width="160" height="35" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" id="Image_text"></iframe>
+            </div>
+	    </div>
+    </div>
+	<div class="col-detail" id="mycgv_contents">
+			
+  		<!-- 실컨텐츠 시작 -->		
 
-                    if ($('#txtPassword').val() != "" && $('#txtConfirmPassword').val() != "") {
-                        if ($('#txtPassword').val() != $('#txtConfirmPassword').val()) {
-                            alert("비밀번호가 일치하지 않습니다.");
-                            $('#txtPassword').focus();
-                            return false;
-                        }
-                    }
-
-                    var $loginFrm = $('#frmGuestLogin');
-
-                    $loginFrm.find('#username').val(app.crypto.AESEncryptToBase64($frm.find('#txtName').val()));
-                    $loginFrm.find('#birthday').val(app.crypto.AESEncryptToBase64($frm.find('#txtBirthday').val()));
-                    $loginFrm.find('#mobile1').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile1').val()));
-                    $loginFrm.find('#mobile2').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile2').val()));
-                    $loginFrm.find('#mobile3').val(app.crypto.AESEncryptToBase64($frm.find('#txtMobile3').val()));
-                    $loginFrm.find('#pwd').val(app.crypto.AESEncryptToBase64($frm.find('#txtPassword').val()));
-
-                    $loginFrm.submit();
-
-                    return false;
-                }
-            });
-
-
-            $("input[name=agree_chk17]").on('click', function () {
-                //주소
-                if ($('input:radio[name="agree_chk17"]:checked').val() == "Y") {
-                    $('#txtName').attr("disabled", false);
-                    $('#txtBirthday').attr("disabled", false);
-                    $('#txtMobile1').attr("disabled", false);
-                    $('#txtMobile2').attr("disabled", false);
-                    $('#txtMobile3').attr("disabled", false);
-                    $('#txtPassword').attr("disabled", false);
-                    $('#txtConfirmPassword').attr("disabled", false);
-                } else if ($('input:radio[name="agree_chk17"]:checked').val() == "N") {
+<div class="tit-mycgv">
+    <h3>비밀번호 확인</h3>
+</div>
 
 
-                    $('#txtName').attr("disabled", true);
-                    $('#txtBirthday').attr("disabled", true);
-                    $('#txtMobile1').attr("disabled", true);
-                    $('#txtMobile2').attr("disabled", true);
-                    $('#txtMobile3').attr("disabled", true);
-                    $('#txtPassword').attr("disabled", true);
-                    $('#txtConfirmPassword').attr("disabled", true);
+<p class="info-com">고객님의 개인정보 보호를 위한 절차이오니, CGV 로그인 시 사용하는 비밀번호를 입력해 주세요.</p>
+<form id="pwCheck"  action="<c:url value='/pwCheckModify.front'/>">
+<input type="hidden" id="id" name="id" />
+<input type="hidden" id="name" name="name" />
+<input type="hidden" id="nickname" name="nickname" />
+    <fieldset class="confirm">
+        <legend>비밀번호 확인</legend>
+        <div class="info-confirm">
+            <p>
+                <strong>아이디</strong> 
+                <strong>${dto.id }</strong>
+            </p>
 
-                    $('#txtName').val('');
-                    $('#txtBirthday').val('');
-                    $('#txtMobile2').val('');
-                    $('#txtMobile3').val('');
-                    $('#txtPassword').val('');
-                    $('#txtConfirmPassword').val('');
+                    <input type="hidden" id="password" name="password" value="${dto.password }" maxlength="20" class="small" />
 
-                }
-            });
+                <p>
+                    <strong><label for="txtPassword">비밀번호 확인</label></strong> 
+                    <input type="password" id="pwdChk" name="pwdChk" maxlength="20" class="small" />
+                    <label for="password" class="error"></label>
+                </p>
+        </div>
+    </fieldset>
+    <div class="set-btn">
+        <button type="submit" id="save" class="round inred on"><span>확인</span></button>
+        <a href="<c:url value='forward:/'/>" class="round gray"><span>CGV 첫화면으로</span></a>
+    </div>
+</form>
+		
+        <!-- 실컨텐츠 끝 -->
+</div>
+<script id="temp_view_usergrade" type="text/x-jquery-tmpl">
 
+<div class="popwrap" style="width:330px;margin-top:-500px;margin-left:-165px">
 
-            $("input[name=agree_chk17]").on('click', function () {
-                //모바일 세팅
-                if ($('input:radio[name="agree_chk17"]:checked').val() == "N") {
-                    $('#txtName').val("");
-                    $('#txtBirthday').val("");
-                    $('#txtMobile2').val("");
-                    $('#txtMobile3').val("");
-                    $('#txtPassword').val("");
-                    $('#txtConfirmPassword').val("");
+						<h1>VIP 등급 이력</h1>
+						<div class="pop-contents">
+						<!-- Contents Addon -->
+							<div class="sect-my-grade">
+								<p><strong>조미영</strong> 고객님의 연도별 고객 등급 이력입니다.</p>
+								<div class="grade-lst-light scrollbox">
+									<table summary="연도별 VIP 세부 등급 이력" id="mytable">
+										<caption>VIP 등급 이력 리스트</caption>
+										<colgroup>
+											<col width="50%">
+											<col width="*">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">승급 년/월별</th>
+												<th scope="col">등급</th>
+											</tr>
+										</thead>
+										<tbody>
+											
+										</tbody>
+									</table>
+								</div>
+								<ul class="tb-desclist">
+									<li>- 고객님의 등급은 당해년도 VIP 규정에 따라 부여된 등급입니다</li>
+									<li>- 연속 VIP는 전년도와 등급 갱신월이 일치해야 인정됩니다<br />
+									(예. 17년 4월 RVIP의 경우, 18년 4월 RVIP 갱신 시에만 2년 연속 RVIP로 인정되며, 2017년 5월 RVIP 승급 시 17년 5월에 1년 차 RVIP로 인정)</li>
+									<li>- 등급이 하락된 경우 하락된 등급의 1년 차로 인정됩니다<br />
+									(예. 17년 4월 SVIP의 경우 18년 4월 VVIP로 등급 하락 시 VVIP 1년 차로 인정)</li>
+								</ul>
 
-                }
-            });
-        });
-    })(jQuery); */
-//]]>
+							
+							</div>
+						<!-- //Contents Addon -->
+						</div>
+						<button type="button" class="btn-close">MY 지난 등급 이력 팝업 닫기</button>
+					</div>
+
 </script>
 <script type="text/javascript">
-//    $('#txtName').attr("disabled", true);
-//    $('#txtBirthday').attr("disabled", true);
-//    $('#txtMobile1').attr("disabled", true);
-//    $('#txtMobile2').attr("disabled", true);
-//    $('#txtMobile3').attr("disabled", true);
-//    $('#txtPassword').attr("disabled", true);
-//    $('#txtConfirmPassword').attr("disabled", true);
+function check_passwd(input) {
+	if(!input.value) {
+		alert('비밀번호를 입력해 주십시오.');
+		input.focus();
+		return false;
+	}
+	else if(input.value != password.value) {
+		alert('비밀번호가 일치하지 않습니다.');
+		input2.value='';
+		input2.focus();
+		return false;
+	}
+	else return true; 
+}
 </script>
+</div>
 
             <!--/ Contents End -->
 
@@ -711,16 +820,12 @@
 		</div>
         <!-- Float Ad -->
 
-        <div class="adFloat" style="display:block">
-
-        </div>
-        <script type="text/javascript">            OpenAD();</script>
         <!-- //Float Ad -->
 	</div>
 	<!-- /Footer -->
 
     <!-- Aside Banner :  -->
-	<div id="ctl00_sect_person_right" class="sect-aside-banner" style="padding:0; margin:0; position:fixed; z-index:1;">
+	<div id="ctl00_ctl00_sect_person_right" class="sect-aside-banner" style="padding:0; margin:0; position:fixed; z-index:1;">
 		<div class="aside-content-top">
 			<div class="aside-content-btm">
 				<a href="/theaters/"><img src="http://img.cgv.co.kr/R2014/images/common/btn/btn_person_theater.gif" alt="CGV THEATER" /></a>
@@ -844,7 +949,7 @@
         $(function () {
 
             /* side menu move script */
-            var isBricks = false;
+            var isBricks = true;
             $('.sect-aside-banner').asideMenu({'isBricks': isBricks });            
             $('.movie_player_popup').moviePlayer();     //동영상플레이어                       
             //특별관 클럽
@@ -941,80 +1046,6 @@
                 return false;
             });
 
-            
-            
-
-            $('.btn_send').on('click', function() {
-
-               var smsyn = $('input:radio[name="myapp"]:checked').val();
-               var phoneNum_1 = $('#phoneNum1').val();
-               var phoneNum_2 = $('#phoneNum2').val();
-               var phoneNum_3 = $('#phoneNum3').val();
-             
-
-               var $btn = $('.util .app');
-               var $btnli = $btn.parent();
-               var $layer = $btnli.find('.app-downinfo');
-               var $closebtn = $layer.find('.btn_close');              
-
-               if (  $("input:radio[name='myapp']:checked").val() == undefined) {
-            
-                    alert('앱을 선택해주세요.');
-                    return;
-                }
-
-                if ( $('#phoneNum1').val() == '') {
-            
-                    alert('첫번째 휴대폰번호를 입력해주세요.');
-                    return $('#phoneNum1').focus();
-                }
-
-                if ( $('#phoneNum2').val() == '') {
-                    alert('두번째 휴대폰번호를 입력해주세요.');
-                    return $('#phoneNum2').focus();
-                }
-
-                if ( $('#phoneNum3').val() == '') {
-                    alert('세번째 휴대폰번호를 입력해주세요.');
-                    return $('#phoneNum3').focus();
-                }
-
-                $.ajax({    
-                    type:"POST",
-                    url: '/common/ajax/user.aspx/GetSMSMaster',
-                    data: "{'sms_yn':'" + smsyn + "' , 'phoneNum1':'" + app.crypto.AESEncryptToBase64(phoneNum_1) +"',  'phoneNum2':'" + app.crypto.AESEncryptToBase64(phoneNum_2) +"', 'phoneNum3':'" + app.crypto.AESEncryptToBase64(phoneNum_3) +"'  }",                
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
-                    success: function (result) {
-                        switch (result.d.toString()) {
-                            case "0":
-                                // 등록되지 않음
-                                  alert('전송에 실패하였습니다. 잠시후 다시 시도해주시길 바랍니다.');
-                                break;
-                            case "1":
-                               
-                                //alert('성공');
-                                alert('고객님의 핸드폰 번호 '+phoneNum_1+'-'+phoneNum_2+'-'+phoneNum_3+'로 전송완료 하였습니다.');
-                                $('#phoneNum1').val('')
-                                $('#phoneNum2').val('')
-                                $('#phoneNum3').val('')
-                                $layer.removeClass('on');
-                                $(this).blur();
-
-                                // 등록완료
-                                break;
-                            case "2":
-                                // 등록되지 않음
-                                  alert('1일 3회까지만 발송 가능합니다.');
-                                break;
-                            default:
-                             //   alert('Error result Value : ' + result);
-                                break;
-                            }
-                        }
-                    }); 
-               });  // SMS
-
 
         });
     })(jQuery);
@@ -1040,27 +1071,6 @@
             }
         }
     }
-
-    $("#phoneNum1").keyup(function (event) {
-        if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-            var inputVal = $(this).val();
-            $(this).val(inputVal.replace(/[^0-9]/gi, ''));
-        }
-    });
-
-    $("#phoneNum2").keyup(function (event) {
-        if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-            var inputVal = $(this).val();
-            $(this).val(inputVal.replace(/[^0-9]/gi, ''));
-        }
-    });
-
-    $("#phoneNum3").keyup(function (event) {
-        if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
-            var inputVal = $(this).val();
-            $(this).val(inputVal.replace(/[^0-9]/gi, ''));
-        }
-    });
 
     function appDownInfoPop() {
 

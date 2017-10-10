@@ -345,16 +345,14 @@
                                     </div>
                                     <div class="login">
                                     	<c:if test="${not loginError }"><span style="line-height:2em;color:red;font-weight:bold;font-size:1.2em;font-family: inherit;">${loginError }</span><br/></c:if>
-                                        <input type="text" title="아이디" id="id" name="id" required="required"/>
-                                        <input type="password" title="패스워드" id="password" name="password" required="required" />
+                                        <input type="text" title="아이디" id="id" name="id"/>
+                                        <input type="password" title="패스워드" id="password" name="password" />
                                     </div>
                                     
                                     <!-- 캡차 영역-->
                                    
                                     <button type="submit" id="submit" title="로그인"><span>로그인</span></button>
                                     <div class="login-option">
-                                        <a href="find-account.jsp">아이디 찾기</a>
-                                        <a href="find-pw5366.jsp?act=pw">비밀번호 찾기</a>
                                     </div>
                                 </fieldset>
                             </form>

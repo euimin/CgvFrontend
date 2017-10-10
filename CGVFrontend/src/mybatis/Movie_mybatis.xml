@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOneMovie" parameterType="String" resultType="MovieDto">
 		select * from movie where movie_code=#{movie_code}
 	</select>
-	<select id="selectReservedSeatList" parameterType="java.util.Map" resultType="java.util.List">
+	<select id="selectReservedSeatList" parameterType="java.util.Map" resultType="String">
 		select seatnumber from reserve 
 		<if test="movie_code != null">
 			r join screening s on r.screening_code=s.screening_code where s.movie_code=#{movie_code}
