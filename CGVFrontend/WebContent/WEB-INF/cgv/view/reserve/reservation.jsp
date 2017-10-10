@@ -276,7 +276,7 @@ preselectSetting(
 															timeArray.forEach(function(time){
 																//li class="morning/night selected"
 																timeSect += '<li><input type="hidden" id="screenData" value="'+record.no+'관"/><input type="hidden" id="seatsData" value="'+record.seats+'"/><input type="hidden" id="screenCodeData" value="'+record.screen_code+'"/><a class="button" href="#" onclick="return false;"><span class="time"><span id="timeData">';
-																timeSect += time+'</span></span><span class="count">잔여석</span><div class="sreader">종료시간 00:00</div><span class="sreader mod">심야</span></a></li>';
+																timeSect += time+'</span></span><span class="count">'+record.seats+'석</span><div class="sreader">종료시간 00:00</div><span class="sreader mod">심야</span></a></li>';
 															});
 															timeTable += timeSect+'</ul></div>';
 														});
@@ -561,10 +561,10 @@ preselectSetting(
 															error:function(request,status,error){
 																alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
 															}
-														});													
+														});																																																			
 													});
 												}
-											
+												
 											    function makeSeats(){												
 													var canvas = document.getElementById("canvas");
 													var ctx = canvas.getContext("2d");
@@ -679,11 +679,12 @@ preselectSetting(
 													}
 													
 													function clickEventHandler(e){
-														var selectCount = 0;
+														var selectCount = 0;			
 														for(var i=0; i<(row*col); i++){
-															if(seats[i].visible && seats[i].status=="selected")
-																selectCount++;
-														}			
+															if(seats[i].visible && seats[i].status=="selected"){
+																selectCount++;																
+															}								
+														}																																									
 														
 														for(i=0; i<(row*col); i++){
 															if((e.offsetX>seats[i].x)&&(e.offsetX<(seats[i].x+seats[i].size))&&
@@ -723,37 +724,55 @@ preselectSetting(
 																}																												
 															}
 														}
-													}
-													canvas.addEventListener("click", clickEventHandler);
-													
-													function mousemoveEventHandler(e){				
-														console.log("("+e.offsetX+","+e.offsetY+")");
-														var selectCount = 0;
-														for(var i=0; i<(row*col); i++){
-															if(seats[i].visible && seats[i].status=="selected")
-																selectCount++;
-														}			
-														
+																					
+														var seat;
+														var seatnumber="";
 														for(i=0; i<(row*col); i++){
-															if((e.offsetX>seats[i].x)&&(e.offsetX<(seats[i].x+seats[i].size))&&
-																(e.offsetY>seats[i].y)&&(e.offsetY<(seats[i].y+seats[i].size))){																
-																if(numberOfPeople-selectCount<2){
-																	seats[i].color = "#AD0101";
-																}																		
-																else{
-																	if(seats[i].colnumber%2==0||(seats[i].colnumber==col)){																		
-																		seats[i].color = "#AD0101";
-																		seats[i-1].color = "#AD0101";													
-																	}
-																	else if((seats[i].colnumber%2==1)){
-																		seats[i].color = "#AD0101";
-																		seats[i+1].color = "#AD0101";
-																	}
-																}																												
-															}
+															if(seats[i].visible && seats[i].status=="selected"){																
+																switch(seats[i].type){
+																	case "prime": seat="Prime석"; break;
+																	case "standard": seat="Standard석"; break;
+																	case "economy": seat="Economy석"; break;
+																	case "sweetbox": seat="SWEETBOX"; break;
+																	default: seat="일반석";
+																}
+																seatnumber += seats[i].number+","
+															}								
 														}
+														seatnumber = seatnumber.substring(0, seatnumber.length-1);
+														$(function(){
+															$("#seat_data").html(seat);
+															$("#seatnumber_data").html(seatnumber);
+															$("#seatPlaceholder").addClass("hidden");
+															
+															if(selectCount==numberOfPeople){
+																$(".btn-right").addClass("on").attr("onclick", "OnStep2TnbRightClick(); return false;");
+																
+																/* var date_data = $("#date_data").html();
+																var theater_name = $("#theater_name").html();
+																var screen_data = $("#screen_data").html();
+																var seatnumber_data = $("#seatnumber_data").html;
+																var person_data = $("person_data").html();
+																$.ajax({
+																	url:"<c:url value='/ticketPayment.front'/>",												
+																	type:"get",
+																	dataType:"json",
+																	data:"date_data="+date_data
+																		+"theater_name"+theater_name
+																		+"screen_data"+screen_data
+																		+"seatnumber_data"+seatnumber_data
+																		+"person_data"+person_data,
+																	success:function(data){
+																			
+																	},
+																	error:function(request,status,error){
+																		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
+																	}
+																}); */
+															}																													
+														});
 													}
-													canvas.addEventListener("mousemove", mousemoveEventHandler);
+													canvas.addEventListener("click", clickEventHandler);																	
 													
 													initRow();
 													initSeat();
@@ -892,32 +911,28 @@ preselectSetting(
 					<div class="info seat">
 						<div class="row seat_name">
 							<span class="header">좌석명</span>
-							<span class="data">일반석</span>
+							<span class="data" id="seat_data"></span>
 						</div>
 						<div class="row seat_no colspan3">
 							<span class="header">좌석번호</span>
-							<span class="data ellipsis-line3"></span>
+							<span class="data ellipsis-line3" id="seatnumber_data"></span>
 						</div>
-						<div class="placeholder" title="좌석선택"></div>
+						<div class="placeholder" title="좌석선택" id="seatPlaceholder"></div>
 					</div>
 					<div class="info payment-ticket">
-						<div class="row payment-adult">
+						<div class="row payment-adult" style="display: none">
 							<span class="header">일반</span>
 							<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
 						</div>
-						<div class="row payment-youth">
+						<div class="row payment-youth" style="display: none">
 							<span class="header">청소년</span>
 							<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-						</div>
-						<div class="row payment-child">
-							<span class="header">어린이</span>
-							<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
 						</div>						
-						<div class="row payment-special">
+						<div class="row payment-special" style="display: none">
 							<span class="header">우대</span>
 							<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
 						</div>
-						<div class="row payment-final">
+						<div class="row payment-final" style="display: none">
 							<span class="header">총금액</span>
 							<span class="data"><span class="price">0</span><span class='won'>원</span></span>
 						</div>
@@ -938,6 +953,11 @@ preselectSetting(
 							$(".btn-right").removeClass("on");
 							$(".tnb").removeClass("step1").addClass("step2");
 							getSeatInfo();
+						}
+						
+						function OnStep2TnbRightClick(){
+							alert("예매가 성공적으로 이루어졌습니다.");
+							window.parent.goHome();
 						}
 					</script>
 				</div>

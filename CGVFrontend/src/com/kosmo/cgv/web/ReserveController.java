@@ -147,9 +147,10 @@ public class ReserveController {
 		}
 		return JSONArray.toJSONString(seats);
 	}
-	
-	@RequestMapping("/proxy.front")
-	public String proxy() throws Exception{	
-		return "ticket/proxy";
+		
+	@ResponseBody
+	@RequestMapping(value="/ticketPayment.front" ,produces="text/html;charset=UTF-8")
+	public String ticketPayment() throws Exception{
+		return JSONArray.toJSONString(null);
 	}
 }

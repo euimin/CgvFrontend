@@ -230,6 +230,11 @@
 		<div id="contents" style="height:1px;padding:0;"></div>
         <iframe title="CGV 빠른예매" id="ticket_iframe" src="<c:url value='/reserve.front'/>" 
         scrolling="no" frameborder="0" width="100%" height="987" style="width:100%; border:0 none;"></iframe>
+		<script>
+			function goHome(){
+				location.href="<c:url value='/'/>";
+			}
+		</script>
 		<!-- /Contents Area -->
 	</div>
 	<!-- /Contaniner -->
