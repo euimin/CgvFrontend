@@ -263,7 +263,7 @@ preselectSetting(
 												data:"movie_code="+movie_code+"&theater_code="+theater_code+"&screeningdate="+screeningdate,
 												success:function(data){
 													if(data.length!=0){
-														var jqueryStr = '<script>$(function(){$(".theater>ul>li").click(function(){$(".theater>ul>li").each(function(){$(this).removeClass("selected");});$(this).toggleClass("selected");$("#date_data").html($("#date_data").html().substring(0, $("#date_data").html().length));$("#date_data").append(" "+$(this).find("#timeData").html());$(".playYMD-info>b").html($("#date_data").html());screen_code=$(this).children("#screenCodeData").val();getSeatInfo();$("#screen_data").html($(this).children("#screenData").val());$("#step2Screen").html($(this).children("#screenData").val());$(".restNum").html($(this).children("#seatsData").val());$(".totalNum").html($(this).children("#seatsData").val());$(".btn-right").addClass("on").attr("onclick", "OnTnbRightClick(); return false;");});});<\/script>';
+														var jqueryStr = '<script>$(function(){$(".theater>ul>li").click(function(){$(".theater>ul>li").each(function(){$(this).removeClass("selected");});$(this).toggleClass("selected");$("#date_data").html($("#date_data").html().substring(0, 14));$("#date_data").append(" "+$(this).find("#timeData").html());$(".playYMD-info>b").html($("#date_data").html());screen_code=$(this).children("#screenCodeData").val();$("#screen_data").html($(this).children("#screenData").val());$("#step2Screen").html($(this).children("#screenData").val());$(".restNum").html($(this).children("#seatsData").val());$(".totalNum").html($(this).children("#seatsData").val());$(".btn-right").addClass("on").attr("onclick", "OnTnbRightClick(); return false;");});});<\/script>';
 														var timeTable = '';
 														$.each(data,function(index,record){
 															timeTable += '<div class="theater"><span class="title"><span class="name">2D</span><span class="floor">';
@@ -383,69 +383,131 @@ preselectSetting(
 							<a href="#" class="skip_to_something" onclick="skipToSomething('tnb_step_btn_right');return false;">인원/좌석선택 건너뛰기</a>
 						</div>
 						<div class="col-body">
-							<div class="person_screen" style="height: 120px">
+							<div class="person_screen" style="height: 95px">
 								<!-- NUMBEROFPEOPLE 섹션 -->
 								<div class="section section-numberofpeople">
 									<div class="col-body" style="height: 595px;">
-										<div class="numberofpeople-select" style="height: 110px; margin-top: 5px">
+										<div class="numberofpeople-select" style="height: 90px; margin-top: 5px">
+											<script>
+												var numberOfAdult = 0;
+												var numberOfYouth = 0;
+												var numberOfSpecial = 0;
+												var numberOfPeople = 0;
+												var resetFlag = false;
+												var adult = "";
+												var youth = "";
+												var special = "";
+												var peopleStr = "";
+												$(function(){
+													$("#nop_group_adult>ul>li").click(function(){																															
+														$("#nop_group_adult>ul>li").each(function(){
+															$(this).removeClass("selected");
+														});
+														$(this).toggleClass("selected");
+																								
+														adult = $(this).children("a").text();
+														if($(this).attr("data-count")==0) adult = "";
+														peopleStr = adult+", "+youth+", "+special+", ";
+														while(peopleStr.endsWith(", "))peopleStr = peopleStr.substring(0, peopleStr.length-2);
+														while(peopleStr.startsWith(", "))peopleStr = peopleStr.substring(2, peopleStr.length);
+														peopleStr = peopleStr.replace(", , ", ", ");
+														$("#person_data").html(peopleStr);
+														
+														numberOfAdult = parseInt($(this).attr("data-count"));
+														numberOfPeople = numberOfAdult + numberOfYouth + numberOfSpecial;
+														resetFlag = true;
+													});
+												});
+											</script>
 											<div class="group adult" id="nop_group_adult">
 												<span class="title">일반</span>
 												<ul>
 													<li data-count="0" class="selected"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>0<span class='sreader'>명</span></a></li>
-													<li data-count="1"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>1<span class='sreader'>명</span></a></li>
-													<li data-count="2"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>2<span class='sreader'>명</span></a></li>
-													<li data-count="3"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>3<span class='sreader'>명</span></a></li>
-													<li data-count="4"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>4<span class='sreader'>명</span></a></li>
-													<li data-count="5"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>5<span class='sreader'>명</span></a></li>
-													<li data-count="6"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>6<span class='sreader'>명</span></a></li>
-													<li data-count="7"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>7<span class='sreader'>명</span></a></li>
-													<li data-count="8"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>8<span class='sreader'>명</span></a></li>
+													<li data-count="1"><a href="#" onclick="return false;"><span class="sreader mod">일반 </span>1<span class='sreader'>명</span></a></li>
+													<li data-count="2"><a href="#" onclick="return false;"><span class="sreader mod">일반 </span>2<span class='sreader'>명</span></a></li>
+													<li data-count="3"><a href="#" onclick="return false;"><span class="sreader mod">일반 </span>3<span class='sreader'>명</span></a></li>
+													<li data-count="4"><a href="#" onclick="return false;"><span class="sreader mod">일반 </span>4<span class='sreader'>명</span></a></li>
+													<li data-count="5"><a href="#" onclick="return false;"><span class="sreader mod">일반 </span>5<span class='sreader'>명</span></a></li>
+													<li data-count="6"><a href="#" onclick="return false;"><span class="sreader mod">일반 </span>6<span class='sreader'>명</span></a></li>
+													<li data-count="7"><a href="#" onclick="return false;"><span class="sreader mod">일반 </span>7<span class='sreader'>명</span></a></li>
+													<li data-count="8"><a href="#" onclick="return false;"><span class="sreader mod">일반 </span>8<span class='sreader'>명</span></a></li>
 												</ul>
 											</div>
+											<script>											
+												$(function(){
+													$("#nop_group_youth>ul>li").click(function(){																															
+														$("#nop_group_youth>ul>li").each(function(){
+															$(this).removeClass("selected");
+														});
+														$(this).toggleClass("selected");
+
+														youth = $(this).children("a").text();
+														if($(this).attr("data-count")==0) youth = "";
+														peopleStr = adult+", "+youth+", "+special+", ";
+														while(peopleStr.endsWith(", "))peopleStr = peopleStr.substring(0, peopleStr.length-2);
+														while(peopleStr.startsWith(", "))peopleStr = peopleStr.substring(2, peopleStr.length);
+														peopleStr = peopleStr.replace(", , ", ", ");
+														$("#person_data").html(peopleStr);
+
+														numberOfYouth = parseInt($(this).attr("data-count"));
+														numberOfPeople = numberOfAdult + numberOfYouth + numberOfSpecial;
+														resetFlag = true;
+													});
+												});
+											</script>
 											<div class="group youth" id="nop_group_youth">
 												<span class="title">청소년</span>
 												<ul>
 													<li data-count="0" class="selected"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>0<span class='sreader'>명</span></a></li>
-													<li data-count="1"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>1<span class='sreader'>명</span></a></li>
-													<li data-count="2"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>2<span class='sreader'>명</span></a></li>
-													<li data-count="3"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>3<span class='sreader'>명</span></a></li>
-													<li data-count="4"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>4<span class='sreader'>명</span></a></li>
-													<li data-count="5"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>5<span class='sreader'>명</span></a></li>
-													<li data-count="6"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>6<span class='sreader'>명</span></a></li>
-													<li data-count="7"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>7<span class='sreader'>명</span></a></li>
-													<li data-count="8"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>8<span class='sreader'>명</span></a></li>
+													<li data-count="1"><a href="#" onclick="return false;"><span class="sreader mod">청소년 </span>1<span class='sreader'>명</span></a></li>
+													<li data-count="2"><a href="#" onclick="return false;"><span class="sreader mod">청소년 </span>2<span class='sreader'>명</span></a></li>
+													<li data-count="3"><a href="#" onclick="return false;"><span class="sreader mod">청소년 </span>3<span class='sreader'>명</span></a></li>
+													<li data-count="4"><a href="#" onclick="return false;"><span class="sreader mod">청소년 </span>4<span class='sreader'>명</span></a></li>
+													<li data-count="5"><a href="#" onclick="return false;"><span class="sreader mod">청소년 </span>5<span class='sreader'>명</span></a></li>
+													<li data-count="6"><a href="#" onclick="return false;"><span class="sreader mod">청소년 </span>6<span class='sreader'>명</span></a></li>
+													<li data-count="7"><a href="#" onclick="return false;"><span class="sreader mod">청소년 </span>7<span class='sreader'>명</span></a></li>
+													<li data-count="8"><a href="#" onclick="return false;"><span class="sreader mod">청소년 </span>8<span class='sreader'>명</span></a></li>
 												</ul>
 											</div>
-											<div class="group child" id="nop_group_child">
-												<span class="title">어린이</span>
-												<ul>
-													<li data-count="0" class="selected"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>0<span class='sreader'>명</span></a></li>
-													<li data-count="1"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>1<span class='sreader'>명</span></a></li>
-													<li data-count="2"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>2<span class='sreader'>명</span></a></li>
-													<li data-count="3"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>3<span class='sreader'>명</span></a></li>
-													<li data-count="4"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>4<span class='sreader'>명</span></a></li>
-													<li data-count="5"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>5<span class='sreader'>명</span></a></li>
-													<li data-count="6"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>6<span class='sreader'>명</span></a></li>
-													<li data-count="7"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>7<span class='sreader'>명</span></a></li>
-													<li data-count="8"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>8<span class='sreader'>명</span></a></li>
-												</ul>
-											</div>
+											<script>											
+												$(function(){
+													$("#nop_group_sepcial>ul>li").click(function(){																															
+														$("#nop_group_sepcial>ul>li").each(function(){
+															$(this).removeClass("selected");
+														});
+														$(this).toggleClass("selected");
+														
+														special = $(this).children("a").text();
+														if($(this).attr("data-count")==0) special = "";
+														peopleStr = adult+", "+youth+", "+special+", ";
+														while(peopleStr.endsWith(", "))peopleStr = peopleStr.substring(0, peopleStr.length-2);
+														while(peopleStr.startsWith(", "))peopleStr = peopleStr.substring(2, peopleStr.length);
+														peopleStr = peopleStr.replace(", , ", ", ");
+														$("#person_data").html(peopleStr);
+														
+														numberOfSpecial = parseInt($(this).attr("data-count"));
+														numberOfPeople = numberOfAdult + numberOfYouth + numberOfSpecial;
+														resetFlag = true;
+													});
+												});
+											</script>
 											<div class="group special" id="nop_group_sepcial">
 												<span class="title">우대</span>
 												<ul>
 													<li data-count="0" class="selected"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>0<span class='sreader'>명</span></a></li>
-													<li data-count="1"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>1<span class='sreader'>명</span></a></li>
-													<li data-count="2"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>2<span class='sreader'>명</span></a></li>
-													<li data-count="3"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>3<span class='sreader'>명</span></a></li>
-													<li data-count="4"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>4<span class='sreader'>명</span></a></li>
-													<li data-count="5"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>5<span class='sreader'>명</span></a></li>
-													<li data-count="6"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>6<span class='sreader'>명</span></a></li>
-													<li data-count="7"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>7<span class='sreader'>명</span></a></li>
-													<li data-count="8"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>8<span class='sreader'>명</span></a></li>
+													<li data-count="1"><a href="#" onclick="return false;"><span class="sreader mod">우대 </span>1<span class='sreader'>명</span></a></li>
+													<li data-count="2"><a href="#" onclick="return false;"><span class="sreader mod">우대 </span>2<span class='sreader'>명</span></a></li>
+													<li data-count="3"><a href="#" onclick="return false;"><span class="sreader mod">우대 </span>3<span class='sreader'>명</span></a></li>
+													<li data-count="4"><a href="#" onclick="return false;"><span class="sreader mod">우대 </span>4<span class='sreader'>명</span></a></li>
+													<li data-count="5"><a href="#" onclick="return false;"><span class="sreader mod">우대 </span>5<span class='sreader'>명</span></a></li>
+													<li data-count="6"><a href="#" onclick="return false;"><span class="sreader mod">우대 </span>6<span class='sreader'>명</span></a></li>
+													<li data-count="7"><a href="#" onclick="return false;"><span class="sreader mod">우대 </span>7<span class='sreader'>명</span></a></li>
+													<li data-count="8"><a href="#" onclick="return false;"><span class="sreader mod">우대 </span>8<span class='sreader'>명</span></a></li>
 												</ul>
 											</div>
 										</div>
 									</div>
+									<!-- <a href="javascript:void(0)" id="reservarionDiscountInfo">관람 할인 안내</a> -->				
 								</div>
 								<!-- NUMBEROFPEOPLE 섹션 -->
 								<div class="section section-screen-select">
@@ -457,7 +519,7 @@ preselectSetting(
 										</p>
 										<p class="playYMD-info"><b>2017.04.10</b></p>
 									</div>	
-									<a class="change_time_btn" href="#" onmousedown="if(event.stopPropagation){event.stopPropagation();}return false;" onclick="ticketStep2TimeSelectPopupShow();return false;"><span>상영시간 변경하기</span></a>
+									<!-- <a class="change_time_btn" href="#" onmousedown="if(event.stopPropagation){event.stopPropagation();}return false;" onclick="ticketStep2TimeSelectPopupShow();return false;"><span>상영시간 변경하기</span></a> -->
 								</div>
 							</div>
 							<!-- THEATER -->
@@ -546,6 +608,7 @@ preselectSetting(
 														this.visible;
 														this.number;
 														this.type;
+														this.status;
 														
 														this.drawSeat = drawSeat;
 													}
@@ -558,7 +621,10 @@ preselectSetting(
 															this.color = "#1E8449";
 														}
 														else{
-															this.color = "#808B96";
+															this.color = "#737373";
+														}
+														if(this.status=="selected"){
+															this.color = "#AD0101";
 														}
 														ctx.fillStyle = this.color;
 														ctx.fillRect(this.x, this.y, this.size, this.size);
@@ -566,11 +632,11 @@ preselectSetting(
 															var borderColor;
 															switch(this.type){
 																case "prime": borderColor = "red"; break;
-																case "standard": borderColor = "green"; break;
-																case "economy": borderColor = "yellow";
+																case "standard": borderColor = "#00ff00"; break;
+																case "economy": borderColor = "#ff8000";
 															}
 															ctx.strokeStyle = borderColor;
-															ctx.lineWidth = 5;
+															ctx.lineWidth = 3;
 															ctx.strokeRect(this.x, this.y, this.size, this.size);
 														}
 														ctx.fillStyle = this.fontColor;
@@ -586,13 +652,14 @@ preselectSetting(
 															seats[i-1] = new Seat();
 															seats[i-1].x = xPos;
 															seats[i-1].y = yPos;
-															seats[i-1].color = "#808B96";
+															seats[i-1].color = "#737373";
 															seats[i-1].size = 20;
 															seats[i-1].fontColor = "white";
 															seats[i-1].colnumber = ((i-1)%col)+1;
 															seats[i-1].number = String.fromCharCode(rowNo)+seats[i-1].colnumber;
 															seats[i-1].visible = false;
 															seats[i-1].type = "general";
+															seats[i-1].status = "available";
 																			
 															for(var j=0; j<numberlist.length; j++){
 																if(seats[i-1].number==numberlist[j]){
@@ -611,57 +678,94 @@ preselectSetting(
 														}		
 													}
 													
-													var clickEvent = "arrangement";								
 													function clickEventHandler(e){
-														console.log("x:"+e.offsetX+",y:"+e.offsetY);
+														var selectCount = 0;
 														for(var i=0; i<(row*col); i++){
+															if(seats[i].visible && seats[i].status=="selected")
+																selectCount++;
+														}			
+														
+														for(i=0; i<(row*col); i++){
 															if((e.offsetX>seats[i].x)&&(e.offsetX<(seats[i].x+seats[i].size))&&
-																(e.offsetY>seats[i].y)&&(e.offsetY<(seats[i].y+seats[i].size))){
-																if(clickEvent=="arrangement"){
-																	seats[i].visible = !seats[i].visible;
+																(e.offsetY>seats[i].y)&&(e.offsetY<(seats[i].y+seats[i].size))){																
+																if(selectCount==numberOfPeople && seats[i].status!="selected"){
+																	alert("선택한 인원을 초과하였습니다.");	
 																}
-																else if(clickEvent=="prime"||clickEvent=="standard"||clickEvent=="economy"){
-																	var targetRow = Math.floor(i/col);
-																	console.log(targetRow);
-																	for(var j=0; j<(row*col); j++){
-																		if(Math.floor(j/col)==targetRow){
-																			if(seats[j].type != clickEvent)seats[j].type = clickEvent;
-																			else seats[j].type = "general";
-																		}
+																else if(numberOfPeople-selectCount<2){
+																	if(seats[i].status != "selected"){
+																		seats[i].status = "selected";					
 																	}
-																}
+																	else{
+																		seats[i].status = "available";												
+																	}
+																}																		
 																else{
 																	if(seats[i].colnumber%2==0||(seats[i].colnumber==col)){
-																		if(seats[i].type != clickEvent){
-																			seats[i].type = clickEvent;
-																			seats[i-1].type = clickEvent;
+																		if(seats[i].status != "selected"){
+																			seats[i].status = "selected";
+																			seats[i-1].status = "selected";
 																		}
 																		else{
-																			seats[i].type = "general";
-																			seats[i-1].type = "general";
+																			seats[i].status = "available";
+																			seats[i-1].status = "available";
 																		}
 																	}
 																	else if((seats[i].colnumber%2==1)){
-																		if(seats[i].type != clickEvent){
-																			seats[i].type = clickEvent;
-																			seats[i+1].type = clickEvent;
+																		if(seats[i].status != "selected"){
+																			seats[i].status = "selected";
+																			seats[i+1].status = "selected";
 																		}
 																		else{
-																			seats[i].type = "general";
-																			seats[i+1].type = "general";
+																			seats[i].status = "available";
+																			seats[i+1].status = "available";
 																		}
 																	}
-																}
+																}																												
 															}
 														}
 													}
 													canvas.addEventListener("click", clickEventHandler);
+													
+													function mousemoveEventHandler(e){				
+														console.log("("+e.offsetX+","+e.offsetY+")");
+														var selectCount = 0;
+														for(var i=0; i<(row*col); i++){
+															if(seats[i].visible && seats[i].status=="selected")
+																selectCount++;
+														}			
+														
+														for(i=0; i<(row*col); i++){
+															if((e.offsetX>seats[i].x)&&(e.offsetX<(seats[i].x+seats[i].size))&&
+																(e.offsetY>seats[i].y)&&(e.offsetY<(seats[i].y+seats[i].size))){																
+																if(numberOfPeople-selectCount<2){
+																	seats[i].color = "#AD0101";
+																}																		
+																else{
+																	if(seats[i].colnumber%2==0||(seats[i].colnumber==col)){																		
+																		seats[i].color = "#AD0101";
+																		seats[i-1].color = "#AD0101";													
+																	}
+																	else if((seats[i].colnumber%2==1)){
+																		seats[i].color = "#AD0101";
+																		seats[i+1].color = "#AD0101";
+																	}
+																}																												
+															}
+														}
+													}
+													canvas.addEventListener("mousemove", mousemoveEventHandler);
 													
 													initRow();
 													initSeat();
 													
 													function viewLoop(){
 														ctx.clearRect(0, 0, canvas.width, canvas.height);
+														if(resetFlag){
+															for(var i=0; i<(row*col); i++){
+																seats[i].status = "available";				
+															}
+															resetFlag = false;
+														}
 														for(var i=0; i<row; i++){
 															rows[i].draw();
 														}
@@ -780,7 +884,7 @@ preselectSetting(
 							</div>
 							<div class="row number">
 								<span class="header">인원</span>
-								<span class="data"></span>
+								<span class="data" id="person_data"></span>
 							</div>
 						</div>
 						<div class="placeholder" title="극장선택"></div>
@@ -833,6 +937,7 @@ preselectSetting(
 							$(".step.step2").css("display", "block");
 							$(".btn-right").removeClass("on");
 							$(".tnb").removeClass("step1").addClass("step2");
+							getSeatInfo();
 						}
 					</script>
 				</div>
