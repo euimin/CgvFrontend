@@ -352,7 +352,7 @@
         	<h2 class="hidden">개인화 영역</h2> 
         	<div class="box-image">
 				<span class="thumb-image">
-					<img src="" onerror="errorImage(this, {'type':'profile'})" />
+					<img src="images/profile/<%=(int)(Math.random()*26)+1%>.jpg" onerror="errorImage(this, {'type':'profile'})" />
 					<span class="profile-mask"></span>
 				</span>
         	</div>
