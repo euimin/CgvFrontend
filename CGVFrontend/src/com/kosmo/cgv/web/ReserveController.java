@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kosmo.cgv.service.MovieDto;
 import com.kosmo.cgv.service.SeatDto;
 import com.kosmo.cgv.service.impl.MovieServiceImpl;
+import com.kosmo.cgv.service.impl.ReserveServiceImpl;
 import com.kosmo.cgv.service.impl.SeatServiceImpl;
 import com.kosmo.cgv.service.impl.ScreeningServiceImpl;
 import com.kosmo.cgv.service.impl.TheaterServiceImpl;
@@ -34,6 +35,8 @@ public class ReserveController {
 	private ScreeningServiceImpl screeningService;
 	@Resource(name="seatService")
 	private SeatServiceImpl seatService;
+	@Resource(name="reserveService")
+	private ReserveServiceImpl reserveService;
 	
 	@RequestMapping("/ticket.front")
 	public String ticket(HttpSession session) throws Exception{
@@ -110,7 +113,7 @@ public class ReserveController {
 							 @RequestParam String screeningdate) throws Exception{
 		List<Map<String, String>> timeTable = new Vector<Map<String, String>>();
 		//keys:SCREEN_CODE, NO, SEATS
-		List<Map<String,String>> screenList = theaterService.selectScreenList(theater_code);		
+		List<Map<String,String>> screenList = theaterService.selectScreenList(theater_code);
 		for(Map screen: screenList){
 			String no = screen.get("NO").toString();
 			String seats = screen.get("SEATS").toString();
@@ -120,11 +123,11 @@ public class ReserveController {
 			map.put("movie_code", movie_code);
 			map.put("screen_code", screen_code);			
 			map.put("screeningdate", screeningdate);
-			List<String> timeList = screeningService.selectTimeList(map);
+			List<Map<String, String>> timeList = screeningService.selectTimeList(map);
 			if(!timeList.isEmpty()){
 				StringBuffer timeBuffer = new StringBuffer();
-				for(String time: timeList){
-					timeBuffer.append(time+",");
+				for(Map time: timeList){
+					timeBuffer.append(time.get("TIME").toString()+time.get("SCREENING_CODE")+",");
 				}
 				
 				Map<String, String> screeningInfo = new HashMap<String, String>();
@@ -154,7 +157,25 @@ public class ReserveController {
 		
 	@ResponseBody
 	@RequestMapping(value="/ticketPayment.front" ,produces="text/html;charset=UTF-8")
-	public String ticketPayment() throws Exception{
-		return JSONArray.toJSONString(null);
+	public String ticketPayment(@RequestParam String screening_code,
+								@RequestParam String person_data,
+								@RequestParam String seat_data,
+								@RequestParam String seatnumber_data,
+								HttpSession session) throws Exception{
+		/*CODE
+		SCREENING_CODE
+		ID
+		PEOPLE
+		SEAT
+		SEATNUMBER
+		RESERVEDATE*/
+		String id = (session.getAttribute("id")!=null? session.getAttribute("id").toString(): session.getAttribute("nonmember_id").toString());
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("screening_code", screening_code);
+		map.put("people", person_data);
+		map.put("seat", seat_data);
+		map.put("seatnumber", seatnumber_data);
+		map.put("id", id);
+		return reserveService.insertReserve(map)==1? "SUC": "FAIL";
 	}
 }

@@ -4,5 +4,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface ScreeningService {
-	List<String> selectTimeList(Map map) throws Exception;
+	List<Map<String, String>> selectTimeList(Map map) throws Exception;
 }

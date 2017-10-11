@@ -16,7 +16,7 @@ public class ScreeningDao implements ScreeningService{
 	private SqlSessionTemplate template;
 
 	@Override
-	public List<String> selectTimeList(Map map) throws Exception {
+	public List<Map<String, String>> selectTimeList(Map map) throws Exception {
 		return template.selectList("selectTimeList", map);
 	}
 }

@@ -15,7 +15,7 @@ public class ScreeningServiceImpl implements ScreeningService{
 	private ScreeningDao dao;
 	
 	@Override
-	public List<String> selectTimeList(Map map) throws Exception {
+	public List<Map<String, String>> selectTimeList(Map map) throws Exception {
 		return dao.selectTimeList(map);
 	}
 

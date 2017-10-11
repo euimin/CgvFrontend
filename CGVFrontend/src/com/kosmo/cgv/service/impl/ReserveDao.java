@@ -1,6 +1,7 @@
 package com.kosmo.cgv.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -14,7 +15,10 @@ import com.kosmo.cgv.service.ReserveService;
 public class ReserveDao implements ReserveService {
 	@Resource(name="template")
 	private SqlSessionTemplate template;
-	
+
 	@Override
-	public void temp() {}
+	public int insertReserve(Map map) throws Exception {		
+		return template.insert("insertReserve", map);
+	}
+
 }

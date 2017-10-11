@@ -244,6 +244,7 @@ preselectSetting(
 							<script>
 								var screeningdate;
 								var screen_code;
+								var screening_code;
 								$(function(){
 									$("#date_list>ul>div>li").click(function(){																															
 										$("#date_list>ul>div>li").each(function(){
@@ -263,7 +264,7 @@ preselectSetting(
 												data:"movie_code="+movie_code+"&theater_code="+theater_code+"&screeningdate="+screeningdate,
 												success:function(data){
 													if(data.length!=0){
-														var jqueryStr = '<script>$(function(){$(".theater>ul>li").click(function(){$(".theater>ul>li").each(function(){$(this).removeClass("selected");});$(this).toggleClass("selected");$("#date_data").html($("#date_data").html().substring(0, 14));$("#date_data").append(" "+$(this).find("#timeData").html());$(".playYMD-info>b").html($("#date_data").html());screen_code=$(this).children("#screenCodeData").val();$("#screen_data").html($(this).children("#screenData").val());$("#step2Screen").html($(this).children("#screenData").val());$(".restNum").html($(this).children("#seatsData").val());$(".totalNum").html($(this).children("#seatsData").val());$(".btn-right").addClass("on").attr("onclick", "OnTnbRightClick(); return false;");});});<\/script>';
+														var jqueryStr = '<script>$(function(){$(".theater>ul>li").click(function(){$(".theater>ul>li").each(function(){$(this).removeClass("selected");});$(this).toggleClass("selected");$("#date_data").html($("#date_data").html().substring(0, 14));$("#date_data").append(" "+$(this).find("#timeData").html());$(".playYMD-info>b").html($("#date_data").html());screen_code=$(this).children("#screenCodeData").val();screening_code=$(this).children("#screeningCodeData").val();$("#screen_data").html($(this).children("#screenData").val());$("#step2Screen").html($(this).children("#screenData").val());$(".restNum").html($(this).children("#seatsData").val());$(".totalNum").html($(this).children("#seatsData").val());$(".btn-right").addClass("on").attr("onclick", "OnTnbRightClick(); return false;");});});<\/script>';
 														var timeTable = '';
 														$.each(data,function(index,record){
 															timeTable += '<div class="theater"><span class="title"><span class="name">2D</span><span class="floor">';
@@ -275,8 +276,8 @@ preselectSetting(
 															var timeSect="";
 															timeArray.forEach(function(time){
 																//li class="morning/night selected"
-																timeSect += '<li><input type="hidden" id="screenData" value="'+record.no+'관"/><input type="hidden" id="seatsData" value="'+record.seats+'"/><input type="hidden" id="screenCodeData" value="'+record.screen_code+'"/><a class="button" href="#" onclick="return false;"><span class="time"><span id="timeData">';
-																timeSect += time+'</span></span><span class="count">'+record.seats+'석</span><div class="sreader">종료시간 00:00</div><span class="sreader mod">심야</span></a></li>';
+																timeSect += '<li><input type="hidden" id="screeningCodeData" value="'+time.substring(5)+'"/><input type="hidden" id="screenData" value="'+record.no+'관"/><input type="hidden" id="seatsData" value="'+record.seats+'"/><input type="hidden" id="screenCodeData" value="'+record.screen_code+'"/><a class="button" href="#" onclick="return false;"><span class="time"><span id="timeData">';
+																timeSect += time.substring(0, 5)+'</span></span><span class="count">'+record.seats+'석</span><div class="sreader">종료시간 00:00</div><span class="sreader mod">심야</span></a></li>';
 															});
 															timeTable += timeSect+'</ul></div>';
 														});
@@ -746,29 +747,7 @@ preselectSetting(
 															$("#seatPlaceholder").addClass("hidden");
 															
 															if(selectCount==numberOfPeople){
-																$(".btn-right").addClass("on").attr("onclick", "OnStep2TnbRightClick(); return false;");
-																
-																/* var date_data = $("#date_data").html();
-																var theater_name = $("#theater_name").html();
-																var screen_data = $("#screen_data").html();
-																var seatnumber_data = $("#seatnumber_data").html;
-																var person_data = $("person_data").html();
-																$.ajax({
-																	url:"<c:url value='/ticketPayment.front'/>",												
-																	type:"get",
-																	dataType:"json",
-																	data:"date_data="+date_data
-																		+"theater_name"+theater_name
-																		+"screen_data"+screen_data
-																		+"seatnumber_data"+seatnumber_data
-																		+"person_data"+person_data,
-																	success:function(data){
-																			
-																	},
-																	error:function(request,status,error){
-																		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
-																	}
-																}); */
+																$(".btn-right").addClass("on").attr("onclick", "OnStep2TnbRightClick(); return false;");					
 															}																													
 														});
 													}
@@ -955,9 +934,41 @@ preselectSetting(
 							getSeatInfo();
 						}
 						
-						function OnStep2TnbRightClick(){
-							alert("예매가 성공적으로 이루어졌습니다.");
-							window.parent.goHome();
+						function OnStep2TnbRightClick(){						
+							/*CODE
+							SCREENING_CODE
+							ID
+							PEOPLE
+							SEAT
+							SEATNUMBER
+							RESERVEDATE*/						
+							var person_data = $("#person_data").html();
+							var seat_data = $("#seat_data").html();
+							var seatnumber_data = $("#seatnumber_data").html();							
+							if(screening_code!=undefined){
+								$.ajax({
+									url:"<c:url value='/ticketPayment.front'/>",												
+									type:"get",
+									dataType:"text",
+									data:"screening_code="+screening_code
+										+"&person_data="+person_data
+										+"&seat_data="+seat_data
+										+"&seatnumber_data="+seatnumber_data,
+									success:function(data){
+										if(data=="SUC"){
+											alert("예매가 성공적으로 이루어졌습니다.");
+											window.parent.goHome();
+										}
+										else{
+											alert("예매 실패");
+											window.parent.goHome();
+										}
+									},
+									error:function(request,status,error){
+										alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);													
+									}
+								});
+							}
 						}
 					</script>
 				</div>

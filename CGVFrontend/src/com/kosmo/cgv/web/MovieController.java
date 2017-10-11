@@ -333,7 +333,7 @@ public class MovieController {
 			System.out.println("dto.getRating().substring(0, 2)" + dto.getRating().substring(0, 2));
 			System.out.println("url:" + url);
 			System.out.println("dto.getPoster()" + dto.getPoster());
-			// http://192.168.10.5:8989/CGVFrontend_10/images/ratings/12.png
+			// http://192.168.0.128:8082/CGVFrontend/images/ratings/12.png
 			moviemap.put("rating", url + "/images/ratings/" + rating + ".png");
 
 			moviemap.put("releasedate", "개봉일: " + dto.getReleasedate().toString());
