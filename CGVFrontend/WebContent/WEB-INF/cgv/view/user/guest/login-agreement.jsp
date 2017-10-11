@@ -491,6 +491,7 @@
                 <span style="font-size:8pt;color:red;">* 모든 항목은 필수 입력사항입니다.</span></p>
                     <form id="form1" method="post" novalidate="novalidate" action="<c:url value='/guestReseve.front'/>">
                     <input type="hidden" name="phone" id="phone"/>
+                    <input type="hidden" name="nonmember_id" value="login"/>
                     <fieldset>
                         <legend>비회원로그인 정보를 입력후 로그인 하실수 있습니다.</legend>
                         <table cellpadding="0" cellspacing="0">

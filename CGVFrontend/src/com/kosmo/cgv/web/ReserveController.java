@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -35,8 +36,11 @@ public class ReserveController {
 	private SeatServiceImpl seatService;
 	
 	@RequestMapping("/ticket.front")
-	public String ticket() throws Exception{
-		return "ticket/index";
+	public String ticket(HttpSession session) throws Exception{
+		if(session.getAttribute("id")!=null||session.getAttribute("nonmember_id")!=null) {
+			return "ticket/index";
+		}
+		return "user/login/index";
 	}
 	
 	@RequestMapping("/reserve.front")
