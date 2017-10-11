@@ -37,7 +37,7 @@ public class PointController extends HttpServlet{
 	public String showMovies(@RequestParam Map map,Model model,HttpServletRequest req) throws Exception{
 		List<MovieDto> list = service.selectMovieList();
 		Map<String, Double> reserveRateMap = new HashMap<String, Double>();
-		Map<String, Integer> dDayMap = new HashMap<String, Integer>();
+		Map<String, Long> dDayMap = new HashMap<String, Long>();
 		Map<String, Integer> wishesMap = new HashMap<String, Integer>();
 		for(MovieDto movie: list) {
 			String movie_code = movie.getMovie_code();
@@ -62,7 +62,7 @@ public class PointController extends HttpServlet{
 			java.sql.Date today = new java.sql.Date(System.currentTimeMillis());
 			long dateTime = date.getTime();
 			long todayTime = today.getTime();
-			int dayGap = (int)(dateTime - todayTime)/(1000*60*60*24);
+			long dayGap = (dateTime - todayTime)/(1000*60*60*24);
 			dDayMap.put(movie_code, dayGap);
 			
 			int wishes = service.getWishCount(movie_code);

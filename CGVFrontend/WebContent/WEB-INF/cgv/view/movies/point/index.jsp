@@ -278,21 +278,9 @@
                                 </c:if>
                             </strong>
                         </span>
-                        <script>
-                        	$(function(){
-                        		$(".btn-like").click(function(){
-                        			$(this).toggleClass("on");
-                        		});
-                        	});
-                        </script>
-                        <span class="like"> 
-                            <button class="btn-like" value="79949">영화 찜하기</button>
-                            <span class="count"> 
-                                <strong><i><fmt:formatNumber value="${wishesMap[movie.movie_code]}" type="number"/></i><span>명이 선택</span></strong> 
-                                <i class="corner-RT"></i><i class="corner-LT"></i><i class="corner-LB"></i><i class="corner-RB"></i><i class="corner-arrow"></i>
-                            </span>
-                            <a class="link-reservation" href="/ticket/?MOVIE_CD=20013728&MOVIE_CD_GROUP=20013728">예매</a>
-                        </span>
+                        <span class="like">
+				            <a class="link-reservation" href="<c:url value='/ticket.front'/>">예매</a>       
+				        </span>
                     </div>    
                             </li>
                           </c:forEach>
@@ -312,7 +300,7 @@
                 <div class="heading-new">
                     <a class="goto-link"><h4>관람객 평점</h4></a>
                     <p class="txt-write">관람일 포함 7일 이내 관람평을 남기시면 <strong>CJ ONE 20P</strong>가 적립됩니다. 
-                        <a class="link-gradewrite" id="reviewPopup" href="#openReviewPopup" onclick="checkLogin();"><span>평점작성</span></a><a class="link-reviewwrite" href="/movies/point/my-list.aspx"><span>내 평점</span></a>
+                        <a class="link-gradewrite" id="reviewPopup" href="#openReviewPopup" onclick="checkLogin();"><span>평점작성</span></a>
                     </p>
                 </div>
                 
@@ -458,16 +446,15 @@
                                    data-REPORTCNT="0">
                             <a href="javascript:return false;" class="screen_spoiler">&nbsp;</a>
                             <div class="box-image">
-                                <span class="thumb-image">   
-									<img src="${movieReview.profilepicture}"  alt="사용자 프로필" onerror="errorImage(this, {'type':'profile'})"/>                                            
-                                        <span class="profile-mask"></span>
+                                <span class="thumb-image">
+                                	<img src="images/profile/<%=(int)(Math.random()*26)+1%>.jpg" onerror="errorImage(this, {'type':'profile'})" />                                              
+                                    <span class="profile-mask"></span>
                                 </span>
                             </div>
                             
                             <div class="box-contents">
                                 <ul class="writerinfo">
                                     <li class="writer-name">
-                                        <a href="#select_main" onclick="getPopList1('matainijia', '익스텐션')"; >
                                         	<c:choose>
                                         		<c:when test="${movieReivew.feedback eq 'u' || movieReivew.feedback eq 'U'}">
                                         			<span class="egg-icon good"></span>
@@ -477,17 +464,13 @@
                                         		</c:otherwise>
                                         	</c:choose>
                                         	${movieReivew.id}
-                                        </a>
                                     </li>
 									<li class="writer-etc">
-										<div><span class="round red on" style="vertical-align: middle;"><em class="see">실관람객</em></span></div>					
+										<div><span class="round red on" style="vertical-align: middle;"><em class="see">무비매니아</em></span></div>					
 										<span class="day">${movieReivew.writedate}</span>
-										<span class="like point_like" id="matainijia19312564" data-isMyGood="False" data-CommentIdx="19312564">
-											<a href="javascript:return false;" class="btn_point_like" ><span><img src="http://img.cgv.co.kr/R2014/images/point/ico_point_default.png" alt="like" class="like_red" /></span><span id='idLikeValue'>0</span></a>
-										</span>
 									</li>
                                     <li class="point_notify">
-                                        <a href="" class="btn_notify">스포일러, 욕설/비방 신고</a>
+                                        <a href="#" onclick="return false;" class="btn_notify">스포일러, 욕설/비방 신고</a>
                                         <div class="notify_wrap">
                                             <ul>
 
@@ -3832,8 +3815,10 @@
 
 <div class="layer-contents" id="openReviewPopup" style="width:100%;">
 <c:if test="${not empty reviewMovieMember}" var="oneReviewNN">
-	 <div>
+	 <div style="height:6.5%;line-height: 50px;padding-left: 19px;border: 1px solid #707070;color: #f2f0e5;
+    font-family: NanumBarunGothic,'맑은 고딕','돋움',Dotum,sans-serif;font-size: 22px;background-color:#333;">
 	 	평점은 영화당 하나씩만 작성 가능합니다
+	 	<a href="#close"><button type="button" class="btn-close">평점수정 팝업 닫기</button></a>
 	 </div>
 </c:if>
 <c:if test="${not oneReviewNN}">
@@ -3849,8 +3834,7 @@
 							<div class="writerinfo">
 								<div class="box-image">
 									<span class="thumb-image">   
-										<img id="regUserPro" src="${reviewMovieMember.profilepicture}" alt="사용자 프로필" onerror="errorImage(this, {'type':'profile'})">                                            
-										
+										<img src="images/profile/<%=(int)(Math.random()*26)+1%>.jpg" onerror="errorImage(this, {'type':'profile'})" />                                            
                                         <span class="profile-mask"></span>
 									</span>
 								</div>
@@ -3862,7 +3846,7 @@
 								<div class="likebox-inner">
 									<label id="U" for="likeornot1-1">
 										<span class="egg-icon good"></span>
-											<input type="radio" name="likeornot1" id="likeornot1-1" value="U" />
+											<input type="radio" required name="likeornot1" id="likeornot1-1" value="U" />
 										
 										<span class="txt">좋았어요~^^</span>
 									</label>
@@ -3872,7 +3856,7 @@
 								<div>
 									<label id="D" for="likeornot1-2">
 										<span class="egg-icon"></span>
-											<input type="radio" name="likeornot1" id="likeornot1-2" value="D" />
+											<input type="radio" required name="likeornot1" id="likeornot1-2" value="D" />
 										
 										<span class="txt">흠~좀 별로였어요;;;</span>
 									</label>
@@ -3884,7 +3868,7 @@
 							<!--
                             <textarea cols="" rows="" id="textReviewContent"></textarea>
                             -->
-                            <textarea id="textReviewContent" name="textReviewContent" title="영화평점 입력" cols="70" rows="2" maxlength="140" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다."></textarea>
+                            <textarea id="textReviewContent" name="textReviewContent" required title="영화평점 입력" cols="70" rows="2" maxlength="140" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다."></textarea>
 						</div>
 
 						<div class="footbox">							

@@ -357,7 +357,7 @@
             
             <em class="round brown"><span>예매중</span></em>
             <c:if test="${dayGap gt 0}">
-            	<em class="round red"><span>D-6</span></em>
+            	<em class="round red"><span>D-${dayGap}</span></em>
             </c:if>
             <p>${movie.engtitle}</p>
         </div>
@@ -394,21 +394,9 @@
                 <dd class="on">${movie.releasedate}</dd>
             </dl>
         </div>
-		<script>
-        	$(function(){
-        		$(".btn-like").click(function(){
-        			$(this).toggleClass("on");
-        		});
-        	});
-        </script>
+		
         <span class="like">
-            <button class="btn-like" value="79949">영화 찜하기</button>
-            <span class="count">
-                <strong><i><fmt:formatNumber value="${wishes}" type="number"/></i><span>명이 선택</span></strong> 
-                <i class="corner-RT"></i><i class="corner-LT"></i><i class="corner-LB"></i><i class="corner-RB"></i><i class="corner-arrow"></i>
-            </span>
-        
-            <a class="link-reservation" href="/ticket/?MOVIE_CD=20013728&MOVIE_CD_GROUP=20013728">예매</a>       
+            <a class="link-reservation" href="<c:url value='/ticket.front'/>">예매</a>       
         </span>
     </div>
 </div><!-- .sect-base -->
@@ -426,9 +414,9 @@
         <div class="col-detail">
             <!-- 메뉴가 선택되면 a 에 title="선택" 이라고 넣는다 -->
             <ul class="tab-menu">
-                <li class="on"><a title="현재 선택됨" href="/movies/detail-view/?midx=79949#menu">주요정보 </a></li>
-                <li><a href="/movies/detail-view/?midx=79949#commentReg">평점/리뷰</a></li>
-                <li class="last"><a href="/movies/detail-view/show-times.aspx?midx=79949#menu">상영시간표</a></li>
+                <li class=""><a title="현재 선택됨" href="#">&nbsp;</a></li>
+                <li><a href="#" onclick="return false;">주요정보</a></li>
+                <li class="last"><a href="#">&nbsp;</a></li>
             </ul>
             <div class="sect-story-movie">
             	${movie.summary}                  
@@ -513,90 +501,7 @@
                         <button type="button" class="btn-next">다음 페이지 이동</button>
                     </div>
                 </div>
-            </div><!-- .sect-stillcut -->
-
-
-              
-    
-            <div class="sect-grade">
-                <!-- dev_css
-                <div class="heading">
-                    <h4>평점</h4><a class="link-more" href="point-review.aspx?midx=79949">더보기</a>
-                    <p class="txt-write">관람일 이후 14일 내 실관람객 평점을 남기시면 <strong>CJ ONE 50포인트</strong>가 적립됩니다. <a class="link-gradewrite" href="point-review.aspx?midx=79949"><span>평점쓰기</span></a></p>
-                </div>
-                <ul class="list-grade">
-                    <li>
-                        <div class="score">
-                            <strong class="count"><span class="all">111총평점<em>(0명 참여)</em></span></strong>
-                            <div class="point">
-                                <em>0.0</em>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <strong class="count"><span class="view">실관람객<em>(0명 참여)</em></span></strong>
-                        <div class="point">
-                            <em>0.0</em>
-                        </div>
-                    </li>
-                   <li>
-                  <!--       <strong class="count"><span class="critic">패널회원<em>(0명 참여)</em></span></strong>
-                        <div class="point">
-                            <em>0.0</em>
-                        </div>
-                    </li>
-                    <li><a href="/movies/point/my-list.aspx" class="link-mygrade required-login" data-url="/movies/point/my-list.aspx">내가 등록한 평점 보기 &gt;</a></li>
-                </ul>
-                -->
-
-            
-           
-             
-                <div class="heading-new">
-                    <a class="goto-link" name="commentReg"><h4>실관람객 평점</h4></a>
-                    <p class="txt-write">관람일 포함 7일 이내 관람평을 남기시면 <strong>CJ ONE 20P</strong>가 적립됩니다. <a class="link-gradewrite" href="javascript:void(0);"><span>평점작성</span></a><a class="link-reviewwrite" href="/movies/point/my-list.aspx"><span>내 평점</span></a></p>
-                </div>
-
-                <div class="egg-grade">
-					<a class="info1" id="goldenEggAlert" href="javascript:void(0);">Golden EGG지수<br /><img src="http://img.cgv.co.kr/R2014/images/common/ico/ico-question-mark.png" alt="?" /></a>
-					<!-- <a class="info2" href="#">이 영화의 감상포인트<br /><img src="images/common/ico/ico-question-mark.png" alt="?" /></a> -->
-
-					<div class="massagebox">
-						<p>
-                            <span class="msg-em"><strong id="cgvEggCountTxt">0</strong>명의</span>
-							<em>CGV실관람객이</em> 평가해주셨습니다.
-						</p>
-					</div>
-                    <!-- great , good-->
-					<div class="egg-gage big" id="eggIconDiv">
-						<span class="egg good"></span>
-                        
-						<span class="percent"><strong></strong>?</span>
-					</div>
-
-					<div class="radar-graph" id="chart2">
-						<canvas id="charmScore2" width="200" height="200"></canvas>
-						<!-- ie8 이하 미지원시
-						<div class="sorry">
-							<p>&lsquo;이 영화의 매력포인트&rsquo; 차트는<br />익스플로러9 이상에서 지원 가능합니다.</p>
-						</div>
-						 -->
-					</div>
-				</div>
-
-                <ul class="sort" id="sortTab">
-                      <li class="sortTab on" data-order-type="0" id="test"><a href="javascript:void(0);" title="현재선택">최신순<span class="arrow-down"></span></a></li>
-                    <li class="sortTab" data-order-type="3"><a href="javascript:void(0);">추천순<span class="arrow-down"></span></a></li>
-                </ul>
-
-
-                
-                <div class="wrap-persongrade">
-                    <ul id="movie_point_list_container" class="point_col2">
-                    
-                    </ul>
-                </div>
-            </div><!-- .sect-grade -->
+            </div><!-- .sect-stillcut -->                  
 
             <!-- .sect-review -->
             <!-- add_css -->

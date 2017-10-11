@@ -369,21 +369,9 @@
                                 	<em class="dday">D-${dDayMap[movie.movie_code]+1}</em>
                                 </c:if>
                             </strong>
-                        </span>
-                        <script>
-                        	$(function(){
-                        		$(".btn-like").click(function(){
-                        			$(this).toggleClass("on");
-                        		});
-                        	});
-                        </script>
-                        <span class="like"> 
-                            <button class="btn-like" value="79949">영화 찜하기</button>
-                            <span class="count"> 
-                                <strong><i><fmt:formatNumber value="${wishesMap[movie.movie_code]}" type="number"/></i><span>명이 선택</span></strong> 
-                                <i class="corner-RT"></i><i class="corner-LT"></i><i class="corner-LB"></i><i class="corner-RB"></i><i class="corner-arrow"></i>
-                            </span>
-                            <a class="link-reservation" href="/ticket/?MOVIE_CD=20013728&MOVIE_CD_GROUP=20013728">예매</a>
+                        </span>                  
+                        <span class="like">                          
+                            <a class="link-reservation" href="<c:url value='/ticket.front'/>">예매</a>
                         </span>
                     </div>    
                 </li>

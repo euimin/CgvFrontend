@@ -92,7 +92,7 @@ public class MovieController {
 		java.sql.Date today = new java.sql.Date(System.currentTimeMillis());
 		long dateTime = date.getTime();
 		long todayTime = today.getTime();
-		int dayGap = (int)(dateTime - todayTime)/(1000*60*60*24);
+		long dayGap = (dateTime - todayTime)/(1000*60*60*24);
 		
 		int wishes = service.getWishCount(movie_code);
 		
