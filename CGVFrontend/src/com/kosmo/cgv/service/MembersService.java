@@ -25,4 +25,8 @@ public interface MembersService {
 	
 	//자원반납및 커넥션 풀 반납용]
 	void close() throws Exception;
+	
+	//for android
+	List<MembersDTO> selectMembersAll() throws Exception;
+	List<MembersDTO> selectMembersInquery() throws Exception;
 }

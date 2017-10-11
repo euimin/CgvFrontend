@@ -63,6 +63,16 @@ public class MembersDAO implements MembersService{
 		return nickCount ==1 ? true : false;
 	}
 
+	@Override
+	public List<MembersDTO> selectMembersAll() throws Exception {
+		return template.selectList("selectMembersAll");
+	}
+
+	@Override
+	public List<MembersDTO> selectMembersInquery() throws Exception {
+		return template.selectList("selectMembersInquery");
+	}
+
 
 	
 }

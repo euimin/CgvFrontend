@@ -46,4 +46,31 @@ public class MovieServiceImpl implements MovieService {
 	public List<TrailerDto> selectTrailerList(String movie_code) throws Exception {
 		return dao.selectTrailerList(movie_code);
 	}
+
+	/* for android */
+	@Override
+	public List<MovieDto> selectMovieListDescRelease() throws Exception {
+		return dao.selectMovieListDescRelease();
+	}
+
+	@Override
+	public List<MovieDto> selectMovieListDescPoint() throws Exception {
+		return dao.selectMovieListDescPoint();
+	}
+
+	@Override
+	public List<MovieDto> selectMovieListAscTitle() throws Exception {
+		return dao.selectMovieListAscTitle();
+	}
+
+	@Override
+	public List<MovieDto> selectMovieListETicket() throws Exception {
+		return dao.selectMovieListETicket();
+	}
+
+	@Override
+	public List<MovieDto> selectTheaterList() throws Exception {
+		return dao.selectTheaterList();
+	}
+	
 }

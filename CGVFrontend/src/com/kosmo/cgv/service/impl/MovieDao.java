@@ -47,5 +47,31 @@ public class MovieDao implements MovieService{
 	public List<TrailerDto> selectTrailerList(String movie_code) throws Exception {
 		return template.selectList("selectTrailerList", movie_code);
 	}
+
+	/* for android */
+	@Override
+	public List<MovieDto> selectMovieListDescRelease() throws Exception {
+		return template.selectList("selectMovieListDescRelease");
+	}
+
+	@Override
+	public List<MovieDto> selectMovieListDescPoint() throws Exception {
+		return template.selectList("selectMovieListDescPoint");
+	}
+
+	@Override
+	public List<MovieDto> selectMovieListAscTitle() throws Exception {
+		return template.selectList("selectMovieListAscTitle");
+	}
+
+	@Override
+	public List<MovieDto> selectMovieListETicket() throws Exception {
+		return template.selectList("selectMovieListETicket");
+	}
+
+	@Override
+	public List<MovieDto> selectTheaterList() throws Exception {
+		return template.selectList("selectTheaterList");
+	}
 	
 }

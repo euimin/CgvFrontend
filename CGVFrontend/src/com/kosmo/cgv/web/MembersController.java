@@ -4,13 +4,17 @@ package com.kosmo.cgv.web;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -262,4 +266,80 @@ public class MembersController {
 		return "forward:/logout.front";
 	}
 
+	
+	
+	// for android start
+	@ResponseBody
+	@RequestMapping(value = "/Ajax/AjaxJson.front", produces = "text/html;charset=UTF-8")
+	public String ajaxJson(@RequestParam Map map) throws Exception {
+
+		boolean flag = membersService.login(map);
+		// JSON데이타 타입으로 반환하기위해 JSONObject객체 생성
+		JSONObject json = new JSONObject();
+
+		json.put("isLogin", flag ? "Y" : "N");
+		System.out.println(json.toJSONString());
+		return json.toJSONString();
+	}// ajaxJson()
+
+	@ResponseBody
+	@RequestMapping(value = "/membersJson.front", produces = "text/html;charset=UTF-8")
+	public String ajaxJsonMembers(HttpServletRequest req, @RequestParam Map map) throws Exception {
+
+		List<MembersDTO> list = membersService.selectMembersAll();
+
+		int idx = req.getRequestURL().toString().lastIndexOf("/");
+		String url = req.getRequestURL().toString().substring(0, idx);
+		String rating = null;
+
+		System.out.println("url" + url);
+		List<Map> collectionmembers = new Vector<Map>();
+		for (MembersDTO dto : list) {
+			Map membersmap = new HashMap();
+			membersmap.put("id", dto.getId());
+			membersmap.put("name", "이름 : " + dto.getName());
+			membersmap.put("nickname", "닉네임: " + dto.getNickname());
+			membersmap.put("birth", "생년월일: " + dto.getBirth());
+			membersmap.put("phone", "연락처: " + dto.getPhone());
+			membersmap.put("email", "이메일: " + dto.getEmail());
+			membersmap.put("gender", "성별: " + dto.getGender());
+			collectionmembers.add(membersmap);
+		}
+
+		System.out.println(JSONArray.toJSONString(collectionmembers));
+		return JSONArray.toJSONString(collectionmembers);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/membersJsonInquery.front", produces = "text/html;charset=UTF-8")
+	public String ajaxJsonMembersInquery(HttpServletRequest req, @RequestParam Map map) throws Exception {
+
+		// 비지니스 로직 호출]
+		List<MembersDTO> list = membersService.selectMembersInquery();
+
+		int idx = req.getRequestURL().toString().lastIndexOf("/");
+		String url = req.getRequestURL().toString().substring(0, idx);
+		String rating = null;
+
+		System.out.println("url" + url);
+		List<Map> collectionmembers = new Vector<Map>();
+		for (MembersDTO dto : list) {
+			Map membersmap = new HashMap();
+			membersmap.put("id", dto.getId());
+
+			membersmap.put("category", dto.getCategory());
+			membersmap.put("theater", dto.getTheater());
+			membersmap.put("title", dto.getTitle());
+			membersmap.put("content", dto.getContent());
+			membersmap.put("writedate", dto.getWritedate());
+
+			collectionmembers.add(membersmap);
+		}
+
+		System.out.println(JSONArray.toJSONString(collectionmembers));
+		return JSONArray.toJSONString(collectionmembers);
+	}
+	// for android end
+	
+	
 }

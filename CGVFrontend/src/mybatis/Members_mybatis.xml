@@ -46,4 +46,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<!-- seq_nonmember.currval은 꼭 이런 식으로 써주어야한다. insert 할때 넣어줘서 쓰면 에러남 -->
 
+
+	<!-- for android start -->
+	<select id="selectMembersAll" resultType="MembersDTO">    	
+    	select * from members 
+    </select>
+    
+	<select id="selectMembersInquery" resultType="MembersDTO">
+		select mem.*, q.category,q.theater,q.title,q.content,q.writedate from members mem join qna q on mem.id = q.id
+	</select>
+	<!-- for android end -->
+
 </mapper>

@@ -72,6 +72,16 @@ public class MembersServiceImpl implements MembersService{
 	public boolean nickCheck(Map map) throws Exception {
 		return dao.nickCheck(map);
 	}
+
+	@Override
+	public List<MembersDTO> selectMembersAll() throws Exception {
+		return dao.selectMembersAll();
+	}
+
+	@Override
+	public List<MembersDTO> selectMembersInquery() throws Exception {
+		return dao.selectMembersInquery();
+	}
 	
 
 }
